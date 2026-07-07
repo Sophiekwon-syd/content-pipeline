@@ -1,0 +1,76 @@
+{
+  "brand": {
+    "name": "AUSSIE UMMA",
+    "handle": "@nappyprice",
+    "niche": "호주 육아 / Australian parenting — 한국인 호주 엄마를 위한 육아·건강·라이프스타일 정보",
+    "target_audience": "호주에 사는 25-40세 한국인 엄마. 두 자녀 이상 육아 중이거나 직장과 육아를 병행 중. 영어는 되지만 한국어로 소통하는 편이며, 호주 육아 정보는 영어라 접근성이 떨어지는 게 주된 고민. '한국 엄마들끼리 알려주는 정보'를 가장 저장하고 공유."
+  },
+
+  "content": {
+    "language": "ko",
+    "tone": "한국 엄마들끼리 카페에서 대화하는 느낌. 전문가 강의가 아니라 '나도 이거 몰랐어' 하는 선배 엄마의 말투. 호주 육아 시스템에 대한 실용 정보와 정서적 공감을 6:4 비율로 섞는다.",
+    "topics_to_avoid": [
+      "한국 국내 육아 정보 (시스템 다름)",
+      "일반적인 아기 건강 정보 (MCHN이 담당)",
+      "보험/비자/유학 등 행정 정보",
+      "육아 방법 논란 (애착육아, 수면훈련 등)",
+      "남편 육아 참여 없이 엄마만 육아하는 프레임",
+      "제품 추천/협찬/광고"
+    ],
+    "recurring_themes": [
+      "호주 육아 시스템 활용 (MCHN, GP referral, Medicare)",
+      "바쁜 워킹맘 육아 병행 전략",
+      "한국-호주 바이링구얼 육아",
+      "엄마의 정신건강 (번아웃, 고립감, 자기돌봄)",
+      "아이별 맞춤 양육 (연령차, 성격차)",
+      "호주 커뮤니티 리소스 (한인 카페, Playgroup, 라이브러리)"
+    ],
+    "search_contexts": [
+      "Korean mums Australia Instagram saves-count analysis — what gets saved most in Korean parenting Reels",
+      "Naver Cafe '호주 육아' board trending posts this week",
+      "Korean YouTube '호주육아' channels with 50K+ subscribers — recent viral video topics",
+      "Reddit r/AustralianParenting — common questions from Korean-background parents",
+      "Australian parenting Instagram accounts with high Korean engagement",
+      "Blind app '호주 생활' '호주 육아' real-talk posts — actual daily struggles"
+    ],
+    "cta_text": "저장하기 →"
+  },
+
+  "channels": {
+    "blog": {
+      "enabled": true,
+      "platform": "naver",
+      "category": "육아",
+      "posts_per_week_target": 3
+    },
+    "carousel": {
+      "enabled": true,
+      "platform": "instagram",
+      "cards_per_run": 1,
+      "card_count_range": [7, 11],
+      "bilingual": false,
+      "primary_language": "Korean",
+      "design": {
+        "theme": "dark-modern",
+        "accent_primary": "#C6F135",
+        "accent_secondary": "#3B82F6"
+      }
+    },
+    "video": {
+      "enabled": true,
+      "platforms": ["instagram", "youtube"],
+      "aspect": "portrait",
+      "max_duration_seconds": 60
+    }
+  },
+
+  "instagram": {
+    "account_id": "<instagram_business_account_id>",
+    "access_token_env": "INSTAGRAM_ACCESS_TOKEN"
+  },
+
+  "youtube": {
+    "channel_id": "<youtube_channel_id>",
+    "credentials_env": "YOUTUBE_CREDENTIALS_FILE"
+  }
+}
