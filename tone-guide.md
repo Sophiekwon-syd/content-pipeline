@@ -30,6 +30,7 @@ Every agent in the pipeline reads this file before writing a single word.
 - Hedging: "아마도", "~일 수도 있어요" (구체적 수치로 대체)
 - Stiff formality: "~하는 것이 좋습니다", "~해야 합니다"
 - Condescension: "당연히", "다들 아시겠지만", "기본적으로"
+- Direct 2nd person: "당신의 ~", "여러분의 ~" → use "어느 ~에나", "~라면 누구나"
 - Fear/urgency: "안 하면 큰일 나요", "지금 당장", "늦기 전에"
 
 ### Hard Rules (all channels, no exceptions)

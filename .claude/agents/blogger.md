@@ -35,7 +35,8 @@ Build in this order:
 5. **주의사항** — brief's caveats as a numbered list
 6. **FAQ 섹션** — H3 = actual search query, 2-3 line answer
 7. **마무리** — one paragraph, empathetic close
-8. **내부링크** — connect to related posts from brief's internal links
+	8. **태그** — visible hashtag list at bottom (read from config.json → content.hashtags.blog)
+9. **내부링크** — connect to related posts from brief's internal links
 
 ### 3. Draft (톤 가이드)
 - **해요체 only.** `~어요 / ~했어요 / ~더라고요 / ~거든요`
@@ -91,7 +92,7 @@ Include at the top of the file:
 ## 네이버 발행 체크리스트
 - [ ] 나눔마루부리 폰트 적용
 - [ ] 줄간격 1.8
-- [ ] 태그 6개 입력
+- [ ] 태그 6개 입력 (config.json → content.hashtags.blog 값 사용)
 - [ ] AI 이미지 → 원본 사진으로 교체
 - [ ] 썸네일 텍스트 오버레이 편집
 - [ ] 내부링크 연결 확인
