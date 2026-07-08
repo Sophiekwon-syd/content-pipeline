@@ -23,6 +23,7 @@
     .card::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:50;opacity:0.04;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:180px}
     .ci{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:90px;position:relative;z-index:2}
     .td{font-family:var(--font-en);font-weight:900;line-height:1.05;letter-spacing:-2px;word-break:keep-all}
+    .td-kr{font-family:var(--font-kr);font-weight:900;line-height:1.15;letter-spacing:-3px;word-break:keep-all}
     .td.xl{font-size:96px}.td.lg{font-size:82px}.td.md{font-size:72px}
     .tb{font-size:30px;font-weight:400;color:var(--ink2);line-height:1.65;word-break:keep-all}
     .tb strong{font-weight:700;color:var(--ink)}
@@ -37,7 +38,7 @@
     .center-block{flex:1;display:flex;flex-direction:column;justify-content:center}
 
     /* cover card */
-    .c1 .cover-sub{margin-bottom:48px;max-width:85%;font-size:36px;font-weight:500}
+    .c1 .cover-sub{max-width:85%;font-size:36px;font-weight:500;margin-top:40px}
     .c1 .cover-cta{font-size:22px;font-weight:800;color:var(--accent);margin-top:48px}
 
     /* statement card (dark rhythm) */
@@ -59,9 +60,9 @@
   <div class="glow" style="width:600px;height:600px;top:-200px;right:-200px"></div>
   <div class="ci">
     <div class="badge badge-a" style="margin-bottom:40px">호주 육아 꿀팁</div>
-    <div class="td xl" style="font-family:var(--font-kr);font-size:80px;letter-spacing:-3px;line-height:1.15">호주 도서관</div>
-    <div class="td xl" style="font-family:var(--font-kr);font-size:80px;letter-spacing:-3px;line-height:1.15;margin-top:4px">무료 육아 프로그램</div>
-    <div class="cover-sub tm" style="margin-top:36px">당신 동네에도 이미 있어요</div>
+    <div class="td-kr" style="font-size:80px">호주 도서관</div>
+    <div class="td-kr" style="font-size:80px;margin-top:4px">무료 육아 프로그램</div>
+    <div class="cover-sub tm">당신 동네에도 이미 있어요</div>
     <div class="cover-cta">Baby Rhyme Time · Toddler Time · Storytime</div>
   </div>
 </section>
@@ -72,7 +73,7 @@
   <div class="glow" style="width:500px;height:500px;top:100px;left:-150px"></div>
   <div class="ci">
     <div class="badge badge-a" style="margin-bottom:48px">솔직히 말하면</div>
-    <div class="td lg" style="font-family:var(--font-kr);font-size:52px;line-height:1.2;letter-spacing:-2px">
+    <div class="td-kr td lg" style="font-size:52px;line-height:1.2;letter-spacing:-2px">
       나도 처음엔 몰랐어요.<br>매주 집 앞 도서관에서<br>공짜 아기 수업이<br>열린다는 사실을.
     </div>
     <div class="div-a"></div>
@@ -104,7 +105,7 @@
   <div class="glow" style="width:400px;height:400px;top:200px;right:-100px"></div>
   <div class="ci">
     <div class="badge badge-a" style="margin-bottom:30px">0 - 12개월</div>
-    <div class="td md" style="font-family:var(--font-kr);font-size:60px;letter-spacing:-2px;margin-bottom:40px">Baby<br>Rhyme Time</div>
+    <div class="td md" class="td-kr" style="font-size:60px;margin-bottom:40px">Baby<br>Rhyme Time</div>
     <div class="tb">
       아기 무릎에 앉히고<br>노래 따라 부르는 30분.<br>생후 6주부터 와도 돼요.<br>진짜 다들 그렇게 시작해요.
     </div>
@@ -117,7 +118,7 @@
   <div class="glow" style="width:400px;height:400px;top:300px;left:-100px"></div>
   <div class="ci">
     <div class="badge badge-a" style="margin-bottom:30px">1 - 3세</div>
-    <div class="td md" style="font-family:var(--font-kr);font-size:60px;letter-spacing:-2px;margin-bottom:40px">Toddler<br>Time</div>
+    <div class="td md" class="td-kr" style="font-size:60px;margin-bottom:40px">Toddler<br>Time</div>
     <div class="tb">
       그림책 보고 노래하고<br>친구랑 인사하고 기다리는 법.<br>한국에선 문화센터 돈 내고 하는 걸<br>여기선 공짜로. 말이 돼요?
     </div>
@@ -130,7 +131,7 @@
   <div class="glow" style="width:400px;height:400px;top:150px;right:-100px"></div>
   <div class="ci">
     <div class="badge badge-a" style="margin-bottom:30px">3 - 5세</div>
-    <div class="td md" style="font-family:var(--font-kr);font-size:60px;letter-spacing:-2px;margin-bottom:40px">Story<br>time</div>
+    <div class="td md" class="td-kr" style="font-size:60px;margin-bottom:40px">Story<br>time</div>
     <div class="tb">
       그림책 읽고 만들기 활동까지<br>45분 알차게 놀아요.<br>초등학교 가기 전에<br>앉아서 수업 듣는 연습, 여기서 끝.
     </div>
@@ -142,7 +143,7 @@
   <div class="handle">@nappyprice</div>
   <div class="glow" style="width:600px;height:600px;top:300px;left:-200px;background:var(--blue)"></div>
   <div class="ci">
-    <div class="td lg" style="font-family:var(--font-kr);font-size:64px;line-height:1.15;letter-spacing:-3px">
+    <div class="td-kr td lg" style="font-size:64px;line-height:1.15;letter-spacing:-3px">
       육아는<br>혼자 하는 게 아니에요
     </div>
     <div class="div-a"></div>
@@ -171,7 +172,7 @@
   <div class="glow" style="width:500px;height:500px;top:-100px;right:-100px"></div>
   <div class="ci">
     <div class="badge badge-a" style="margin-bottom:40px">저장 필수</div>
-    <div class="td md" style="font-family:var(--font-kr);font-size:48px;letter-spacing:-2px;margin-bottom:48px">찾는 법 진짜 쉬워요</div>
+    <div class="td md" class="td-kr" style="font-size:48px;margin-bottom:48px">찾는 법 진짜 쉬워요</div>
     <div class="tb" style="font-size:26px;line-height:2.2">
       <strong>1.</strong> 구글에 "[지역명] library storytime"<br>
       <strong>2.</strong> 카운슬 도서관 사이트 들어가기<br>
@@ -191,7 +192,7 @@
   <div class="glow" style="width:700px;height:700px;top:50%;left:50%;transform:translate(-50%,-50%)"></div>
   <div class="ci">
     <div class="tb" style="font-size:30px;margin-bottom:24px">내일 아침, 커피 한 잔 마시면서</div>
-    <div class="td lg" style="font-family:var(--font-kr);font-size:60px;letter-spacing:-3px;margin-bottom:16px">집 근처 도서관<br>한 번만 검색해보세요</div>
+    <div class="td-kr td lg" style="font-size:60px;margin-bottom:16px">집 근처 도서관<br>한 번만 검색해보세요</div>
     <div class="div-a"></div>
     <div class="tb" style="font-size:24px;margin-top:32px;line-height:1.8">
       첫 발걸음이 제일 어렵지<br>두 번째부터는 그냥 루틴이에요.<br>당신 동네에도 이미 다 있어요.
