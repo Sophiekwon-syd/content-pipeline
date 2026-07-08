@@ -1,0 +1,47 @@
+name: Post to Instagram
+on:
+  workflow_dispatch:
+    inputs:
+      date:
+        description: 'Date directory (YYYY-MM-DD). Leave empty for today.'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Post carousels to Instagram
+        env:
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_SHA: ${{ github.sha }}
+        run: |
+          if [ -n "${{ github.event.inputs.date }}" ]; then
+            node scripts/post-to-instagram.mjs --date "${{ github.event.inputs.date }}"
+          else
+            node scripts/post-to-instagram.mjs
+          fi
+      - name: Commit instagram-log.json
+        run: |
+          shopt -s nullglob
+          files=(outputs/*/instagram-log.json)
+          if [ ${#files[@]} -eq 0 ]; then
+            echo "No instagram-log.json files — skipping commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git pull --rebase origin main || true
+          git add "${files[@]}"
+          git diff --cached --quiet || git commit -m "instagram: posted from content-pipeline"
+          git push origin main
