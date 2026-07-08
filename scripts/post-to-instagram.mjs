@@ -70,17 +70,19 @@ for (const slug of slugs) {
     return `https://raw.githubusercontent.com/${REPO}/${REF}/${rel}`;
   });
 
-  // Step 1: Create item containers
+  // Step 1: Create item containers (matching aussie-umma's working pattern)
   const itemIds = [];
-  for (const url of urls) {
-    const res = await fetch(
-      `${API}/${IG_USER_ID}/media?image_url=${encodeURIComponent(url)}&access_token=${IG_TOKEN}`,
-      { method: 'POST' }
-    );
+  for (let i = 0; i < urls.length; i++) {
+    const body = new URLSearchParams({
+      image_url: urls[i],
+      is_carousel_item: 'true',
+      access_token: IG_TOKEN,
+    });
+    const res = await fetch(`${API}/${IG_USER_ID}/media`, { method: 'POST', body });
     const data = await res.json();
     if (data.id) {
       itemIds.push(data.id);
-      console.log(`  image container: ${data.id}`);
+      console.log(`  item ${String(i + 1).padStart(2, '0')}: container=${data.id}`);
     } else {
       console.error(`  image upload failed: ${JSON.stringify(data)}`);
     }
@@ -103,25 +105,26 @@ for (const slug of slugs) {
   }
 
   // Step 3: Create carousel container
-  const carouselRes = await fetch(
-    `${API}/${IG_USER_ID}/media?caption=${encodeURIComponent(caption)}&media_type=CAROUSEL&children=${itemIds.join('%2C')}&access_token=${IG_TOKEN}`,
-    { method: 'POST' }
-  );
+  const carouselBody = new URLSearchParams({
+    media_type: 'CAROUSEL',
+    children: itemIds.join(','),
+    caption,
+    access_token: IG_TOKEN,
+  });
+  const carouselRes = await fetch(`${API}/${IG_USER_ID}/media`, { method: 'POST', body: carouselBody });
   const carousel = await carouselRes.json();
   if (!carousel.id) {
     console.error(`[fail] ${slug} — carousel container failed: ${JSON.stringify(carousel)}`);
     continue;
   }
-  console.log(`  carousel container: ${carousel.id}`);
+  console.log(`  carousel: container=${carousel.id}`);
 
   // Step 4: Publish
-  const pubRes = await fetch(
-    `${API}/${IG_USER_ID}/media_publish?creation_id=${carousel.id}&access_token=${IG_TOKEN}`,
-    { method: 'POST' }
-  );
+  const pubBody = new URLSearchParams({ creation_id: carousel.id, access_token: IG_TOKEN });
+  const pubRes = await fetch(`${API}/${IG_USER_ID}/media_publish`, { method: 'POST', body: pubBody });
   const pub = await pubRes.json();
   if (pub.id) {
-    console.log(`  published! media id: ${pub.id}`);
+    console.log(`  PUBLISHED: ${pub.id}`);
     posted.push(slug);
   } else {
     console.error(`  publish failed: ${JSON.stringify(pub)}`);
