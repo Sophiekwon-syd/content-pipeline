@@ -55,12 +55,25 @@
 
 ## Video Content
 
-### Script outline (60 seconds)
-- **0-5s hook**: {{Attention grab — question or surprising statement}}
-- **5-15s context**: {{Setup — "here's why this matters"}}
-- **15-50s body**: {{2-3 main content beats with examples}}
-- **50-60s cta**: {{One clear next step}}
+### Hook options (researcher: provide 2-3, video-maker picks one)
+1. **Regret angle**: {{e.g. "호주 이민 3년차에 알았어요. 진작 알았으면..."}}
+2. **문센 comparison**: {{e.g. "한국 문화센터 한 달 15만원, 호주는 공짜"}}
+3. **Pain point**: {{e.g. "아기 키우는데 갈 데 없다고요?"}}
+
+### Open loop (promise a payoff they must wait for)
+{{e.g. "마지막에 말할 한 가지 때문에 엄마들이 계속 가요"}}
+
+### Middle beats (2-3 concrete points, varied rhythm, fast pace)
+- {{One sensory detail — something you can show, not just describe}}
+- {{Age + program name for on-screen text overlay}}
+- {{Key fact, compressed}}
+
+### Emotional payoff (first-person or specific anecdote)
+{{e.g. "프로그램 끝나면 옆 엄마가 말 걸어요. 저 여기서 친구 생겼어요"}}
+
+### CTA (comment-bait preferred for algorithm)
+{{e.g. "동네 이름 댓글 남기면 가까운 도서관 찾아드릴게요"}}
 
 ### Visual cues
-- {{Suggested footage types / b-roll ideas}}
-- {{Text overlay moments — short phrases for key points}}
+- {{Real footage to capture — specific moment or location}}
+- {{On-screen text overlay ideas — one per middle beat}}
