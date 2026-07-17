@@ -1,11 +1,11 @@
-# 호주 산후우울증 무료 심리상담 10회 받는 법 — PANDA·Gidget·Medicare 케어플랜 GP 발급 실제 방법 (2026년 업데이트)
+# 호주 산후우울증 무료 심리상담 10회 받는 법, PANDA부터 Medicare 케어플랜까지 (2026년 기준)
 
 ## 메타 정보
 - **네이버 검색 쿼리:** 호주 산후 우울증 지원 서비스
 - **타깃 키워드:** 호주 산후우울증, 호주 엄마 정신건강, 호주 무료 심리상담
 
 ## 썸네일 이미지 프롬프트
-Editorial-lifestyle thumbnail for Naver blog. Subject: 호주 엄마 정신건강 지원 — 따뜻한 집 안에서 아기가 낮잠 자는 동안 엄마가 노트북으로 정보를 찾아보는 모습. Style: clean, warm, bright, mirrorless camera + prime lens feel. Shallow depth of field. One clear focal point (mother's calm face or laptop screen showing helpful info). Leave top-third space for text overlay. Mood: trustworthy, helpful, "this person knows what they're talking about." Absolutely no: dark/moody tones, clutter, Instagram filters, smartphone snapshot feel. Aspect: 16:9.
+Editorial-lifestyle thumbnail for Naver blog. Subject: 호주 엄마 정신건강 지원, 따뜻한 집 안에서 아기가 낮잠 자는 동안 엄마가 노트북으로 정보를 찾아보는 모습. Style: clean, warm, bright, mirrorless camera + prime lens feel. Shallow depth of field. One clear focal point (mother's calm face or laptop screen showing helpful info). Leave top-third space for text overlay. Mood: trustworthy, helpful, "this person knows what they're talking about." Absolutely no: dark/moody tones, clutter, Instagram filters, smartphone snapshot feel. Aspect: 16:9.
 
 ---
 
@@ -31,11 +31,11 @@ Gidget Foundation은 2024-25 회계연도에만 4,270가족을 지원했고, 설
 
 한국 엄마들에게 이 문제가 특히 무거운 이유가 몇 가지 있어요. 가족과 멀리 떨어져 있고, 영어로 정신건강 이야기를 하는 게 더 어렵게 느껴지고, 한국 커뮤니티에서는 "다들 그렇게 키워"라는 말에 도움 요청을 망설이게 돼요. 하지만 호주에는 무료로, 한국어 통역까지 지원받으며 쓸 수 있는 정신건강 서비스가 꽤 많다는 점을 꼭 기억해두세요.
 
-> **참고: Edinburgh Postnatal Depression Scale (EPDS)** — 생후 6-8주 MCHN(Green Book 간호사) 방문 때 모든 엄마가 기본으로 작성하는 표준 우울증 스크리닝 설문이에요. 호주에서는 산후우울증 검사를 정기 검진의 일부로 당연하게 진행해요.
+> **참고: Edinburgh Postnatal Depression Scale (EPDS)**, 생후 6-8주 MCHN(Green Book 간호사) 방문 때 모든 엄마가 기본으로 작성하는 표준 우울증 스크리닝 설문이에요. 호주에서는 산후우울증 검사를 정기 검진의 일부로 당연하게 진행해요.
 
 ---
 
-## PANDA — 주산기 우울증 전국 헬프라인 (무료, 익명)
+## PANDA, 주산기 우울증 전국 헬프라인 (무료, 익명)
 
 PANDA(Post and Antenatal Depression Association)는 호주에서 주산기 정신건강만 전문으로 지원하는 비영리 기관이에요.
 
@@ -56,7 +56,7 @@ PANDA 웹사이트에는 정신건강 자가 체크리스트(Mental Health Check
 
 ---
 
-## Medicare 심리상담 — GP에서 Mental Health Care Plan 발급받기
+## Medicare 심리상담, GP에서 Mental Health Care Plan 발급받기
 
 호주에서 가장 실용적인 정신건강 지원 경로는 Medicare Better Access 이니셔티브예요.
 
@@ -78,7 +78,7 @@ GP에게 Mental Health Care Plan 작성을 요청하면 돼요. 2026년 기준�
 
 ---
 
-## Gidget Foundation — 주산기 특화 무료·저비용 심리상담
+## Gidget Foundation, 주산기 특화 무료·저비용 심리상담
 
 Gidget Foundation Australia는 주산기 정신건강만 전문으로 하는 비영리 재단이에요. 특히 유용한 프로그램이 네 가지예요.
 
@@ -135,14 +135,14 @@ NSW에 살고 있다면 NSW Health 정신건강 라인(1800 011 511, 24시간)�
 ---
 
 ## 함께 읽으면 좋은 글
-- **호주 NSW Blue Book (Green Book) 완벽 가이드** — MCHN 방문 시 Edinburgh Postnatal Depression Scale(EPDS) 우울증 스크리닝이 기본으로 포함돼 있어요. Blue Book 체계와 정신건강 지원이 어떻게 연결되는지 참고할 수 있어요.
-- **호주 도서관 무료 키즈 프로그램 총정리** — 도서관 무료 프로그램에 참여하는 것 자체가 엄마의 사회적 고립감을 줄이는 실질적인 방법이에요. Baby Rhyme Time이나 Storytime에 정기적으로 나가면서 자연스럽게 또래 엄마들과 연결돼요.
+- **호주 NSW Blue Book (Green Book) 완벽 가이드**, MCHN 방문 시 Edinburgh Postnatal Depression Scale(EPDS) 우울증 스크리닝이 기본으로 포함돼 있어요. Blue Book 체계와 정신건강 지원이 어떻게 연결되는지 참고할 수 있어요.
+- **호주 도서관 무료 키즈 프로그램 총정리**, 도서관 무료 프로그램에 참여하는 것 자체가 엄마의 사회적 고립감을 줄이는 실질적인 방법이에요. Baby Rhyme Time이나 Storytime에 정기적으로 나가면서 자연스럽게 또래 엄마들과 연결돼요.
 
 ---
 
 ## 셀프 리뷰
 - [x] 제목이 검색어 형태인가?
-- [x] 인용 블록 3개 이상 들어갔나? (요약 박스, EPDS 박스, GP 진료실 문장 박스, Bulk-billing 박스, 비교표 — 5개)
+- [x] 인용 블록 3개 이상 들어갔나? (요약 박스, EPDS 박스, GP 진료실 문장 박스, Bulk-billing 박스, 비교표, 5개)
 - [x] 구체적 수치/날짜/기관명이 있나? (5명 중 1명, 연 10만 명, 4,270가족, 97명 임상심리사, 20곳+ 클리닉, 연 10회, 2025/2026년, Gidget Foundation Australia)
 - [x] 해요체 유지? 습니다/입니다체 없나?
 - [x] "ㅠㅠ" 없나?
