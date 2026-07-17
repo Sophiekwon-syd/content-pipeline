@@ -19,6 +19,9 @@ Details and gotchas live in CLAUDE.md (upload sections) and the memory files
 2. Dispatch `blogger` + `carousel-maker` agents IN PARALLEL (brief.md only, no
    research). Carousel-maker produces index.html only; render PNGs yourself:
    `node scripts/render-carousel.mjs outputs/<date>/<slug>/carousel/index.html`
+   **Video is out of scope** — do not dispatch video-maker even though
+   config.json has the channel enabled; only run it if the user explicitly
+   asks for video.
 
 ## Stage 2.5 — Mechanical verification (agents slip; always run)
 
@@ -45,10 +48,11 @@ before any publishing.** Publishing is outward-facing and irreversible-ish.
 ## Stage 4 — Publish (only after approval)
 
 1. **Naver** — `rm -f outputs/<date>/naver-log.json` if re-running, then
-   `node scripts/post-to-naver.mjs --date <date> --draft` (draft default;
-   drop `--draft` only if the user asked to publish directly). Check the log
-   output: all headings/callouts/tables/images must report success. If AI
-   활용 설정 shows 0/N, repair via the edit-URL flow (memory: naver-smarteditor).
+   `node scripts/post-to-naver.mjs --date <date>` (**publishes directly** —
+   this is the default; use `--draft` only if the user asks for a draft).
+   Check the log output: all headings/callouts/tables/images must report
+   success. If AI 활용 설정 shows 0/N, repair via the edit-URL flow
+   (memory: naver-smarteditor-automation).
 2. **GitHub** — force-add (`git add -f`) + commit + push: carousel images,
    blog images, `blogger.html` (from step 4). One commit per file for
    outputs; instagram/blogger fetch from raw.githubusercontent so push FIRST.
