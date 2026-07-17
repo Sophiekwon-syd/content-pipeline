@@ -93,16 +93,35 @@ for (const slug of slugs) {
     continue;
   }
 
-  // Step 2: Extract caption from brief.md
-  let caption = '';
+  // Step 2: Build caption from the blog post (title + summary), config hashtags.
+  // Prefer the published blog's H1/summary over the brief's raw Topic line.
+  const clean = (s) => s
+    .replace(/\*\*(.+?)\*\*/g, '$1')
+    .replace(/\s+—\s+/g, ', ')   // em-dash reads as AI-generated in Korean
+    .replace(/^[>#\s]+/, '')
+    .trim();
+  let title = slug;
+  let summary = '';
   try {
-    const brief = await fs.readFile(path.join(baseDir, slug, 'brief.md'), 'utf8');
-    const titleMatch = brief.match(/^# Topic: (.+)$/m);
-    const title = titleMatch ? titleMatch[1] : slug;
-    caption = `${title}\n\n호주 육아 정보 @aussie.umma\n\n#호주육아 #호주도서관 #호주엄마`;
+    const post = await fs.readFile(path.join(baseDir, slug, 'blog', 'post.md'), 'utf8');
+    const h1 = post.match(/^#\s+(.+)$/m);
+    if (h1) title = clean(h1[1]);
+    const bq = post.match(/^>\s*(.+)$/m);
+    if (bq) summary = clean(bq[1]);
   } catch {
-    caption = `호주 육아 정보 @aussie.umma\n\n#호주육아`;
+    try {
+      const brief = await fs.readFile(path.join(baseDir, slug, 'brief.md'), 'utf8');
+      const t = brief.match(/^# Topic: (.+)$/m);
+      if (t) title = clean(t[1]);
+    } catch {}
   }
+  let tags = '#호주육아 #호주맘 #워킹맘 #호주살이 #육아정보 #aussieumma #호주라이프 #한국엄마';
+  try {
+    const config = JSON.parse(await fs.readFile('config.json', 'utf8'));
+    if (config.content?.hashtags?.instagram) tags = config.content.hashtags.instagram;
+  } catch {}
+  const caption = [title, summary, '저장해두고 필요할 때 꺼내보세요. @aussie.umma', tags]
+    .filter(Boolean).join('\n\n');
 
   // Step 3: Create carousel container
   const carouselBody = new URLSearchParams({
