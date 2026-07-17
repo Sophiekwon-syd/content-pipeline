@@ -40,6 +40,13 @@ Stage 4: Upload                      Instagram + YouTube + Naver
 
 ## Commands
 
+### `/ship-topic`
+
+The full production run: research a fresh topic → blog + carousel + Gemini
+images → review gate → publish to Naver + Instagram + Blogger. Defined in
+`.claude/skills/ship-topic/SKILL.md`. Use this when you want a new topic to
+actually land on all platforms, not just be generated.
+
 ### `/generate`
 
 Run the full pipeline: research → blog + carousel + video → review → upload.
@@ -54,7 +61,11 @@ Run the full pipeline: research → blog + carousel + video → review → uploa
 
 ### `/generate-blog`
 
-Run only Stage 1 (research) + Stage 2a (blog). Skips carousel and video.
+Run Stage 1 (research) + Stage 2a (blog) **and** Stage 2b (carousel) in
+parallel. Blog and its Instagram carousel are always produced together — the
+carousel reuses the same brief, so there is no reason to ship one without the
+other. Skips only the video. Render carousel PNGs with
+`node scripts/render-carousel.mjs outputs/<date>/<slug>/carousel/index.html`.
 
 ### `/generate-carousel`
 
@@ -153,9 +164,41 @@ On approval, upload each format:
 - Report: video URLs or errors
 
 **Naver Blog (if blog succeeded):**
-- Do NOT auto-publish (no official API)
-- Present the paste-ready HTML and publishing checklist
-- The user copies to SmartEditor manually
+- No official API — use `scripts/post-to-naver.mjs` (Playwright, persistent
+  login profile in `.naver-profile/`)
+- Before posting, mechanically verify the tone: `grep -n '합니다\|됩니다\|습니다\|입니다\|ㅠㅠ' blog/post.md`
+  must return nothing outside the 셀프 리뷰/체크리스트 sections (agents slip on 합니다).
+- Before posting, generate blog images from the `## 이미지 프롬프트` section of
+  post.md using Gemini in the user's Chrome (claude-in-chrome tools,
+  gemini.google.com): one prompt per image, download each, then crop the
+  bottom 160px (Gemini watermark zone): `ffmpeg -i in.png -vf "crop=iw:ih-160:0:0" out.png`
+  Save to `outputs/<date>/<slug>/blog/images/` as `hero.png` / `section-N.png`
+  (N = 본문 H2 순번) — the posting script auto-places hero at top and
+  section-N under the Nth heading block.
+- The script applies the navermate design format automatically: 마루부리 font,
+  줄간격 180%, left-aligned, numbered ❝ heading quote blocks + 구분선, 세로선
+  인용구 callout boxes, real 표 components from markdown tables, bold FAQ lines.
+
+**Google Blogger (mirror of the Naver post):**
+- Blog: 호주 육아 이야기 — aussieumma.blogspot.com (Google account /u/2 in Chrome)
+- Convert: `node scripts/md-to-blogger.mjs outputs/<date>/<slug>` → writes
+  `blog/blogger.html` (images hot-linked from raw.githubusercontent — commit
+  blog images AND blogger.html to main first, force-add past the gitignore)
+- Post via claude-in-chrome on blogger.com: NEW POST → type title → inject the
+  HTML into the compose editor with javascript_tool (sync XHR fetch of the raw
+  blogger.html → set `iframe.editable` contentDocument.body.innerHTML →
+  dispatch input event) → labels → Publish → CONFIRM dialog.
+- Do NOT paste raw HTML into the compose view (it gets escaped and publishes
+  as literal tags) — the view toggle is unreliable; the JS injection is the
+  proven path.
+- One-time setup: `npm install playwright && npx playwright install chromium`,
+  then `node scripts/post-to-naver.mjs --login` (user logs in manually)
+- Post: `node scripts/post-to-naver.mjs --date <YYYY-MM-DD> --draft`
+  (draft mode recommended; drop `--draft` to publish directly)
+- Preview parsing without a browser: add `--dry-run`
+- Keeps a per-date `naver-log.json` so re-runs skip already-posted topics
+- Caution: Naver detects automation — keep volume at posts_per_week_target
+  and prefer draft + manual final publish
 
 ### 6. Summary
 
