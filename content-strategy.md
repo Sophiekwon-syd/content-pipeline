@@ -54,13 +54,12 @@ not measured data [가설] — researcher should sanity-check demand per topic
      update old posts.
   5. Video embeds = bonus points → future lever for the video channel.
 
-## Cadence [위험 — current setting conflicts]
+## Cadence [채택됨 2026-07-18]
 
-C-Rank rewards 꾸준함, but daily AI-generated posting risks pattern detection
-and outpaces the 3/week target. RECOMMENDATION: Naver publishes max 3x/week
-(e.g. Mon/Wed/Fri); the daily 6am run on other days ships Blogger + Instagram
-only. The daily-everything schedule the user chose stays until they change it —
-surface this trade-off, don't silently override.
+Naver publishes Mon/Wed/Fri only (matches posts_per_week_target=3, avoids
+automation-pattern detection). The daily 6am run ships Blogger + Instagram
+every day; `scripts/daily-ship.sh` enforces the Naver day gate. Manual
+user-invoked /ship-topic runs publish wherever the user says, any day.
 
 ## Monetization (쿠팡파트너스 AF1100561)
 
