@@ -6,7 +6,14 @@ These rules apply to every agent in the pipeline. No exceptions.
 
 - **No emojis** — not in headings, body text, CTAs, labels, or anywhere else
 - **No placeholder text** — every field in the output must contain real, audience-appropriate copy
-- **No product or brand names** — refer to categories, not specific products
+- **Product mentions**: institutional/service names are fine. Specific product
+  brands are allowed ONLY in 육아용품 리뷰 posts (honest 한국 vs 호주 comparison,
+  장단점 both sides, no fabricated personal-use claims). Elsewhere, refer to
+  categories, not specific products.
+- **Affiliate (쿠팡파트너스)**: links only when `config.json →
+  monetization.coupang_partners_id` is set; the exact `monetization.disclosure`
+  sentence is MANDATORY on any post with links; links go in Blogger + Instagram
+  only — NEVER raw 쿠팡 links inside Naver posts (저품질 demotion risk).
 - **No absolute claims without sources** — if using a statistic, cite it
 - **Topics to avoid** — always read `config.json` → `content.topics_to_avoid` before generating topics
 

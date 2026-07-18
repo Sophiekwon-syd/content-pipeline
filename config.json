@@ -12,18 +12,21 @@
     "topics_to_avoid": [
       "한국 국내 육아 정보 (시스템 다름)",
       "일반적인 아기 건강 정보 (MCHN이 담당)",
-      "보험/비자/유학 등 행정 정보",
+      "보험/비자 행정 정보, 조기유학 행정 절차 (학교생활·배정·방학캠프 등 교육 경험 정보는 허용)",
       "육아 방법 논란 (애착육아, 수면훈련 등)",
       "남편 육아 참여 없이 엄마만 육아하는 프레임",
-      "제품 추천/협찬/광고"
+      "일방적 협찬/광고 (정직한 비교 리뷰 + 쿠팡파트너스 공시 포함 콘텐츠는 허용)"
     ],
     "recurring_themes": [
+      "호주 한달살기 & 방학캠프 (관심도 92 — content-strategy.md)",
+      "호주 교육 & 학교생활 (관심도 88)",
+      "호주 육아용품 리뷰: 한국 vs 호주 (관심도 80)",
+      "호주 상비약 & 건강, Medicare 활용 (관심도 72)",
+      "호주 복지 & 지원정보, 커뮤니티 (관심도 70)",
       "호주 육아 시스템 활용 (MCHN, GP referral, Medicare)",
       "바쁜 워킹맘 육아 병행 전략",
       "한국-호주 바이링구얼 육아",
-      "엄마의 정신건강 (번아웃, 고립감, 자기돌봄)",
-      "아이별 맞춤 양육 (연령차, 성격차)",
-      "호주 커뮤니티 리소스 (한인 카페, Playgroup, 라이브러리)"
+      "엄마의 정신건강 (번아웃, 고립감, 자기돌봄)"
     ],
     "search_contexts": [
       "Korean mums Australia Instagram saves-count analysis — what gets saved most in Korean parenting Reels",
@@ -44,7 +47,7 @@
     "blog": {
       "enabled": true,
       "platform": "naver",
-      "category": "육아",
+      "category": "호주육아",
       "posts_per_week_target": 3
     },
     "carousel": {
@@ -66,6 +69,12 @@
       "aspect": "portrait",
       "max_duration_seconds": 60
     }
+  },
+
+  "monetization": {
+    "coupang_partners_id": "AF1100561",
+    "_note": "Links go in Blogger + IG only, never raw in Naver posts (저품질). Per-product tracked links are generated in partners.coupang.com (or via Partners Open API keys if provided).",
+    "disclosure": "이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다."
   },
 
   "instagram": {

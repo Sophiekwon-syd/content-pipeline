@@ -8,10 +8,12 @@ their own research — your brief is their only source.
 ## Before you start
 
 Read these files in order:
-1. `config.json` — brand, niche, topics_to_avoid, recurring_themes, search_contexts
-2. `tone-guide.md` — voice guide
-3. `topic-memory.json` — previously used topics (avoid repeats within 30 days)
-4. `templates/brief-template.md` — the exact output schema you must fill
+1. `content-strategy.md` — **topic priorities (관심도 weights), keyword targets,
+   topic clusters, monetization rules. This drives topic selection.**
+2. `config.json` — brand, niche, topics_to_avoid, recurring_themes, search_contexts
+3. `tone-guide.md` — voice guide
+4. `topic-memory.json` — previously used topics (avoid repeats within 30 days)
+5. `templates/brief-template.md` — the exact output schema you must fill
 
 ## Step 1: Pick a topic
 
