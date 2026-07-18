@@ -21,6 +21,11 @@ Read these files:
 Use the SEO keyword formula from the brief's Naver search query:
 `[대상 키워드] + [방법/비교/후기] + [구체 조건·숫자]`
 
+**절대 금지: 대시(—, –, -를 구분자로) 사용.** 한국어 제목·소제목에서 대시는
+AI 생성 티가 나는 대표적 패턴. 쉼표, 괄호, 또는 질문형으로 연결할 것.
+좋은 예: "2026 산후도우미 지원금 계산기, 나는 얼마나 받을 수 있을까?"
+나쁜 예: "산후도우미 지원금 — 계산기 완벽 가이드"
+
 Example: "호주 MCHN 무료 건강검진 이용하는 법 (2026년 업데이트, 실제 후기)"
 
 ### 2. Structure (인용 블록 3개 이상 필수)
@@ -41,22 +46,39 @@ Build in this order:
 ### 3. Draft (톤 가이드)
 - **해요체 only.** `~어요 / ~했어요 / ~더라고요 / ~거든요`
 - `습니다 / 입니다 / 됩니다 / 합니다` → automatic rejection
-- 한 줄 = 한 문단 (for Naver SmartEditor readability)
-- 1,500자 이상
+- **한 문장 = 한 문단.** 문장은 50자 이내로 짧게. 문단 사이 빈 줄.
+  (navermate 선정 블로그 기준: 문단 평균 30자 — 긴 문단은 독자가 지쳐서 이탈)
+- 섹션당 문단 4-6개 이내. 설명이 길어지면 목록·표·박스로 전환.
+- 도입 첫 문장은 독자의 질문 형태로 ("~하면 어디서부터 시작해야 할까요?")
+- 1,500자 이상 (전체 기준 — 문단을 잘게 쪼개는 것과 별개)
 - 구체적 수치 사용 (brief에서 가져올 것)
 - 살짝 구어체 OK: "근데 / 진짜 / 완전" (문단당 최대 1개)
+- **사람 흔적 (2026 D.I.A. 진정성 신호 — content-strategy.md 참조):**
+  - 섹션마다 1개의 1인칭 마이크로 경험담 또는 구체적 디테일 (지명·요일·가격·
+    시간·작은 실수담). "가까운 도서관"❌ → "채스우드 도서관 화요일 10시"✅
+  - 경험하지 않은 정보는 경험한 척 금지 — "공식 안내 기준", "확인해보니"로
+    정직하게 프레이밍 (정직함 자체가 랭킹 신호)
+  - 문장 리듬 변화: 짧은 문장 사이에 가끔 긴 문장, 질문, 감탄 섞기 —
+    모든 문단이 같은 길이면 AI 티가 남
 
-### 4. 썸네일 이미지 프롬프트
-Generate an image generation prompt in this format:
+### 4. 이미지 프롬프트 (hero + 섹션별)
+Write Korean image prompts for the hero AND for 2-3 content sections, under a
+`## 이미지 프롬프트` heading, one per line as `hero:` / `section-N:` (N = 본문
+H2 순번). The orchestrator generates these with Gemini in Chrome, crops the
+bottom 160px (watermark zone), and saves them to `blog/images/hero.png` /
+`section-N.png` — the Naver posting script then places them automatically.
 
+Prompt style (photo, not illustration):
 ```
-Editorial-lifestyle thumbnail for Naver blog. Subject: [brief topic in one phrase].
-Style: clean, warm, bright, mirrorless camera + prime lens feel. Shallow depth of
-field. One clear focal point. Leave top-third space for text overlay. Mood:
-trustworthy, helpful, "this person knows what they're talking about." Absolutely
-no: dark/moody tones, clutter, Instagram filters, smartphone snapshot feel.
-Aspect: 16:9.
+실제 스마트폰으로 찍은 자연스러운 일상 사진 스타일: [장면 — 인물은 옆모습/뒷모습
+위주로 얼굴이 잘 안 보이게], 부드러운 자연광, 따뜻하고 아늑한 분위기, 과하게
+완벽하지 않은 진짜 집/현장 느낌. 텍스트나 글자 없이. 가로 16:9 비율.
 ```
+
+### 4b. 내부링크
+When the 함께 읽으면 좋은 글 items correspond to already-published Naver posts,
+include the actual URL on its own line right after the item — the posting flow
+turns a bare URL line into a Naver 링크 카드. Titles without URLs stay text-only.
 
 ### 5. Self-review (발행 전 체크리스트)
 Run this checklist and include results at the bottom of the post:
@@ -69,7 +91,8 @@ Run this checklist and include results at the bottom of the post:
 - [ ] 해요체 유지? 습니다/입니다체 없나?
 - [ ] "ㅠㅠ" 없나?
 - [ ] 1,500자 이상인가?
-- [ ] 한 줄 = 한 문단인가?
+- [ ] 한 문장 = 한 문단인가? (문장 50자 이내)
+- [ ] 이미지 프롬프트 hero + 섹션 2개 이상 있나?
 ```
 
 If any item fails, fix it before writing the file.

@@ -1,54 +1,80 @@
-# Content Strategy — AUSSIE UMMA (2026)
+# Content Strategy — AUSSIE UMMA (validated 2026-07-18)
 
-The researcher agent MUST read this before picking a topic. Topic choice is
-weighted by the priorities below, not ad-hoc. Updated 2026-07-18 by the user.
+The researcher agent MUST read this before picking a topic.
+Labels: [검증] = backed by research/official Naver signals · [가설] = plausible
+but unvalidated assumption · [위험] = validated risk.
 
-## Trending topic priorities (관심도 weighted)
+## Positioning (the one-line strategy)
 
-| # | Cluster | 관심도 | Angles |
-|---|---------|-------|--------|
-| 1 | 호주 한달살기 & 방학캠프 | 92 | 시드니 방학캠프 정보, 무료 액티비티, 적정 나이·준비물·체험 후기 |
-| 2 | 호주 교육 & 학교생활 | 88 | 학교 배정, 정착 가이드, 방학 프로그램, 브리즈번·골드코스트 지역별 교육 정보 (조기유학 행정 절차·비자는 제외) |
-| 3 | 호주 육아용품 리뷰 | 80 | 한국 vs 호주 제품 비교, 쿠팡 로켓직구 활용 팁 (affiliate — see Monetization) |
-| 4 | 호주 상비약 & 건강 | 72 | 만2살 이후 상비약 (기침약·알러지·눈병약), 호주 병원 이용법, Medicare 활용 |
-| 5 | 호주 복지 & 지원정보 | 70 | 한인 초보엄마 교육 프로그램, 육아 적응 커뮤니티 정보 |
+**"호주 육아 시스템을 직접 통과하고 있는 한국 엄마의 실전 기록"** — one
+consistent lane. Naver's C-Rank rewards 주제 집중도 (topic consistency) above
+almost everything [검증], and Naver's 메이트 program explicitly values: 직접
+경험한 지식, 일관된 주제 전문성, 거짓 없는 진정성, 읽기 쉬운 구조, 최신성
+[검증 — Naver 공식 발언, 서울경제 2026]. Chasing disconnected trending keywords
+dilutes C-Rank. Every topic must fit the lane: *a Korean mum in Australia
+navigating the actual system and telling you exactly how.*
 
-Selection rule: prefer the highest-관심도 cluster that has no 30-day overlap in
-topic-memory.json. Rotate clusters — never two consecutive posts from the same
-cluster. Seasonal boost: 방학캠프/한달살기 topics get priority in the 4 weeks
-before NSW school holidays.
+## Topic clusters (validated against the lane)
 
-## Keyword targets (상위노출 goals)
+| Cluster | Fit | Verdict |
+|---|---|---|
+| 호주 교육 & 학교생활 (배정, 정착, 방학캠프, 방학 프로그램) | 시스템 실전 정보 ✓ | [검증-적합] core lane, strong search intent. 조기유학/비자 행정 제외 |
+| 호주 상비약 & 건강 (만2세+ 상비약, 병원 이용, Medicare) | ✓ | [검증-적합] continues existing Medicare/건강검진 posts — cluster chain |
+| 호주 복지 & 지원정보 (지원금, 프로그램, 커뮤니티) | ✓ | [검증-적합] already the blog's proven core (CCS, PANDA, playgroup) |
+| 육아용품 리뷰 (한국 vs 호주, 쿠팡 직구) | △ | [가설+위험] see Monetization — Naver版 only with 직접 사용 + 원본 사진 |
+| 호주 한달살기 | ✗ audience mismatch | [위험] targets Korea-based visitors, not 호주 거주 엄마 (config target_audience). High volume but dilutes 주제 집중도. Only publish via the resident angle: "호주 사는 엄마가 방문 가족/친구에게 알려주는" framing, max occasional |
 
-Primary: "호주한달살기", "호주교육", "호주상비약"
-Every post title must lead with one primary or cluster keyword in 검색어 형태.
+Selection rule: rotate among the three [검증-적합] clusters; never two
+consecutive posts from one cluster; 방학캠프 topics get priority in the 4 weeks
+before NSW school holidays [가설 — seasonal search spike is assumed, sanity-check
+with Naver 검색어트렌드 when picking].
 
-## Topic clusters (내부링크 spine)
+The user's original 관심도 scores (92/88/80/72/70) are directional intuition,
+not measured data [가설] — researcher should sanity-check demand per topic
+(Naver autocomplete, 카페 질문 빈도) during Stage 1 rather than trust the numbers.
 
-임신 → 출산 → 육아 → 교육 → 한달살기
-Each post links to its cluster neighbors in 함께 읽으면 좋은 글 (with URLs once
-posts exist — build the cluster chain deliberately over time).
+## What makes it rank AND feel human [검증 — 2026 algorithm]
 
-## Monetization (쿠팡파트너스)
+- D.I.A. 2026 (하이퍼클로바X 기반) evaluates full-document context, factual
+  accuracy, **image originality detection (sharpened)**, and gives bonus for
+  embedded video. AI-written text is NOT auto-penalized — quality and 진정성
+  signals decide.
+- Therefore, in priority order:
+  1. **원본 사진이 최대 레버.** AI-generated images are now algorithmically
+     detectable and hurt. Real phone photos (even imperfect ones) of 실제
+     현장 — school notice boards, pharmacy shelves, playground — outrank
+     polished AI images. Pipeline keeps AI images as placeholders, but every
+     post the user can add even ONE real photo to gains ranking + human feel.
+  2. **직접 경험 마커 in the text**: one first-person micro-anecdote per
+     section (구체적 지명·가격·시간·실수담). Specific beats generic:
+     "채스우드 도서관 화요일 10시" > "가까운 도서관".
+  3. **거짓 금지**: never fabricate personal experience. Frame unexperienced
+     info as "확인해보니 / 공식 안내 기준" — honesty is itself a ranking signal.
+  4. **최신성**: "2026년 7월 기준" date-stamps (already doing) + periodically
+     update old posts.
+  5. Video embeds = bonus points → future lever for the video channel.
 
-- 육아용품 리뷰 posts may include 쿠팡 로켓직구 affiliate links.
-- **Config gate:** only insert links when `config.json → monetization.coupang_partners_id`
-  is set to a real ID. Until then, write the review WITHOUT links (placeholders
-  like "쿠팡 로켓직구에서 검색" are fine).
-- **Mandatory disclosure** on any post containing affiliate links (Korean law +
-  쿠팡 정책): the exact sentence in `config.json → monetization.disclosure`.
-- **Naver 저품질 warning:** do NOT put raw 쿠팡파트너스 links inside Naver blog
-  posts — Naver demotes blogs carrying them. Affiliate links go in the Blogger
-  mirror and Instagram bio/comment only; the Naver version references the
-  product by name without the link.
-- Reviews must be honest category comparisons (실사용 관점, 장단점 both sides).
-  Never fabricate personal usage claims for products not actually used —
-  frame as 스펙/가격/후기 종합 비교 when firsthand experience doesn't exist.
+## Cadence [위험 — current setting conflicts]
 
-## Format strategy
+C-Rank rewards 꾸준함, but daily AI-generated posting risks pattern detection
+and outpaces the 3/week target. RECOMMENDATION: Naver publishes max 3x/week
+(e.g. Mon/Wed/Fri); the daily 6am run on other days ships Blogger + Instagram
+only. The daily-everything schedule the user chose stays until they change it —
+surface this trade-off, don't silently override.
 
-- **DM 공유 유도 캐러셀**: listicle hooks ("호주 육아 꿀팁 5가지", "한국 vs 호주
-  육아 비교") — cover card phrased so moms tag/DM each other. Carousel-maker:
-  prefer share-bait framing on cover + hook cards for cluster 1-3 topics.
-- **Reels** (when video channel activates): 호주 현지 육아 일상, 방학캠프 체험 —
-  raw phone-camera feel, not produced.
+## Monetization (쿠팡파트너스 AF1100561)
+
+- [검증] Affiliate links do NOT automatically cause Naver 저품질 — the killer
+  is copy-pasted product images/detail pages. Survivors write 직접 사용 기반
+  reviews with original photos.
+- Consequence for us: **no 쿠팡 links in Naver posts until a review is backed
+  by 직접 사용 + user's real photos.** Until then affiliate links live in the
+  Blogger mirror + Instagram only. Mandatory disclosure sentence
+  (config.json → monetization.disclosure) on any post with links.
+- Reviews = honest 한국 vs 호주 category comparison, 장단점 both sides.
+
+## Format strategy [가설]
+
+- DM 공유 유도 캐러셀 covers ("호주 육아 꿀팁 5가지", "한국 vs 호주 비교") —
+  plausible share mechanics, keep.
+- Reels (video channel later): 현지 일상 raw phone-camera feel.
