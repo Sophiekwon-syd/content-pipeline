@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>호주 겨울 아이 감기·독감·중이염 완벽 대처 가이드</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:#050505; --card-bg:#080808; --elevated:#0e0e0e;
+      --ink:#fff; --ink2:#ccc; --ink3:#888; --ink4:#333;
+      --accent:#C6F135; --accent-dim:rgba(198,241,53,0.15);
+      --blue:#3B82F6; --red:#ff4d4d;
+      --border:rgba(255,255,255,0.07);
+      --font-kr:"Noto Sans KR",sans-serif;
+      --font-en:"Space Grotesk",sans-serif;
+    }
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    body{background:#000;font-family:var(--font-kr);color:var(--ink);display:flex;flex-direction:column;align-items:center;gap:10px;padding:60px 20px 100px;-webkit-font-smoothing:antialiased}
+    .card{width:1080px;height:1350px;background:var(--card-bg);position:relative;overflow:hidden;display:flex;flex-direction:column}
+    .card::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:50;opacity:0.04;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:180px}
+    .ci{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:90px;position:relative;z-index:2}
+    .td{font-family:var(--font-en);font-weight:900;line-height:1.05;letter-spacing:-2px;word-break:keep-all}
+    .td-kr{font-family:var(--font-kr);font-weight:900;line-height:1.15;letter-spacing:-3px;word-break:keep-all}
+    .td.xl{font-size:96px}.td.lg{font-size:82px}.td.md{font-size:72px}
+    .tb{font-size:30px;font-weight:400;color:var(--ink2);line-height:1.65;word-break:keep-all}
+    .tb strong{font-weight:700;color:var(--ink)}
+    .ta{color:var(--accent)}.tm{color:var(--ink3)}
+    .en{font-family:var(--font-en)}
+    .badge{display:inline-flex;align-items:center;padding:12px 28px;border-radius:100px;font-size:17px;font-weight:800;width:fit-content;text-transform:uppercase;letter-spacing:2px}
+    .badge-a{background:var(--accent);color:#000}
+    .div-a{width:56px;height:5px;background:var(--accent);border-radius:2px;border:none;margin:32px 0}
+    .handle{position:absolute;top:165px;right:90px;font-size:18px;font-weight:700;color:var(--ink);text-transform:uppercase;letter-spacing:3px;z-index:10;display:inline-flex;align-items:center;gap:10px}
+    .handle::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent)}
+    .glow{position:absolute;border-radius:50%;background:var(--accent);filter:blur(160px);opacity:0.07;pointer-events:none;z-index:0}
+    .center-block{flex:1;display:flex;flex-direction:column;justify-content:center}
+
+    /* cover card */
+    .c1 .cover-sub{max-width:85%;font-size:36px;font-weight:500;margin-top:40px}
+    .c1 .cover-cta{font-size:22px;font-weight:800;color:var(--accent);margin-top:48px}
+
+    /* statement card (dark rhythm) */
+    .c5 .tb{font-size:30px;line-height:1.7}
+    .c5 .td-kr{font-size:64px;line-height:1.15}
+
+    /* cta card */
+    .c10 .big-cta{font-size:64px;font-weight:900;color:var(--accent);font-family:var(--font-en);letter-spacing:-1px}
+
+    /* body text max-width for readability when centered */
+    .ci .tb{max-width:720px}
+  </style>
+</head>
+<body>
+
+<!-- Card 1: Cover -->
+<section class="card c1">
+  <div class="handle">@aussie.umma</div>
+  <div class="glow" style="width:600px;height:600px;top:-200px;right:-200px"></div>
+  <div class="ci">
+    <div class="badge badge-a" style="margin-bottom:40px">겨울 건강 가이드</div>
+    <div class="td-kr" style="font-size:80px">호주 겨울 아이</div>
+    <div class="td-kr" style="font-size:80px;margin-top:4px">감기·독감·중이염</div>
+    <div class="cover-sub tm">언제 병원 가야 해요?</div>
+  </div>
+</section>
+
+<!-- Card 2: Hook -->
+<section class="card c2">
+  <div class="handle">@aussie.umma</div>
+  <div class="glow" style="width:500px;height:500px;top:100px;left:-150px"></div>
+  <div class="ci">
+    <div class="badge badge-a" style="margin-bottom:48px">진짜 많이 헷갈려해요</div>
+    <div class="td-kr td lg" style="font-size:52px;line-height:1.2;letter-spacing:-2px">
+      "이게 감기? 독감?"<br>
+      증상만 봐서는<br>
+      구분할 수 없다고요?
+    </div>
+    <div class="div-a"></div>
+    <div class="tb" style="font-size:26px">
+      하지만 이 가이드를 따라가면<br>정확하게 구분할 수 있어요.
+    </div>
+  </div>
+</section>
+
+<!-- Card 3: Cold vs Flu timing -->
+<section class="card c3">
+  <div class="handle">@aussie.umma</div>
+  <div class="glow" style="width:500px;height:500px;top:150px;right:-100px"></div>
+  <div class="ci">
+    <div class="badge badge-a" style="margin-bottom:40px">증상으로 구분하기</div>
+    <div class="td-kr td md" style="font-size:64px;margin-bottom:40px">
+      감기는 천천히
+    </div>
+    <div class="tb" style="font-size:28px">
+      증상이 3-5일에 걸쳐<br>천천히 시작되고,<br>코와 목에만 머물러요.
+    </div>
+    <div class="div-a"></div>
+    <div class="tb" style="font-size:26px;line-height:1.6">
+      독감은 갑자기 고열과<br>온몸 근육통으로 시작돼요.
+    </div>
+  </div>
+</section>
+
+<!-- Card 4: High fever red flag -->
+<section class="card c4">
+  <div class="handle">@aussie.umma</div>
+  <div class="glow" style="width:400px;height:400px;top:300px;left:-100px"></div>
+  <div class="ci">
+    <div class="badge badge-a" style="margin-bottom:40px">중요한 신호</div>
+    <div class="td xl" style="font-family:var(--font-en);font-size:120px;color:var(--red);line-height:1;letter-spacing:-4px;margin-bottom:20px">3+</div>
+    <div class="tb" style="font-size:32px;margin-bottom:24px">
+      <strong>해열제를 써도<br>3일 이상 고열이 내려가지 않으면</strong><br>
+      독감일 확률이 매우 높아요.
+    </div>
+    <div class="tb" style="font-size:24px;color:var(--ink3)">
+      0-4세 영유아는 독감 합병증<br>위험이 8배 이상 높아요.
+    </div>
+  </div>
+</section>
+
+<!-- Card 5: Statement (dark rhythm) — Free vaccine -->
+<section class="card c5">
+  <div class="handle">@aussie.umma</div>
+  <div class="glow" style="width:600px;height:600px;top:300px;left:-200px;background:var(--blue)"></div>
+  <div class="ci">
+    <div class="td-kr" style="font-size:64px;line-height:1.15;letter-spacing:-3px">
+      2026년 호주 정부는<br>
+      2-17세 모든 아이에게<br>
+      무료 독감 백신을 준다
+    </div>
+    <div class="div-a"></div>
+    <div class="tb" style="font-size:28px">
+      주사 없이 코에 뿌리는<br>
+      코 스프레이 백신으로 말이에요.
+    </div>
+  </div>
+</section>
+
+<!-- Card 6: Vaccine timing -->
+<section class="card c6">
+  <div class="handle">@aussie.umma</div>
+  <div class="glow" style="width:400px;height:400px;top:200px;right:-100px"></div>
+  <div class="ci">
+    <div class="badge badge-a" style="margin-bottom:40px">지금이 최고의 타이밍</div>
+    <div class="tb" style="font-size:32px;line-height:1.7">
+      백신 효과가 나타나는 데<br>
+      <strong>2주가 걸려요</strong>.
+    </div>
+    <div class="div-a"></div>
+    <div class="tb" style="font-size:26px">
+      지금 맞히면 8월-9월<br>
+      독감 피크 시즌에<br>
+      보호받을 수 있어요.
+    </div>
+  </div>
+</section>
+
+<!-- Card 7: Ear infection signs -->
+<section class="card c7">
+  <div class="handle">@aussie.umma</div>
+  <div class="glow" style="width:500px;height:500px;top:100px;left:-150px"></div>
+  <div class="ci">
+    <div class="badge badge-a" style="margin-bottom:40px">자주 놓쳐요</div>
+    <div class="td-kr td lg" style="font-size:56px;line-height:1.15;letter-spacing:-2px;margin-bottom:32px">
+      감기 다음에 오는<br>
+      중이염
+    </div>
+    <div class="tb" style="font-size:26px">
+      귀를 자꾸 만지거나<br>
+      진물이 나오면?<br><br>
+      <strong>즉시 GP 전화하세요</strong>.
+    </div>
+  </div>
+</section>
+
+<!-- Card 8: ER signals -->
+<section class="card c8">
+  <div class="handle">@aussie.umma</div>
+  <div class="glow" style="width:500px;height:500px;top:200px;right:-100px"></div>
+  <div class="ci">
+    <div class="badge badge-a" style="margin-bottom:40px">응급 신호</div>
+    <div class="tb" style="font-size:28px;line-height:1.8">
+      호주 GP는 전화 예약이 기본이에요.
+    </div>
+    <div class="div-a"></div>
+    <div class="tb" style="font-size:26px">
+      하지만 이 중 하나라도 보이면<br>
+      <strong>바로 응급실이나 healthdirect<br>1800 022 222로 전화하세요</strong>.
+    </div>
+  </div>
+</section>
+
+<!-- Card 9: Sheet (save-bait) -->
+<section class="card c9">
+  <div class="handle">@aussie.umma</div>
+  <div class="glow" style="width:500px;height:500px;top:-100px;right:-100px"></div>
+  <div class="ci">
+    <div class="badge badge-a" style="margin-bottom:40px">저장 필수</div>
+    <div class="td-kr md" style="font-size:52px;margin-bottom:48px">응급 신호 5가지</div>
+    <div class="tb" style="font-size:24px;line-height:2.1;text-align:left;max-width:680px">
+      <strong>1.</strong> 호흡이 빠르거나 힘들어 보인다<br>
+      <strong>2.</strong> 3개월 미만인데 열이 38도 이상<br>
+      <strong>3.</strong> 3-6개월인데 축 처지고 반응이 둔하다<br>
+      <strong>4.</strong> 아이가 반응이 없거나 혼란스러워 보인다<br>
+      <strong>5.</strong> 입술이 파란색으로 보인다
+    </div>
+    <div class="tb" style="margin-top:32px;font-size:22px;color:var(--ink3)">
+      이 중 하나라도 있으면 주저하지 마세요.
+    </div>
+  </div>
+</section>
+
+<!-- Card 10: CTA -->
+<section class="card c10">
+  <div class="handle">@aussie.umma</div>
+  <div class="glow" style="width:700px;height:700px;top:50%;left:50%;transform:translate(-50%,-50%)"></div>
+  <div class="ci">
+    <div class="tb" style="font-size:30px;margin-bottom:24px">당신의 아이가 겨울에</div>
+    <div class="td-kr td lg" style="font-size:60px;margin-bottom:16px">가장 자주 걸렸던<br>질병을 댓글로 말씀해주세요</div>
+    <div class="div-a"></div>
+    <div class="tb" style="font-size:24px;margin-top:32px;line-height:1.8">
+      다음 포스트에서<br>
+      특집으로 다룰게요.
+    </div>
+    <div class="big-cta" style="margin-top:60px">저장하기 →</div>
+  </div>
+</section>
+
+</body>
+</html>
