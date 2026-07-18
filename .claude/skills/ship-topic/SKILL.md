@@ -77,6 +77,13 @@ Remind: posts_per_week_target is 3 — don't ship more than that.
 ## Failure rules
 
 - Partial success is OK; a failed channel never blocks the others.
+- **DRAFT-FIRST WHEN DEBUGGING (hard rule).** Each `post-to-naver.mjs` run
+  without `--draft` creates a NEW live post (new logNo) — it never updates in
+  place. So NEVER re-run the direct publish to test a fix: that litters the
+  live blog with duplicates. When iterating on any Naver formatting/insertion
+  fix, publish with `--draft`, inspect (component dump / screenshot), and only
+  do the real direct publish ONCE the output is verified clean. Direct publish
+  stays the default for a normal, already-verified run.
 - Naver repair = fix post.md and re-post fresh (delete naver-log entry);
   NEVER surgically edit via the 임시저장 list (it has destroyed drafts).
 - IG token errors: see memory `instagram-posting-setup` (expired vs mangled
