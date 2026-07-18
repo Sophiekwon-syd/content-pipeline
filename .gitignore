@@ -1,4 +1,6 @@
 .cache/
+.naver-profile/
 .DS_Store
 outputs/*
 !outputs/.gitkeep
+logs/
