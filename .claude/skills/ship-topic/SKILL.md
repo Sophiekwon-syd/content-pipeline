@@ -49,10 +49,12 @@ before any publishing.** Publishing is outward-facing and irreversible-ish.
 
 1. **Naver** — `rm -f outputs/<date>/naver-log.json` if re-running, then
    `node scripts/post-to-naver.mjs --date <date>` (**publishes directly** —
-   this is the default; use `--draft` only if the user asks for a draft).
-   Check the log output: all headings/callouts/tables/images must report
-   success. If AI 활용 설정 shows 0/N, repair via the edit-URL flow
-   (memory: naver-smarteditor-automation).
+   default; use `--draft` only if asked). Naver gets the HERO image only
+   (section images render in the Blogger mirror — inline section images
+   scramble SmartEditor text). AI 활용 설정 usually shows 0/N on the fresh
+   publish — repair via the edit-URL flow (memory: naver-smarteditor-automation),
+   which republishes the SAME logNo (no duplicate). Do NOT re-run the whole
+   publish to fix the toggle — that creates duplicate live posts.
 2. **GitHub** — force-add (`git add -f`) + commit + push: carousel images,
    blog images, `blogger.html` (from step 4). One commit per file for
    outputs; instagram/blogger fetch from raw.githubusercontent so push FIRST.
