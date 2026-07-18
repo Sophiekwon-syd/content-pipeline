@@ -39,6 +39,7 @@ console.log(`Found ${slugs.length} topic(s) in ${baseDir}: ${slugs.join(', ')}`)
 
 const logPath = path.join(baseDir, 'instagram-log.json');
 let posted = [];
+let failed = 0; // slugs that had images but did not publish (e.g. expired token)
 try { posted = JSON.parse(await fs.readFile(logPath, 'utf8')); } catch {}
 
 for (const slug of slugs) {
@@ -90,6 +91,7 @@ for (const slug of slugs) {
 
   if (itemIds.length === 0) {
     console.error(`[fail] ${slug} — no image containers created`);
+    failed++;
     continue;
   }
 
@@ -134,6 +136,7 @@ for (const slug of slugs) {
   const carousel = await carouselRes.json();
   if (!carousel.id) {
     console.error(`[fail] ${slug} — carousel container failed: ${JSON.stringify(carousel)}`);
+    failed++;
     continue;
   }
   console.log(`  carousel: container=${carousel.id}`);
@@ -147,8 +150,12 @@ for (const slug of slugs) {
     posted.push(slug);
   } else {
     console.error(`  publish failed: ${JSON.stringify(pub)}`);
+    failed++;
   }
 }
 
 await fs.writeFile(logPath, JSON.stringify(posted, null, 2));
-console.log(`\nDone. Posted ${posted.length} topic(s).`);
+console.log(`\nDone. Posted ${posted.length} topic(s)${failed ? `, ${failed} failed` : ''}.`);
+// exit non-zero when something was meant to post but didn't, so the GitHub
+// Action shows RED instead of a misleading green "success" (e.g. expired token)
+if (failed > 0) process.exit(1);
