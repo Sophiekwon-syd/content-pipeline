@@ -62,11 +62,13 @@ before any publishing.** Publishing is outward-facing and irreversible-ish.
    `gh run watch <id>`. A red run may still have posted — check the POST step
    log for `PUBLISHED:`; only the log-commit step is flaky.
 4. **Blogger** — `node scripts/md-to-blogger.mjs outputs/<date>/<slug>` →
-   commit+push blogger.html → blogger.com/u/2 → NEW POST → type title →
-   inject body via javascript_tool (sync XHR of raw blogger.html →
-   `iframe.editable` contentDocument.body.innerHTML + input event; NEVER
-   paste raw HTML into compose — it publishes as literal tags) → labels →
-   Publish → CONFIRM.
+   commit+push blogger.html + blog images → then
+   `node scripts/post-to-blogger.mjs --date <date>`.
+   This uses its own logged-in Playwright profile (`.blogger-profile/`) and
+   works HEADLESSLY — it does NOT need claude-in-chrome. If it reports "not
+   signed in", run `node scripts/post-to-blogger.mjs --login` once.
+   (The old claude-in-chrome/javascript_tool flow only worked in interactive
+   sessions, which is why scheduled runs never published Blogger.)
 
 ## Stage 5 — Report
 

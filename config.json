@@ -5,7 +5,6 @@
     "niche": "호주 육아 / Australian parenting — 한국인 호주 엄마를 위한 육아·건강·라이프스타일 정보",
     "target_audience": "호주에 사는 25-40세 한국인 엄마. 두 자녀 이상 육아 중이거나 직장과 육아를 병행 중. 영어는 되지만 한국어로 소통하는 편이며, 호주 육아 정보는 영어라 접근성이 떨어지는 게 주된 고민. '한국 엄마들끼리 알려주는 정보'를 가장 저장하고 공유."
   },
-
   "content": {
     "language": "ko",
     "tone": "한국 엄마들끼리 카페에서 대화하는 느낌. 전문가 강의가 아니라 '나도 이거 몰랐어' 하는 선배 엄마의 말투. 호주 육아 시스템에 대한 실용 정보와 정서적 공감을 6:4 비율로 섞는다.",
@@ -41,7 +40,6 @@
       "instagram": "#호주육아 #호주맘 #워킹맘 #호주살이 #육아정보 #aussieumma #호주라이프 #한국엄마"
     }
   },
-
   "channels": {
     "blog": {
       "enabled": true,
@@ -53,7 +51,10 @@
       "enabled": true,
       "platform": "instagram",
       "cards_per_run": 1,
-      "card_count_range": [7, 11],
+      "card_count_range": [
+        7,
+        11
+      ],
       "bilingual": false,
       "primary_language": "Korean",
       "design": {
@@ -64,23 +65,31 @@
     },
     "video": {
       "enabled": true,
-      "platforms": ["instagram", "youtube"],
+      "platforms": [
+        "instagram",
+        "youtube"
+      ],
       "aspect": "portrait",
       "max_duration_seconds": 60
+    },
+    "blogger": {
+      "enabled": true,
+      "platform": "blogger",
+      "blog_id": "5345585629796133533",
+      "url": "https://aussieumma.blogspot.com",
+      "account_index": 2,
+      "labels": "호주육아, 육아정보"
     }
   },
-
   "monetization": {
     "coupang_partners_id": "AF1100561",
     "_note": "Links go in Blogger + IG only, never raw in Naver posts (저품질). Per-product tracked links are generated in partners.coupang.com (or via Partners Open API keys if provided).",
     "disclosure": "이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다."
   },
-
   "instagram": {
     "account_id": "<instagram_business_account_id>",
     "access_token_env": "INSTAGRAM_ACCESS_TOKEN"
   },
-
   "youtube": {
     "channel_id": "<youtube_channel_id>",
     "credentials_env": "YOUTUBE_CREDENTIALS_FILE"
