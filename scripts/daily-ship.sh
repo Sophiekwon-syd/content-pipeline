@@ -5,8 +5,8 @@
 # REQUIRES at run time: the Mac awake + unlocked, and valid Playwright login
 # profiles — .naver-profile/ (Naver) and .blogger-profile/ (Google/Blogger).
 # Both publish headlessly, so no Chrome extension is needed.
-# STILL manual: Gemini image generation needs an interactive claude-in-chrome
-# session, so scheduled runs ship text-only and log the image prompts.
+# Images: scripts/gen-images.mjs generates them headlessly via .gemini-profile,
+# so scheduled runs now ship WITH images (no interactive session needed).
 
 set -o pipefail
 PROJECT="/Users/sophiekwon/projects/content-pipeline"
@@ -29,7 +29,7 @@ else
   NAVER_MODE="Today is NOT a Naver day: SKIP Naver entirely (no draft, no publish) — ship Blogger + Instagram only. The topic's Naver version ships on the next Mon/Wed/Fri run only if still fresh; otherwise it lives on Blogger/IG alone."
 fi
 
-claude -p "Invoke the ship-topic skill and run the full AUSSIE UMMA pipeline end to end for today's date. This is a PRE-APPROVED unattended daily scheduled run set up by the user: SKIP the Stage 3 review gate, do NOT ask for confirmation. $NAVER_MODE Publish Instagram via the GitHub workflow. Publish Blogger with 'node scripts/post-to-blogger.mjs --date <today>' — it uses the .blogger-profile Playwright login and works headlessly, so do NOT try claude-in-chrome for it. Gemini images need an interactive session, so if unavailable just ship text-only and log the image prompts for manual follow-up. Always debug Naver fixes in --draft; never re-run the direct publish to test." \
+claude -p "Invoke the ship-topic skill and run the full AUSSIE UMMA pipeline end to end for today's date. This is a PRE-APPROVED unattended daily scheduled run set up by the user: SKIP the Stage 3 review gate, do NOT ask for confirmation. $NAVER_MODE Publish Instagram via the GitHub workflow. Generate blog images with 'node scripts/gen-images.mjs --date <today>' (headless via .gemini-profile), then re-run scripts/md-to-blogger.mjs so blogger.html picks them up. Publish Blogger with 'node scripts/post-to-blogger.mjs --date <today>' (headless via .blogger-profile). Do NOT use claude-in-chrome for any of this — it is not available in a scheduled session. Always debug Naver fixes in --draft; never re-run the direct publish to test." \
   --permission-mode bypassPermissions >> "$LOG" 2>&1
 
 echo "=== ship-topic run finished $(date) (exit $?) ===" >> "$LOG"

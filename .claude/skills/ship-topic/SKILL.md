@@ -31,13 +31,17 @@ grep -n '—' blog/post.md                                    # no em-dashes in 
 ```
 Fix violations in post.md directly (해요체, dash → comma/괄호/question form).
 
-## Stage 2.6 — Images (Gemini in user's Chrome)
+## Stage 2.6 — Images (headless, via Gemini profile)
 
-For each `hero:` / `section-N:` prompt in post.md `## 이미지 프롬프트`:
-1. claude-in-chrome → gemini.google.com → **new chat per image** (follow-up
-   prompts in one chat hang) → type prompt, verify text landed, send.
-2. Download → crop bottom 160px (`ffmpeg -i in.png -vf "crop=iw:ih-160:0:0"`)
-   → save to `outputs/<date>/<slug>/blog/images/{hero,section-N}.png`.
+Run `node scripts/gen-images.mjs --date <date>`. It reads the `hero:` /
+`section-N:` prompts under `## 이미지 프롬프트`, generates each in a fresh
+Gemini chat using the `.gemini-profile/` login, grabs the image via canvas,
+crops the ✦ watermark, and writes `blog/images/{hero,section-N}.png` (skips
+existing). Works HEADLESSLY — no claude-in-chrome needed. If it reports "not
+signed in", run `node scripts/gen-images.mjs --login` once.
+
+Then **re-run `scripts/md-to-blogger.mjs`** so blogger.html references the new
+images, and commit+push the images before the Blogger/IG steps.
 
 ## Stage 3 — REVIEW GATE (hard stop)
 

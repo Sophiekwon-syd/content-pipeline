@@ -5,3 +5,4 @@ outputs/*
 !outputs/.gitkeep
 logs/
 .blogger-profile/
+.gemini-profile/
