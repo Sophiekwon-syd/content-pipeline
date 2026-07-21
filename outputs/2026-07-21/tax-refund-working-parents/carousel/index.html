@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>호주 워킹맘 세금 환급 가이드</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:#050505; --card-bg:#080808; --elevated:#0e0e0e;
+      --ink:#fff; --ink2:#ccc; --ink3:#888; --ink4:#333;
+      --accent:#C6F135; --accent-dim:rgba(198,241,53,0.15);
+      --blue:#3B82F6; --red:#ff4d4d;
+      --border:rgba(255,255,255,0.07);
+      --font-kr:"Noto Sans KR",sans-serif;
+      --font-en:"Space Grotesk",sans-serif;
+    }
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    body{background:#000;font-family:var(--font-kr);color:var(--ink);display:flex;flex-direction:column;align-items:center;gap:10px;padding:60px 20px 100px;-webkit-font-smoothing:antialiased}
+    .card{width:1080px;height:1350px;background:var(--card-bg);position:relative;overflow:hidden;display:flex;flex-direction:column}
+    .card::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:50;opacity:0.04;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:180px}
+    .ci{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:90px;position:relative;z-index:2}
+    .td{font-family:var(--font-en);font-weight:900;line-height:1.05;letter-spacing:-2px;word-break:keep-all}
+    .td-kr{font-family:var(--font-kr);font-weight:900;line-height:1.15;letter-spacing:-3px;word-break:keep-all}
+    .td.xl{font-size:96px}.td.lg{font-size:82px}.td.md{font-size:72px}
+    .tb{font-size:30px;font-weight:400;color:var(--ink2);line-height:1.65;word-break:keep-all}
+    .tb strong{font-weight:700;color:var(--ink)}
+    .ta{color:var(--accent)}.tm{color:var(--ink3)}
+    .en{font-family:var(--font-en)}
+    .badge{display:inline-flex;align-items:center;padding:12px 28px;border-radius:100px;font-size:17px;font-weight:800;width:fit-content;text-transform:uppercase;letter-spacing:2px}
+    .badge-a{background:var(--accent);color:#000}
+    .div-a{width:56px;height:5px;background:var(--accent);border-radius:2px;border:none;margin:32px 0}
+    .handle{position:absolute;top:165px;right:90px;font-size:18px;font-weight:700;color:var(--ink);text-transform:uppercase;letter-spacing:3px;z-index:10;display:inline-flex;align-items:center;gap:10px}
+    .handle::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent)}
+    .glow{position:absolute;border-radius:50%;background:var(--accent);filter:blur(160px);opacity:0.07;pointer-events:none;z-index:0}
+    .center-block{flex:1;display:flex;flex-direction:column;justify-content:center}
+
+    /* cover card */
+    .c1 .cover-sub{max-width:85%;font-size:36px;font-weight:500;margin-top:40px}
+    .c1 .cover-cta{font-size:22px;font-weight:800;color:var(--accent);margin-top:48px}
+
+    /* statement card (dark rhythm) */
+    .c6 .tb{font-size:30px;line-height:1.7}
+    .c6 .td{font-size:72px;line-height:1.15}
+
+    /* cta card */
+    .c10 .big-cta{font-size:64px;font-weight:900;color:var(--accent);font-family:var(--font-en);letter-spacing:-1px}
+
+    /* body text max-width for readability when centered */
+    .ci .tb{max-width:720px}
+  </style>
+</head>
+<body>
+
+<!-- Card 1: Cover -->
+<section class="card c1">
+  <div class="handle">@aussie.umma</div>
+  <div class="glow" style="width:600px;height:600px;top:-200px;right:-200px"></div>
+  <div class="ci">
+    <div class="badge badge-a" style="margin-bottom:40px">세금 환급 팁</div>
+    <div class="td-kr" style="font-size:68px">호주 워킹맘</div>
+    <div class="td-kr" style="font-size:68px;margin-top:8px">세금 환급 가이드</div>
+    <div class="cover-sub tm">평균 환급액 $2,331</div>
+  </div>
+</section>
+
+<!-- Card 2: Hook -->
+<section class="card c2">
+  <div class="handle">@aussie.umma</div>
+  <div class="glow" style="width:500px;height:500px;top:100px;left:-150px"></div>
+  <div class="ci">
+    <div class="badge badge-a" style="margin-bottom:48px">알고 계셨나요</div>
+    <div class="td-kr td lg" style="font-size:52px;line-height:1.2;letter-spacing:-2px">
+      호주 엄마들<br>평균 $2,331<br>환급받아요
+    </div>
+    <div class="div-a"></div>
+    <div class="tb" style="font-size:26px">
+      당신은 모르는 항목<br>5가지가 있을 거예요.
+    </div>
+  </div>
+</section>
+
+<!-- Card 3: Body - First item intro -->
+<section class="card c3">
+  <div class="handle">@aussie.umma</div>
+  <div class="glow" style="width:400px;height:400px;top:200px;right:-100px"></div>
+  <div class="ci">
+    <div class="badge badge-a" style="margin-bottom:30px">첫 번째</div>
+    <div class="td-kr" style="font-size:54px;line-height:1.1;letter-spacing:-2px">재택근무</div>
+    <div class="div-a"></div>
+    <div class="tb" style="font-size:28px;line-height:1.8">
+      아이 돌보면서<br>일하는 엄마라면<br>제일 먼저 환급받아야 할 항목이에요.
+    </div>
+  </div>
+</section>
+
+<!-- Card 4: Body - Work from home details -->
+<section class="card c4">
+  <div class="handle">@aussie.umma</div>
+  <div class="glow" style="width:400px;height:400px;top:300px;left:-100px"></div>
+  <div class="ci">
+    <div class="badge badge-a" style="margin-bottom:30px">간단해요</div>
+    <div class="td" style="font-size:96px;color:var(--accent);line-height:1;margin-bottom:24px">70¢</div>
+    <div class="tb" style="font-size:28px;line-height:1.8">
+      시간당 70센트.<br>
+      <strong>또는</strong><br>
+      전기, 인터넷, 휴대폰<br>
+      업무 비율만큼.
+    </div>
+  </div>
+</section>
+
+<!-- Card 5: Body - Second item (certificates and training) -->
+<section class="card c5">
+  <div class="handle">@aussie.umma</div>
+  <div class="glow" style="width:400px;height:400px;top:150px;right:-100px"></div>
+  <div class="ci">
+    <div class="badge badge-a" style="margin-bottom:30px">두 번째</div>
+    <div class="td-kr" style="font-size:54px;line-height:1.1;letter-spacing:-2px">자격증과<br>업무 공부</div>
+    <div class="div-a"></div>
+    <div class="tb" style="font-size:26px;line-height:1.8">
+      현재 직업과 관련된<br>
+      코스라면<br>
+      거의 다 환급돼요.
+    </div>
+  </div>
+</section>
+
+<!-- Card 6: Statement (dark rhythm) -->
+<section class="card c6">
+  <div class="handle">@aussie.umma</div>
+  <div class="glow" style="width:600px;height:600px;top:300px;left:-200px;background:var(--blue)"></div>
+  <div class="ci">
+    <div class="td-kr td lg" style="font-size:64px;line-height:1.15;letter-spacing:-3px">
+      많은 엄마들이<br>모르고 손해<br>봐요
+    </div>
+    <div class="div-a"></div>
+    <div class="tb" style="font-size:26px">
+      "자격증? 그건<br>개인 투자지"<br>
+      그렇게 생각했다가 뒤늦게 알아요.
+    </div>
+  </div>
+</section>
+
+<!-- Card 7: Body - Family Tax Benefit -->
+<section class="card c7">
+  <div class="handle">@aussie.umma</div>
+  <div class="glow" style="width:400px;height:400px;top:200px;right:-100px"></div>
+  <div class="ci">
+    <div class="badge badge-a" style="margin-bottom:30px">세 번째</div>
+    <div class="td-kr" style="font-size:48px;line-height:1.1;letter-spacing:-2px;margin-bottom:24px">Family Tax<br>Benefit 확인</div>
+    <div class="tb" style="font-size:26px;line-height:1.8">
+      더 적게 벌었다면<br>
+      <strong>추가 환급 가능성</strong><br>
+      있어요. 7월부터<br>
+      정확히 신고하세요.
+    </div>
+  </div>
+</section>
+
+<!-- Card 8: Body - Medicare levy -->
+<section class="card c8">
+  <div class="handle">@aussie.umma</div>
+  <div class="glow" style="width:400px;height:400px;top:300px;left:-100px"></div>
+  <div class="ci">
+    <div class="badge badge-a" style="margin-bottom:30px">네 번째</div>
+    <div class="td-kr" style="font-size:54px;line-height:1.1;letter-spacing:-2px">Medicare levy</div>
+    <div class="div-a"></div>
+    <div class="tb" style="font-size:26px;line-height:1.8">
+      가족 소득과 아이 수에<br>
+      따라 의료보험료<br>
+      달라져요.
+    </div>
+  </div>
+</section>
+
+<!-- Card 9: Sheet (save-bait) - Checklist -->
+<section class="card c9">
+  <div class="handle">@aussie.umma</div>
+  <div class="glow" style="width:500px;height:500px;top:-100px;right:-100px"></div>
+  <div class="ci">
+    <div class="badge badge-a" style="margin-bottom:40px">저장 필수</div>
+    <div class="td-kr" style="font-size:48px;margin-bottom:48px;letter-spacing:-2px">체크리스트</div>
+    <div class="tb" style="font-size:24px;line-height:2.4;text-align:left;max-width:600px">
+      <strong>재택근무</strong> 70센트/시간?<br><br>
+      <strong>자격증 비용</strong> 신청?<br><br>
+      <strong>Family Tax Benefit</strong><br>
+      소득 정확히?<br><br>
+      <strong>출장 거리 기록</strong> 유지?<br><br>
+      <strong>업무 도구</strong> 구매 영수증?
+    </div>
+  </div>
+</section>
+
+<!-- Card 10: CTA -->
+<section class="card c10">
+  <div class="handle">@aussie.umma</div>
+  <div class="glow" style="width:700px;height:700px;top:50%;left:50%;transform:translate(-50%,-50%)"></div>
+  <div class="ci">
+    <div class="tb" style="font-size:28px;margin-bottom:32px">지금 바로 챙기세요</div>
+    <div class="big-cta">저장하기 →</div>
+  </div>
+</section>
+
+</body>
+</html>
