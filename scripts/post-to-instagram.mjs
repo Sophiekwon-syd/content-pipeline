@@ -141,10 +141,32 @@ for (const slug of slugs) {
   }
   console.log(`  carousel: container=${carousel.id}`);
 
-  // Step 4: Publish
-  const pubBody = new URLSearchParams({ creation_id: carousel.id, access_token: IG_TOKEN });
-  const pubRes = await fetch(`${API}/${IG_USER_ID}/media_publish`, { method: 'POST', body: pubBody });
-  const pub = await pubRes.json();
+  // Step 3b: wait for the carousel container to finish processing — a 10-image
+  // carousel isn't publishable the instant it's created ("Media ID is not
+  // available"). Poll status_code until FINISHED before publishing.
+  let readyState = '';
+  for (let i = 0; i < 20; i++) { // up to ~100s
+    const st = await fetch(`${API}/${carousel.id}?fields=status_code&access_token=${IG_TOKEN}`).then((r) => r.json());
+    readyState = st.status_code || '';
+    if (readyState === 'FINISHED') break;
+    if (readyState === 'ERROR') { console.error(`  container error: ${JSON.stringify(st)}`); break; }
+    await new Promise((r) => setTimeout(r, 5000));
+  }
+  if (readyState !== 'FINISHED') {
+    console.error(`[fail] ${slug} — carousel not ready (status=${readyState || 'unknown'})`);
+    failed++;
+    continue;
+  }
+
+  // Step 4: Publish (retry a couple of times in case of a transient not-ready)
+  let pub = {};
+  for (let i = 0; i < 3; i++) {
+    const pubBody = new URLSearchParams({ creation_id: carousel.id, access_token: IG_TOKEN });
+    pub = await (await fetch(`${API}/${IG_USER_ID}/media_publish`, { method: 'POST', body: pubBody })).json();
+    if (pub.id) break;
+    if (pub.error?.error_subcode === 2207027) { await new Promise((r) => setTimeout(r, 8000)); continue; } // still processing
+    break;
+  }
   if (pub.id) {
     console.log(`  PUBLISHED: ${pub.id}`);
     posted.push(slug);
