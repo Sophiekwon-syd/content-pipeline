@@ -5,20 +5,27 @@ Ad-hoc / manually triggered — NOT part of the daily 1 AM ship-topic schedule.
 
 ## What it is
 
-A weekly Instagram carousel that, per grocery category (아이스크림, 우유, 과일…),
-shows **which store is cheapest this week** — Coles vs Woolworths (ALDI later) —
-with the real product, both prices, the cheaper one highlighted, and a short
-Korean comment. Save-bait + share-bait content in the proven @ko.au.ji lane
-(their supermarket-deals posts drive their follower growth), but with a sharper
-"who's cheaper" comparison hook they don't do.
+A weekly Instagram carousel showing **what's actually on sale this week at Coles
+and Woolworths** — each store discounts DIFFERENT products, so this is not a
+same-item price battle. Deals are grouped loosely by category (아이스크림, 우유,
+과자…), **1-2 categories per slide**, each showing the real on-sale products
+(photo, was→now price, short Korean comment). Save-bait + share-bait in the
+proven @ko.au.ji lane (their supermarket-deals posts drive their growth).
 
 Reference: @ko.au.ji weekly "기간제 할인 품목" posts + product-card style
 (product photo, was→now price pill, Korean bullet commentary).
 
-## Decisions locked (2026-07-22)
+## Decisions locked (2026-07-22, revised)
 
-- **Format: category cheapest-this-week.** One card per category; each card
-  compares the same-category product across stores and marks the winner.
+- **Format: each store's OWN weekly sale items, grouped by category.** NOT a
+  same-product comparison — Coles and Woolies rarely discount the identical
+  item, so we show whatever each store actually has on sale, laid out so a
+  reader can eyeball both stores' deals in a category. Some categories may have
+  only one store's deal; some slides may not map cleanly to a category at all.
+- **Layout: 1-2 categories per slide.** A slide = 1-2 category blocks; each block
+  lists that category's on-sale products from Coles and/or Woolworths.
+- **No computed "winner."** The value is "here's what's on sale where," not who's
+  cheaper (different products can't be fairly compared on price).
 - **Data: manual-first, scraper in Phase 2.** Phase 1 renders from a hand-filled
   weekly data file (zero ToS risk, proves the design fast). Phase 2 adds a
   scraper to auto-fill.
@@ -42,6 +49,8 @@ WRONG PRICE destroys trust instantly and is worse than no post. Therefore:
 
 ### Data schema — one file per week
 `features/supermarket-deals-carousel/data/<YYYY-MM-DD>.json`
+Organized by category; each category holds each store's actual on-sale items
+(different products). A slide renders 1-2 categories.
 ```json
 {
   "week_start": "2026-07-22",
@@ -50,30 +59,29 @@ WRONG PRICE destroys trust instantly and is worse than no post. Therefore:
   "categories": [
     {
       "category": "아이스크림",
-      "product": "Streets Blue Ribbon 4L",   // same/comparable product
-      "image": "images/icecream.jpg",          // REAL photo, user-supplied
-      "coles": { "was": 12.00, "now": 7.00 },
-      "woolies": { "was": 12.00, "now": 8.50 },
-      "aldi": null,
-      "comment": "콜스가 이번 주 확실히 싸요. 4L라 여름 내내 가성비 최고예요."
+      "coles":   [ { "product": "Streets Blue Ribbon 4L", "was": 12.00, "now": 7.00,
+                     "image": "images/streets.jpg", "comment": "4L라 여름 가성비 최고" } ],
+      "woolies": [ { "product": "Bulla Ice Cream 2L",     "was": 11.00, "now": 6.50,
+                     "image": "images/bulla.jpg",   "comment": "부드럽고 애들이 좋아해요" } ]
+      // either store's list may be empty for a category
     }
   ]
 }
 ```
-Winner is computed (lowest `now`), not hand-set, so it can't disagree with the
-numbers shown.
+No winner field — we display each store's real deals, not a comparison verdict.
 
 ### Card design (dedicated "deals" style, distinct from the dark editorial brand)
-The deals content wants a lighter, product-forward look (like the reference's
-white product cards), NOT the dark-modern editorial carousel. Proposed:
-- **Cover**: date range + "이번 주 콜스 vs 울월스 최저가" + cart motif. @aussie.umma handle.
-- **Category cards** (one per category): category label, the product photo,
-  two price blocks colour-coded by store (**Coles red #E01A22**, **Woolies green
-  #178841**), the cheaper price enlarged + a "최저가" badge, the Korean comment.
-- **Sheet (save-bait)**: one-glance table — every category and who won.
+Lighter, product-forward look (like the reference's white product cards), NOT the
+dark-modern editorial carousel. Proposed:
+- **Cover**: date range + "이번 주 콜스 · 울월스 세일 품목" + cart motif. @aussie.umma handle.
+- **Deal slides** (1-2 categories each): category label as a section header; under
+  it, the on-sale products as small cards (product photo, name, was→now price
+  pill), each tagged by store colour (**Coles red #E01A22**, **Woolies green
+  #178841**) so the eye separates them. Short Korean comment per product.
+- **Sheet (save-bait)**: one-glance list — every category + the standout deals.
 - **CTA**: config `content.cta_text` ("저장하기 →").
 Keep 1080×1350, @aussie.umma handle top-right, no emojis (brand rule), no dots.
-(Card style is the one open design call — confirm the light look at build time.)
+(Light card style is the one open design call — confirm at build time.)
 
 ### Scripts
 - `scripts/build-deals-carousel.mjs --week <date>` → reads the week's data JSON,
