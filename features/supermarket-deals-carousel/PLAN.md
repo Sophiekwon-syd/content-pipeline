@@ -29,7 +29,11 @@ Reference: @ko.au.ji weekly "기간제 할인 품목" posts + product-card style
 - **Data: manual-first, scraper in Phase 2.** Phase 1 renders from a hand-filled
   weekly data file (zero ToS risk, proves the design fast). Phase 2 adds a
   scraper to auto-fill.
-- **Stores:** Coles + Woolworths for v1. ALDI is a later add (3rd column).
+- **Stores:** Coles + Woolworths for v1. ALDI is a later add.
+- **Structure: ONE combined carousel** — both stores' deals in a single post,
+  grouped by category per slide (not separate per-store posts).
+- **Volume: 5-6 categories, ~10 cards** — focused weekly post, strongest deals
+  only, fits IG's 10-card max, quick to fill.
 - **Channel:** Instagram carousel only for v1 (that's where deals content lives).
   Naver/Blogger optional later.
 
