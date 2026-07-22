@@ -1,0 +1,40 @@
+{
+  "store": "woolworths",
+  "scraped_at": "2026-07-22T10:01:13.205Z",
+  "count": 3,
+  "items": [
+    {
+      "store": "woolworths",
+      "category": "Household",
+      "name": "Shangri-La Linen Cashmere Touch Flannelette Fitted Sheet Combo Set King / Charcoal",
+      "price": 25,
+      "was": 59.95,
+      "save": "$34.95",
+      "halfPrice": true,
+      "unit": "",
+      "image": "https://cdn0.woolworths.media/content/wowproductimages/large/1134214906.jpg"
+    },
+    {
+      "store": "woolworths",
+      "category": "Household",
+      "name": "Shangri-La Linen Cashmere Touch Flannelette Fitted Sheet Combo Set King / Silver",
+      "price": 25,
+      "was": 59.95,
+      "save": "$34.95",
+      "halfPrice": true,
+      "unit": "",
+      "image": "https://cdn0.woolworths.media/content/wowproductimages/large/1134214902.jpg"
+    },
+    {
+      "store": "woolworths",
+      "category": "Household",
+      "name": "Shangri-La Linen Cashmere Touch Flannelette Fitted Sheet Combo Set King / Steel Blue",
+      "price": 25,
+      "was": 59.95,
+      "save": "$34.95",
+      "halfPrice": true,
+      "unit": "",
+      "image": "https://cdn0.woolworths.media/content/wowproductimages/large/1134214912.jpg"
+    }
+  ]
+}

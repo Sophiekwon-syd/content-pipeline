@@ -6,3 +6,5 @@ outputs/*
 logs/
 .blogger-profile/
 .gemini-profile/
+.woolies-scrape-profile/
+.catprofile/
