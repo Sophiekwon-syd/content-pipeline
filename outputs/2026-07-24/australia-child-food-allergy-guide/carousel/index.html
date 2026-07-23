@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>호주 아이 알레르기, 이것만은 꼭 — AUSSIE UMMA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Space+Grotesk:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ── DESIGN TOKENS ── */
+    :root {
+      --bg: #030303;
+      --card-bg: #080808;
+      --card-bg-grad: radial-gradient(circle at 50% 50%, #111 0%, #080808 70%);
+      --elevated: #0e0e0e;
+      --ink: #ffffff;
+      --ink2: #cccccc;
+      --ink3: #888888;
+      --ink4: #333333;
+      --accent: #C6F135;
+      --accent-dim: rgba(198, 241, 53, 0.12);
+      --accent-glow: rgba(198, 241, 53, 0.08);
+      --blue: #3B82F6;
+      --blue-dim: rgba(59, 130, 246, 0.12);
+      --red: #ff4d4d;
+      --border: rgba(255, 255, 255, 0.07);
+      --font-kr: "AppleSDGothicNeo", "Noto Sans KR", sans-serif;
+      --font-en: "Space Grotesk", sans-serif;
+      --font-display: "Space Grotesk", "AppleSDGothicNeo", "Noto Sans KR", sans-serif;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--bg);
+      font-family: var(--font-kr);
+      color: var(--ink);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      padding: 60px 20px 100px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── CARD BASE ── */
+    .card {
+      width: 1080px;
+      height: 1350px;
+      background: var(--card-bg);
+      background-image: var(--card-bg-grad);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      font-family: var(--font-kr);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Noise texture overlay */
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 50;
+      opacity: 0.04;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 180px 180px;
+    }
+
+    /* Card inner content area */
+    .ci {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 90px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ── BRAND HANDLE (top-right, every card) ── */
+    .handle {
+      position: absolute;
+      top: 68px;
+      right: 90px;
+      font-family: var(--font-en);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--ink);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      z-index: 10;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .handle::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 10px var(--accent);
+    }
+
+    /* ── SHARED COMPONENTS ── */
+    .center-block {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .td {
+      font-family: var(--font-display);
+      font-weight: 900;
+      line-height: 1.08;
+      letter-spacing: -2px;
+      word-break: keep-all;
+    }
+    .td.xl { font-size: 108px; }
+    .td.lg { font-size: 92px; }
+    .td.md { font-size: 80px; }
+    .td.sm { font-size: 64px; }
+
+    .tb {
+      font-size: 30px;
+      font-weight: 400;
+      color: var(--ink2);
+      line-height: 1.65;
+      word-break: keep-all;
+    }
+    .tb strong { font-weight: 700; color: var(--ink); }
+
+    .tl {
+      font-family: var(--font-en);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      color: var(--ink3);
+      margin-bottom: 32px;
+    }
+
+    .ta { color: var(--accent); }
+    .tb-blue { color: var(--blue); }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 12px 28px;
+      border-radius: 100px;
+      font-size: 17px;
+      font-weight: 800;
+      width: fit-content;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    .badge-a { background: var(--accent); color: #000; }
+    .badge-outline {
+      background: transparent;
+      border: 1px solid rgba(198, 241, 53, 0.3);
+      color: var(--accent);
+    }
+
+    .div-a {
+      width: 56px;
+      height: 5px;
+      background: var(--accent);
+      border-radius: 2px;
+      border: none;
+      margin: 32px 0;
+    }
+
+    .glow {
+      position: absolute;
+      border-radius: 50%;
+      background: var(--accent);
+      filter: blur(160px);
+      opacity: 0.08;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .glow-blue {
+      position: absolute;
+      border-radius: 50%;
+      background: var(--blue);
+      filter: blur(160px);
+      opacity: 0.06;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .en { font-family: var(--font-en); }
+
+    /* ── COVER ── */
+    .c1 .ci {
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    .cover-bg-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: var(--font-en);
+      font-size: 680px;
+      font-weight: 700;
+      color: var(--accent);
+      opacity: 0.04;
+      line-height: 1;
+      pointer-events: none;
+      z-index: 1;
+      letter-spacing: -30px;
+    }
+    .cover-bg-text::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, transparent 15%, var(--card-bg) 80%);
+    }
+    .c1 .cover-sub {
+      margin-bottom: 48px;
+      max-width: 85%;
+      font-size: 34px;
+      font-weight: 500;
+      color: var(--ink2);
+    }
+    .c1 .cover-cta {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    /* ── HOOK (hero stat) ── */
+    .c2 .ci {
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    .stat-val {
+      font-family: var(--font-display);
+      font-size: 200px;
+      font-weight: 900;
+      color: var(--accent);
+      line-height: 1;
+      text-align: center;
+      letter-spacing: -8px;
+    }
+    .stat-label {
+      font-size: 38px;
+      font-weight: 800;
+      color: var(--ink);
+      text-align: center;
+      margin-top: 24px;
+      word-break: keep-all;
+    }
+    .stat-desc {
+      font-size: 26px;
+      color: var(--ink2);
+      text-align: center;
+      margin-top: 20px;
+      max-width: 85%;
+      line-height: 1.55;
+    }
+    .stat-source {
+      font-size: 18px;
+      color: var(--ink3);
+      text-align: center;
+      margin-top: 32px;
+      font-family: var(--font-en);
+      letter-spacing: 1px;
+    }
+
+    /* ── CHIPS (allergen list) ── */
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin: 32px 0;
+    }
+    .chip {
+      padding: 14px 28px;
+      border-radius: 14px;
+      font-size: 22px;
+      font-weight: 600;
+      background: var(--elevated);
+      border: 1px solid var(--border);
+      color: var(--ink);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .chip .cd {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    /* ── DEFINITION BOX ── */
+    .def-hl {
+      background: var(--accent);
+      color: #000;
+      padding: 2px 14px;
+      border-radius: 6px;
+      display: inline-block;
+      font-weight: 800;
+    }
+    .def-box {
+      margin-top: 40px;
+      padding: 40px 48px;
+      border-radius: 24px;
+      background: var(--elevated);
+      border: 1px solid var(--border);
+    }
+    .def-box-text {
+      font-size: 28px;
+      color: var(--ink);
+      line-height: 1.6;
+    }
+    .def-box-text strong {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    /* ── COMPARISON ROWS ── */
+    .cmp-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      padding: 32px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .cmp-row:last-child { border-bottom: none; }
+    .cmp-h {
+      font-family: var(--font-en);
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--ink3);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 14px;
+    }
+    .cmp-v {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.3;
+    }
+    .cmp-v.accent { color: var(--accent); }
+    .cmp-v.blue { color: var(--blue); }
+    .cmp-sub {
+      font-size: 20px;
+      color: var(--ink3);
+      margin-top: 8px;
+      line-height: 1.5;
+    }
+
+    /* ── APPROACH PANELS (for insight cards) ── */
+    .ap {
+      padding: 36px 44px;
+      border-radius: 28px;
+      background: var(--elevated);
+      border: 1px solid var(--border);
+      margin-bottom: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    .ap::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 15%;
+      bottom: 15%;
+      width: 5px;
+      background: var(--ink4);
+      border-radius: 0 5px 5px 0;
+    }
+    .ap:nth-child(1)::before { background: var(--accent); }
+    .ap:nth-child(2)::before { background: var(--blue); }
+    .ap-t {
+      font-size: 30px;
+      font-weight: 800;
+      margin-bottom: 12px;
+      color: var(--ink);
+    }
+    .ap-d {
+      font-size: 24px;
+      color: var(--ink2);
+      line-height: 1.55;
+    }
+
+    /* ── DARK STATEMENT CARD ── */
+    .card.dark {
+      background: #0a0a0a;
+      background-image: none;
+    }
+    .card.dark .stmt {
+      font-size: 58px;
+      font-weight: 800;
+      line-height: 1.35;
+      text-align: center;
+      color: var(--ink);
+      max-width: 92%;
+      margin: 0 auto;
+      word-break: keep-all;
+    }
+    .card.dark .stmt strong {
+      color: var(--accent);
+      font-weight: 900;
+    }
+    .card.dark .stmt-source {
+      font-size: 22px;
+      color: var(--ink3);
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    /* ── STEPS ── */
+    .si {
+      display: flex;
+      gap: 32px;
+      padding: 28px 0;
+      align-items: flex-start;
+    }
+    .si-n {
+      font-family: var(--font-en);
+      font-size: 60px;
+      font-weight: 800;
+      color: var(--accent);
+      opacity: 0.3;
+      line-height: 1;
+      min-width: 80px;
+    }
+    .si-c { flex: 1; }
+    .si-t {
+      font-size: 32px;
+      font-weight: 800;
+      margin-bottom: 10px;
+      color: var(--ink);
+    }
+    .si-d {
+      font-size: 24px;
+      color: var(--ink2);
+      line-height: 1.55;
+    }
+
+    /* ── SHEET (save-bait) ── */
+    .sheet {
+      margin-top: 20px;
+      border-radius: 28px;
+      background: var(--card-bg);
+      border: 2px solid var(--accent);
+      padding: 44px 48px;
+      position: relative;
+    }
+    .sheet-tag {
+      position: absolute;
+      top: -18px;
+      left: 44px;
+      background: var(--accent);
+      color: #000;
+      font-family: var(--font-en);
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 8px 20px;
+      border-radius: 100px;
+    }
+    .sheet-title {
+      font-size: 36px;
+      font-weight: 900;
+      color: var(--ink);
+      margin-bottom: 24px;
+    }
+    .sheet-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 26px;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.5;
+    }
+    .sheet-row:last-child { border-bottom: none; }
+    .sheet-row::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      min-width: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+      margin-top: 10px;
+    }
+    .sheet-row-num {
+      font-family: var(--font-en);
+      font-weight: 800;
+      color: var(--accent);
+      min-width: 32px;
+    }
+    .sheet-foot {
+      margin-top: 24px;
+      font-size: 20px;
+      color: var(--ink3);
+      text-align: center;
+    }
+
+    /* ── CTA ── */
+    .c10 .ci {
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      padding: 28px 72px;
+      border-radius: 100px;
+      background: var(--accent);
+      color: #000;
+      font-size: 28px;
+      font-weight: 900;
+      margin-top: 56px;
+      letter-spacing: 1px;
+    }
+    .cta-hint {
+      margin-top: 40px;
+      font-size: 22px;
+      color: var(--ink3);
+    }
+
+    /* ── TAKEAWAY BOX ── */
+    .takeaway {
+      margin-top: 32px;
+      padding: 28px 40px;
+      border-radius: 20px;
+      background: var(--accent-dim);
+      text-align: center;
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--accent);
+      border: 1px solid rgba(198, 241, 53, 0.15);
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     Card 1: COVER
+════════════════════════════════════════════ -->
+<section class="card c1">
+  <span class="handle">@aussie.umma</span>
+  <div class="glow" style="width:500px;height:500px;top:50%;left:50%;transform:translate(-50%,-50%);opacity:0.06;"></div>
+  <div class="cover-bg-text">A</div>
+  <div class="ci">
+    <div class="badge badge-outline en" style="margin-bottom:40px">호주 육아 가이드</div>
+    <div style="margin-bottom:20px">
+      <div class="td xl">호주 아이 알레르기,<br><span class="ta">이것만은</span> 꼭</div>
+    </div>
+    <hr class="div-a" style="margin:0 auto 28px" />
+    <div class="cover-sub tb">검사부터 학교 Action Plan까지</div>
+    <div class="cover-cta en">Swipe <span>&rarr;</span></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     Card 2: HOOK (hero stat)
+════════════════════════════════════════════ -->
+<section class="card c2">
+  <span class="handle">@aussie.umma</span>
+  <div class="glow" style="width:400px;height:400px;top:30%;left:50%;transform:translate(-50%,-50%);opacity:0.05;"></div>
+  <div class="ci">
+    <div class="tl">전 세계 아동 알레르기 1위</div>
+    <div class="stat-val">10명 중 1명</div>
+    <div class="stat-label">호주 아동 음식 알레르기 유병률</div>
+    <div class="stat-desc">한국 대비 2배 이상 높은 수치.<br>미국 6~8%, 유럽 5~7%보다 훨씬 높아요.</div>
+    <div class="stat-source en">Monash University Centre for Food &amp; Allergy Research, 2023</div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     Card 3: BODY — Insight (10 allergens chips)
+════════════════════════════════════════════ -->
+<section class="card">
+  <span class="handle">@aussie.umma</span>
+  <div class="ci"><div class="center-block">
+    <div class="tl en">FSANZ Priority Allergens</div>
+    <div class="td md" style="margin-bottom:12px">가장 흔한<br>유발 식품 <span class="ta">10가지</span></div>
+    <p class="tb" style="margin-bottom:8px">가공식품 라벨 뒷면의 <strong>bold 표시</strong>를 항상 확인하세요.</p>
+    <div class="chips">
+      <div class="chip"><span class="cd"></span>땅콩</div>
+      <div class="chip"><span class="cd"></span>나무견과류</div>
+      <div class="chip"><span class="cd"></span>달걀</div>
+      <div class="chip"><span class="cd"></span>우유</div>
+      <div class="chip"><span class="cd"></span>참깨</div>
+      <div class="chip"><span class="cd"></span>대두</div>
+      <div class="chip"><span class="cd"></span>밀</div>
+      <div class="chip"><span class="cd"></span>생선</div>
+      <div class="chip"><span class="cd"></span>갑각류</div>
+      <div class="chip"><span class="cd"></span>연체류</div>
+    </div>
+    <div class="takeaway">2002년 이후 모든 가공식품에 의무 표시</div>
+  </div></div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     Card 4: BODY — Example/Scenario (GP referral)
+════════════════════════════════════════════ -->
+<section class="card">
+  <span class="handle">@aussie.umma</span>
+  <div class="ci"><div class="center-block">
+    <div class="tl">증상 대처법</div>
+    <div class="td md" style="margin-bottom:20px">입이 붓거나<br><span class="ta">두드러기</span>가 나면</div>
+    <p class="tb" style="margin-bottom:24px">특정 음식 후 입 주변이 붉어지거나, 두드러기, 구토, 호흡곤란 증상이 있다면 바로 GP에게 가세요.</p>
+    <div class="def-box">
+      <div class="def-box-text"><strong>GP referral</strong>이 반드시 필요해요. referral 없이는 전문의 진료 시 Medicare 환급을 받을 수 없어요.</div>
+    </div>
+    <div class="takeaway" style="margin-top:24px">호흡곤란 시 즉시 000에 전화하세요</div>
+  </div></div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     Card 5: BODY — Stat/Numbers (Medicare)
+════════════════════════════════════════════ -->
+<section class="card">
+  <span class="handle">@aussie.umma</span>
+  <div class="ci"><div class="center-block">
+    <div class="tl en">Medicare 환급</div>
+    <div class="td md" style="margin-bottom:20px">전문의 진료비,<br><span class="ta">얼마나</span> 돌려받을까</div>
+    <div class="cmp-row">
+      <div>
+        <div class="cmp-h en">Item 110</div>
+        <div class="cmp-v accent en">$84.80</div>
+        <div class="cmp-sub">짧은 진료 (35분 미만)</div>
+      </div>
+      <div>
+        <div class="cmp-h en">Item 112</div>
+        <div class="cmp-v accent en">$215.20</div>
+        <div class="cmp-sub">긴 진료 (50분 이상)</div>
+      </div>
+    </div>
+    <div class="cmp-row">
+      <div>
+        <div class="cmp-h">혈액 검사 (specific IgE)</div>
+        <div class="cmp-v blue">Medicare 환급 가능</div>
+        <div class="cmp-sub">Pathology item으로 환급</div>
+      </div>
+      <div>
+        <div class="cmp-h">공립 vs 사립</div>
+        <div class="cmp-v">공립 무료 / 사립 gap fee</div>
+        <div class="cmp-sub">공립 대기 6~18개월, 사립 2~6주</div>
+      </div>
+    </div>
+    <p class="tb" style="margin-top:16px">2024-25 MBS 기준. 전문의 청구액에서 Medicare 환급액을 뺀 차액이 gap fee예요.</p>
+  </div></div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     Card 6: BODY — Insight (skin prick test cost)
+════════════════════════════════════════════ -->
+<section class="card">
+  <span class="handle">@aussie.umma</span>
+  <div class="glow-blue" style="width:350px;height:350px;bottom:10%;right:-50px;"></div>
+  <div class="ci"><div class="center-block">
+    <div class="tl">본인 부담 비용</div>
+    <div class="td md" style="margin-bottom:20px">피부 단자 시험은<br><span class="tb-blue">환급이 안 돼요</span></div>
+    <div class="ap">
+      <div class="ap-t">피부 단자 시험 (Skin Prick Test)</div>
+      <div class="ap-d">Medicare 환급 불가. 본인 부담 약 <strong style="color:var(--accent)">100~300달러</strong></div>
+    </div>
+    <div class="ap">
+      <div class="ap-t">혈액 검사 (Specific IgE)</div>
+      <div class="ap-d">Medicare 환급 가능. GP referral 시 pathology item으로 처리</div>
+    </div>
+    <div class="def-box" style="margin-top:24px">
+      <div class="def-box-text">급성 반응 (아나필락시스) 경험이 있으면 <strong>공립 병원 우선 진료 대상</strong>으로 대기 시간이 짧아져요.</div>
+    </div>
+  </div></div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     Card 7: STATEMENT (dark rhythm card)
+════════════════════════════════════════════ -->
+<section class="card dark">
+  <span class="handle">@aussie.umma</span>
+  <div class="glow" style="width:500px;height:500px;top:50%;left:50%;transform:translate(-50%,-50%);opacity:0.04;"></div>
+  <div class="ci">
+    <div class="stmt">알레르기는<br>혼자 감당하는 게<br>아니에요.</div>
+    <hr class="div-a" style="margin:40px auto" />
+    <div class="stmt" style="font-size:44px;font-weight:700;">학교가 <strong>법적으로 관리</strong>해야 할<br>의무가 있어요.</div>
+    <div class="stmt-source">NSW Department of Education<br>아나필락시스 관리 정책 의무화</div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     Card 8: BODY — Steps (ASCIA Action Plan)
+════════════════════════════════════════════ -->
+<section class="card">
+  <span class="handle">@aussie.umma</span>
+  <div class="ci"><div class="center-block">
+    <div class="tl en">ASCIA Action Plan</div>
+    <div class="td md" style="margin-bottom:16px">Action Plan,<br><span class="ta">이렇게</span> 발급받아요</div>
+    <div class="si">
+      <span class="si-n en">01</span>
+      <div class="si-c">
+        <div class="si-t">양식 다운로드</div>
+        <div class="si-d">allergy.org.au에서 무료 다운로드</div>
+      </div>
+    </div>
+    <div class="si">
+      <span class="si-n en">02</span>
+      <div class="si-c">
+        <div class="si-t">의사 서명</div>
+        <div class="si-d">GP 또는 allergist가 작성하고 서명</div>
+      </div>
+    </div>
+    <div class="si">
+      <span class="si-n en">03</span>
+      <div class="si-c">
+        <div class="si-t">학교 제출</div>
+        <div class="si-d">담임, 양호선생님, front office에 각각 비치</div>
+      </div>
+    </div>
+    <div class="def-box" style="margin-top:24px">
+      <div class="def-box-text">의사가 서명해야 <strong>법적 효력</strong>이 있어요. 빈 양식을 직접 작성하면 안 돼요. <strong>1~2년마다 갱신</strong>하세요.</div>
+    </div>
+  </div></div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     Card 9: SHEET (save-bait checklist)
+════════════════════════════════════════════ -->
+<section class="card">
+  <span class="handle">@aussie.umma</span>
+  <div class="ci"><div class="center-block">
+    <div class="sheet">
+      <div class="sheet-tag en">Save This</div>
+      <div class="sheet-title">알레르기 관리 체크리스트</div>
+      <div class="sheet-row"><span class="sheet-row-num en">1</span> GP 방문 후 referral 받기</div>
+      <div class="sheet-row"><span class="sheet-row-num en">2</span> 전문의 (allergist) 진료 및 검사</div>
+      <div class="sheet-row"><span class="sheet-row-num en">3</span> ASCIA Action Plan 발급 (의사 서명)</div>
+      <div class="sheet-row"><span class="sheet-row-num en">4</span> 학교 / 어린이집에 제출</div>
+      <div class="sheet-row"><span class="sheet-row-num en">5</span> EpiPen 구입 (PBS 적용 시 31.60달러)</div>
+      <div class="sheet-row"><span class="sheet-row-num en">6</span> 매년 갱신하기 (아이 성장 반영)</div>
+      <div class="sheet-foot">Health Care Card 소지자는 EpiPen 6.80달러 (PBS 적용)</div>
+    </div>
+  </div></div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     Card 10: CTA
+════════════════════════════════════════════ -->
+<section class="card c10">
+  <span class="handle">@aussie.umma</span>
+  <div class="glow" style="width:400px;height:400px;bottom:-80px;left:50%;transform:translateX(-50%);opacity:0.06;"></div>
+  <div class="ci">
+    <div class="badge badge-a en" style="margin-bottom:32px">Save &amp; Share</div>
+    <div class="td md" style="text-align:center;margin-bottom:20px">
+      우리 아이 알레르기,<br><span class="ta">이 정보면</span> 충분해요
+    </div>
+    <hr class="div-a" style="margin:0 auto 28px" />
+    <p class="tb" style="text-align:center;max-width:80%">같은 고민 하는 엄마들에게 공유해주세요.</p>
+    <div class="cta-btn">저장하기 &rarr;</div>
+    <p class="cta-hint">궁금한 점은 댓글로 남겨주세요</p>
+  </div>
+</section>
+
+</body>
+</html>
