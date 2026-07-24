@@ -30,8 +30,14 @@ try {
   process.exit(0);
 }
 
+// Optional --slug filter: post only this one topic (the date dir may hold
+// several carousels, e.g. a blog carousel sitting next to the deals carousel).
+const slugArgIdx = process.argv.indexOf('--slug');
+const onlySlug = slugArgIdx >= 0 ? process.argv[slugArgIdx + 1] : null;
+if (onlySlug) slugs = slugs.filter((s) => s === onlySlug);
+
 if (slugs.length === 0) {
-  console.log(`No topics found in ${baseDir} — nothing to post.`);
+  console.log(`No topics found in ${baseDir}${onlySlug ? ` matching --slug ${onlySlug}` : ''} — nothing to post.`);
   process.exit(0);
 }
 
@@ -95,8 +101,15 @@ for (const slug of slugs) {
     continue;
   }
 
-  // Step 2: Build caption from the blog post (title + summary), config hashtags.
-  // Prefer the published blog's H1/summary over the brief's raw Topic line.
+  // Step 2: Build the caption.
+  // A carousel/caption.txt (verbatim) wins — used by non-blog carousels like the
+  // deals post, which have no post.md/brief.md and need their own caption + tags.
+  let overrideCaption = null;
+  try {
+    overrideCaption = (await fs.readFile(path.join(baseDir, slug, 'carousel', 'caption.txt'), 'utf8')).trim();
+  } catch {}
+
+  // Otherwise build from the blog post (title + summary) + config hashtags.
   const clean = (s) => s
     .replace(/\*\*(.+?)\*\*/g, '$1')
     .replace(/\s+—\s+/g, ', ')   // em-dash reads as AI-generated in Korean
@@ -122,8 +135,9 @@ for (const slug of slugs) {
     const config = JSON.parse(await fs.readFile('config.json', 'utf8'));
     if (config.content?.hashtags?.instagram) tags = config.content.hashtags.instagram;
   } catch {}
-  const caption = [title, summary, '저장해두고 필요할 때 꺼내보세요. @aussie.umma', tags]
-    .filter(Boolean).join('\n\n');
+  const caption = overrideCaption
+    || [title, summary, '저장해두고 필요할 때 꺼내보세요. @aussie.umma', tags]
+      .filter(Boolean).join('\n\n');
 
   // Step 3: Create carousel container
   const carouselBody = new URLSearchParams({
