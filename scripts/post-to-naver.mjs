@@ -40,6 +40,9 @@ const opt = (name) => {
 const LOGIN = flag('--login');
 const DRAFT = flag('--draft');
 const DRY_RUN = flag('--dry-run');
+// --manual-save: type + style the post, then leave the browser open so the user
+// clicks 저장 themselves. Use when the scripted 저장 click won't land.
+const MANUAL_SAVE = flag('--manual-save');
 const ONLY_SLUG = opt('--slug');
 const date = opt('--date') || new Date().toISOString().slice(0, 10);
 
@@ -649,6 +652,34 @@ async function enableAiUsage(page) {
   console.log(`  AI 활용 설정: on for ${on}/${n} images`);
 }
 
+// Reads the 임시저장 counter next to the top-bar 저장 button. Returns null if
+// the element can't be found (layout change) so callers can tell "unknown"
+// apart from "zero".
+async function draftCount(page) {
+  return page.evaluate(() => {
+    const el = [...document.querySelectorAll('button, a, span, em')].find(
+      (e) => /^\d+$/.test((e.textContent || '').trim())
+        && e.getBoundingClientRect().top < 60
+        && e.getBoundingClientRect().width > 0,
+    );
+    return el ? Number(el.textContent.trim()) : null;
+  }).catch(() => null);
+}
+
+// Reads the draft counter from a FRESH tab, so the value reflects what the
+// server actually stored rather than whatever the editing tab shows locally.
+// Leaves the caller's tab untouched.
+async function verifyDraftCount(ctx, blogId) {
+  const probe = await ctx.newPage();
+  try {
+    await probe.goto(`https://blog.naver.com/${blogId}/postwrite`, { waitUntil: 'domcontentloaded' });
+    await sleep(6000);
+    await probe.locator('.se-popup-button-cancel').first().click({ timeout: 4000 }).catch(() => {});
+    await sleep(1000);
+    return await draftCount(probe);
+  } catch { return null; } finally { await probe.close().catch(() => {}); }
+}
+
 async function postOne(ctx, blogId, slug, { title, body, headings = [], faqQuestions = [], quoteLeads = [], tables = [], images = [] }) {
   const page = await ctx.newPage();
   await page.goto(`https://blog.naver.com/${blogId}/postwrite`, { waitUntil: 'domcontentloaded' });
@@ -676,13 +707,28 @@ async function postOne(ctx, blogId, slug, { title, body, headings = [], faqQuest
   await insertImages(page, images, headings);
   await enableAiUsage(page);
 
+  if (MANUAL_SAVE) {
+    console.log(`\n  [manual] ${slug} — 본문 입력 완료. 브라우저에서 직접 "저장"을 누르세요.`);
+    console.log('  (저장이 끝나면 이 터미널에서 Ctrl+C 로 종료하세요. 창은 닫지 마세요.)\n');
+    return { mode: 'manual', verified: false, keepOpen: true };
+  }
+
   if (DRAFT) {
-    // 저장 (임시저장) button, top bar
+    // 임시저장 is an async XHR. Closing this tab (even seconds later) aborts it
+    // and the draft silently never appears, while the old code still reported
+    // success. So: click, let the network settle, verify from a SEPARATE tab,
+    // and only then close this one.
+    const before = await draftCount(page);
     await page.getByRole('button', { name: /^저장/ }).first().click();
-    await sleep(2000);
-    console.log(`[draft] ${slug} — saved as 임시저장. Publish manually from the editor.`);
-    await page.close();
-    return { mode: 'draft' };
+    await page.waitForLoadState('networkidle', { timeout: 30000 }).catch(() => {});
+    await sleep(3000);
+
+    const after = await verifyDraftCount(ctx, blogId);
+    const ok = before !== null && after !== null && after > before;
+    if (ok) console.log(`  [draft] ${slug} — 임시저장 확인됨 (저장 ${before} → ${after})`);
+    else console.warn(`  [draft] ${slug} — 저장 확인 실패 (저장 ${before} → ${after}). 탭을 열어둡니다.`);
+    if (ok) await page.close(); // only safe to close once the save is confirmed
+    return { mode: 'draft', verified: ok, keepOpen: !ok };
   }
 
   // Open publish layer
@@ -767,8 +813,18 @@ try {
   console.log(`Blog: ${blogId} | mode: ${DRAFT ? 'draft' : 'publish'} | ${todo.length} post(s)`);
   for (const t of todo) {
     const res = await postOne(ctx, blogId, t.slug, t);
-    posted.push({ slug: t.slug, date: new Date().toISOString(), ...res });
-    await fs.writeFile(logPath, JSON.stringify(posted, null, 2));
+    // don't log an unverified draft — otherwise the next run skips it as
+    // "already posted" and the topic silently never gets saved
+    if (res.keepOpen) {
+      // hold the process (and the browser) open until the user Ctrl+C's
+      await new Promise(() => {});
+    }
+    if (res.mode === 'draft' && res.verified === false) {
+      console.warn(`  (not logged — re-run to retry ${t.slug})`);
+    } else {
+      posted.push({ slug: t.slug, date: new Date().toISOString(), ...res });
+      await fs.writeFile(logPath, JSON.stringify(posted, null, 2));
+    }
     if (todo.length > 1) await sleep(jitter(30000, 60000)); // space out posts
   }
 } finally {
