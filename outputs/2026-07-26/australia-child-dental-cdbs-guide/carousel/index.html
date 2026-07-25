@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>호주 아이 치과 0달러로 다니는 법 (CDBS) | AUSSIE UMMA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Space+Grotesk:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ── DESIGN TOKENS ── */
+    :root {
+      --bg: #030303;
+      --card-bg: #080808;
+      --card-bg-grad: radial-gradient(circle at 50% 50%, #111 0%, #080808 70%);
+      --elevated: #0e0e0e;
+      --ink: #ffffff;
+      --ink2: #cccccc;
+      --ink3: #888888;
+      --ink4: #333333;
+      --accent: #C6F135;
+      --accent-dim: rgba(198, 241, 53, 0.12);
+      --accent-glow: rgba(198, 241, 53, 0.08);
+      --blue: #3B82F6;
+      --blue-dim: rgba(59, 130, 246, 0.12);
+      --red: #ff4d4d;
+      --border: rgba(255, 255, 255, 0.07);
+      --font-kr: "AppleSDGothicNeo", "Noto Sans KR", sans-serif;
+      --font-en: "Space Grotesk", sans-serif;
+      --font-display: "Space Grotesk", "AppleSDGothicNeo", "Noto Sans KR", sans-serif;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--bg);
+      font-family: var(--font-kr);
+      color: var(--ink);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      padding: 60px 20px 100px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── CARD BASE ── */
+    .card {
+      width: 1080px;
+      height: 1350px;
+      background: var(--card-bg);
+      background-image: var(--card-bg-grad);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      font-family: var(--font-kr);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Noise texture overlay */
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 50;
+      opacity: 0.04;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 180px 180px;
+    }
+
+    /* Card inner content area */
+    .ci {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 90px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ── BRAND HANDLE (top-right, every card) ── */
+    .handle {
+      position: absolute;
+      top: 68px;
+      right: 90px;
+      font-family: var(--font-en);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--ink);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      z-index: 10;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .handle::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 10px var(--accent);
+    }
+
+    /* ── SHARED COMPONENTS ── */
+    .center-block {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .td {
+      font-family: var(--font-display);
+      font-weight: 900;
+      line-height: 1.08;
+      letter-spacing: -2px;
+      word-break: keep-all;
+    }
+    .td.xl { font-size: 108px; }
+    .td.lg { font-size: 92px; }
+    .td.md { font-size: 80px; }
+    .td.sm { font-size: 64px; }
+
+    .tb {
+      font-size: 30px;
+      font-weight: 400;
+      color: var(--ink2);
+      line-height: 1.65;
+      word-break: keep-all;
+    }
+    .tb strong { font-weight: 700; color: var(--ink); }
+
+    .tl {
+      font-family: var(--font-en);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      color: var(--ink3);
+      margin-bottom: 32px;
+    }
+
+    .ta { color: var(--accent); }
+    .tb-blue { color: var(--blue); }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 12px 28px;
+      border-radius: 100px;
+      font-size: 17px;
+      font-weight: 800;
+      width: fit-content;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    .badge-a { background: var(--accent); color: #000; }
+    .badge-outline {
+      background: transparent;
+      border: 1px solid rgba(198, 241, 53, 0.3);
+      color: var(--accent);
+    }
+
+    .div-a {
+      width: 56px;
+      height: 5px;
+      background: var(--accent);
+      border-radius: 2px;
+      border: none;
+      margin: 32px 0;
+    }
+
+    .glow {
+      position: absolute;
+      border-radius: 50%;
+      background: var(--accent);
+      filter: blur(160px);
+      opacity: 0.08;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .glow-blue {
+      position: absolute;
+      border-radius: 50%;
+      background: var(--blue);
+      filter: blur(160px);
+      opacity: 0.06;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .en { font-family: var(--font-en); }
+
+    /* ── COVER ── */
+    .c1 .ci {
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    .cover-bg-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: var(--font-en);
+      font-size: 680px;
+      font-weight: 700;
+      color: var(--accent);
+      opacity: 0.04;
+      line-height: 1;
+      pointer-events: none;
+      z-index: 1;
+      letter-spacing: -30px;
+    }
+    .cover-bg-text::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, transparent 15%, var(--card-bg) 80%);
+    }
+    .c1 .cover-sub {
+      margin-bottom: 48px;
+      max-width: 85%;
+      font-size: 34px;
+      font-weight: 500;
+      color: var(--ink2);
+    }
+    .c1 .cover-cta {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    /* ── HOOK (hero stat) ── */
+    .c2 .ci {
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    .stat-val {
+      font-family: var(--font-display);
+      font-size: 200px;
+      font-weight: 900;
+      color: var(--accent);
+      line-height: 1;
+      text-align: center;
+      letter-spacing: -8px;
+    }
+    .stat-label {
+      font-size: 38px;
+      font-weight: 800;
+      color: var(--ink);
+      text-align: center;
+      margin-top: 24px;
+      word-break: keep-all;
+    }
+    .stat-desc {
+      font-size: 26px;
+      color: var(--ink2);
+      text-align: center;
+      margin-top: 20px;
+      max-width: 85%;
+      line-height: 1.55;
+    }
+    .stat-source {
+      font-size: 18px;
+      color: var(--ink3);
+      text-align: center;
+      margin-top: 32px;
+      font-family: var(--font-en);
+      letter-spacing: 1px;
+    }
+
+    /* ── CHIPS ── */
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin: 32px 0;
+    }
+    .chip {
+      padding: 14px 28px;
+      border-radius: 14px;
+      font-size: 22px;
+      font-weight: 600;
+      background: var(--elevated);
+      border: 1px solid var(--border);
+      color: var(--ink);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .chip .cd {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    /* ── DEFINITION BOX ── */
+    .def-hl {
+      background: var(--accent);
+      color: #000;
+      padding: 2px 14px;
+      border-radius: 6px;
+      display: inline-block;
+      font-weight: 800;
+    }
+    .def-box {
+      margin-top: 40px;
+      padding: 40px 48px;
+      border-radius: 24px;
+      background: var(--elevated);
+      border: 1px solid var(--border);
+    }
+    .def-box-text {
+      font-size: 28px;
+      color: var(--ink);
+      line-height: 1.6;
+    }
+    .def-box-text strong {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    /* ── COMPARISON ROWS ── */
+    .cmp-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      padding: 32px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .cmp-row:last-child { border-bottom: none; }
+    .cmp-h {
+      font-family: var(--font-en);
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--ink3);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 14px;
+    }
+    .cmp-v {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.3;
+    }
+    .cmp-v.accent { color: var(--accent); }
+    .cmp-v.blue { color: var(--blue); }
+    .cmp-sub {
+      font-size: 20px;
+      color: var(--ink3);
+      margin-top: 8px;
+      line-height: 1.5;
+    }
+
+    /* ── APPROACH PANELS (for insight cards) ── */
+    .ap {
+      padding: 36px 44px;
+      border-radius: 28px;
+      background: var(--elevated);
+      border: 1px solid var(--border);
+      margin-bottom: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    .ap::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 15%;
+      bottom: 15%;
+      width: 5px;
+      background: var(--ink4);
+      border-radius: 0 5px 5px 0;
+    }
+    .ap:nth-child(1)::before { background: var(--accent); }
+    .ap:nth-child(2)::before { background: var(--blue); }
+    .ap-t {
+      font-size: 30px;
+      font-weight: 800;
+      margin-bottom: 12px;
+      color: var(--ink);
+    }
+    .ap-d {
+      font-size: 24px;
+      color: var(--ink2);
+      line-height: 1.55;
+    }
+
+    /* ── DARK STATEMENT CARD ── */
+    .card.dark {
+      background: #0a0a0a;
+      background-image: none;
+    }
+    .card.dark .stmt {
+      font-size: 58px;
+      font-weight: 800;
+      line-height: 1.35;
+      text-align: center;
+      color: var(--ink);
+      max-width: 92%;
+      margin: 0 auto;
+      word-break: keep-all;
+    }
+    .card.dark .stmt strong {
+      color: var(--accent);
+      font-weight: 900;
+    }
+    .card.dark .stmt-source {
+      font-size: 22px;
+      color: var(--ink3);
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    /* ── STEPS ── */
+    .si {
+      display: flex;
+      gap: 32px;
+      padding: 28px 0;
+      align-items: flex-start;
+    }
+    .si-n {
+      font-family: var(--font-en);
+      font-size: 60px;
+      font-weight: 800;
+      color: var(--accent);
+      opacity: 0.3;
+      line-height: 1;
+      min-width: 80px;
+    }
+    .si-c { flex: 1; }
+    .si-t {
+      font-size: 32px;
+      font-weight: 800;
+      margin-bottom: 10px;
+      color: var(--ink);
+    }
+    .si-d {
+      font-size: 24px;
+      color: var(--ink2);
+      line-height: 1.55;
+    }
+
+    /* ── SHEET (save-bait) ── */
+    .sheet {
+      margin-top: 20px;
+      border-radius: 28px;
+      background: var(--card-bg);
+      border: 2px solid var(--accent);
+      padding: 44px 48px;
+      position: relative;
+    }
+    .sheet-tag {
+      position: absolute;
+      top: -18px;
+      left: 44px;
+      background: var(--accent);
+      color: #000;
+      font-family: var(--font-en);
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 8px 20px;
+      border-radius: 100px;
+    }
+    .sheet-title {
+      font-size: 36px;
+      font-weight: 900;
+      color: var(--ink);
+      margin-bottom: 24px;
+    }
+    .sheet-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 26px;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.5;
+    }
+    .sheet-row:last-child { border-bottom: none; }
+    .sheet-row::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      min-width: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+      margin-top: 10px;
+    }
+    .sheet-row-num {
+      font-family: var(--font-en);
+      font-weight: 800;
+      color: var(--accent);
+      min-width: 32px;
+    }
+    .sheet-foot {
+      margin-top: 24px;
+      font-size: 20px;
+      color: var(--ink3);
+      text-align: center;
+    }
+
+    /* ── CTA ── */
+    .c10 .ci {
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      padding: 28px 72px;
+      border-radius: 100px;
+      background: var(--accent);
+      color: #000;
+      font-size: 28px;
+      font-weight: 900;
+      margin-top: 56px;
+      letter-spacing: 1px;
+    }
+    .cta-hint {
+      margin-top: 40px;
+      font-size: 22px;
+      color: var(--ink3);
+    }
+
+    /* ── TAKEAWAY BOX ── */
+    .takeaway {
+      margin-top: 32px;
+      padding: 28px 40px;
+      border-radius: 20px;
+      background: var(--accent-dim);
+      text-align: center;
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--accent);
+      border: 1px solid rgba(198, 241, 53, 0.15);
+    }
+
+    /* ── QUOTE LINE (English phrase to say on the phone) ── */
+    .quote-line {
+      margin-top: 36px;
+      padding: 40px 48px;
+      border-radius: 24px;
+      background: var(--elevated);
+      border: 1px solid rgba(198, 241, 53, 0.25);
+      font-family: var(--font-en);
+      font-size: 34px;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1.45;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     Card 1: COVER
+════════════════════════════════════════════ -->
+<section class="card c1">
+  <span class="handle">@aussie.umma</span>
+  <div class="glow" style="width:500px;height:500px;top:50%;left:50%;transform:translate(-50%,-50%);opacity:0.06;"></div>
+  <div class="cover-bg-text">$</div>
+  <div class="ci">
+    <div class="badge badge-outline en" style="margin-bottom:40px">호주 육아 가이드</div>
+    <div style="margin-bottom:20px">
+      <div class="td lg">호주 아이 치과<br><span class="ta">0달러</span>로 다니는 법</div>
+    </div>
+    <hr class="div-a" style="margin:0 auto 28px" />
+    <div class="cover-sub tb">2026년 CDBS 지원금 1,158달러 쓰는 법</div>
+    <div class="cover-cta en">Swipe <span>&rarr;</span></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     Card 2: HOOK (hero stat)
+════════════════════════════════════════════ -->
+<section class="card c2">
+  <span class="handle">@aussie.umma</span>
+  <div class="glow" style="width:400px;height:400px;top:30%;left:50%;transform:translate(-50%,-50%);opacity:0.05;"></div>
+  <div class="ci">
+    <div class="tl">호주치과협회 조사</div>
+    <div class="stat-val">36%</div>
+    <div class="stat-label">지원 대상 아이 중 실제로 쓰는 비율</div>
+    <div class="stat-desc">약 159만 명이 무료 치과 혜택을 그냥 넘겨요.<br>대상인 걸 아는 부모는 29%뿐이에요.</div>
+    <div class="stat-source en">Australian Dental Association, 2025.08</div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     Card 3: BODY: Insight (what CDBS is + hero number)
+════════════════════════════════════════════ -->
+<section class="card">
+  <span class="handle">@aussie.umma</span>
+  <div class="ci"><div class="center-block">
+    <div class="tl en">Child Dental Benefits Schedule</div>
+    <div class="td md" style="margin-bottom:20px">아이 한 명당<br><span class="ta">1,158달러</span></div>
+    <p class="tb">Medicare가 아이 기본 치과비를 대주는 제도예요. 2026년 기준으로, 연속된 2년 동안 나눠서 쓸 수 있어요.</p>
+    <div class="def-box">
+      <div class="def-box-text">한도는 <strong>첫 진료를 받은 해</strong>의 금액으로 고정돼요. 2025년에 시작했으면 2년치가 1,132달러예요.</div>
+    </div>
+    <div class="takeaway">검진 한 번이 아니라 2년짜리 한도예요</div>
+  </div></div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     Card 4: BODY: Insight (3 eligibility conditions)
+════════════════════════════════════════════ -->
+<section class="card">
+  <span class="handle">@aussie.umma</span>
+  <div class="ci"><div class="center-block">
+    <div class="tl">대상 조건</div>
+    <div class="td md" style="margin-bottom:24px">세 가지를<br><span class="ta">매년</span> 다 맞춰야 해요</div>
+    <div class="ap">
+      <div class="ap-t">나이</div>
+      <div class="ap-d">그 해에 하루라도 만 0세에서 17세 사이</div>
+    </div>
+    <div class="ap">
+      <div class="ap-t">Medicare</div>
+      <div class="ap-d">진료받는 날에 Medicare 자격 보유</div>
+    </div>
+    <div class="ap">
+      <div class="ap-t">정부 지원금</div>
+      <div class="ap-d">가족이 그 해 한 번이라도 Family Tax Benefit Part A, Parenting Payment 같은 지원금 수급</div>
+    </div>
+    <p class="tb" style="margin-top:12px">Services Australia가 매년 자동으로 판정해요. 따로 신청하지 않아요.</p>
+  </div></div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     Card 5: BODY: Example (covered vs not covered)
+════════════════════════════════════════════ -->
+<section class="card">
+  <span class="handle">@aussie.umma</span>
+  <div class="glow-blue" style="width:350px;height:350px;bottom:10%;right:-50px;"></div>
+  <div class="ci"><div class="center-block">
+    <div class="tl">커버 범위</div>
+    <div class="td md" style="margin-bottom:16px">되는 것과<br><span class="ta">안 되는 것</span></div>
+    <div class="cmp-row">
+      <div>
+        <div class="cmp-h">커버 O</div>
+        <div class="cmp-v accent">검진 · 엑스레이<br>스케일링 · 실런트</div>
+        <div class="cmp-sub">6개월마다 검진하면 2년에 4회</div>
+      </div>
+      <div>
+        <div class="cmp-h">커버 O</div>
+        <div class="cmp-v accent">충치 치료 · 신경치료<br>발치 · 부분 틀니</div>
+        <div class="cmp-sub">큰 치료가 예상되면 잔액을 남겨두세요</div>
+      </div>
+    </div>
+    <div class="cmp-row">
+      <div>
+        <div class="cmp-h">커버 X</div>
+        <div class="cmp-v blue">치아 교정 · 미용 시술<br>입원 치과 진료</div>
+        <div class="cmp-sub">교정은 사보험 extras를 알아봐야 해요</div>
+      </div>
+      <div>
+        <div class="cmp-h">참고 시세</div>
+        <div class="cmp-v">검진 + 스케일링<br>평균 219달러</div>
+        <div class="cmp-sub">범위 162~309달러, 호주치과협회 수가 조사</div>
+      </div>
+    </div>
+    <p class="tb" style="margin-top:16px">1,158달러면 검진 4회에서 5회분이에요.</p>
+  </div></div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     Card 6: BODY: Steps (how to check the balance)
+════════════════════════════════════════════ -->
+<section class="card">
+  <span class="handle">@aussie.umma</span>
+  <div class="ci"><div class="center-block">
+    <div class="tl en">myGov</div>
+    <div class="td md" style="margin-bottom:16px">잔액 확인은<br><span class="ta">3단계</span>면 끝나요</div>
+    <div class="si">
+      <span class="si-n en">01</span>
+      <div class="si-c">
+        <div class="si-t">myGov 로그인</div>
+        <div class="si-d">Medicare 온라인 계정이 연결돼 있어야 해요</div>
+      </div>
+    </div>
+    <div class="si">
+      <span class="si-n en">02</span>
+      <div class="si-c">
+        <div class="si-t">History and statements</div>
+        <div class="si-d">이용 내역 메뉴로 들어가기</div>
+      </div>
+    </div>
+    <div class="si">
+      <span class="si-n en">03</span>
+      <div class="si-c">
+        <div class="si-t">Child Dental Benefits Schedule</div>
+        <div class="si-d">자격 여부와 남은 잔액까지 바로 보여요</div>
+      </div>
+    </div>
+    <div class="def-box" style="margin-top:20px">
+      <div class="def-box-text">전화로는 <strong>132 011</strong>. 치과에 아이 Medicare 번호를 주면 그 자리에서 조회해주기도 해요.</div>
+    </div>
+  </div></div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     Card 7: STATEMENT (dark rhythm card)
+════════════════════════════════════════════ -->
+<section class="card dark">
+  <span class="handle">@aussie.umma</span>
+  <div class="glow" style="width:500px;height:500px;top:50%;left:50%;transform:translate(-50%,-50%);opacity:0.04;"></div>
+  <div class="ci">
+    <div class="stmt">신청하는 제도가<br>아니에요.</div>
+    <hr class="div-a" style="margin:40px auto" />
+    <div class="stmt" style="font-size:44px;font-weight:700;">이미 <strong>대상인데</strong><br>안내 편지를 못 본 것뿐이에요.</div>
+    <div class="stmt-source">대상이라는 걸 아는 부모 29퍼센트<br>호주치과협회 2025년 8월 발표</div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     Card 8: BODY: Example (one sentence to say on the phone)
+════════════════════════════════════════════ -->
+<section class="card">
+  <span class="handle">@aussie.umma</span>
+  <div class="ci"><div class="center-block">
+    <div class="tl">예약 전화</div>
+    <div class="td md" style="margin-bottom:8px">이 한마디면<br>자기부담금 <span class="ta">0달러</span></div>
+    <div class="quote-line">Do you bulk bill under the<br>Child Dental Benefits Schedule?</div>
+    <p class="tb" style="margin-top:28px">예스라고 하면 CDBS로 직접 청구해줘요. CDBS 수가보다 더 받는 치과도 있어서, 차액이 생기는지 먼저 물어보면 안전해요.</p>
+    <div class="takeaway" style="margin-top:24px">치료 항목 번호가 들어간 견적을 받아두세요</div>
+  </div></div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     Card 9: SHEET (save-bait reference)
+════════════════════════════════════════════ -->
+<section class="card">
+  <span class="handle">@aussie.umma</span>
+  <div class="ci"><div class="center-block">
+    <div class="sheet">
+      <div class="sheet-tag en">Save This</div>
+      <div class="sheet-title">호주 아이 치과 저장용 정리</div>
+      <div class="sheet-row"><span class="sheet-row-num en">1</span> 2026년 한도 1,158달러, 2년간 (첫 진료 연도 기준 고정)</div>
+      <div class="sheet-row"><span class="sheet-row-num en">2</span> 대상 조건 3가지를 매년 다 충족해야 해요</div>
+      <div class="sheet-row"><span class="sheet-row-num en">3</span> 커버 O 검진, 엑스레이, 스케일링, 실런트, 필링, 신경치료, 발치</div>
+      <div class="sheet-row"><span class="sheet-row-num en">4</span> 커버 X 교정, 미용 시술, 입원 치과 진료</div>
+      <div class="sheet-row"><span class="sheet-row-num en">5</span> 잔액 확인 myGov Medicare 또는 132 011</div>
+      <div class="sheet-row"><span class="sheet-row-num en">6</span> 대상이 아니거나 한도를 다 썼으면 NSW 18세 미만 공공 치과 무료, 예약 1800 679 336</div>
+      <div class="sheet-row"><span class="sheet-row-num en">7</span> 학교 이동 치과는 동의서를 학교로 보내야 진료받아요</div>
+      <div class="sheet-foot">2026년 기준. Services Australia, NSW Health 안내 기준</div>
+    </div>
+  </div></div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     Card 10: CTA
+════════════════════════════════════════════ -->
+<section class="card c10">
+  <span class="handle">@aussie.umma</span>
+  <div class="glow" style="width:400px;height:400px;bottom:-80px;left:50%;transform:translateX(-50%);opacity:0.06;"></div>
+  <div class="ci">
+    <div class="badge badge-a en" style="margin-bottom:32px">Save &amp; Share</div>
+    <div class="td md" style="text-align:center;margin-bottom:20px">
+      오늘 잔액만<br><span class="ta">확인해보세요</span>
+    </div>
+    <hr class="div-a" style="margin:0 auto 28px" />
+    <p class="tb" style="text-align:center;max-width:80%">같은 고민 하는 엄마들에게 공유해주세요.</p>
+    <div class="cta-btn">저장하기 &rarr;</div>
+    <p class="cta-hint">궁금한 점은 댓글로 남겨주세요</p>
+  </div>
+</section>
+
+</body>
+</html>
