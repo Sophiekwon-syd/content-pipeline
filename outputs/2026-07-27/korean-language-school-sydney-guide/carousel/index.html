@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>시드니 한글학교 어디로 보내야 할까 | AUSSIE UMMA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Space+Grotesk:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ── DESIGN TOKENS ── */
+    :root {
+      --bg: #030303;
+      --card-bg: #080808;
+      --card-bg-grad: radial-gradient(circle at 50% 50%, #111 0%, #080808 70%);
+      --elevated: #0e0e0e;
+      --ink: #ffffff;
+      --ink2: #cccccc;
+      --ink3: #888888;
+      --ink4: #333333;
+      --accent: #C6F135;
+      --accent-dim: rgba(198, 241, 53, 0.12);
+      --accent-glow: rgba(198, 241, 53, 0.08);
+      --blue: #3B82F6;
+      --blue-dim: rgba(59, 130, 246, 0.12);
+      --border: rgba(255, 255, 255, 0.07);
+      --font-kr: "AppleSDGothicNeo", "Noto Sans KR", sans-serif;
+      --font-en: "Space Grotesk", sans-serif;
+      --font-display: "Space Grotesk", "AppleSDGothicNeo", "Noto Sans KR", sans-serif;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--bg);
+      font-family: var(--font-kr);
+      color: var(--ink);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      padding: 60px 20px 100px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── CARD BASE ── */
+    .card {
+      width: 1080px;
+      height: 1350px;
+      background: var(--card-bg);
+      background-image: var(--card-bg-grad);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      font-family: var(--font-kr);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Noise texture overlay */
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 50;
+      opacity: 0.04;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 180px 180px;
+    }
+
+    /* Card inner content area */
+    .ci {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 90px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ── BRAND HANDLE (top-right, every card) ── */
+    .handle {
+      position: absolute;
+      top: 68px;
+      right: 90px;
+      font-family: var(--font-en);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--ink);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      z-index: 10;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .handle::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 10px var(--accent);
+    }
+
+    /* ── SHARED COMPONENTS ── */
+    .center-block {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .td {
+      font-family: var(--font-display);
+      font-weight: 900;
+      line-height: 1.08;
+      letter-spacing: -2px;
+      word-break: keep-all;
+    }
+    .td.xl { font-size: 108px; }
+    .td.lg { font-size: 92px; }
+    .td.md { font-size: 80px; }
+    .td.sm { font-size: 64px; }
+
+    .tb {
+      font-size: 30px;
+      font-weight: 400;
+      color: var(--ink2);
+      line-height: 1.65;
+      word-break: keep-all;
+    }
+    .tb strong { font-weight: 700; color: var(--ink); }
+
+    .tl {
+      font-family: var(--font-en);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      color: var(--ink3);
+      margin-bottom: 32px;
+    }
+
+    .ta { color: var(--accent); }
+    .tb-blue { color: var(--blue); }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 12px 28px;
+      border-radius: 100px;
+      font-size: 17px;
+      font-weight: 800;
+      width: fit-content;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    .badge-a { background: var(--accent); color: #000; }
+    .badge-outline {
+      background: transparent;
+      border: 1px solid rgba(198, 241, 53, 0.3);
+      color: var(--accent);
+    }
+
+    .div-a {
+      width: 56px;
+      height: 5px;
+      background: var(--accent);
+      border-radius: 2px;
+      border: none;
+      margin: 32px 0;
+    }
+
+    .glow {
+      position: absolute;
+      border-radius: 50%;
+      background: var(--accent);
+      filter: blur(160px);
+      opacity: 0.08;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .glow-blue {
+      position: absolute;
+      border-radius: 50%;
+      background: var(--blue);
+      filter: blur(160px);
+      opacity: 0.06;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .en { font-family: var(--font-en); }
+
+    /* ── COVER ── */
+    .c1 .ci {
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    .cover-bg-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: var(--font-en);
+      font-size: 620px;
+      font-weight: 700;
+      color: var(--accent);
+      opacity: 0.04;
+      line-height: 1;
+      pointer-events: none;
+      z-index: 1;
+      letter-spacing: -30px;
+    }
+    .cover-bg-text::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, transparent 15%, var(--card-bg) 80%);
+    }
+    .c1 .cover-sub {
+      margin-bottom: 48px;
+      max-width: 85%;
+      font-size: 34px;
+      font-weight: 500;
+      color: var(--ink2);
+    }
+    .c1 .cover-cta {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    /* ── HOOK (hero stat) ── */
+    .c2 .ci {
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    .stat-val {
+      font-family: var(--font-display);
+      font-size: 200px;
+      font-weight: 900;
+      color: var(--accent);
+      line-height: 1;
+      text-align: center;
+      letter-spacing: -8px;
+    }
+    .stat-label {
+      font-size: 38px;
+      font-weight: 800;
+      color: var(--ink);
+      text-align: center;
+      margin-top: 24px;
+      word-break: keep-all;
+    }
+    .stat-desc {
+      font-size: 26px;
+      color: var(--ink2);
+      text-align: center;
+      margin-top: 20px;
+      max-width: 85%;
+      line-height: 1.55;
+    }
+    .stat-source {
+      font-size: 18px;
+      color: var(--ink3);
+      text-align: center;
+      margin-top: 32px;
+      font-family: var(--font-en);
+      letter-spacing: 1px;
+    }
+    .stat-split {
+      display: flex;
+      gap: 24px;
+      margin-top: 40px;
+      width: 100%;
+      justify-content: center;
+    }
+    .stat-split-i {
+      flex: 1;
+      max-width: 300px;
+      padding: 26px 20px;
+      border-radius: 20px;
+      background: var(--elevated);
+      border: 1px solid var(--border);
+    }
+    .stat-split-n {
+      font-family: var(--font-en);
+      font-size: 52px;
+      font-weight: 800;
+      line-height: 1;
+      color: var(--ink);
+    }
+    .stat-split-l {
+      font-size: 20px;
+      color: var(--ink3);
+      margin-top: 12px;
+    }
+
+    /* ── CHIPS ── */
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin: 32px 0 8px;
+    }
+    .chip {
+      padding: 14px 26px;
+      border-radius: 14px;
+      font-size: 24px;
+      font-weight: 600;
+      background: var(--elevated);
+      border: 1px solid var(--border);
+      color: var(--ink);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .chip .cd {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    /* ── DEFINITION BOX ── */
+    .def-box {
+      margin-top: 36px;
+      padding: 36px 44px;
+      border-radius: 24px;
+      background: var(--elevated);
+      border: 1px solid var(--border);
+    }
+    .def-box-text {
+      font-size: 27px;
+      color: var(--ink);
+      line-height: 1.6;
+    }
+    .def-box-text strong {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    /* ── COMPARISON ROWS ── */
+    .cmp-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      padding: 30px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .cmp-row:last-child { border-bottom: none; }
+    .cmp-h {
+      font-family: var(--font-en);
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--ink3);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 14px;
+    }
+    .cmp-v {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.3;
+    }
+    .cmp-v.accent { color: var(--accent); }
+    .cmp-v.blue { color: var(--blue); }
+    .cmp-sub {
+      font-size: 20px;
+      color: var(--ink3);
+      margin-top: 8px;
+      line-height: 1.5;
+    }
+
+    /* ── APPROACH PANELS ── */
+    .ap {
+      padding: 32px 44px;
+      border-radius: 28px;
+      background: var(--elevated);
+      border: 1px solid var(--border);
+      margin-bottom: 18px;
+      position: relative;
+      overflow: hidden;
+    }
+    .ap::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 15%;
+      bottom: 15%;
+      width: 5px;
+      background: var(--ink4);
+      border-radius: 0 5px 5px 0;
+    }
+    .ap-a::before { background: var(--accent); }
+    .ap-b::before { background: var(--blue); }
+    .ap-c::before { background: var(--ink3); }
+    .ap-t {
+      font-size: 30px;
+      font-weight: 800;
+      margin-bottom: 12px;
+      color: var(--ink);
+    }
+    .ap-d {
+      font-size: 24px;
+      color: var(--ink2);
+      line-height: 1.55;
+      word-break: keep-all;
+    }
+
+    /* ── DARK STATEMENT CARD ── */
+    .card.dark {
+      background: #0a0a0a;
+      background-image: none;
+    }
+    .card.dark .stmt {
+      font-size: 58px;
+      font-weight: 800;
+      line-height: 1.35;
+      text-align: center;
+      color: var(--ink);
+      max-width: 92%;
+      margin: 0 auto;
+      word-break: keep-all;
+    }
+    .card.dark .stmt strong {
+      color: var(--accent);
+      font-weight: 900;
+    }
+    .card.dark .stmt-source {
+      font-size: 22px;
+      color: var(--ink3);
+      text-align: center;
+      margin-top: 40px;
+      line-height: 1.55;
+    }
+
+    /* ── STEPS ── */
+    .si {
+      display: flex;
+      gap: 32px;
+      padding: 26px 0;
+      align-items: flex-start;
+    }
+    .si-n {
+      font-family: var(--font-en);
+      font-size: 60px;
+      font-weight: 800;
+      color: var(--accent);
+      opacity: 0.3;
+      line-height: 1;
+      min-width: 80px;
+    }
+    .si-c { flex: 1; }
+    .si-t {
+      font-size: 32px;
+      font-weight: 800;
+      margin-bottom: 10px;
+      color: var(--ink);
+    }
+    .si-d {
+      font-size: 24px;
+      color: var(--ink2);
+      line-height: 1.55;
+      word-break: keep-all;
+    }
+
+    /* ── SHEET (save-bait) ── */
+    .sheet {
+      margin-top: 20px;
+      border-radius: 28px;
+      background: var(--card-bg);
+      border: 2px solid var(--accent);
+      padding: 44px 48px;
+      position: relative;
+    }
+    .sheet-tag {
+      position: absolute;
+      top: -18px;
+      left: 44px;
+      background: var(--accent);
+      color: #000;
+      font-family: var(--font-en);
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 8px 20px;
+      border-radius: 100px;
+    }
+    .sheet-title {
+      font-size: 36px;
+      font-weight: 900;
+      color: var(--ink);
+      margin-bottom: 24px;
+    }
+    .sheet-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 26px;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.5;
+      word-break: keep-all;
+    }
+    .sheet-row:last-of-type { border-bottom: none; }
+    .sheet-row-num {
+      font-family: var(--font-en);
+      font-weight: 800;
+      color: var(--accent);
+      min-width: 32px;
+    }
+    .sheet-foot {
+      margin-top: 24px;
+      font-size: 20px;
+      color: var(--ink3);
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    /* ── CTA ── */
+    .c10 .ci {
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      padding: 28px 72px;
+      border-radius: 100px;
+      background: var(--accent);
+      color: #000;
+      font-size: 28px;
+      font-weight: 900;
+      margin-top: 56px;
+      letter-spacing: 1px;
+    }
+    .cta-hint {
+      margin-top: 40px;
+      font-size: 22px;
+      color: var(--ink3);
+    }
+
+    /* ── TAKEAWAY BOX ── */
+    .takeaway {
+      margin-top: 30px;
+      padding: 26px 40px;
+      border-radius: 20px;
+      background: var(--accent-dim);
+      text-align: center;
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--accent);
+      border: 1px solid rgba(198, 241, 53, 0.15);
+      word-break: keep-all;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     Card 1: COVER
+════════════════════════════════════════════ -->
+<section class="card c1">
+  <span class="handle">@aussie.umma</span>
+  <div class="glow" style="width:500px;height:500px;top:50%;left:50%;transform:translate(-50%,-50%);opacity:0.06;"></div>
+  <div class="cover-bg-text en">KR</div>
+  <div class="ci">
+    <div class="badge badge-outline en" style="margin-bottom:40px">호주 육아 가이드</div>
+    <div style="margin-bottom:20px">
+      <div class="td lg">시드니 한글학교<br><span class="ta">어디로</span> 보내야 할까</div>
+    </div>
+    <hr class="div-a" style="margin:0 auto 28px" />
+    <div class="cover-sub tb">선택지 세 갈래와 학비, 2026년 기준으로 정리했어요</div>
+    <div class="cover-cta en">Swipe <span>&rarr;</span></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     Card 2: HOOK (hero stat)
+════════════════════════════════════════════ -->
+<section class="card c2">
+  <span class="handle">@aussie.umma</span>
+  <div class="glow" style="width:400px;height:400px;top:30%;left:50%;transform:translate(-50%,-50%);opacity:0.05;"></div>
+  <div class="ci">
+    <div class="tl">2021 호주 인구조사 분석</div>
+    <div class="stat-val">80.8%</div>
+    <div class="stat-label">호주 한인의 한국어 유지율</div>
+    <div class="stat-desc">숫자만 보면 높아 보여요.<br>그런데 세대가 내려갈수록 영어로 넘어가는 비율이 올라가요.</div>
+    <div class="stat-split">
+      <div class="stat-split-i">
+        <div class="stat-split-n">81.5%</div>
+        <div class="stat-split-l">대도시 유지율</div>
+      </div>
+      <div class="stat-split-i">
+        <div class="stat-split-n">58.3%</div>
+        <div class="stat-split-l">지방 유지율</div>
+      </div>
+    </div>
+    <div class="stat-source en">Melbourne Asia Review, 2024.10</div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     Card 3: BODY / insight (three options)
+════════════════════════════════════════════ -->
+<section class="card">
+  <span class="handle">@aussie.umma</span>
+  <div class="ci"><div class="center-block">
+    <div class="tl">선택지 정리</div>
+    <div class="td md" style="margin-bottom:24px">길은 크게<br><span class="ta">세 갈래</span>예요</div>
+    <div class="ap ap-a">
+      <div class="ap-t">주말 한글학교</div>
+      <div class="ap-d">커뮤니티가 운영하고 NSW 정부가 보조금을 줘요. 프리스쿨반부터 받는 곳도 있어요</div>
+    </div>
+    <div class="ap ap-b">
+      <div class="ap-t">토요 언어학교</div>
+      <div class="ap-d">NSW 교육부가 직접 운영해요. 기본 대상은 7학년부터고 성적이 HSC로 이어져요</div>
+    </div>
+    <div class="ap ap-c">
+      <div class="ap-t">공립초 안 커뮤니티 언어 프로그램</div>
+      <div class="ap-d">수업시간 안에서 배워요. 한국어를 여는 학교는 아직 많지 않아요</div>
+    </div>
+  </div></div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     Card 4: BODY / insight (scale + locations)
+════════════════════════════════════════════ -->
+<section class="card">
+  <span class="handle">@aussie.umma</span>
+  <div class="glow-blue" style="width:350px;height:350px;bottom:8%;right:-60px;"></div>
+  <div class="ci"><div class="center-block">
+    <div class="tl en">NSW Community Languages Schools</div>
+    <div class="td md" style="margin-bottom:20px">60개 언어<br><span class="ta">36,000명</span> 이상</div>
+    <p class="tb">NSW 학교에 다니는 학령기 아이면 누구나 등록할 수 있어요. 한국어 학교는 15개 넘는 지역에 있어요.</p>
+    <div class="chips">
+      <span class="chip"><i class="cd"></i>채스우드</span>
+      <span class="chip"><i class="cd"></i>스트라스필드</span>
+      <span class="chip"><i class="cd"></i>라이드</span>
+      <span class="chip"><i class="cd"></i>캠시</span>
+      <span class="chip"><i class="cd"></i>페넌트힐스</span>
+      <span class="chip"><i class="cd"></i>노스록스</span>
+      <span class="chip"><i class="cd"></i>블랙타운</span>
+      <span class="chip"><i class="cd"></i>콩코드</span>
+    </div>
+    <div class="takeaway">교육부 학교 찾기에서 동네 이름으로 검색하면 나와요</div>
+  </div></div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     Card 5: BODY / numbers (fees)
+════════════════════════════════════════════ -->
+<section class="card">
+  <span class="handle">@aussie.umma</span>
+  <div class="ci"><div class="center-block">
+    <div class="tl">학비 구조</div>
+    <div class="td md" style="margin-bottom:16px">주 2시간이면<br>한 텀 <span class="ta">180달러</span></div>
+    <div class="cmp-row">
+      <div>
+        <div class="cmp-h">1교시</div>
+        <div class="cmp-v accent">90달러</div>
+        <div class="cmp-sub">모든 계산의 기준 단위예요</div>
+      </div>
+      <div>
+        <div class="cmp-h">주 2시간</div>
+        <div class="cmp-v accent">한 텀 180달러</div>
+        <div class="cmp-sub">프리스쿨과 킨디반</div>
+      </div>
+    </div>
+    <div class="cmp-row">
+      <div>
+        <div class="cmp-h">주 3시간</div>
+        <div class="cmp-v">한 텀 270달러</div>
+        <div class="cmp-sub">1학년부터 9학년까지</div>
+      </div>
+      <div>
+        <div class="cmp-h">분교</div>
+        <div class="cmp-v">학기당 280달러</div>
+        <div class="cmp-sub">데니스톤, 에핑, 도서관 분교</div>
+      </div>
+    </div>
+    <p class="tb" style="margin-top:16px">린드필드 한국학교 학비 안내 기준이에요. 운영 주체가 다르면 금액도 달라져요.</p>
+  </div></div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     Card 6: BODY / numbers (Saturday college)
+════════════════════════════════════════════ -->
+<section class="card">
+  <span class="handle">@aussie.umma</span>
+  <div class="ci"><div class="center-block">
+    <div class="tl en">Secondary College of Languages</div>
+    <div class="td md" style="margin-bottom:16px">한국어 반은<br><span class="ta">두 캠퍼스</span>뿐이에요</div>
+    <div class="cmp-row">
+      <div>
+        <div class="cmp-h">Campus 01</div>
+        <div class="cmp-v accent">스트라스필드</div>
+        <div class="cmp-sub">Strathfield Girls High School</div>
+      </div>
+      <div>
+        <div class="cmp-h">Campus 02</div>
+        <div class="cmp-v accent">더 힐스</div>
+        <div class="cmp-sub">The Hills Sports High School</div>
+      </div>
+    </div>
+    <div class="cmp-row">
+      <div>
+        <div class="cmp-h">수업 시간</div>
+        <div class="cmp-v">토요일<br>오전 8시 30분부터</div>
+        <div class="cmp-sub">5학년에서 10학년은 10시 30분까지</div>
+      </div>
+      <div>
+        <div class="cmp-h">성적 반영</div>
+        <div class="cmp-v blue">RoSA와 HSC에<br>그대로 들어가요</div>
+        <div class="cmp-sub">학교 안내 기준 학생 70퍼센트 이상이 상위 두 밴드</div>
+      </div>
+    </div>
+    <div class="takeaway">학비가 아니라 성적으로 남는 쪽이에요</div>
+  </div></div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     Card 7: STATEMENT (dark rhythm card)
+════════════════════════════════════════════ -->
+<section class="card dark">
+  <span class="handle">@aussie.umma</span>
+  <div class="glow" style="width:500px;height:500px;top:50%;left:50%;transform:translate(-50%,-50%);opacity:0.04;"></div>
+  <div class="ci">
+    <div class="stmt">배우는 아이가 줄면<br>과목 자체가 사라져요.</div>
+    <hr class="div-a" style="margin:40px auto" />
+    <div class="stmt" style="font-size:44px;font-weight:700;">HSC 응시생이 <strong>3년 연속 15명</strong> 아래면<br>폐지 절차에 올라가요.</div>
+    <div class="stmt-source">한국어 계승자 과정은 2024년 3월 실제로 그 명단에 올랐고<br>그해 응시생이 15명을 넘으면서 보류됐어요<br>NESA 공지 기준</div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     Card 8: BODY / steps (timing)
+════════════════════════════════════════════ -->
+<section class="card">
+  <span class="handle">@aussie.umma</span>
+  <div class="ci"><div class="center-block">
+    <div class="tl">등록 타이밍</div>
+    <div class="td md" style="margin-bottom:16px">지금이 <span class="ta">딱</span><br>알아볼 때예요</div>
+    <div class="si">
+      <span class="si-n en">01</span>
+      <div class="si-c">
+        <div class="si-t">한글학교</div>
+        <div class="si-d">상당수가 학기 단위 등록이라 Term 3 시작이 하반기 등록 창구예요</div>
+      </div>
+    </div>
+    <div class="si">
+      <span class="si-n en">02</span>
+      <div class="si-c">
+        <div class="si-t">토요 언어학교</div>
+        <div class="si-d">연 단위라 2026년 신청은 2월 27일에 이미 닫혔어요</div>
+      </div>
+    </div>
+    <div class="si">
+      <span class="si-n en">03</span>
+      <div class="si-c">
+        <div class="si-t">2027년 반</div>
+        <div class="si-d">공지 이력상 전년도 하반기에 열려요. 캠퍼스 공지를 지금부터 챙기면 돼요</div>
+      </div>
+    </div>
+    <div class="def-box" style="margin-top:20px">
+      <div class="def-box-text">반 편성은 나이가 아니라 <strong>한국어 수준</strong> 기준이에요. 또래보다 낮은 반이 나와도 놀라지 않게 미리 알고 가면 좋아요.</div>
+    </div>
+  </div></div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     Card 9: SHEET (save-bait reference)
+════════════════════════════════════════════ -->
+<section class="card">
+  <span class="handle">@aussie.umma</span>
+  <div class="ci"><div class="center-block">
+    <div class="sheet">
+      <div class="sheet-tag en">Save This</div>
+      <div class="sheet-title">등록 전 체크리스트 6</div>
+      <div class="sheet-row"><span class="sheet-row-num en">1</span> 교육부 학교 찾기에서 우리 동네 한국어 학교 검색하기</div>
+      <div class="sheet-row"><span class="sheet-row-num en">2</span> 요일과 시간 확인, 토요일 오전인지 오후인지</div>
+      <div class="sheet-row"><span class="sheet-row-num en">3</span> 학비 구조 확인, 교시당인지 텀당인지 학기당인지</div>
+      <div class="sheet-row"><span class="sheet-row-num en">4</span> 반 편성 기준 확인, 나이가 아니라 한국어 수준</div>
+      <div class="sheet-row"><span class="sheet-row-num en">5</span> 시드니한국교육원 등록 학교인지 확인, 무상 교재 배부 대상</div>
+      <div class="sheet-row"><span class="sheet-row-num en">6</span> HSC까지 본다면 스트라스필드 또는 더 힐스 캠퍼스 공지 구독</div>
+      <div class="sheet-foot">2026년 7월 기준<br>NSW 교육부, 린드필드 한국학교, 시드니한국교육원 안내 기준</div>
+    </div>
+  </div></div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     Card 10: CTA
+════════════════════════════════════════════ -->
+<section class="card c10">
+  <span class="handle">@aussie.umma</span>
+  <div class="glow" style="width:400px;height:400px;bottom:-80px;left:50%;transform:translateX(-50%);opacity:0.06;"></div>
+  <div class="ci">
+    <div class="badge badge-a en" style="margin-bottom:32px">Save &amp; Share</div>
+    <div class="td md" style="text-align:center;margin-bottom:20px">
+      동네 학교부터<br><span class="ta">찾아보세요</span>
+    </div>
+    <hr class="div-a" style="margin:0 auto 28px" />
+    <p class="tb" style="text-align:center;max-width:80%">같은 고민 하는 엄마들에게 공유해주세요.</p>
+    <div class="cta-btn">저장하기 &rarr;</div>
+    <p class="cta-hint">궁금한 점은 댓글로 남겨주세요</p>
+  </div>
+</section>
+
+</body>
+</html>
