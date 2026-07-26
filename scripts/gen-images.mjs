@@ -92,9 +92,16 @@ if (!jobs.length) { console.log('No missing images to generate.'); process.exit(
 console.log(`Generating ${jobs.length} image(s)...`);
 
 const ctx = await launch();
-let made = 0, failed = 0;
+let made = 0;
+// Gemini is flaky per-request (the same prompt can render in 15s or stall out
+// entirely), so retry the stragglers in rounds instead of losing the image.
+const ROUNDS = 3;
+let pending = jobs;
 try {
-  for (const job of jobs) {
+ for (let round = 1; round <= ROUNDS && pending.length; round++) {
+  if (round > 1) console.log(`Retry round ${round} for ${pending.length} image(s)...`);
+  const retry = [];
+  for (const job of pending) {
     await fs.mkdir(job.imgDir, { recursive: true });
     const page = await ctx.newPage();
     try {
@@ -109,14 +116,14 @@ try {
 
       // wait for a real generated image (blob/googleusercontent, naturalWidth > 400)
       let ready = false;
-      for (let i = 0; i < 45; i++) { // up to ~90s
+      for (let i = 0; i < 120; i++) { // up to ~240s (Gemini often needs >90s)
         await sleep(2000);
         const n = await page.evaluate(() =>
           [...document.querySelectorAll('img')].filter((e) => e.naturalWidth > 400
             && (/^blob:|googleusercontent/.test(e.src) || /generated/i.test(e.alt || ''))).length);
         if (n > 0) { ready = true; break; }
       }
-      if (!ready) { console.warn(`  [fail] ${job.slug}/${job.name} — no image rendered`); failed++; await page.close(); continue; }
+      if (!ready) { console.warn(`  [fail] ${job.slug}/${job.name} — no image rendered`); retry.push(job); await page.close(); continue; }
       await sleep(1500);
 
       // grab the image bytes via canvas — the img is a same-origin blob so it
@@ -134,24 +141,29 @@ try {
           return c.toDataURL('image/png');
         } catch { return null; }
       });
-      if (!dataUrl) { console.warn(`  [fail] ${job.slug}/${job.name} — could not read image bytes`); failed++; await page.close(); continue; }
+      if (!dataUrl) { console.warn(`  [fail] ${job.slug}/${job.name} — could not read image bytes`); retry.push(job); await page.close(); continue; }
 
       const raw = path.join(job.imgDir, `.${job.name}.raw.png`);
       await fs.writeFile(raw, Buffer.from(dataUrl.split(',')[1], 'base64'));
-      // crop bottom ~12% (Gemini ✦ watermark, bottom-right) — proportional so it
+      // crop bottom ~20% (Gemini ✦ watermark, bottom-right) — proportional so it
       // works whatever height the canvas captured, without over-letterboxing.
-      await exec('ffmpeg', ['-y', '-i', raw, '-vf', 'crop=iw:trunc(ih*0.88):0:0', job.out]);
+      // 12% was not enough: the ✦ sits ~82% down on some renders and survived.
+      await exec('ffmpeg', ['-y', '-i', raw, '-vf', 'crop=iw:trunc(ih*0.80):0:0', job.out]);
       await fs.rm(raw).catch(() => {});
       console.log(`  [ok] ${job.slug}/${job.name}`);
       made++;
     } catch (e) {
       console.warn(`  [fail] ${job.slug}/${job.name} — ${e.message.split('\n')[0]}`);
-      failed++;
+      retry.push(job);
     }
     await page.close();
     await sleep(2000);
   }
+  pending = retry;
+ }
 } finally { await ctx.close(); }
 
+const failed = pending.length;
+for (const job of pending) console.warn(`  [gave up] ${job.slug}/${job.name}`);
 console.log(`\nDone. ${made} generated, ${failed} failed.`);
 process.exit(failed && !made ? 1 : 0);
