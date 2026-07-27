@@ -159,7 +159,7 @@ document.getElementById("grid").innerHTML = WEEK.items.map((it) => {
     <div class="top">
       <div class="pricecol">
         <div class="price"><span class="d">$${d}</span><span class="c">${c}</span> <span class="ea">ea</span></div>
-        ${!it.was ? `<div class="save">SAVE<br>${it.save}</div>` : ""}
+        ${!it.was && it.save ? `<div class="save">SAVE<br>${it.save}</div>` : ""}
       </div>
       <div class="prod">${badge}${img}</div>
     </div>
