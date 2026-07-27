@@ -6,14 +6,10 @@ outputs/*
 logs/
 .blogger-profile/
 .gemini-profile/
-.woolies-scrape-profile/
-.coles-scrape-profile/
 .playwright-mcp/
 node_modules/
 .catprofile/
 
 # session cleanup: large browser profile + regenerable screenshots + temp scripts
-.woolworths-scrape-profile/
-features/supermarket-deals-carousel/category-shots/
 _shot.mjs
 _pv.mjs
