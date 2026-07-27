@@ -6,6 +6,10 @@ on:
         description: 'Date directory (YYYY-MM-DD). Leave empty for today.'
         required: false
         default: ''
+      slug:
+        description: 'Single topic slug to post (optional). Leave empty to post all.'
+        required: false
+        default: ''
 
 permissions:
   contents: write
@@ -26,11 +30,14 @@ jobs:
           GITHUB_REPOSITORY: ${{ github.repository }}
           GITHUB_SHA: ${{ github.sha }}
         run: |
+          ARGS=""
           if [ -n "${{ github.event.inputs.date }}" ]; then
-            node scripts/post-to-instagram.mjs --date "${{ github.event.inputs.date }}"
-          else
-            node scripts/post-to-instagram.mjs
+            ARGS="$ARGS --date ${{ github.event.inputs.date }}"
           fi
+          if [ -n "${{ github.event.inputs.slug }}" ]; then
+            ARGS="$ARGS --slug ${{ github.event.inputs.slug }}"
+          fi
+          node scripts/post-to-instagram.mjs $ARGS
       - name: Commit instagram-log.json
         run: |
           shopt -s nullglob

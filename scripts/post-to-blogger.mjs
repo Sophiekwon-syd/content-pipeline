@@ -156,8 +156,26 @@ try {
     if (await lab.isVisible().catch(() => false)) { await lab.click(); await page.keyboard.type(LABELS); await sleep(600); }
 
     if (DRAFT) {
-      console.log(`[draft] ${t.slug} — left unpublished in Blogger`);
-      await sleep(2000);
+      // The old code just closed the tab, so the injected body was never
+      // persisted — Blogger's autosave had nothing to flush. Click Save, let
+      // the network settle, then confirm the draft is really in the posts list.
+      await page.getByRole('button', { name: /^Save$/i }).first().click()
+        .catch(() => page.locator('button:has-text("Save")').first().click().catch(() => {}));
+      await page.waitForLoadState('networkidle', { timeout: 30000 }).catch(() => {});
+      await sleep(3000);
+
+      await page.goto(`https://www.blogger.com/u/${ACCOUNT}/blog/posts/${BLOG_ID}`, { waitUntil: 'domcontentloaded' });
+      await sleep(4000);
+      const saved = await page.evaluate((tt) => document.body.innerText.includes(tt.slice(0, 20)), t.title);
+      if (saved) {
+        console.log(`[draft] ${t.slug} — 초안 저장 확인됨 (미발행)`);
+        posted.push({ slug: t.slug, date: new Date().toISOString(), title: t.title, mode: 'draft' });
+        await fs.writeFile(logPath, JSON.stringify(posted, null, 2));
+      } else {
+        console.error(`[fail] ${t.slug} — 초안이 목록에 없음. 탭을 열어둡니다.`);
+        failed++;
+        continue; // leave the tab open so the draft can be saved by hand
+      }
       await page.close();
       continue;
     }

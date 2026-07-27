@@ -19,15 +19,33 @@ const REPO = 'Sophiekwon-syd/content-pipeline';
 const md = await fs.readFile(path.join(topicDir, 'blog', 'post.md'), 'utf8');
 const imgFiles = await fs.readdir(path.join(topicDir, 'blog', 'images')).catch(() => []);
 const rawUrl = (f) => `https://raw.githubusercontent.com/${REPO}/main/${topicDir}/blog/images/${f}`;
+// images may be .png (Gemini-generated) or .jpg/.jpeg/.webp (own photos)
+const findImg = (stem) => imgFiles.find((f) => new RegExp(`^${stem}\\.(png|jpe?g|webp)$`, 'i').test(f));
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const inline = (s) => esc(s)
   .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+  .replace(/\[([^\]]+)\]\((https?:[^)\s]+)\)/g,
+    '<a href="$2" target="_blank" rel="noopener">$1</a>')
   .replace(/\s+—\s+/g, ', ');
 
 const SKIP = /^(메타 정보|썸네일 이미지 프롬프트|이미지 프롬프트|셀프 리뷰|네이버 발행 체크리스트)/;
-const IMG_STYLE = 'max-width:100%;height:auto;border-radius:8px;';
-const img = (f, alt) => `<div style="text-align:center;margin:24px 0"><img src="${rawUrl(f)}" alt="${esc(alt)}" style="${IMG_STYLE}"/></div>`;
+// Photos are often 9:16 stills pulled from phone video. Left unconstrained they
+// render 1100px+ tall and the post becomes a wall of image, so cap the HEIGHT
+// and let width follow — portrait shots then sit as a tidy centred column.
+const IMG_STYLE = 'max-width:100%;max-height:620px;width:auto;height:auto;'
+  + 'border-radius:10px;display:block;margin:0 auto;';
+const img = (f, alt) => `<div style="text-align:center;margin:32px 0"><img src="${rawUrl(f)}" alt="${esc(alt)}" style="${IMG_STYLE}"/></div>`;
+
+// The Blogger theme centres and italicises blockquotes and flattens headings,
+// so every rule below has to be forced inline or the theme wins.
+const H2_STYLE = 'font-size:1.5em;font-weight:700;line-height:1.4;margin:52px 0 18px;'
+  + 'padding-bottom:12px;border-bottom:2px solid #e5e5e2;letter-spacing:-0.01em;';
+const H3_STYLE = 'font-size:1.15em;font-weight:700;line-height:1.5;margin:34px 0 12px;';
+const P_STYLE = 'line-height:1.85;margin:0 0 14px;';
+const BQ_STYLE = 'border-left:4px solid #2b2b2b;margin:32px 0;padding:20px 24px;'
+  + 'background:#f6f6f4;border-radius:0 8px 8px 0;'
+  + 'text-align:left !important;font-style:normal !important;line-height:1.85;';
 
 const lines = md.split('\n');
 let title = '';
@@ -49,11 +67,12 @@ for (let i = 0; i < lines.length; i++) {
     skip = SKIP.test(h2[1].trim());
     if (skip) continue;
     // hero goes right before the first content section
-    if (!heroPlaced && imgFiles.includes('hero.png')) { out.push(img('hero.png', title)); heroPlaced = true; }
+    const hero = findImg('hero');
+    if (!heroPlaced && hero) { out.push(img(hero, title)); heroPlaced = true; }
     h2Count++;
-    out.push(`<h2>${inline(h2[1].replace(/\s+—\s+/g, ', '))}</h2>`);
-    const sec = `section-${h2Count}.png`;
-    if (imgFiles.includes(sec)) out.push(img(sec, h2[1]));
+    out.push(`<h2 style="${H2_STYLE}">${inline(h2[1].replace(/\s+—\s+/g, ', '))}</h2>`);
+    const sec = findImg(`section-${h2Count}`);
+    if (sec) out.push(img(sec, h2[1]));
     continue;
   }
   if (skip) {
@@ -63,7 +82,7 @@ for (let i = 0; i < lines.length; i++) {
   }
 
   const h3 = line.match(/^###\s+(.+)/);
-  if (h3) { closeList(); out.push(`<h3>${inline(h3[1])}</h3>`); continue; }
+  if (h3) { closeList(); out.push(`<h3 style="${H3_STYLE}">${inline(h3[1])}</h3>`); continue; }
 
   if (/^\s*---\s*$/.test(line)) { closeList(); continue; }
 
@@ -73,7 +92,7 @@ for (let i = 0; i < lines.length; i++) {
     // merge consecutive blockquote lines
     const parts = [bq[1]];
     while (i + 1 < lines.length && /^>\s?/.test(lines[i + 1])) parts.push(lines[++i].replace(/^>\s?/, ''));
-    out.push(`<blockquote style="border-left:4px solid #333;margin:24px 0;padding:12px 20px;background:#f7f7f5">${parts.filter(Boolean).map(inline).join('<br/>')}</blockquote>`);
+    out.push(`<blockquote style="${BQ_STYLE}">${parts.filter(Boolean).map(inline).map((x) => `<div style="margin:0 0 6px">${x}</div>`).join('')}</blockquote>`);
     continue;
   }
 
@@ -92,12 +111,12 @@ for (let i = 0; i < lines.length; i++) {
 
   const li = line.match(/^\s*(?:[-*•]|\d+\.)\s+(.+)/);
   if (li) {
-    if (!listOpen) { out.push('<ul style="margin:16px 0;padding-left:24px">'); listOpen = true; }
-    out.push(`<li>${inline(li[1])}</li>`);
+    if (!listOpen) { out.push('<ul style="margin:18px 0;padding-left:26px;line-height:1.85">'); listOpen = true; }
+    out.push(`<li style="margin:0 0 8px">${inline(li[1])}</li>`);
     continue;
   }
 
-  if (line.trim()) { closeList(); out.push(`<p>${inline(line.trim())}</p>`); }
+  if (line.trim()) { closeList(); out.push(`<p style="${P_STYLE}">${inline(line.trim())}</p>`); }
 }
 closeList();
 
