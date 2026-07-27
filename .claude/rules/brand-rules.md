@@ -23,7 +23,10 @@ These rules apply to every agent in the pipeline. No exceptions.
 - Blog: 해요체 only (`~어요`, `~했어요`). 절대 금지: `습니다/입니다` 체, "ㅠㅠ"
 - Carousel: natural conversational Korean, no textbook Korean, no slang-heavy
 - Video: spoken-word Korean, calm and friendly pace
-- The CTA text must match `content.cta_text` from `config.json` exactly
+- The `content.cta_text` ("저장하기 →") is a **carousel/video save-CTA only**.
+  Match it exactly there. Do NOT append it to the Naver blog body — a blog post
+  closes with its own natural ending (and hashtags); a lone "저장하기 →" line
+  reads as a misplaced carousel button in a blog.
 
 ## Blog-specific rules (navermate)
 
