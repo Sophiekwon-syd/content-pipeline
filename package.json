@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "playwright": "^1.61.1"
+  },
+  "scripts": {
+    "deals:build": "node features/supermarket-deals-carousel/build-combined.mjs && node features/supermarket-deals-carousel/build-deals-page.mjs",
+    "deals:sample": "node features/supermarket-deals-carousel/build-deals-page.mjs --sample",
+    "deals:scrape": "node features/supermarket-deals-carousel/scrape-coles.mjs && node features/supermarket-deals-carousel/scrape-woolworths.mjs",
+    "deals:all": "npm run deals:scrape && npm run deals:build"
+  }
+}
