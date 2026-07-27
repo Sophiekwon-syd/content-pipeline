@@ -1,0 +1,25 @@
+{
+  "_doc": "Canonical cross-store category taxonomy. Each bucket maps each retailer's NATIVE department name (as a case-insensitive regex) to one shared bucket, so the combined data can group Coles + Woolworths deals together. Native names are stable week-to-week; only products/saleIds rotate. Edit here, not in code. `ko` are draft Korean slide labels. `liftKeywords` is a (currently empty) hook to re-bucket individual products by name when a store files them under the wrong department for our purposes (e.g. Coles has NO snacks department — its biscuits/chocolate live under Pantry — so to make the Snacks bucket two-sided you'd add snack keywords here and they'd override the department mapping).",
+  "liftKeywords": {
+    "dairy_eggs":    { "stores": ["woolworths"], "keywords": ["\\bfeta\\b","fetta","parmigiano","parmesan","mersey valley","cheddar cheese","\\bbrie\\b","camembert","haloumi","halloumi","mozzarella"] },
+    "household":     { "stores": ["coles"], "keywords": ["laundry","cold power","morning fresh","dishwashing","dishwash","white king","toilet cleaner","pine o ?cleen","disinfectant","fabric conditioner","fluffy","\\bbref\\b","radiant","vanish","napisan","finish ultimate","stain remover","duracell","batteries","paper towel","facial tissue","\\btissues?\\b","multipurpose"] },
+    "health_beauty": { "stores": ["coles"], "keywords": ["swisse","caltrate","centrum","multivitamin","fish oil","nivea","\\bdove\\b","maybelline","\\bolay\\b","voost","body mist","deodorant","body lotion","mascara","moisturiser","collagen","vicks","vaporub","difflam","betadine","pantene","lozenges","sore throat"] },
+    "meat_seafood":  { "stores": ["coles"], "keywords": ["leg ham","deli cuts","salmon","twiggy","\\bprimo\\b","prawns","sliced beef","hot roast","frankfurt","ham off the bone","rspca approved chicken"] },
+    "snacks":        { "stores": ["coles"], "keywords": ["cadbury","allen'?s","m&m","maltesers","darrell lea","nestl. block","block chocolate","chocolate bar","betty crocker","cookie mix","brownie","layered fingers","choclt","baking chocolate","chocolate chips","cadbury favourites","old gold","\\bpods\\b","potato chips","corn chips","tortilla chips","twisties","doritos","cheetos","burger rings","grain waves","popcorn","popcorners","\\bcobs\\b","tostitos","crackers","biscuits","\\britz\\b","\\bjatz\\b","shapes","cruskits","arrowroot","tiny teddy","teevee","corn thins","rice crackers","rice cakes","peckish","mint slice","scotch finger","k-time","oaty slices","nesquik","roll ups","fruit snack","muesli bar","\\bnuts\\b","cashews"] },
+    "pantry":        { "stores": ["coles"], "keywords": ["tuna","real stock","jasmine rice","rice 5kg","rolled oats","muesli","granola","weet-?bix","coco pops","nutri ?grain","up&go","maggi","instant noodles","peanut butter","barilla","\\bpasta\\b","old el paso","spice mix","ketchup","barbeque sauce","mayonnaise","aioli","olive oil","\\bhoney\\b","gravox","leggo","nissin","samyang","buldak","marion's kitchen","chilli oil","\\bayam\\b","coconut milk","coconut cream","soy sauce","sesame oil","fried shallots","hokkien","egg noodles","passage to asia","spice tailor","meal kit","continental sensations","sensations soup","aunt betty","pudding","\\btofu\\b","noodles"] }
+  },
+  "buckets": [
+    { "key": "dairy_eggs",    "ko": "유제품·계란",     "coles": ["Dairy, Eggs & Meals"],            "woolworths": ["Dairy, Eggs & Fridge"] },
+    { "key": "meat_seafood",  "ko": "정육·수산",       "coles": ["Meat, Seafood & Deli"],           "woolworths": ["Poultry, Meat & Seafood", "^Deli$"] },
+    { "key": "fruit_veg",     "ko": "과일·채소",       "coles": ["Fruit & Vegetables"],             "woolworths": ["fruit|veg"] },
+    { "key": "bakery",        "ko": "빵·베이커리",     "coles": ["Bread & Bakery"],                 "woolworths": ["^Bakery$"] },
+    { "key": "pantry",        "ko": "팬트리·상비식",   "coles": ["^Pantry$"],                       "woolworths": ["^Pantry$"] },
+    { "key": "snacks",        "ko": "과자·간식",       "coles": [],                                 "woolworths": ["Snacks & Confectionery"] },
+    { "key": "frozen",        "ko": "냉동",            "coles": ["^Frozen$"],                       "woolworths": ["^Freezer$", "Frozen"] },
+    { "key": "drinks",        "ko": "음료",            "coles": ["^Drinks$"],                       "woolworths": ["^Drinks$"] },
+    { "key": "household",     "ko": "생활·세제",       "coles": ["^Household$"],                    "woolworths": ["Cleaning & Maintenance"] },
+    { "key": "baby",          "ko": "육아·아기용품",   "coles": ["^Baby$"],                         "woolworths": ["^Baby$"] },
+    { "key": "health_beauty", "ko": "건강·뷰티",       "coles": ["Health & Beauty", "Healthy Living"], "woolworths": ["^Beauty$", "Personal Care", "Health & Wellness"] },
+    { "key": "pet",           "ko": "반려동물",        "coles": ["^Pet$"],                          "woolworths": ["^Pet$"] }
+  ]
+}

@@ -66,12 +66,19 @@ calls). Each reads only `brief.md` (+ tone-guide/config) — no independent rese
 | Carousel | `.claude/agents/carousel-maker.md` | `carousel/index.html` + `images/card-01..NN.png` (1080×1350) |
 | Video | `.claude/agents/video-maker.md` | `video/output.mp4` (9:16, ≤60s) |
 
+The carousel-maker builds only `carousel/index.html` (reusing the existing
+brand design system — copy the `<style>` block from a prior carousel verbatim).
+Render the PNG cards yourself after it finishes:
+`node scripts/render-carousel.mjs outputs/<date>/<slug>/carousel/index.html`
+(Playwright screenshots every `.card` at 1080×1350 into `carousel/images/`.)
+
 **Partial success is OK.** A failed channel does not block the others. Track
 per-channel status. If a channel reports a brief gap, surface it to the user
 rather than letting that channel invent content.
 
-For single-channel commands (`/generate-blog`, etc.), dispatch only that one
-agent and skip the others.
+**Blog always ships with its carousel.** `/generate-blog` dispatches BOTH the
+blogger and carousel-maker (parallel) — never blog alone. `/generate-carousel`
+runs carousel only; `/generate-video` runs video only.
 
 ### Stage 3 — Review gate
 

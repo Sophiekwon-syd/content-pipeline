@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>This Week's Top Deals — nappyprice</title>
+<style>
+  :root{
+    --coles:#E01A22; --woolies:#178841; --ink:#1c1c1c; --muted:#6b6b6b;
+    --save:#ffd200; --card:#ffffff; --bg:#f4f6f2; --line:#e7e9e4;
+    --font:"Pretendard","Noto Sans KR",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:var(--font);background:#dfe3dc;color:var(--ink);-webkit-font-smoothing:antialiased;
+    display:flex;justify-content:center;padding:24px}
+  .page{width:1536px;max-width:100%;background:var(--bg);border-radius:22px;padding:34px 34px 26px;
+    box-shadow:0 10px 40px rgba(0,0,0,.12)}
+
+  /* header */
+  .hd{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:14px}
+  .brands{display:flex;align-items:center;gap:14px;font-weight:800;font-size:26px;white-space:nowrap}
+  .brands .w{color:var(--woolies)} .brands .c{color:var(--coles)}
+  .brands .bar{width:1px;height:28px;background:#cfd3cc}
+  .title{flex:1;text-align:center}
+  .title h1{font-size:44px;font-weight:900;letter-spacing:-1px;line-height:1}
+  .title .sub{display:inline-flex;align-items:center;gap:7px;margin-top:10px;background:#e4f0e6;color:#2f7d43;
+    font-weight:700;font-size:16px;padding:7px 16px;border-radius:100px}
+  .rhs{display:flex;align-items:center;gap:14px;white-space:nowrap}
+  .date{display:inline-flex;align-items:center;gap:8px;font-weight:800;font-size:19px;color:#2c2c2c}
+  .cta{background:var(--save);color:#1c1c1c;font-weight:900;font-size:15px;line-height:1.1;text-align:center;
+    padding:10px 16px;border-radius:12px;display:inline-flex;align-items:center;gap:8px}
+
+  /* category pills */
+  .cats{display:flex;gap:12px;margin:20px 0 22px;flex-wrap:wrap}
+  .pill{flex:1;min-width:150px;display:inline-flex;align-items:center;justify-content:center;gap:9px;
+    background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:13px 10px;font-weight:800;font-size:17px}
+  .pill svg{width:22px;height:22px}
+  .p-dairy{color:#3f9b57;border-color:#cfe7d5} .p-snacks{color:#c98a2e;border-color:#f0e0c2}
+  .p-frozen{color:#3b82c4;border-color:#cfe0f0} .p-pantry{color:#8b6fc4;border-color:#e0d6f0}
+  .p-bev{color:#2f9a9a;border-color:#cfeaea} .p-house{color:#d1568f;border-color:#f2d4e3}
+
+  /* grid */
+  .grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+  .card{background:var(--card);border-radius:16px;padding:16px 16px 0;position:relative;
+    display:flex;flex-direction:column;box-shadow:0 2px 8px rgba(0,0,0,.05);min-height:300px}
+  .top{display:flex;justify-content:space-between;gap:8px;min-height:150px}
+  .pricecol{display:flex;flex-direction:column;gap:9px;z-index:2}
+  .price{font-weight:900;line-height:.9;letter-spacing:-1px}
+  .price .d{font-size:40px} .price .c{font-size:22px;vertical-align:super} .price .ea{font-size:15px;color:#444;font-weight:700}
+  .save{background:var(--save);color:#1c1c1c;font-weight:900;font-size:20px;line-height:1;
+    padding:9px 11px;border-radius:8px;width:fit-content}
+  .save small{display:block;font-size:12px;font-weight:800;letter-spacing:1px}
+  .prod{flex:1;display:flex;align-items:center;justify-content:center;position:relative}
+  .prod img{max-width:100%;max-height:150px;object-fit:contain}
+  .ph{width:100%;height:130px;border-radius:10px;background:repeating-linear-gradient(45deg,#f3f4f1,#f3f4f1 10px,#eceee9 10px,#eceee9 20px);
+    display:flex;align-items:center;justify-content:center;text-align:center;color:#9aa094;font-size:12px;font-weight:700;padding:8px}
+  .badge{position:absolute;top:-4px;right:-2px;width:66px;height:66px;border-radius:50%;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:900;color:#fff;
+    box-shadow:0 3px 8px rgba(0,0,0,.18);line-height:1}
+  .b-off{background:var(--woolies)} .b-off .n{font-size:20px} .b-off .t{font-size:10px}
+  .b-half{background:var(--woolies);font-size:13px;text-align:center}
+  .b-new{background:#e0348b;font-size:12px;text-align:center;width:60px;height:60px}
+  .name{font-weight:800;font-size:15px;line-height:1.25;margin-top:12px;word-break:keep-all}
+  .unit{color:var(--muted);font-size:13px;margin-top:5px}
+  .wasbar{margin-top:8px;background:var(--save);color:#1c1c1c;font-weight:900;font-size:12px;
+    padding:5px 8px;border-radius:6px;width:fit-content}
+  .wasbar .was{color:#7a6a00;text-decoration:line-through;font-weight:800;margin-left:6px}
+  .storefoot{margin-top:auto;border-top:1px solid #eee;padding:12px 0;text-align:center;font-weight:900;font-size:19px}
+  .s-coles{color:var(--coles)} .s-woolies{color:var(--woolies)}
+
+  /* footer */
+  .foot{display:flex;align-items:center;justify-content:center;margin-top:22px}
+  .foot .band{display:inline-flex;align-items:center;gap:12px;background:#e4f0e6;border-radius:100px;
+    padding:12px 20px;font-weight:800;font-size:18px;color:#2f7d43}
+  .foot .site{background:var(--woolies);color:#fff;font-weight:900;padding:8px 16px;border-radius:100px;font-size:16px}
+  .disc{text-align:center;color:#9aa094;font-size:12px;margin-top:12px}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="hd">
+    <div class="brands"><span class="w">Woolworths</span><span class="bar"></span><span class="c">Coles</span></div>
+    <div class="title">
+      <h1>This Week's Top Deals</h1>
+      <span class="sub">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="#2f7d43"><path d="M21 11.5 12.5 3H4v8.5L12.5 20 21 11.5ZM7 8a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Z"/></svg>
+        Hand-picked savings from Woolworths &amp; Coles
+      </span>
+    </div>
+    <div class="rhs">
+      <span class="date">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="#2c2c2c"><path d="M7 2v2H5a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2V2h-2v2H9V2H7Zm12 7v10H5V9h14Z"/></svg>
+        <span id="daterange">22 – 28 July 2026</span>
+      </span>
+      <span class="cta">Save more<br>this week!</span>
+    </div>
+  </div>
+
+  <div class="cats">
+    <span class="pill p-dairy"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 2h8v3l-1 2v13a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2V7L8 5V2Z"/></svg>Dairy &amp; Eggs</span>
+    <span class="pill p-snacks"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 1 0 10 10 3 3 0 0 1-3-3 3 3 0 0 1-3-3 3 3 0 0 1-1-4Zm-3 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2Zm5 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2Zm-6 2a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z"/></svg>Snacks &amp; Treats</span>
+    <span class="pill p-frozen"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11 2h2v5l3-3 1.5 1.5L13 10v2h2l4.5-4.5L21 9l-3 3 3 3-1.5 1.5L15 14h-2v2l4.5 4.5L16 22l-3-3v3h-2v-3l-3 3-1.5-1.5L11 16v-2H9l-4.5 4.5L3 15l3-3-3-3 1.5-1.5L9 12h2v-2L6.5 5.5 8 4l3 3V2Z"/></svg>Frozen</span>
+    <span class="pill p-pantry"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 2h12v4H6V2Zm-1 6h14v14H5V8Zm4 3v3h6v-3H9Z"/></svg>Pantry</span>
+    <span class="pill p-bev"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 2h4v2l2 3v13a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2V7l2-3V2Zm-1 8v4h6v-4H9Z"/></svg>Beverages</span>
+    <span class="pill p-house"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3 2 12h3v8h6v-5h2v5h6v-8h3L12 3Z"/></svg>Household</span>
+  </div>
+
+  <div class="grid" id="grid"></div>
+
+  <div class="foot">
+    <span class="band">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="#2f7d43"><path d="M21 11.5 12.5 3H4v8.5L12.5 20 21 11.5ZM7 8a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Z"/></svg>
+      Real deals. Real savings. Every week.
+      <span style="color:#2c2c2c;font-weight:700">See more deals at</span>
+      <span class="site">nappyprice.com &rsaquo;</span>
+    </span>
+  </div>
+  <div class="disc">가격은 예시(2026년 7월 22일~28일)이며 매장·지역별로 다를 수 있어요. 발행 전 실제 카탈로그로 확인하세요.</div>
+
+</div>
+
+<script>
+// EDIT THIS ARRAY each week. Seeded from the reference sample — replace with the
+// real weekly catalogue data (Phase 2 scraper will write this same shape).
+// fields: store 'coles'|'woolworths', name, size, price (number), unit,
+//         save (e.g. "$4" or "65¢"), was (number|null), pctOff (num|null),
+//         halfPrice (bool), newVariety (bool), img (path|null)
+const WEEK = { range: "22 – 28 July 2026", items: [
+  { store:"coles",      name:"Pauls PLUS+ Protein Yoghurt", size:"160g", price:2.50, unit:"$1.56 per 100g", save:"65¢" },
+  { store:"coles",      name:"Pauls PLUS+ Protein Milk",    size:"400ml", price:3.60, unit:"$9.00 per litre", save:"$1" },
+  { store:"woolworths", name:"Peters Drumstick Ice Cream",  size:"475–490ml", price:5.90, unit:"", save:"$4", pctOff:40 },
+  { store:"coles",      name:"Magnum Mini 4–6 Pack",        size:"360–400ml", price:8.40, unit:"", save:"$3.60" },
+  { store:"woolworths", name:"Danone Ultimate Yoghurt 4 x 115g", size:"", price:3.00, unit:"65¢ per 100g", save:"$3", halfPrice:true },
+  { store:"woolworths", name:"Bega Cheese Block or Slices", size:"250g", price:6.40, unit:"$25.60 per kg", save:"$1.60" },
+  { store:"woolworths", name:"Ben & Jerry's Mini Ice Cream Sandwiches 4 Pack", size:"272ml", price:7.50, unit:"$2.76 per 100ml", save:"$5", pctOff:40, newVariety:true },
+  { store:"coles",      name:"Cadbury Ice Cream Sticks 4 Pack", size:"320–360ml", price:7.90, unit:"", save:"$4.10" },
+  { store:"coles",      name:"Super Nature Wellness Bowl",  size:"350g", price:4.70, unit:"", save:"$3.20", was:7.90, pctOff:40 },
+  { store:"coles",      name:"Bulla Creamy Classics Ice Cream Cones 4 Pack", size:"520ml", price:6.60, unit:"", save:"$4.40", was:11, pctOff:40 },
+]};
+
+const money = (n) => { const [d,c] = n.toFixed(2).split("."); return {d, c}; };
+document.getElementById("daterange").textContent = WEEK.range;
+
+document.getElementById("grid").innerHTML = WEEK.items.map((it) => {
+  const {d,c} = money(it.price);
+  const badge = it.newVariety
+      ? `<div class="badge b-new">New<br>variety</div>`
+    : it.halfPrice
+      ? `<div class="badge b-half">1/2<br>Price</div>`
+    : it.pctOff
+      ? `<div class="badge b-off"><span class="n">${it.pctOff}%</span><span class="t">OFF</span></div>` : "";
+  const img = it.img
+      ? `<img src="${it.img}" alt="${it.name}">`
+      : `<div class="ph">${it.name}${it.size?"<br>"+it.size:""}</div>`;
+  const wasbar = it.was ? `<div class="wasbar">SAVE ${it.save}<span class="was">WAS $${it.was.toFixed(2)}</span></div>` : "";
+  const store = it.store === "coles" ? `<div class="storefoot s-coles">coles</div>` : `<div class="storefoot s-woolies">Woolworths</div>`;
+  return `<div class="card">
+    <div class="top">
+      <div class="pricecol">
+        <div class="price"><span class="d">$${d}</span><span class="c">${c}</span> <span class="ea">ea</span></div>
+        ${!it.was && it.save ? `<div class="save">SAVE<br>${it.save}</div>` : ""}
+      </div>
+      <div class="prod">${badge}${img}</div>
+    </div>
+    <div class="name">${it.name}${it.size?` ${it.size}`:""}</div>
+    ${it.unit ? `<div class="unit">${it.unit}</div>` : ""}
+    ${wasbar}
+    ${store}
+  </div>`;
+}).join("");
+</script>
+</body>
+</html>
