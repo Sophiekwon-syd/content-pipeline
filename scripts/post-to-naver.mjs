@@ -23,9 +23,11 @@
 // NOTE ON BOT DETECTION: Naver actively detects automation. This script uses
 // a real (headed) browser, a persistent logged-in profile, and human-like
 // typing delays to stay low-profile, but automated posting is against the
-// spirit of Naver's ToS and carries account-restriction risk. Keep volume
-// low (their own posts_per_week_target is 3) and prefer --draft + manual
-// final publish if you want to be safe.
+// spirit of Naver's ToS and carries account-restriction risk. Cadence is NOT
+// enforced here (this script is per-run); the daily scheduler decides via
+// channels.blog.naver_schedule in config.json. Daily Naver posting was chosen
+// 2026-07-31 with that risk accepted; prefer --draft + manual final publish
+// when debugging.
 
 import fs from 'node:fs/promises';
 import path from 'node:path';
