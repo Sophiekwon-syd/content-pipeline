@@ -19,14 +19,20 @@ LOG="$PROJECT/logs/ship-$(date +%Y-%m-%d-%H%M).log"
 
 echo "=== ship-topic run started $(date) ===" >> "$LOG"
 
-# Naver cadence (validated strategy): publish to Naver only Mon/Wed/Fri to
-# match posts_per_week_target=3 and stay under automation-pattern detection.
-# Blogger + Instagram ship every day.
-DOW=$(date +%u) # 1=Mon .. 7=Sun
-if [ "$DOW" = "1" ] || [ "$DOW" = "3" ] || [ "$DOW" = "5" ]; then
-  NAVER_MODE="Today IS a Naver day (Mon/Wed/Fri): publish directly to Naver as well."
+# Naver cadence is config-driven: channels.blog.naver_schedule in config.json.
+#   "daily"       -> publish to Naver every day (same as Blogger + Instagram)
+#   "mon-wed-fri" -> the old gate: Naver only Mon/Wed/Fri (anti-automation-detection)
+# Blogger + Instagram ship every day regardless.
+NAVER_SCHEDULE=$(node -p "require(process.argv[1]).channels.blog.naver_schedule || 'mon-wed-fri'" "$PROJECT/config.json")
+if [ "$NAVER_SCHEDULE" = "daily" ]; then
+  NAVER_MODE="Today is on the NAVER-DAILY schedule (naver_schedule=daily): publish directly to Naver as well, every day — same as Blogger and Instagram."
 else
-  NAVER_MODE="Today is NOT a Naver day: SKIP Naver entirely (no draft, no publish) — ship Blogger + Instagram only. The topic's Naver version ships on the next Mon/Wed/Fri run only if still fresh; otherwise it lives on Blogger/IG alone."
+  DOW=$(date +%u) # 1=Mon .. 7=Sun
+  if [ "$DOW" = "1" ] || [ "$DOW" = "3" ] || [ "$DOW" = "5" ]; then
+    NAVER_MODE="Today IS a Naver day (Mon/Wed/Fri): publish directly to Naver as well."
+  else
+    NAVER_MODE="Today is NOT a Naver day: SKIP Naver entirely (no draft, no publish) — ship Blogger + Instagram only. The topic's Naver version ships on the next Mon/Wed/Fri run only if still fresh; otherwise it lives on Blogger/IG alone."
+  fi
 fi
 
 claude -p "Invoke the ship-topic skill and run the full AUSSIE UMMA pipeline end to end for today's date. This is a PRE-APPROVED unattended daily scheduled run set up by the user: SKIP the Stage 3 review gate, do NOT ask for confirmation. $NAVER_MODE Publish Instagram via the GitHub workflow. Generate blog images with 'node scripts/gen-images.mjs --date <today>' (headless via .gemini-profile), then re-run scripts/md-to-blogger.mjs so blogger.html picks them up. Publish Blogger with 'node scripts/post-to-blogger.mjs --date <today>' (headless via .blogger-profile). Do NOT use claude-in-chrome for any of this — it is not available in a scheduled session. Always debug Naver fixes in --draft; never re-run the direct publish to test." \
