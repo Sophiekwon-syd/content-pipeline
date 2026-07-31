@@ -78,7 +78,7 @@ before any publishing.** Publishing is outward-facing and irreversible-ish.
 
 Live URLs for all three platforms + what needs manual follow-up (thumbnail
 overlay, replace AI images with originals, delete stale 임시저장 drafts).
-Remind: posts_per_week_target is 3 — don't ship more than that.
+Naver cadence is config-driven: read `channels.blog.naver_schedule` (`"daily"` = every day, the current setting; `"mon-wed-fri"` = the old Mon/Wed/Fri gate). Publish Naver on whatever days that setting specifies — do not cap it at a fixed weekly number.
 
 ## Failure rules
 
