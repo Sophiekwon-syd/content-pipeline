@@ -45,7 +45,8 @@
       "enabled": true,
       "platform": "naver",
       "category": "호주육아",
-      "posts_per_week_target": 3
+      "posts_per_week_target": 7,
+      "naver_schedule": "daily"
     },
     "carousel": {
       "enabled": true,
