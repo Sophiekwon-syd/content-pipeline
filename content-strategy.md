@@ -54,12 +54,15 @@ not measured data [가설] — researcher should sanity-check demand per topic
      update old posts.
   5. Video embeds = bonus points → future lever for the video channel.
 
-## Cadence [채택됨 2026-07-18]
+## Cadence [updated 2026-07-31]
 
-Naver publishes Mon/Wed/Fri only (matches posts_per_week_target=3, avoids
-automation-pattern detection). The daily 6am run ships Blogger + Instagram
-every day; `scripts/daily-ship.sh` enforces the Naver day gate. Manual
-user-invoked /ship-topic runs publish wherever the user says, any day.
+Naver now publishes every day, same as Blogger + Instagram. Cadence is
+config-driven via `channels.blog.naver_schedule` ("daily" | "mon-wed-fri"),
+read by `scripts/daily-ship.sh`; `posts_per_week_target` is 7. This supersedes
+the earlier Mon/Wed/Fri-only gate [채택됨 2026-07-18], which throttled Naver to
+avoid automation-pattern detection — the daily cadence was chosen 2026-07-31
+with that 저품질 risk knowingly accepted. Manual user-invoked /ship-topic runs
+publish wherever the user says, any day.
 
 ## Monetization (쿠팡파트너스 AF1100561)
 
