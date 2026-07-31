@@ -197,8 +197,10 @@ On approval, upload each format:
   (draft mode recommended; drop `--draft` to publish directly)
 - Preview parsing without a browser: add `--dry-run`
 - Keeps a per-date `naver-log.json` so re-runs skip already-posted topics
-- Caution: Naver detects automation — keep volume at posts_per_week_target
-  and prefer draft + manual final publish
+- Caution: Naver detects automation. Cadence is config-driven via
+  `channels.blog.naver_schedule` ("daily" — chosen 2026-07-31 with the 저품질
+  risk accepted — or "mon-wed-fri" for the old throttled gate). Regardless of
+  cadence, prefer draft + manual final publish when debugging.
 
 ### 6. Summary
 
