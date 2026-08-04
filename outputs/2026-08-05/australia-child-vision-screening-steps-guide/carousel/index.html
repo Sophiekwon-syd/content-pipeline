@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>호주 아이 시력검사 완벽 가이드</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:#050505; --card-bg:#080808; --elevated:#0e0e0e;
+      --ink:#fff; --ink2:#ccc; --ink3:#888; --ink4:#333;
+      --accent:#C6F135; --accent-dim:rgba(198,241,53,0.15);
+      --blue:#3B82F6; --red:#ff4d4d;
+      --border:rgba(255,255,255,0.07);
+      --font-kr:"Noto Sans KR",sans-serif;
+      --font-en:"Space Grotesk",sans-serif;
+    }
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    body{background:#000;font-family:var(--font-kr);color:var(--ink);display:flex;flex-direction:column;align-items:center;gap:10px;padding:60px 20px 100px;-webkit-font-smoothing:antialiased}
+    .card{width:1080px;height:1350px;background:var(--card-bg);position:relative;overflow:hidden;display:flex;flex-direction:column}
+    .card::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:50;opacity:0.04;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:180px}
+    .ci{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:90px;position:relative;z-index:2}
+    .td{font-family:var(--font-en);font-weight:900;line-height:1.05;letter-spacing:-2px;word-break:keep-all}
+    .td-kr{font-family:var(--font-kr);font-weight:900;line-height:1.15;letter-spacing:-3px;word-break:keep-all}
+    .td.xl{font-size:96px}.td.lg{font-size:82px}.td.md{font-size:72px}
+    .tb{font-size:30px;font-weight:400;color:var(--ink2);line-height:1.65;word-break:keep-all}
+    .tb strong{font-weight:700;color:var(--ink)}
+    .ta{color:var(--accent)}.tm{color:var(--ink3)}
+    .en{font-family:var(--font-en)}
+    .badge{display:inline-flex;align-items:center;padding:12px 28px;border-radius:100px;font-size:17px;font-weight:800;width:fit-content;text-transform:uppercase;letter-spacing:2px}
+    .badge-a{background:var(--accent);color:#000}
+    .div-a{width:56px;height:5px;background:var(--accent);border-radius:2px;border:none;margin:32px 0}
+    .handle{position:absolute;top:165px;right:90px;font-size:18px;font-weight:700;color:var(--ink);text-transform:uppercase;letter-spacing:3px;z-index:10;display:inline-flex;align-items:center;gap:10px}
+    .handle::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent)}
+    .glow{position:absolute;border-radius:50%;background:var(--accent);filter:blur(160px);opacity:0.07;pointer-events:none;z-index:0}
+    .center-block{flex:1;display:flex;flex-direction:column;justify-content:center}
+
+    /* cover card */
+    .c1 .cover-sub{max-width:85%;font-size:36px;font-weight:500;margin-top:40px}
+
+    /* hook card - hero number */
+    .c2 .hero-num{font-family:var(--font-en);font-size:172px;font-weight:700;color:var(--accent);line-height:1;letter-spacing:-8px}
+    .c2 .hero-num .unit{font-family:var(--font-kr);font-size:76px;font-weight:900;letter-spacing:-4px;margin-left:14px}
+
+    /* screening-rate card */
+    .c4 .big-num{font-family:var(--font-en);font-size:118px;font-weight:700;color:var(--accent);line-height:1;letter-spacing:-5px}
+    .c4 .big-num .unit{font-family:var(--font-kr);font-size:58px;font-weight:900;letter-spacing:-3px;margin-left:10px}
+
+    /* cost split card */
+    .c7 .rates{display:flex;gap:24px;width:100%;margin-top:10px}
+    .c7 .rate{flex:1;border:1px solid var(--border);border-radius:22px;background:var(--elevated);padding:32px 28px;text-align:left}
+    .c7 .rate-t{font-family:var(--font-en);font-size:22px;font-weight:700;color:var(--accent);letter-spacing:2px;margin-bottom:18px}
+    .c7 .rate-n{font-family:var(--font-en);font-size:52px;font-weight:700;color:var(--ink);letter-spacing:-3px;line-height:1}
+    .c7 .rate-n.kr{font-family:var(--font-kr);font-size:44px;letter-spacing:-2px}
+    .c7 .rate-n .cur{font-family:var(--font-kr);font-size:26px;font-weight:700;letter-spacing:-1px;margin-left:8px}
+    .c7 .rate-c{font-size:23px;color:var(--ink3);line-height:1.55;margin-top:14px;word-break:keep-all}
+
+    /* statement cards (dark rhythm) */
+    .c5 .tb,.c8 .tb{font-size:30px;line-height:1.7}
+
+    /* sheet card (information dense, left aligned) */
+    .c9 .ci{padding:90px 84px;justify-content:center;align-items:flex-start;text-align:left}
+    .c9 .list{font-size:25px;line-height:1.78;color:var(--ink2);word-break:keep-all}
+    .c9 .list b{color:var(--ink);font-weight:700}
+    .c9 .k{color:var(--accent);font-weight:700}
+    .c9 .box{width:100%;border:1px solid var(--border);border-radius:20px;background:var(--elevated);padding:26px 32px;margin-top:24px}
+    .c9 .box-t{font-size:20px;font-weight:800;color:var(--accent);letter-spacing:1px;margin-bottom:12px}
+    .c9 .box-b{font-size:23px;line-height:1.6;color:var(--ink2);word-break:keep-all}
+
+    /* cta card */
+    .c10 .big-cta{font-size:64px;font-weight:900;color:var(--accent);font-family:var(--font-en);letter-spacing:-1px}
+
+    /* body text max-width for readability when centered */
+    .ci .tb{max-width:760px}
+  </style>
+</head>
+<body>
+
+<!-- Card 1: Cover -->
+<section class="card c1" data-type="cover">
+  <div class="handle">@aussie.umma</div>
+  <div class="glow" style="width:600px;height:600px;top:-200px;right:-200px"></div>
+  <div class="ci">
+    <div class="badge badge-a" style="margin-bottom:40px">호주 만 4세 무료 시력검사</div>
+    <div class="td-kr" style="font-size:80px">병원에 안 가도</div>
+    <div class="td-kr" style="font-size:80px;margin-top:6px">검사팀이</div>
+    <div class="td-kr" style="font-size:80px;margin-top:6px">유치원으로 와요</div>
+    <div class="cover-sub tm">부모가 할 일은 가방 속 동의서 한 장이에요</div>
+  </div>
+</section>
+
+<!-- Card 2: Hook (hero number) -->
+<section class="card c2" data-type="hook">
+  <div class="handle">@aussie.umma</div>
+  <div class="glow" style="width:520px;height:520px;top:-120px;left:-140px"></div>
+  <div class="ci">
+    <div class="badge badge-a" style="margin-bottom:40px">NSW StEPS 2009 ~ 2016</div>
+    <div class="hero-num">19.2<span class="unit">%</span></div>
+    <div class="tb tm" style="font-size:24px;margin-top:28px;line-height:1.55">
+      시력검사를 받은 만 4세 아이 중 안과 의뢰나<br>
+      12개월 뒤 재검 대상이 된 비율이에요. 56만 4,825명 기준.<br>
+      (출처: French AN 외, Asia Pac J Ophthalmol 2022)
+    </div>
+    <div class="div-a"></div>
+    <div class="tb" style="font-size:29px">
+      그런데 검사에서 걸러진 아이 부모의 <strong>64%</strong>는<br>
+      아이 눈에 아무 걱정이 없다고 답했어요.
+    </div>
+  </div>
+</section>
+
+<!-- Card 3: Body - StEPS가 뭐예요 -->
+<section class="card c3" data-type="body">
+  <div class="handle">@aussie.umma</div>
+  <div class="glow" style="width:420px;height:420px;top:180px;right:-100px"></div>
+  <div class="ci">
+    <div class="badge badge-a" style="margin-bottom:34px">StEPS가 뭐예요</div>
+    <div class="td-kr" style="font-size:58px;line-height:1.2;margin-bottom:40px">만 4세 전원 무료,<br>비용은 0달러예요</div>
+    <div class="tb" style="font-size:28px">
+      NSW Health가 운영하는 만 4세 시력검사예요.<br>
+      각 지역 검사팀이 <strong>프리스쿨과 롱데이케어로</strong> 찾아와<br>
+      3미터 거리 차트로 좌우 눈을 재요.<br><br>
+      아이 입장에서는 글자 카드 맞추기 놀이에 가까워요.
+    </div>
+  </div>
+</section>
+
+<!-- Card 4: Body - 놓치는 지점 -->
+<section class="card c4" data-type="body">
+  <div class="handle">@aussie.umma</div>
+  <div class="glow" style="width:400px;height:400px;top:320px;left:-100px"></div>
+  <div class="ci">
+    <div class="badge badge-a" style="margin-bottom:34px">여기서 많이 놓쳐요</div>
+    <div class="big-num">75.6<span class="unit">%</span></div>
+    <div class="div-a"></div>
+    <div class="td-kr" style="font-size:54px;line-height:1.22;margin-bottom:34px">4명 중 1명은<br>검사를 못 받아요</div>
+    <div class="tb" style="font-size:28px">
+      만 4세 아이의 96.4%에게 검사가 제안됐는데<br>
+      실제로 받은 건 75.6%였어요.<br><br>
+      눈에 문제가 없어서가 아니라, <strong>영어 동의서</strong>가<br>
+      가방 속 다른 안내지에 섞여 넘어간 경우가 많아요.
+    </div>
+  </div>
+</section>
+
+<!-- Card 5: Statement (dark rhythm) -->
+<section class="card c5" data-type="statement">
+  <div class="handle">@aussie.umma</div>
+  <div class="glow" style="width:600px;height:600px;top:300px;left:-200px;background:var(--blue)"></div>
+  <div class="ci">
+    <div class="td-kr" style="font-size:66px;line-height:1.22;letter-spacing:-3px">
+      만 8세가 지나면<br>치료가 어려워지는<br>시력 문제가 있어요
+    </div>
+    <div class="div-a"></div>
+    <div class="tb" style="font-size:29px">
+      약시가 대표적이에요.<br>
+      시각 발달이 끝나기 전에 잡아야 회복 여지가 있어요.<br><br>
+      킨디 들어가기 전인 지금이 딱 그 타이밍이에요.
+    </div>
+  </div>
+</section>
+
+<!-- Card 6: Body - refer 통보 -->
+<section class="card c6" data-type="body">
+  <div class="handle">@aussie.umma</div>
+  <div class="glow" style="width:400px;height:400px;top:260px;right:-120px"></div>
+  <div class="ci">
+    <div class="badge badge-a" style="margin-bottom:34px">refer 통보를 받으면</div>
+    <div class="td-kr" style="font-size:58px;line-height:1.2;margin-bottom:40px">재검 통보가<br>확정은 아니에요</div>
+    <div class="tb" style="font-size:28px">
+      아이가 낯을 가려서 글자를 안 읽었거나<br>
+      집중을 못 해 검사를 끝내지 못한 경우도<br>
+      <strong>똑같이 의뢰 대상</strong>으로 분류돼요.<br><br>
+      결과지는 아이 가방으로 돌아와요.<br>
+      봉투를 보자마자 놀랄 필요는 없어요.
+    </div>
+  </div>
+</section>
+
+<!-- Card 7: Body - 비용 -->
+<section class="card c7" data-type="body">
+  <div class="handle">@aussie.umma</div>
+  <div class="glow" style="width:400px;height:400px;top:220px;left:-100px"></div>
+  <div class="ci">
+    <div class="badge badge-a" style="margin-bottom:34px">재검 통보 후 갈 곳</div>
+    <div class="td-kr" style="font-size:58px;line-height:1.2;margin-bottom:44px">리퍼럴 없이 바로,<br>검사비는 0달러</div>
+    <div class="rates">
+      <div class="rate">
+        <div class="rate-t">OPTOMETRIST</div>
+        <div class="rate-n">0<span class="cur">달러</span></div>
+        <div class="rate-c">GP 리퍼럴 없이 바로 예약<br>대부분 벌크빌링이에요</div>
+      </div>
+      <div class="rate">
+        <div class="rate-t">GLASSES</div>
+        <div class="rate-n kr">사비 부담</div>
+        <div class="rate-c">안경은 메디케어 커버 안 됨<br>주 보조 제도는 조건이 좁아요</div>
+      </div>
+    </div>
+    <div class="tb tm" style="font-size:22px;margin-top:30px;line-height:1.5">
+      봉투 속 feedback letter를 꼭 들고 가세요. 옵토메트리스트가<br>
+      StEPS로 회신해야 아이 기록이 닫혀요.
+    </div>
+  </div>
+</section>
+
+<!-- Card 8: Statement (dark rhythm) -->
+<section class="card c8" data-type="statement">
+  <div class="handle">@aussie.umma</div>
+  <div class="glow" style="width:600px;height:600px;top:-180px;right:-200px;background:var(--blue)"></div>
+  <div class="ci">
+    <div class="td-kr" style="font-size:66px;line-height:1.22;letter-spacing:-3px">
+      아이는 안 보인다고<br>말하지 않아요
+    </div>
+    <div class="div-a"></div>
+    <div class="tb" style="font-size:29px">
+      태어날 때부터 그게 자기 눈이라<br>
+      비교할 대상이 없거든요.<br><br>
+      그래서 말 대신 행동으로 나와요.<br>
+      TV 앞에 바짝 앉고, 책을 코앞까지 당기고,<br>
+      고개를 한쪽으로 기울여서 봐요.
+    </div>
+  </div>
+</section>
+
+<!-- Card 9: Sheet (save-bait) -->
+<section class="card c9" data-type="sheet">
+  <div class="handle">@aussie.umma</div>
+  <div class="glow" style="width:500px;height:500px;top:-120px;right:-120px"></div>
+  <div class="ci">
+    <div class="badge badge-a" style="margin-bottom:26px">저장 필수</div>
+    <div class="td-kr" style="font-size:46px;margin-bottom:26px">주별 무료 시력검사 정리</div>
+    <div class="list">
+      <span class="k">NSW</span> StEPS, <b>만 4세</b>, 프리스쿨 방문 검사<br>
+      <span class="k">VIC</span> MCH 3.5세 방문 때 <b>MIST</b><br>
+      <span class="k">QLD</span> Prep 학년 Vision Screening<br>
+      <span class="k">WA</span> School Entry Health Assessment<br>
+      <span class="k">SA</span> 4~5세 Health and Development Check<br>
+      <span class="k">ACT</span> 초등 첫해 Kindergarten Health Check<br>
+      <span class="k">TAS</span> CHaPS 0~5세 검진<br>
+      <span class="k">NT</span> Healthy Under 5 Kids
+    </div>
+    <div class="box">
+      <div class="box-t">집에서 보이는 신호</div>
+      <div class="box-b">TV 앞에 바짝 앉기, 책을 코앞까지 당기기, 고개 기울이고 보기, 한쪽 눈 가리기, 눈 자주 비비기, 빛에 유난히 민감, 공놀이 손눈 협응 어려움, 색칠과 퍼즐 회피</div>
+    </div>
+    <div class="box">
+      <div class="box-t">재검 통보 후 순서</div>
+      <div class="box-b">옵토메트리스트 바로 예약 (리퍼럴 불필요, 벌크빌링 0달러), 봉투 속 feedback letter 같이 들고 가기<br>유치원에 안 다니면 지역 LHD StEPS 코디네이터에게 전화하면 돼요</div>
+    </div>
+  </div>
+</section>
+
+<!-- Card 10: CTA -->
+<section class="card c10" data-type="cta">
+  <div class="handle">@aussie.umma</div>
+  <div class="glow" style="width:700px;height:700px;top:50%;left:50%;transform:translate(-50%,-50%)"></div>
+  <div class="ci">
+    <div class="tb" style="font-size:30px;margin-bottom:24px">가방 속 동의서를 다시 꺼내기 전에</div>
+    <div class="td-kr" style="font-size:64px;line-height:1.2;margin-bottom:16px">이 한 장만<br>저장해 두세요</div>
+    <div class="div-a"></div>
+    <div class="tb" style="font-size:26px;margin-top:28px;line-height:1.8">
+      동의서 한 장이면 끝나는 일이에요.<br>
+      우리 주 이름부터 위에서 찾아보세요.
+    </div>
+    <div class="big-cta" style="margin-top:56px">저장하기 →</div>
+  </div>
+</section>
+
+</body>
+</html>
