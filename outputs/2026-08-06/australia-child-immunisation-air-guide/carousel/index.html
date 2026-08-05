@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>호주 아이 예방접종 완벽 가이드</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:#050505; --card-bg:#080808; --elevated:#0e0e0e;
+      --ink:#fff; --ink2:#ccc; --ink3:#888; --ink4:#333;
+      --accent:#C6F135; --accent-dim:rgba(198,241,53,0.15);
+      --blue:#3B82F6; --red:#ff4d4d;
+      --border:rgba(255,255,255,0.07);
+      --font-kr:"Noto Sans KR",sans-serif;
+      --font-en:"Space Grotesk",sans-serif;
+    }
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    body{background:#000;font-family:var(--font-kr);color:var(--ink);display:flex;flex-direction:column;align-items:center;gap:10px;padding:60px 20px 100px;-webkit-font-smoothing:antialiased}
+    .card{width:1080px;height:1350px;background:var(--card-bg);position:relative;overflow:hidden;display:flex;flex-direction:column}
+    .card::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:50;opacity:0.04;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:180px}
+    .ci{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:90px;position:relative;z-index:2}
+    .td{font-family:var(--font-en);font-weight:900;line-height:1.05;letter-spacing:-2px;word-break:keep-all}
+    .td-kr{font-family:var(--font-kr);font-weight:900;line-height:1.15;letter-spacing:-3px;word-break:keep-all}
+    .td.xl{font-size:96px}.td.lg{font-size:82px}.td.md{font-size:72px}
+    .tb{font-size:30px;font-weight:400;color:var(--ink2);line-height:1.65;word-break:keep-all}
+    .tb strong{font-weight:700;color:var(--ink)}
+    .ta{color:var(--accent)}.tm{color:var(--ink3)}
+    .en{font-family:var(--font-en)}
+    .badge{display:inline-flex;align-items:center;padding:12px 28px;border-radius:100px;font-size:17px;font-weight:800;width:fit-content;text-transform:uppercase;letter-spacing:2px}
+    .badge-a{background:var(--accent);color:#000}
+    .div-a{width:56px;height:5px;background:var(--accent);border-radius:2px;border:none;margin:32px 0}
+    .handle{position:absolute;top:165px;right:90px;font-size:18px;font-weight:700;color:var(--ink);text-transform:uppercase;letter-spacing:3px;z-index:10;display:inline-flex;align-items:center;gap:10px}
+    .handle::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent)}
+    .glow{position:absolute;border-radius:50%;background:var(--accent);filter:blur(160px);opacity:0.07;pointer-events:none;z-index:0}
+    .center-block{flex:1;display:flex;flex-direction:column;justify-content:center}
+
+    /* cover card */
+    .c1 .cover-sub{max-width:85%;font-size:36px;font-weight:500;margin-top:40px}
+
+    /* hook card - hero number */
+    .c2 .hero-num{font-family:var(--font-en);font-size:200px;font-weight:700;color:var(--accent);line-height:1;letter-spacing:-8px}
+    .c2 .hero-num .unit{font-family:var(--font-kr);font-size:80px;font-weight:900;letter-spacing:-4px;margin-left:14px}
+
+    /* GP script card - quote block */
+    .c5 .script{width:100%;border:1px solid var(--border);border-radius:22px;background:var(--elevated);padding:38px 40px;margin-bottom:36px}
+    .c5 .script-t{font-size:20px;font-weight:800;color:var(--accent);letter-spacing:1px;margin-bottom:18px}
+    .c5 .script-b{font-family:var(--font-en);font-size:38px;font-weight:700;color:var(--ink);line-height:1.35;letter-spacing:-1px}
+
+    /* schedule split card */
+    .c6 .rates{display:flex;gap:24px;width:100%;margin-top:10px}
+    .c6 .rate{flex:1;border:1px solid var(--border);border-radius:22px;background:var(--elevated);padding:32px 28px;text-align:left}
+    .c6 .rate-t{font-family:var(--font-en);font-size:22px;font-weight:700;color:var(--accent);letter-spacing:2px;margin-bottom:18px}
+    .c6 .rate-n{font-family:var(--font-kr);font-size:40px;font-weight:900;color:var(--ink);letter-spacing:-2px;line-height:1.25}
+    .c6 .rate-c{font-size:23px;color:var(--ink3);line-height:1.55;margin-top:16px;word-break:keep-all}
+
+    /* statement card (dark rhythm) */
+    .c7 .tb{font-size:30px;line-height:1.7}
+
+    /* benefit card - big number */
+    .c8 .big-num{font-family:var(--font-en);font-size:126px;font-weight:700;color:var(--accent);line-height:1;letter-spacing:-5px}
+    .c8 .big-num .unit{font-family:var(--font-kr);font-size:58px;font-weight:900;letter-spacing:-3px;margin-left:10px}
+
+    /* sheet card (information dense, left aligned) */
+    .c9 .ci{padding:90px 84px;justify-content:center;align-items:flex-start;text-align:left}
+    .c9 .list{font-size:25px;line-height:1.78;color:var(--ink2);word-break:keep-all}
+    .c9 .list b{color:var(--ink);font-weight:700}
+    .c9 .k{color:var(--accent);font-weight:700}
+    .c9 .box{width:100%;border:1px solid var(--border);border-radius:20px;background:var(--elevated);padding:26px 32px;margin-top:24px}
+    .c9 .box-t{font-size:20px;font-weight:800;color:var(--accent);letter-spacing:1px;margin-bottom:12px}
+    .c9 .box-b{font-size:23px;line-height:1.6;color:var(--ink2);word-break:keep-all}
+
+    /* cta card */
+    .c10 .big-cta{font-size:64px;font-weight:900;color:var(--accent);font-family:var(--font-en);letter-spacing:-1px}
+
+    /* body text max-width for readability when centered */
+    .ci .tb{max-width:760px}
+  </style>
+</head>
+<body>
+
+<!-- Card 1: Cover -->
+<section class="card c1" data-type="cover">
+  <div class="handle">@aussie.umma</div>
+  <div class="glow" style="width:600px;height:600px;top:-200px;right:-200px"></div>
+  <div class="ci">
+    <div class="badge badge-a" style="margin-bottom:40px">한국 접종 기록 호주 등록</div>
+    <div class="td-kr" style="font-size:80px">한국에서 맞은 접종</div>
+    <div class="td-kr" style="font-size:80px;margin-top:6px">호주에서</div>
+    <div class="td-kr" style="font-size:80px;margin-top:6px">인정받는 법</div>
+    <div class="cover-sub tm">자동으로 안 넘어와요<br>서류 한 장이면 되는 일이에요</div>
+  </div>
+</section>
+
+<!-- Card 2: Hook (hero number) -->
+<section class="card c2" data-type="hook">
+  <div class="handle">@aussie.umma</div>
+  <div class="glow" style="width:520px;height:520px;top:-120px;left:-140px"></div>
+  <div class="ci">
+    <div class="badge badge-a" style="margin-bottom:40px">호주 시스템 기준</div>
+    <div class="hero-num">0<span class="unit">회</span></div>
+    <div class="tb tm" style="font-size:24px;margin-top:28px;line-height:1.55">
+      한국에서 일정대로 다 맞히고 왔는데,<br>
+      호주 예방접종 기록부에는 접종 0회로 잡혀요.
+    </div>
+    <div class="div-a"></div>
+    <div class="tb" style="font-size:29px">
+      기록이 나라를 넘어 자동으로 옮겨오지 않거든요.<br>
+      등록 전까지는 <strong>안 맞은 아이</strong>로 보여요.
+    </div>
+  </div>
+</section>
+
+<!-- Card 3: Body - AIR가 뭐예요 -->
+<section class="card c3" data-type="body">
+  <div class="handle">@aussie.umma</div>
+  <div class="glow" style="width:420px;height:420px;top:180px;right:-100px"></div>
+  <div class="ci">
+    <div class="badge badge-a" style="margin-bottom:34px">AIR가 뭐예요</div>
+    <div class="td-kr" style="font-size:58px;line-height:1.2;margin-bottom:40px">접종 기록은 AIR<br>한 곳에 모여요</div>
+    <div class="tb" style="font-size:28px">
+      호주 접종 기록은 AIR라는 전국 단일 데이터베이스에 쌓여요.<br><br>
+      호주에서 맞은 건 병원이 알아서 올려주는데,<br>
+      해외 접종은 <strong>GP가 서류를 보고 직접 입력</strong>해야<br>
+      비로소 기록으로 잡혀요.
+    </div>
+  </div>
+</section>
+
+<!-- Card 4: Insight - 준비물 -->
+<section class="card c4" data-type="insight">
+  <div class="handle">@aussie.umma</div>
+  <div class="glow" style="width:400px;height:400px;top:320px;left:-100px"></div>
+  <div class="ci">
+    <div class="badge badge-a" style="margin-bottom:34px">준비물은 딱 하나</div>
+    <div class="td-kr" style="font-size:58px;line-height:1.2;margin-bottom:40px">영문 증명서 한 장,<br>발급비 0달러</div>
+    <div class="tb" style="font-size:28px">
+      질병관리청 예방접종도우미 전자민원서비스에서<br>
+      <strong>영문 예방접종증명서</strong>를 신청하면 돼요.<br><br>
+      한국에 안 가도 호주에서 온라인으로 바로 나와요.<br>
+      정부24에서도 발급되니 둘 중 편한 쪽으로 하면 돼요.
+    </div>
+  </div>
+</section>
+
+<!-- Card 5: Example - GP 예약 스크립트 -->
+<section class="card c5" data-type="example">
+  <div class="handle">@aussie.umma</div>
+  <div class="glow" style="width:400px;height:400px;top:240px;right:-120px"></div>
+  <div class="ci">
+    <div class="badge badge-a" style="margin-bottom:34px">GP 예약할 때 이 말</div>
+    <div class="script">
+      <div class="script-t">SAY THIS ON THE PHONE</div>
+      <div class="script-b">overseas immunisation<br>records and catch-up</div>
+    </div>
+    <div class="tb" style="font-size:28px">
+      이렇게 말하면 긴 진료로 잡아줘요.<br><br>
+      GP가 한국 접종 이력을 호주 NIP 일정과 대조해서<br>
+      AIR에 입력하고, 빠진 항목은 <strong>캐치업 스케줄</strong>로 짜줘요.<br><br>
+      예약 전에 벌크빌링 되는지 한 번 물어보면 좋아요.
+    </div>
+  </div>
+</section>
+
+<!-- Card 6: Insight - 한국과 호주 일정 차이 -->
+<section class="card c6" data-type="insight">
+  <div class="handle">@aussie.umma</div>
+  <div class="glow" style="width:400px;height:400px;top:220px;left:-100px"></div>
+  <div class="ci">
+    <div class="badge badge-a" style="margin-bottom:34px">일정이 이만큼 달라요</div>
+    <div class="td-kr" style="font-size:58px;line-height:1.2;margin-bottom:44px">빠진 게 아니라<br>목록이 달라요</div>
+    <div class="rates">
+      <div class="rate">
+        <div class="rate-t">KOREA ONLY</div>
+        <div class="rate-n">BCG<br>일본뇌염<br>A형간염</div>
+        <div class="rate-c">호주 국가 일정에는 아예 없는 항목이에요</div>
+      </div>
+      <div class="rate">
+        <div class="rate-t">AUSTRALIA ONLY</div>
+        <div class="rate-n">수막구균<br>ACWY</div>
+        <div class="rate-c">생후 12개월 항목이라 한국에서 오면 대체로 캐치업 대상이에요</div>
+      </div>
+    </div>
+    <div class="tb tm" style="font-size:22px;margin-top:30px;line-height:1.5">
+      수두는 한국이 생후 12~15개월, 호주는 18개월이라 시점도 달라요.<br>
+      뭘 다시 맞을지는 GP가 아이별로 판단해요.
+    </div>
+  </div>
+</section>
+
+<!-- Card 7: Statement (dark rhythm) -->
+<section class="card c7" data-type="statement">
+  <div class="handle">@aussie.umma</div>
+  <div class="glow" style="width:600px;height:600px;top:300px;left:-200px;background:var(--blue)"></div>
+  <div class="ci">
+    <div class="td-kr" style="font-size:66px;line-height:1.22;letter-spacing:-3px">
+      접종을 안 한 게 아니라,<br>기록을 안 올린 거예요
+    </div>
+    <div class="div-a"></div>
+    <div class="tb" style="font-size:29px">
+      호주 만 5세 접종 완료율은 93.17%로<br>
+      정부 목표치 95%에 아직 못 미쳐요.<br><br>
+      우리 집만 서류가 꼬인 게 아니에요.
+    </div>
+  </div>
+</section>
+
+<!-- Card 8: Body - 데이케어와 지원금 -->
+<section class="card c8" data-type="body">
+  <div class="handle">@aussie.umma</div>
+  <div class="glow" style="width:400px;height:400px;top:300px;right:-120px"></div>
+  <div class="ci">
+    <div class="badge badge-a" style="margin-bottom:34px">서류가 없으면 생기는 일</div>
+    <div class="big-num">36.54<span class="unit">달러</span></div>
+    <div class="tb tm" style="font-size:24px;margin-top:26px;line-height:1.55">
+      FTB Part A는 접종 요건을 못 맞추면<br>
+      아이 1명당 2주에 이만큼 깎여요.<br>
+      (출처: Services Australia, 2026년 8월 확인)
+    </div>
+    <div class="div-a"></div>
+    <div class="tb" style="font-size:28px">
+      NSW는 AIR 서류 없이는 <strong>데이케어와 프리스쿨 등록</strong>이<br>
+      아예 안 돼요.<br><br>
+      캐치업 진행 중 확인서로도 등록은 되니까,<br>
+      일단 GP부터 예약하면 돼요.
+    </div>
+  </div>
+</section>
+
+<!-- Card 9: Sheet (save-bait) -->
+<section class="card c9" data-type="sheet">
+  <div class="handle">@aussie.umma</div>
+  <div class="glow" style="width:500px;height:500px;top:-120px;right:-120px"></div>
+  <div class="ci">
+    <div class="badge badge-a" style="margin-bottom:26px">저장 필수</div>
+    <div class="td-kr" style="font-size:46px;margin-bottom:26px">호주 접종 서류 5단계</div>
+    <div class="list">
+      <span class="k">1</span> 예방접종도우미에서 <b>영문 증명서</b> 발급, 무료<br>
+      <span class="k">2</span> 영문이 아니면 Home Affairs <b>무료 번역</b>, 비자 승인 2년 내 최대 10건<br>
+      <span class="k">3</span> GP 예약해서 <b>AIR 입력</b>과 캐치업 요청<br>
+      <span class="k">4</span> myGov, Medicare, Proof of vaccinations에서 <b>PDF 저장</b><br>
+      <span class="k">5</span> 데이케어에 제출
+    </div>
+    <div class="box">
+      <div class="box-t">NSW 데이케어 제출 서류</div>
+      <div class="box-b">나이에 맞게 접종 완료가 표시된 Immunisation History Statement, 캐치업 진행 확인 Form(6개월 유효), 의학적 면제 Form 중 하나면 등록돼요</div>
+    </div>
+    <div class="box">
+      <div class="box-t">알아두면 편한 것</div>
+      <div class="box-b">캐치업 백신은 만 20세 미만 무료, HPV는 만 25세까지 무료예요<br>Medicare 카드에 등재된 만 14세 미만 자녀 서류는 부모 계정에서 바로 받아요</div>
+    </div>
+  </div>
+</section>
+
+<!-- Card 10: CTA -->
+<section class="card c10" data-type="cta">
+  <div class="handle">@aussie.umma</div>
+  <div class="glow" style="width:700px;height:700px;top:50%;left:50%;transform:translate(-50%,-50%)"></div>
+  <div class="ci">
+    <div class="tb" style="font-size:30px;margin-bottom:24px">GP에 전화를 걸기 전에</div>
+    <div class="td-kr" style="font-size:64px;line-height:1.2;margin-bottom:16px">이 순서만<br>저장해 두세요</div>
+    <div class="div-a"></div>
+    <div class="tb" style="font-size:26px;margin-top:28px;line-height:1.8">
+      오늘 증명서 한 장만 뽑아두면<br>
+      나머지는 GP가 해주는 일이에요.
+    </div>
+    <div class="big-cta" style="margin-top:56px">저장하기 →</div>
+  </div>
+</section>
+
+</body>
+</html>
