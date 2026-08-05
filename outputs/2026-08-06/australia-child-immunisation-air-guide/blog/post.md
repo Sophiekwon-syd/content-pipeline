@@ -298,7 +298,7 @@ https://blog.naver.com/ai-in-syd/224349217476
 
 - 호주 아이 시력검사 무료로 받는 법, 만 4세 StEPS 신청부터 재검 통보 대처까지 (2026년 기준): 만 4세 접종(DTP, 폴리오)과 시기가 겹쳐서 킨디 전 체크리스트로 묶기 좋아요
 
-https://blog.naver.com/ai-in-syd/224368533659
+https://blog.naver.com/ai-in-syd/224369318599
 
 ---
 
