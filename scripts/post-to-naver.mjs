@@ -105,8 +105,8 @@ export function parsePost(md) {
   let skipSection = false;
   const headings = [];       // h2 section titles (styled larger + bold)
   const faqQuestions = [];   // h3 lines (styled bold)
-  const quoteLeads = [];     // first line of each blockquote (wrapped in 인용구)
-  let inQuote = false;
+  const quoteBlocks = [];    // EVERY line of each blockquote (wrapped as one 인용구)
+  let curQuote = null;
 
   for (const line of lines) {
     const h1 = line.match(/^#\s+(.*)/);
@@ -128,11 +128,23 @@ export function parsePost(md) {
     if (h3) faqQuestions.push(inline(h3[1]));
     const bq = line.match(/^>\s?(.*)/);
     if (bq) {
-      if (!inQuote && bq[1].trim()) quoteLeads.push(inline(bq[1]));
-      inQuote = true;
-    } else if (line.trim()) {
-      inQuote = false;
+      // Blockquote lines NEVER reach the body. Like tables, each block leaves a
+      // [[QUOTE-n]] marker and is built as a component in place. Putting them in
+      // the body and cutting them back out did not work: SmartEditor refuses to
+      // delete a selection that spans component boundaries, so Cmd+X copied
+      // without deleting and left duplicated text behind.
+      const t = inline(bq[1]);
+      if (t) {
+        if (!curQuote) {
+          curQuote = { lead: t, lines: [] };
+          quoteBlocks.push(curQuote);
+          kept.push(`[[QUOTE-${quoteBlocks.length}]]`);
+        }
+        curQuote.lines.push(t);
+      }
+      continue;
     }
+    if (line.trim()) curQuote = null;
     kept.push(line);
   }
 
@@ -151,7 +163,7 @@ export function parsePost(md) {
     .trim();
 
   if (HASHTAGS.length) body += '\n\n' + HASHTAGS.map((t) => '#' + t).join(' ');
-  return { title, body, headings, faqQuestions, quoteLeads, tables };
+  return { title, body, headings, faqQuestions, quoteBlocks, tables };
 }
 
 // ---------------------------------------------------------------- topics
@@ -427,25 +439,76 @@ async function styleFaq(page, faqQuestions) {
   console.log(`  FAQ questions bolded: ${faqQuestions.length}`);
 }
 
-// wrap each blockquote callout in a vertical-line 인용구 info box
-async function wrapQuotes(page, quoteLeads) {
-  let wrapped = 0;
-  for (const lead of quoteLeads) {
-    const key = lead.slice(0, 20);
-    if (!(await cutParagraph(page, key, { prefix: true }))) { console.warn(`  (quote cut failed: ${key})`); continue; }
+// swap each [[QUOTE-n]] marker for a real 세로선 인용구 box and TYPE its lines in.
+//
+// Modelled on insertTables, which is the one component path that has always
+// been reliable, precisely because it never touches the clipboard or a
+// multi-paragraph selection. The previous cut-and-paste design failed because
+// SmartEditor will copy a selection spanning component boundaries but refuses
+// to delete it, leaving the original text duplicated in the body.
+async function insertQuotes(page, quoteBlocks) {
+  for (let n = 0; n < quoteBlocks.length; n++) {
+    const block = quoteBlocks[n];
+    const marker = `[[QUOTE-${n + 1}]]`;
+    const idx = await paraIndex(page, marker);
+    if (idx === -1) { console.warn(`  (quote marker not found: ${marker})`); continue; }
+    await selectPara(page, idx);
+    await page.keyboard.press('Delete'); // clear the marker, keep the caret
+    await sleep(300);
+
+    const before = await page.locator('.se-component.se-quotation').count();
     await insertQuotation(page, 'quotation_line');
-    await page.keyboard.press(`${MOD}+V`);
-    await sleep(500);
-    if (await quotationHas(page, key)) { wrapped++; await clickAfterQuotation(page, key); }
-    else console.warn(`  (quote wrap unverified: ${key})`); // paste landed as plain text; content intact
+    let made = false;
+    for (let w = 0; w < 20 && !made; w++) {
+      await sleep(400);
+      made = (await page.locator('.se-component.se-quotation').count()) > before;
+    }
+    if (!made) { console.warn(`  (인용구 not created for ${marker} — skipping)`); continue; }
+
+    // caret lands inside the new empty box; type the lines, Enter between
+    for (let i = 0; i < block.lines.length; i++) {
+      if (i) { await page.keyboard.press('Enter'); await sleep(120); }
+      await page.keyboard.type(block.lines[i]);
+      await sleep(90);
+    }
+    await sleep(300);
+    console.log(`  quote ${n + 1}: ${block.lines.length} lines typed`);
   }
-  console.log(`  callout boxes: ${wrapped}/${quoteLeads.length} wrapped`);
+}
+
+// Structural check, run AFTER every box is built: each block must live in its
+// own 인용구, with exactly its own line count and nothing left loose in body.
+async function verifyQuotes(page, quoteBlocks) {
+  let bad = 0;
+  for (const block of quoteBlocks) {
+    const key = block.lead.slice(0, 20);
+    const r = await page.evaluate(([k, lines]) => {
+      const norm = (s) => (s || '').replace(/\u200b/g, '').replace(/\u00a0/g, ' ').trim();
+      const q = [...document.querySelectorAll('.se-component.se-quotation')]
+        .find((x) => norm(x.textContent).includes(k));
+      if (!q) return { found: false };
+      const paras = [...q.querySelectorAll('.se-text-paragraph')]
+        .map((p) => norm(p.textContent)).filter(Boolean)
+        .filter((t) => t !== '출처 입력' && t !== '내용을 입력하세요.');
+      const bodyText = [...document.querySelectorAll('.se-component.se-text .se-text-paragraph')]
+        .map((p) => norm(p.textContent)).filter(Boolean);
+      const loose = lines.filter((l) => bodyText.some((b) => b.startsWith(l.slice(0, 18))));
+      return { found: true, inBox: paras.length, loose: loose.length };
+    }, [key, block.lines]);
+
+    const want = block.lines.length;
+    if (!r.found) { console.warn(`  [verify] ${key}: NO 인용구 contains this block`); bad++; }
+    else if (r.inBox !== want) { console.warn(`  [verify] ${key}: box holds ${r.inBox} lines, block is ${want}`); bad++; }
+    else if (r.loose) { console.warn(`  [verify] ${key}: ${r.loose} block line(s) ALSO left loose in body`); bad++; }
+  }
+  console.log(`  callout boxes: ${quoteBlocks.length - bad}/${quoteBlocks.length} verified correct`);
+  return bad === 0;
 }
 
 // swap each [[TABLE-n]] marker for a real SmartEditor 표 component
 async function insertTables(page, tables) {
   for (let n = 0; n < tables.length; n++) {
-    const { header, rows, fallback } = tables[n];
+    const { header, rows } = tables[n];
     const marker = `[[TABLE-${n + 1}]]`;
     const idx = await paraIndex(page, marker);
     if (idx === -1) { console.warn(`  (table marker not found: ${marker})`); continue; }
@@ -454,11 +517,18 @@ async function insertTables(page, tables) {
     await sleep(300);
     const before = await page.locator('.se-component.se-table').count();
     await page.locator('button[data-name="table"]').first().click();
-    await sleep(1000);
-    if ((await page.locator('.se-component.se-table').count()) <= before) {
-      console.warn(`  (table insert failed — typing fallback for ${marker})`);
-      await page.keyboard.type(fallback.replace(/\n/g, '\n'));
-      continue;
+    // SmartEditor registers the new 표 component asynchronously. A single fixed
+    // wait raced it: the check read "insert failed", the typing fallback landed
+    // nowhere that persists, and an EMPTY table shell shipped live with the
+    // content gone (observed 2026-08-05, logNo 224368533659). Poll instead.
+    let appeared = false;
+    for (let w = 0; w < 20 && !appeared; w++) {
+      await sleep(500);
+      appeared = (await page.locator('.se-component.se-table').count()) > before;
+    }
+    if (!appeared) {
+      // hard failure: a silently empty table is worse than no post at all
+      throw new Error(`table insert failed for ${marker} — aborting rather than shipping an empty table`);
     }
     const table = page.locator('.se-component.se-table').last();
     // grow from the default 3×3 using the edge add-buttons (geometry-mapped:
@@ -503,7 +573,12 @@ async function insertTables(page, tables) {
       }
     }
     await page.keyboard.press('Escape').catch(() => {});
-    console.log(`  table ${n + 1}: ${dims.rows}×${dims.cols} filled`);
+    // confirm the cells actually hold text — an empty shell renders fine in the
+    // editor and is invisible in the run log, but ships as a blank box
+    const filled = await table.evaluate((t) =>
+      [...t.querySelectorAll('td, th')].filter((c) => (c.textContent || '').trim()).length);
+    if (!filled) throw new Error(`table ${n + 1} came out empty — aborting rather than shipping a blank table`);
+    console.log(`  table ${n + 1}: ${dims.rows}×${dims.cols}, ${filled} cells filled`);
   }
 }
 
@@ -682,7 +757,42 @@ async function verifyDraftCount(ctx, blogId) {
   } catch { return null; } finally { await probe.close().catch(() => {}); }
 }
 
-async function postOne(ctx, blogId, slug, { title, body, headings = [], faqQuestions = [], quoteLeads = [], tables = [], images = [] }) {
+// NAVER_DUMP=1 — print the built document's component structure before saving.
+// Verifying from the editor avoids automating the 임시저장 list, which is
+// documented as unsafe (item vs delete controls are ambiguous).
+async function dumpStructure(page) {
+  const rows = await page.evaluate(() => {
+    // the EDITOR has no .se-main-container (that wrapper only exists on the
+    // published page) — components sit directly in the document
+    const all = [...document.querySelectorAll('.se-component')];
+    if (!all.length) return null;
+    return all
+      .filter((c) => !c.parentElement.closest('.se-component'))
+      .map((c) => {
+        const kind = [...c.classList].find((x) => x.startsWith('se-') && x !== 'se-component') || '?';
+        const paras = [...c.querySelectorAll('.se-text-paragraph')]
+          .map((p) => (p.textContent || '').replace(/​/g, '').replace(/ /g, ' ').trim())
+          .filter(Boolean);
+        const cells = [...c.querySelectorAll('td,th')];
+        return {
+          kind,
+          n: paras.length,
+          cells: cells.length ? `${cells.filter((t) => (t.textContent || '').trim()).length}/${cells.length}` : '',
+          first: paras[0] ? paras[0].slice(0, 46) : '',
+          last: paras.length > 1 ? paras[paras.length - 1].slice(0, 46) : '',
+        };
+      });
+  });
+  if (!rows) { console.log('  [dump] no .se-component found'); return; }
+  console.log('  ---- document structure ----');
+  rows.forEach((r, i) => {
+    const c = r.cells ? ` cells=${r.cells}` : '';
+    console.log(`  [${String(i + 1).padStart(2)}] ${r.kind.padEnd(18)} lines=${String(r.n).padStart(2)}${c}  ${r.first}${r.last ? `  …  ${r.last}` : ''}`);
+  });
+  console.log('  ----------------------------');
+}
+
+async function postOne(ctx, blogId, slug, { title, body, headings = [], faqQuestions = [], quoteBlocks = [], tables = [], images = [] }) {
   const page = await ctx.newPage();
   await page.goto(`https://blog.naver.com/${blogId}/postwrite`, { waitUntil: 'domcontentloaded' });
   await sleep(jitter(3000, 5000));
@@ -703,11 +813,13 @@ async function postOne(ctx, blogId, slug, { title, body, headings = [], faqQuest
   // numbered ❝ heading blocks + dividers → callout boxes → FAQ bold → images
   await styleGlobal(page);
   await buildHeadingBlocks(page, headings);
-  await wrapQuotes(page, quoteLeads);
+  await insertQuotes(page, quoteBlocks);
+  await verifyQuotes(page, quoteBlocks);
   await styleFaq(page, faqQuestions);
   await insertTables(page, tables);
   await insertImages(page, images, headings);
   await enableAiUsage(page);
+  if (process.env.NAVER_DUMP === '1') await dumpStructure(page);
 
   if (MANUAL_SAVE) {
     console.log(`\n  [manual] ${slug} — 본문 입력 완료. 브라우저에서 직접 "저장"을 누르세요.`);
@@ -720,13 +832,22 @@ async function postOne(ctx, blogId, slug, { title, body, headings = [], faqQuest
     // and the draft silently never appears, while the old code still reported
     // success. So: click, let the network settle, verify from a SEPARATE tab,
     // and only then close this one.
+    // The 저장 click does not always register (observed failing on ~half of
+    // runs, 저장 N → N with no new draft). Retry before giving up.
     const before = await draftCount(page);
-    await page.getByRole('button', { name: /^저장/ }).first().click();
-    await page.waitForLoadState('networkidle', { timeout: 30000 }).catch(() => {});
-    await sleep(3000);
-
-    const after = await verifyDraftCount(ctx, blogId);
-    const ok = before !== null && after !== null && after > before;
+    let after = null;
+    let ok = false;
+    for (let attempt = 1; attempt <= 3 && !ok; attempt++) {
+      await page.getByRole('button', { name: /^저장/ }).first().click().catch(() => {});
+      await page.waitForLoadState('networkidle', { timeout: 30000 }).catch(() => {});
+      await sleep(3000);
+      after = await verifyDraftCount(ctx, blogId);
+      ok = before !== null && after !== null && after > before;
+      if (!ok && attempt < 3) {
+        console.warn(`  [draft] 저장 미확인 (${before} → ${after}) — 재시도 ${attempt + 1}/3`);
+        await sleep(2500);
+      }
+    }
     if (ok) console.log(`  [draft] ${slug} — 임시저장 확인됨 (저장 ${before} → ${after})`);
     else console.warn(`  [draft] ${slug} — 저장 확인 실패 (저장 ${before} → ${after}). 탭을 열어둡니다.`);
     if (ok) await page.close(); // only safe to close once the save is confirmed
@@ -798,8 +919,8 @@ if (DRY_RUN) {
     console.log('SLUG :', t.slug);
     console.log('TITLE:', t.title);
     console.log('BODY :', t.body.length, 'chars');
-    console.log('STYLE:', t.headings.length, 'headings |', t.faqQuestions.length, 'FAQ |', t.quoteLeads.length, 'quotes |', t.tables.length, 'tables |', t.images.length, 'images');
-    t.quoteLeads.forEach((q) => console.log('  quote:', q.slice(0, 40)));
+    console.log('STYLE:', t.headings.length, 'headings |', t.faqQuestions.length, 'FAQ |', t.quoteBlocks.length, 'quotes |', t.tables.length, 'tables |', t.images.length, 'images');
+    t.quoteBlocks.forEach((q) => console.log(`  quote (${q.lines.length} lines):`, q.lead.slice(0, 40)));
     console.log('-'.repeat(60));
     console.log(t.body.slice(0, 1500));
     console.log(t.body.length > 1500 ? `\n... (${t.body.length - 1500} more chars)` : '');
