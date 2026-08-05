@@ -492,7 +492,9 @@ async function verifyQuotes(page, quoteBlocks) {
         .filter((t) => t !== '출처 입력' && t !== '내용을 입력하세요.');
       const bodyText = [...document.querySelectorAll('.se-component.se-text .se-text-paragraph')]
         .map((p) => norm(p.textContent)).filter(Boolean);
-      const loose = lines.filter((l) => bodyText.some((b) => b.startsWith(l.slice(0, 18))));
+      // exact match only — an 18-char prefix collides with legitimately similar
+      // body text (the 결론 line and an FAQ question can share an opening)
+      const loose = lines.filter((l) => bodyText.some((b) => b === l));
       return { found: true, inBox: paras.length, loose: loose.length };
     }, [key, block.lines]);
 
@@ -578,7 +580,16 @@ async function insertTables(page, tables) {
     const filled = await table.evaluate((t) =>
       [...t.querySelectorAll('td, th')].filter((c) => (c.textContent || '').trim()).length);
     if (!filled) throw new Error(`table ${n + 1} came out empty — aborting rather than shipping a blank table`);
-    console.log(`  table ${n + 1}: ${dims.rows}×${dims.cols}, ${filled} cells filled`);
+    const expected = want.cols * want.rows;
+    if (filled < expected) {
+      throw new Error(`table ${n + 1} lost content — ${filled}/${expected} cells filled`);
+    }
+    // SmartEditor's default table is 3×3 and the grow loop only ADDS, so a
+    // 2-column markdown table ships with a stray empty third column.
+    if (dims.cols > want.cols || dims.rows > want.rows) {
+      console.warn(`  (table ${n + 1} SURPLUS: built ${dims.rows}×${dims.cols}, content is ${want.rows}×${want.cols} — empty row/column will render)`);
+    }
+    console.log(`  table ${n + 1}: ${dims.rows}×${dims.cols}, ${filled}/${dims.rows * dims.cols} cells filled`);
   }
 }
 
