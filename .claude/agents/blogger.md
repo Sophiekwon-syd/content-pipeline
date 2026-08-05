@@ -31,12 +31,26 @@ Example: "호주 MCHN 무료 건강검진 이용하는 법 (2026년 업데이트
 ### 2. Structure (인용 블록 3개 이상 필수)
 Build in this order:
 1. **썸네일 이미지 프롬프트** (editorial-lifestyle style — see below)
-2. **핵심 요약 박스** (맨 위 3-4줄, "결론부터 말하면") — use the brief's Summary section
+2. **핵심 요약 박스** — the blockquote is EXACTLY two lines: `**결론부터 말하면**`
+   plus ONE short, catchy payoff sentence. Nothing else goes inside the `>`
+   block. It is a hook, not a summary.
+
+   ```
+   > **결론부터 말하면**
+   > NSW에 사는 만 4세 아이는 시력검사가 무료예요.
+   ```
+
+   The rest of the brief's Summary follows as ordinary 본문 paragraphs BELOW the
+   box (one sentence per paragraph), not as more `>` lines. Every `>` line is
+   rendered inside the 인용구 box by the posting script, so a 7-line blockquote
+   ships as a wall of text in the box (observed 2026-08-05).
 3. **도입** (공감) — acknowledge the reader's situation, 2-3 paragraphs
 4. **본문** — use the brief's Sections as H2 subheadings. Include:
    - At least one **번호 단계 목록** (1·2·3 "~하는 법")
    - At least one **비교표** (Before/After, 한국 vs 호주, or 요금 구간표)
-   - At least one **복붙 가능한 박스** (체크리스트, 서류 목록, or 프롬프트)
+   - At least one **복붙 가능한 박스** (체크리스트, 서류 목록, or 프롬프트).
+     The box's first line is the plain title only — never a "복붙하세요:" style
+     instruction prefix. Write `체크리스트 이름` , not `복붙하세요: 체크리스트 이름`.
 5. **주의사항** — brief's caveats as a numbered list
 6. **FAQ 섹션** — H3 = actual search query, 2-3 line answer
 7. **마무리** — one paragraph, empathetic close
@@ -76,9 +90,17 @@ Prompt style (photo, not illustration):
 ```
 
 ### 4b. 내부링크
-When the 함께 읽으면 좋은 글 items correspond to already-published Naver posts,
-include the actual URL on its own line right after the item — the posting flow
-turns a bare URL line into a Naver 링크 카드. Titles without URLs stay text-only.
+**Only recommend posts that actually exist.** Never invent a plausible-sounding
+title. The published set is the union of every `outputs/*/naver-log.json` —
+read those files, and take each post's real title from the `# ` H1 of
+`outputs/<date>/<slug>/blog/post.md`. If fewer than three published posts are
+genuinely related, list fewer; an empty 함께 읽으면 좋은 글 section is fine.
+
+For each item, include the actual URL from the log on its own line right after
+the item — the posting flow turns a bare URL line into a Naver 링크 카드.
+
+(Recommending posts that were never published shipped live on 2026-08-05: all
+three items pointed at articles that do not exist on the blog.)
 
 ### 5. Self-review (발행 전 체크리스트)
 Run this checklist and include results at the bottom of the post:
