@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>호주 출산휴가 급여 26주 완전 정리</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:#050505; --card-bg:#080808; --elevated:#0e0e0e;
+      --ink:#fff; --ink2:#ccc; --ink3:#888; --ink4:#333;
+      --accent:#C6F135; --accent-dim:rgba(198,241,53,0.15);
+      --blue:#3B82F6; --red:#ff4d4d;
+      --border:rgba(255,255,255,0.07);
+      --font-kr:"Noto Sans KR",sans-serif;
+      --font-en:"Space Grotesk",sans-serif;
+    }
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    body{background:#000;font-family:var(--font-kr);color:var(--ink);display:flex;flex-direction:column;align-items:center;gap:10px;padding:60px 20px 100px;-webkit-font-smoothing:antialiased}
+    .card{width:1080px;height:1350px;background:var(--card-bg);position:relative;overflow:hidden;display:flex;flex-direction:column}
+    .card::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:50;opacity:0.04;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:180px}
+    .ci{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:90px;position:relative;z-index:2}
+    .td{font-family:var(--font-en);font-weight:900;line-height:1.05;letter-spacing:-2px;word-break:keep-all}
+    .td-kr{font-family:var(--font-kr);font-weight:900;line-height:1.15;letter-spacing:-3px;word-break:keep-all}
+    .td.xl{font-size:96px}.td.lg{font-size:82px}.td.md{font-size:72px}
+    .tb{font-size:30px;font-weight:400;color:var(--ink2);line-height:1.65;word-break:keep-all}
+    .tb strong{font-weight:700;color:var(--ink)}
+    .ta{color:var(--accent)}.tm{color:var(--ink3)}
+    .en{font-family:var(--font-en)}
+    .badge{display:inline-flex;align-items:center;padding:12px 28px;border-radius:100px;font-size:17px;font-weight:800;width:fit-content;text-transform:uppercase;letter-spacing:2px}
+    .badge-a{background:var(--accent);color:#000}
+    .div-a{width:56px;height:5px;background:var(--accent);border-radius:2px;border:none;margin:32px 0}
+    .handle{position:absolute;top:165px;right:90px;font-size:18px;font-weight:700;color:var(--ink);text-transform:uppercase;letter-spacing:3px;z-index:10;display:inline-flex;align-items:center;gap:10px}
+    .handle::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent)}
+    .glow{position:absolute;border-radius:50%;background:var(--accent);filter:blur(160px);opacity:0.07;pointer-events:none;z-index:0}
+    .center-block{flex:1;display:flex;flex-direction:column;justify-content:center}
+
+    /* cover card */
+    .c1 .cover-sub{max-width:85%;font-size:36px;font-weight:500;margin-top:40px}
+
+    /* hook card - hero number */
+    .c2 .hero-num{font-family:var(--font-en);font-size:200px;font-weight:700;color:var(--accent);line-height:1;letter-spacing:-8px}
+    .c2 .hero-num .unit{font-family:var(--font-kr);font-size:80px;font-weight:900;letter-spacing:-4px;margin-left:14px}
+
+    /* body card big number (dollar amount) */
+    .c4 .big-num{font-family:var(--font-en);font-size:126px;font-weight:700;color:var(--accent);line-height:1;letter-spacing:-5px}
+    .c4 .big-num .unit{font-family:var(--font-kr);font-size:48px;font-weight:900;letter-spacing:-2px;margin-left:10px}
+    .c4 .big-num .dollar{font-size:80px;letter-spacing:-2px}
+
+    /* body card box rows */
+    .box-row{width:100%;border:1px solid var(--border);border-radius:22px;background:var(--elevated);padding:28px 36px;margin-top:22px;text-align:left}
+    .box-row:first-of-type{margin-top:0}
+    .box-row .box-t{font-size:19px;font-weight:800;color:var(--accent);letter-spacing:1px;margin-bottom:10px}
+    .box-row .box-b{font-size:27px;line-height:1.55;color:var(--ink2);word-break:keep-all}
+
+    /* sheet card (information dense, left aligned) */
+    .c9 .ci{padding:90px 84px;justify-content:center;align-items:flex-start;text-align:left}
+    .c9 .list{font-size:25px;line-height:1.78;color:var(--ink2);word-break:keep-all}
+    .c9 .list b{color:var(--ink);font-weight:700}
+    .c9 .k{color:var(--accent);font-weight:700}
+    .c9 .box{width:100%;border:1px solid var(--border);border-radius:20px;background:var(--elevated);padding:26px 32px;margin-top:24px}
+    .c9 .box-t{font-size:20px;font-weight:800;color:var(--accent);letter-spacing:1px;margin-bottom:12px}
+    .c9 .box-b{font-size:23px;line-height:1.6;color:var(--ink2);word-break:keep-all}
+
+    /* cta card */
+    .c10 .big-cta{font-size:64px;font-weight:900;color:var(--accent);font-family:var(--font-en);letter-spacing:-1px}
+
+    /* body text max-width for readability when centered */
+    .ci .tb{max-width:760px}
+  </style>
+</head>
+<body>
+
+<!-- Card 1: Cover -->
+<section class="card c1" data-type="cover">
+  <div class="handle">@aussie.umma</div>
+  <div class="glow" style="width:600px;height:600px;top:-200px;right:-200px"></div>
+  <div class="ci">
+    <div class="badge badge-a" style="margin-bottom:40px">2026년 7월 확대</div>
+    <div class="td-kr" style="font-size:80px">호주 출산휴가</div>
+    <div class="td-kr" style="font-size:80px;margin-top:6px">26주 급여 완전 정리</div>
+    <div class="cover-sub tm">주당 수령액, 퇴직연금 적립,<br>배우자 분할까지 한 장에</div>
+  </div>
+</section>
+
+<!-- Card 2: Hook (hero number 26주) -->
+<section class="card c2" data-type="hook">
+  <div class="handle">@aussie.umma</div>
+  <div class="glow" style="width:520px;height:520px;top:-120px;left:-140px"></div>
+  <div class="ci">
+    <div class="badge badge-a" style="margin-bottom:40px">18주에서 확대</div>
+    <div class="hero-num">26<span class="unit">주</span></div>
+    <div class="tb tm" style="font-size:24px;margin-top:28px;line-height:1.55">
+      이전에는 18주였어요.<br>
+      2026년 7월부터 8주가 추가됐죠.<br>
+      아직 18주로 아는 엄마들이 많아요.
+    </div>
+    <div class="div-a"></div>
+    <div class="tb" style="font-size:29px">
+      총 수령액 <strong>$26,122</strong>,<br>
+      퇴직연금까지 포함하면 <strong>$29,000+</strong>
+    </div>
+  </div>
+</section>
+
+<!-- Card 3: Body (insight) - 자격 요건 -->
+<section class="card c3" data-type="insight">
+  <div class="handle">@aussie.umma</div>
+  <div class="glow" style="width:420px;height:420px;top:180px;right:-100px"></div>
+  <div class="ci">
+    <div class="badge badge-a" style="margin-bottom:34px">자격 요건</div>
+    <div class="td-kr" style="font-size:58px;line-height:1.2;margin-bottom:40px">주 7.5시간이면<br>파트타임도 가능해요</div>
+    <div class="tb" style="font-size:28px">
+      출산 전 13개월 중 <strong>10개월 동안<br>
+      330시간</strong> 이상 근무하면 돼요.<br><br>
+      프리랜서, 캐주얼, 계약직 모두<br>
+      work test만 충족하면 신청 가능.
+    </div>
+  </div>
+</section>
+
+<!-- Card 4: Body (example) - 수령액 big number -->
+<section class="card c4" data-type="example">
+  <div class="handle">@aussie.umma</div>
+  <div class="glow" style="width:400px;height:400px;top:320px;left:-100px"></div>
+  <div class="ci">
+    <div class="badge badge-a" style="margin-bottom:34px">수령액</div>
+    <div class="big-num"><span class="dollar">$</span>26,122</div>
+    <div class="tb tm" style="font-size:24px;margin-top:22px;line-height:1.55">
+      주당 $1,004.70 세전,<br>
+      26주 전액 수령 시 합계
+    </div>
+    <div class="div-a"></div>
+    <div class="tb" style="font-size:28px">
+      세후로는 주당 약 <strong>$820에서 $850</strong>,<br>
+      26주 전체 약 $21,500에서 $22,000 수준이에요.
+    </div>
+  </div>
+</section>
+
+<!-- Card 5: Body (insight) - 퇴직연금 -->
+<section class="card c5" data-type="insight">
+  <div class="handle">@aussie.umma</div>
+  <div class="glow" style="width:400px;height:400px;top:240px;right:-120px"></div>
+  <div class="ci">
+    <div class="badge badge-a" style="margin-bottom:34px">2026년 신규</div>
+    <div class="td-kr" style="font-size:52px;line-height:1.2;margin-bottom:36px">퇴직연금 $3,100+<br>정부가 자동 적립</div>
+    <div class="tb" style="font-size:27px">
+      2025년 7월부터 ATO가 PPL 급여의<br>
+      <strong>12%를 슈퍼 계좌</strong>에 직접 넣어줘요.<br><br>
+      육아휴직 중 회사에서 슈퍼를<br>
+      못 받는 공백을 정부가 메워주는 거죠.
+    </div>
+  </div>
+</section>
+
+<!-- Card 6: Body (insight) - 배우자 분할 -->
+<section class="card c6" data-type="body">
+  <div class="handle">@aussie.umma</div>
+  <div class="glow" style="width:400px;height:400px;top:280px;left:-100px;background:var(--blue)"></div>
+  <div class="ci">
+    <div class="badge badge-a" style="margin-bottom:34px">배우자 분할</div>
+    <div class="td-kr" style="font-size:54px;line-height:1.22;letter-spacing:-3px">
+      각자 4주 reserved,<br>18주는 자유롭게 공유
+    </div>
+    <div class="div-a"></div>
+    <div class="tb" style="font-size:29px">
+      Reserved는 양도 불가,<br>
+      안 쓰면 그대로 소멸돼요.<br><br>
+      공유 18주는 나눠 쓸 수 있고,<br>
+      <strong>최대 4주까지 동시 사용</strong> 가능해요.
+    </div>
+  </div>
+</section>
+
+<!-- Card 7: Statement (dark rhythm) -->
+<section class="card c7" data-type="statement">
+  <div class="handle">@aussie.umma</div>
+  <div class="glow" style="width:600px;height:600px;top:300px;left:-200px;background:var(--blue)"></div>
+  <div class="ci">
+    <div class="badge badge-a" style="margin-bottom:34px">OECD 비교</div>
+    <div class="td-kr" style="font-size:54px;line-height:1.22;letter-spacing:-2px">
+      OECD 평균 유급 휴직은<br>약 50주, 호주는 그 절반
+    </div>
+    <div class="div-a"></div>
+    <div class="tb" style="font-size:29px">
+      그래도 6주가 늘었어요.<br>
+      가계에는 큰 변화예요.
+    </div>
+    <div class="tb tm" style="font-size:20px;margin-top:32px;line-height:1.55">
+      OECD Family Database PF2.1, 2023 기준
+    </div>
+  </div>
+</section>
+
+<!-- Card 8: Body (example) - 놓치는 체크포인트 -->
+<section class="card c8" data-type="example">
+  <div class="handle">@aussie.umma</div>
+  <div class="glow" style="width:400px;height:400px;top:180px;right:-100px"></div>
+  <div class="ci">
+    <div class="badge badge-a" style="margin-bottom:34px">자주 놓치는 부분</div>
+    <div class="td-kr" style="font-size:52px;line-height:1.2;margin-bottom:32px">한국 엄마들이<br>가장 많이 놓치는 3가지</div>
+    <div class="box-row">
+      <div class="box-t">1. 파트타임 자격</div>
+      <div class="box-b">주 7.5시간 이상이면 충분히 가능해요</div>
+    </div>
+    <div class="box-row">
+      <div class="box-t">2. 회사 복지 + PPL 동시 수령</div>
+      <div class="box-b">둘 다 받을 수 있어요, 별개예요</div>
+    </div>
+    <div class="box-row">
+      <div class="box-t">3. 퇴직연금 Super 적립</div>
+      <div class="box-b">2025년 7월 신규, 작년엔 없던 혜택이에요</div>
+    </div>
+  </div>
+</section>
+
+<!-- Card 9: Sheet (save-bait) -->
+<section class="card c9" data-type="sheet">
+  <div class="handle">@aussie.umma</div>
+  <div class="glow" style="width:500px;height:500px;top:-120px;right:-120px"></div>
+  <div class="ci">
+    <div class="badge badge-a" style="margin-bottom:26px">저장 필수</div>
+    <div class="td-kr" style="font-size:46px;margin-bottom:26px">PPL 한 장 요약</div>
+    <div class="list">
+      <span class="k">소득 기준</span> 개인 <b>$180,007</b> / 부부 <b>$373,094</b> 이하<br>
+      <span class="k">근무 요건</span> 10개월 중 <b>330시간</b> (주 7.5시간)<br>
+      <span class="k">신청 시기</span> 출산 예정일 <b>3개월 전</b>부터 가능<br>
+      <span class="k">수령 기간</span> <b>26주</b> (130 payable days)<br>
+      <span class="k">주당 금액</span> 세전 <b>$1,004.70</b> / 총 <b>$26,122</b><br>
+      <span class="k">Super 적립</span> PPL의 <b>12%</b>, 약 $3,135 자동 입금<br>
+      <span class="k">배우자</span> reserved <b>4주</b> + 공유 18주<br>
+      <span class="k">동시 사용</span> 최대 <b>4주</b>까지 가능
+    </div>
+    <div class="box">
+      <div class="box-t">한국어 지원</div>
+      <div class="box-b">Centrelink 다국어 서비스 <b>131 202</b><br>한국어로 상담 받을 수 있어요</div>
+    </div>
+    <div class="box">
+      <div class="box-t">신청 방법</div>
+      <div class="box-b">myGov에서 Centrelink 연동 후 온라인 신청<br>출산 후 52주 안에 수령 시작해야 해요</div>
+    </div>
+  </div>
+</section>
+
+<!-- Card 10: CTA -->
+<section class="card c10" data-type="cta">
+  <div class="handle">@aussie.umma</div>
+  <div class="glow" style="width:700px;height:700px;top:50%;left:50%;transform:translate(-50%,-50%)"></div>
+  <div class="ci">
+    <div class="tb" style="font-size:30px;margin-bottom:24px">2026년 7월부터 26주,</div>
+    <div class="td-kr" style="font-size:64px;line-height:1.2;margin-bottom:16px">모르고 지나치면<br>손해예요</div>
+    <div class="div-a"></div>
+    <div class="tb" style="font-size:26px;margin-top:28px;line-height:1.8">
+      파트타임도 가능하고,<br>
+      퇴직연금까지 쌓여요.<br>
+      지금 myGov에서 확인해보세요.
+    </div>
+    <div class="big-cta" style="margin-top:56px">저장하기 →</div>
+  </div>
+</section>
+
+</body>
+</html>
