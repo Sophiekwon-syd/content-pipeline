@@ -114,9 +114,10 @@ export function parsePost(md) {
 
     const h2 = line.match(/^##\s+(.*)/);
     if (h2) {
+      curQuote = null; // a heading ends any open quote block (prevents merging)
       const heading = h2[1].trim();
       skipSection = /^(메타 정보|썸네일 이미지 프롬프트|이미지 프롬프트|셀프 리뷰|네이버 발행 체크리스트)/.test(heading);
-      if (!skipSection) { kept.push('\n' + heading + '\n'); headings.push(inline(heading)); }
+      if (!skipSection) { kept.push('\n' + heading + '\n'); headings.push(inline(heading).replace(/\s+—\s+/g, ', ')); }
       continue;
     }
     if (skipSection) {
@@ -161,6 +162,10 @@ export function parsePost(md) {
     .replace(/\*\*(.+?)\*\*/g, '$1')     // bold
     .replace(/\*(.+?)\*/g, '$1')         // italic
     .replace(/^\s*[-*]\s+/gm, '• ')      // list bullets
+    // affiliate links (Amazon AU tracked) live in Blogger/IG only — Naver
+    // gets the link text without the URL (저품질 방지).
+    .replace(/\[([^\]]+)\]\(https?:\/\/[^)]*amazon\.com\.au[^)]*\)/g, '$1')
+    .replace(/이 포스팅은 아마존 어소시에이트 활동의 일환으로[^\n]*\n?/g, '') // affiliate disclosure → Blogger/IG only
     .replace(/\[(.+?)\]\((.+?)\)/g, '$1 ($2)') // links → text (url)
     .replace(/\s+—\s+/g, ', ')           // em-dash reads as AI-generated in Korean
     .replace(/\n{3,}/g, '\n\n')          // collapse blank runs
