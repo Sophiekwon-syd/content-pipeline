@@ -146,7 +146,7 @@ GP referral 후 specialist 진료비는 보통 $150~$300 정도예요.
 
 Medicare 리베이트의 절반 정도만 커버되고 나머지를 self-pay 해야 하죠.
 
-> **벌크빌링 vs 프라이빗 빌링 비교**
+**벌크빌링 vs 프라이빗 빌링 비교**
 
 | 구분 | 벌크빌링 (Bulk Billing) | 프라이빗 빌링 (Private Billing) |
 |------|------------------------|-------------------------------|
@@ -190,13 +190,12 @@ specialist 예약 전에 "Is there a bulk billing option?"을 꼭 물어보세�
 
 ## 벌크빌링 GP 찾기 전 체크리스트
 
-> **방문 전 확인 사항**
-> healthdirect.gov.au에서 bulk billing only 필터로 1차 검색
-> hotdoc 또는 healthengine에서 예약 가능 여부 확인
-> 전화로 재확인: "Do you bulk bill new patients? Any gaps?"
-> 평균 갭비 $40~$60 미리 생각하고 가기
-> 어린이 Blue Book 소지자는 거의 모든 병원 벌크빌링 가능
-> specialist는 대부분 private ($150~$300)
+- healthdirect.gov.au에서 bulk billing only 필터로 1차 검색
+- hotdoc 또는 healthengine에서 예약 가능 여부 확인
+- 전화로 재확인: "Do you bulk bill new patients? Any gaps?"
+- 평균 갭비 $40~$60 미리 생각하고 가기
+- 어린이 Blue Book 소지자는 거의 모든 병원 벌크빌링 가능
+- specialist는 대부분 private ($150~$300)
 
 ## 마무리
 
@@ -233,7 +232,7 @@ section-3: 실제 스마트폰으로 찍은 자연스러운 일상 사진 스타
 ## 셀프 리뷰
 
 - [x] 제목이 검색어 형태인가? (호주 벌크빌링 GP 찾는 법 + 집 주변 무료 진료소 찾는 4가지 방법 + 2026년 기준)
-- [x] 인용 블록 3개 이상 들어갔나? (결론 박스, BBPIP 핵심 내용, 전화 스크립트, 비교표, 체크리스트 총 5개)
+- [x] 인용 블록 3개 이상 들어갔나? (결론 박스, BBPIP 핵심 내용, 전화 스크립트 총 3개)
 - [x] 구체적 수치/날짜/기관명이 있나? ($0, $40~$60, $42.44, $49.30, $43.38, $45.05, $69.55, $150~$300, 12.5%, 12%, 79%, 150%, 160%, 175%, MBS Item 23/24, 2025년 11월 1일, AIHW, Cleanbill, Department of Health, RACGP, ABC News)
 - [x] 해요체 유지? 습니다/입니다체 없나?
 - [x] "ㅠㅠ" 없나?
