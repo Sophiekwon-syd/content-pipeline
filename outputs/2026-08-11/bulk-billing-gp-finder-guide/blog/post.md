@@ -147,13 +147,14 @@ GP referral 후 specialist 진료비는 보통 $150~$300 정도예요.
 Medicare 리베이트의 절반 정도만 커버되고 나머지를 self-pay 해야 하죠.
 
 > **벌크빌링 vs 프라이빗 빌링 비교**
-> | 구분 | 벌크빌링 (Bulk Billing) | 프라이빗 빌링 (Private Billing) |
-> |------|------------------------|-------------------------------|
-> | 본인 부담금 | $0 | 평균 $40~$60 (gap fee) |
-> | 예약 준비 | Medicare card만 지참 | 카드 + 현금/GPay |
-> | 의료비 리베이트 | 100% Medicare 보상 | MBS 리베이트 차감 후 gap fee |
-> | 이용 가능한 환자 | 모든 Medicare 가입자 (2025.11 BBPIP 확대) | 제한 없음 |
-> | 대표 조회 사이트 | healthdirect, HotDoc, AskMyGP | Google Maps, Healthengine |
+
+| 구분 | 벌크빌링 (Bulk Billing) | 프라이빗 빌링 (Private Billing) |
+|------|------------------------|-------------------------------|
+| 본인 부담금 | $0 | 평균 $40~$60 (gap fee) |
+| 예약 준비 | Medicare card만 지참 | 카드 + 현금/GPay |
+| 의료비 리베이트 | 100% Medicare 보상 | MBS 리베이트 차감 후 gap fee |
+| 이용 가능한 환자 | 모든 Medicare 가입자 (2025.11 BBPIP 확대) | 제한 없음 |
+| 대표 조회 사이트 | healthdirect, HotDoc, AskMyGP | Google Maps, Healthengine |
 
 ## 자주 묻는 질문
 

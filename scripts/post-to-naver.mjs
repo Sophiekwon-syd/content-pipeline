@@ -128,12 +128,16 @@ export function parsePost(md) {
     if (h3) faqQuestions.push(inline(h3[1]));
     const bq = line.match(/^>\s?(.*)/);
     if (bq) {
-      // Blockquote lines NEVER reach the body. Like tables, each block leaves a
-      // [[QUOTE-n]] marker and is built as a component in place. Putting them in
-      // the body and cutting them back out did not work: SmartEditor refuses to
-      // delete a selection that spans component boundaries, so Cmd+X copied
-      // without deleting and left duplicated text behind.
-      const t = inline(bq[1]);
+      const tRaw = bq[1];
+      // A markdown table row inside a blockquote is not quote text — end any
+      // open quote and let these lines flow through to extractTables below so
+      // they become a real 표 component instead of pipe-text in an 인용구.
+      if (/^\|/.test(tRaw)) {
+        curQuote = null;
+        kept.push(tRaw);
+        continue;
+      }
+      const t = inline(tRaw);
       if (t) {
         if (!curQuote) {
           curQuote = { lead: t, lines: [] };

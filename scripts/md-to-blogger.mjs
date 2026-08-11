@@ -92,6 +92,19 @@ for (let i = 0; i < lines.length; i++) {
     // merge consecutive blockquote lines
     const parts = [bq[1]];
     while (i + 1 < lines.length && /^>\s?/.test(lines[i + 1])) parts.push(lines[++i].replace(/^>\s?/, ''));
+    // a markdown table inside a blockquote (e.g. a titled comparison table in
+    // a callout) must become a real <table> — pipe-text divs render broken.
+    const tableRow = (l) => l.trim().replace(/^\||\|$/g, '').split('|').map((c) => c.trim());
+    const sepIdx = parts.findIndex((p, k) => /^\|/.test(p) && /^\|?[\s:|-]+\|[\s:|-]*$/.test(parts[k + 1] || ''));
+    if (sepIdx !== -1) {
+      const lead = parts.slice(0, sepIdx);
+      const header = tableRow(parts[sepIdx]);
+      const rows = parts.slice(sepIdx + 2).filter((p) => /^\|/.test(p)).map(tableRow);
+      const td = 'border:1px solid #ddd;padding:8px 12px;';
+      const tableHtml = `<table style="border-collapse:collapse;margin:12px 0 0;width:100%"><thead><tr>${header.map((h) => `<th style="${td}background:#f2f2f0;text-align:left">${inline(h)}</th>`).join('')}</tr></thead><tbody>${rows.map((r) => `<tr>${r.map((c) => `<td style="${td}">${inline(c)}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
+      out.push(`<blockquote style="${BQ_STYLE}">${lead.filter(Boolean).map(inline).map((x) => `<div style="margin:0 0 6px">${x}</div>`).join('')}${tableHtml}</blockquote>`);
+      continue;
+    }
     out.push(`<blockquote style="${BQ_STYLE}">${parts.filter(Boolean).map(inline).map((x) => `<div style="margin:0 0 6px">${x}</div>`).join('')}</blockquote>`);
     continue;
   }
