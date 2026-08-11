@@ -98,7 +98,7 @@ postcode만 입력하면 해당 지역에서 벌크빌링을 하는 병원을 �
 
 한국어 가능 여부를 묻는 것도 이때 하면 돼요.
 
-> **전화 스크립트 (복붙하세요)**
+> **전화 스크립트**
 > "Hi, do you bulk bill for new patients?" (새 환자도 벌크빌링해주나요?)
 > "Is there any gap fee?" (갭비 있나요?)
 > "Do you have any available appointments next week?" (다음 주 예약 빈자리 있나요?)

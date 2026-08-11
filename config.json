@@ -85,7 +85,9 @@
   "monetization": {
     "coupang_partners_id": "AF1100561",
     "_note": "Links go in Blogger + IG only, never raw in Naver posts (저품질). Per-product tracked links are generated in partners.coupang.com (or via Partners Open API keys if provided).",
-    "disclosure": "이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다."
+    "disclosure": "이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.",
+    "amazon_associates_id": "aussieumma-22",
+    "amazon_associates_note": "Amazon.com Associates 발급 2026-08-11. 180일 내 첫 판매 필요. 링크는 Blogger/IG에만 (Naver 본문 금지 - 저품질). SiteStripe 툴바로 링크 생성: https://www.amazon.com.au/dp/{ASIN}?tag=aussieumma-22"
   },
   "instagram": {
     "account_id": "<instagram_business_account_id>",

@@ -48,9 +48,10 @@ Build in this order:
 4. **본문** — use the brief's Sections as H2 subheadings. Include:
    - At least one **번호 단계 목록** (1·2·3 "~하는 법")
    - At least one **비교표** (Before/After, 한국 vs 호주, or 요금 구간표)
-   - At least one **복붙 가능한 박스** (체크리스트, 서류 목록, or 프롬프트).
-     The box's first line is the plain title only — never a "복붙하세요:" style
-     instruction prefix. Write `체크리스트 이름` , not `복붙하세요: 체크리스트 이름`.
+   - At least one **실용 정보 박스** (체크리스트, 서류 목록, or 프롬프트).
+     The box's first line is the plain title only — never an instruction
+     prefix like "복붙하세요:" (awkward slang; banned). Write
+     `체크리스트 이름` , not `복붙하세요: 체크리스트 이름`.
 5. **주의사항** — brief's caveats as a numbered list
 6. **FAQ 섹션** — H3 = actual search query, 2-3 line answer
 7. **마무리** — one paragraph, empathetic close
