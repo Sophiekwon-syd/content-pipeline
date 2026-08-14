@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>호주 전기세 지원금</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:#050505; --card-bg:#080808; --elevated:#0e0e0e;
+      --ink:#fff; --ink2:#ccc; --ink3:#888; --ink4:#333;
+      --accent:#C6F135; --accent-dim:rgba(198,241,53,0.15);
+      --blue:#3B82F6; --red:#ff4d4d;
+      --border:rgba(255,255,255,0.07);
+      --font-kr:"Noto Sans KR",sans-serif;
+      --font-en:"Space Grotesk",sans-serif;
+    }
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    body{background:#000;font-family:var(--font-kr);color:var(--ink);display:flex;flex-direction:column;align-items:center;gap:10px;padding:60px 20px 100px;-webkit-font-smoothing:antialiased}
+    .card{width:1080px;height:1350px;background:var(--card-bg);position:relative;overflow:hidden;display:flex;flex-direction:column}
+    .card::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:50;opacity:0.04;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:180px}
+    .ci{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:90px;position:relative;z-index:2}
+    .td-kr{font-family:var(--font-kr);font-weight:900;line-height:1.2;letter-spacing:-3px;word-break:keep-all}
+    .tb{font-size:30px;font-weight:400;color:var(--ink2);line-height:1.65;word-break:keep-all}
+    .tb strong{font-weight:700;color:var(--ink)}
+    .ta{color:var(--accent)}.tm{color:var(--ink3)}
+    .en{font-family:var(--font-en)}
+    .badge{display:inline-flex;align-items:center;padding:12px 28px;border-radius:100px;font-size:17px;font-weight:800;width:fit-content;text-transform:uppercase;letter-spacing:2px}
+    .badge-a{background:var(--accent);color:#000}
+    .badge-o{border:1px solid var(--ink4);color:var(--ink3)}
+    .handle{position:absolute;top:165px;right:90px;font-size:18px;font-weight:700;color:var(--ink);text-transform:uppercase;letter-spacing:3px;z-index:10;display:inline-flex;align-items:center;gap:10px}
+    .handle::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent)}
+    .glow{position:absolute;border-radius:50%;background:var(--accent);filter:blur(160px);opacity:0.07;pointer-events:none;z-index:0}
+    /* c1 cover */
+    .c1 .cover-sub{max-width:85%;font-size:34px;font-weight:500;margin-top:44px;color:var(--ink2)}
+    /* c3 strike number */
+    .c3 .strike-num{font-family:var(--font-en);font-size:170px;font-weight:700;color:var(--ink3);line-height:1;letter-spacing:-8px;text-decoration:line-through;text-decoration-color:var(--red);text-decoration-thickness:10px}
+    /* c4 hero number */
+    .c4 .hero-num{font-family:var(--font-en);font-size:180px;font-weight:700;color:var(--accent);line-height:1;letter-spacing:-8px}
+    .c4 .hero-num .unit{font-family:var(--font-kr);font-size:60px;font-weight:900;letter-spacing:-3px;margin-left:14px}
+    /* c7 statement */
+    .c7{background:var(--accent)}
+    .c7 .td-kr{color:#000}
+    .c7 .handle{color:#000}
+    .c7 .handle::before{background:#000;box-shadow:none}
+    .c7 .badge{border:2px solid #000;color:#000}
+    /* box rows */
+    .box-row{width:100%;border:1px solid var(--border);border-radius:22px;background:var(--elevated);padding:28px 36px;margin-top:22px;text-align:left}
+    .box-row:first-of-type{margin-top:0}
+    .box-row .box-t{font-size:19px;font-weight:800;color:var(--accent);letter-spacing:1px;margin-bottom:10px}
+    .box-row .box-b{font-size:26px;line-height:1.55;color:var(--ink2);word-break:keep-all}
+    /* c9 sheet */
+    .c9 .ci{padding:90px 84px;justify-content:center;align-items:flex-start;text-align:left}
+    .c9 .box{width:100%;border:1px solid var(--border);border-radius:20px;background:var(--elevated);padding:26px 32px;margin-top:24px}
+    .c9 .box:first-of-type{margin-top:34px}
+    .c9 .box-t{font-size:21px;font-weight:800;color:var(--accent);letter-spacing:1px;margin-bottom:10px}
+    .c9 .box-b{font-size:23px;line-height:1.6;color:var(--ink2);word-break:keep-all}
+    .c9 .td-kr{font-size:56px}
+    /* c10 cta */
+    .c10 .big-cta{font-size:64px;font-weight:900;color:var(--accent);letter-spacing:-1px}
+    .ci .tb{max-width:780px}
+  </style>
+</head>
+<body>
+
+<!-- Card 1: cover -->
+<section class="card c1" data-type="cover">
+  <div class="handle">@aussie.umma</div>
+  <div class="glow" style="width:600px;height:600px;top:-200px;right:-200px"></div>
+  <div class="ci">
+    <div class="badge badge-a" style="margin-bottom:44px">전기세 지원</div>
+    <div class="td-kr" style="font-size:92px">호주 전기세<br />지원금</div>
+    <div class="cover-sub">자동으로 깎이던 $150이 사라졌어요</div>
+  </div>
+</section>
+
+<!-- Card 2: hook -->
+<section class="card c2" data-type="hook">
+  <div class="handle">@aussie.umma</div>
+  <div class="ci">
+    <div class="badge badge-o" style="margin-bottom:48px">고지서 확인</div>
+    <div class="td-kr" style="font-size:76px">자동으로 깎이던<br />$150, <span class="ta">이제 안 보여요</span></div>
+  </div>
+</section>
+
+<!-- Card 3: body -->
+<section class="card c3" data-type="body">
+  <div class="handle">@aussie.umma</div>
+  <div class="ci">
+    <div class="tb" style="margin-bottom:36px">2026년 7월 1일, 연방 지원 종료</div>
+    <div class="strike-num en">$150</div>
+    <div class="tb" style="margin-top:44px">이제부터는 <strong>직접 신청</strong>해야 받아요</div>
+  </div>
+</section>
+
+<!-- Card 4: body (hero number) -->
+<section class="card c4" data-type="body">
+  <div class="handle">@aussie.umma</div>
+  <div class="glow" style="width:500px;height:500px;bottom:-150px;left:-150px"></div>
+  <div class="ci">
+    <div class="badge badge-o" style="margin-bottom:44px">FTB 받는 가정 · Family Energy Rebate</div>
+    <div class="hero-num en">$180<span class="unit">연간 최대</span></div>
+    <div class="tb" style="margin-top:44px">임베디드 네트워크(아파트 등)는 최대 $198</div>
+  </div>
+</section>
+
+<!-- Card 5: body -->
+<section class="card c5" data-type="body">
+  <div class="handle">@aussie.umma</div>
+  <div class="ci">
+    <div class="td-kr" style="font-size:56px;margin-bottom:40px">신청 조건 4가지</div>
+    <div class="box-row">
+      <div class="box-t">1</div>
+      <div class="box-b">본인 명의 전기 계좌</div>
+    </div>
+    <div class="box-row">
+      <div class="box-t">2</div>
+      <div class="box-b">직전 연도 FTB 수급</div>
+    </div>
+    <div class="box-row">
+      <div class="box-t">3</div>
+      <div class="box-b">ATO 세금신고 완료</div>
+    </div>
+    <div class="box-row">
+      <div class="box-t">4</div>
+      <div class="box-b">Centrelink FTB 정산 완료</div>
+    </div>
+  </div>
+</section>
+
+<!-- Card 6: body -->
+<section class="card c6" data-type="body">
+  <div class="handle">@aussie.umma</div>
+  <div class="ci">
+    <div class="td-kr" style="font-size:56px;margin-bottom:40px">컨세션 카드 있으면<br /><span class="ta">중복</span>으로 받아요</div>
+    <div class="box-row">
+      <div class="box-t">전기</div>
+      <div class="box-b">Low Income Household Rebate 최대 $285</div>
+    </div>
+    <div class="box-row">
+      <div class="box-t">가스</div>
+      <div class="box-b">NSW Gas Rebate 최대 $110</div>
+    </div>
+  </div>
+</section>
+
+<!-- Card 7: statement -->
+<section class="card c7" data-type="statement">
+  <div class="handle">@aussie.umma</div>
+  <div class="ci">
+    <div class="badge" style="margin-bottom:44px">핵심 한 줄</div>
+    <div class="td-kr" style="font-size:84px">신청 안 하면<br />못 받아요</div>
+  </div>
+</section>
+
+<!-- Card 8: body -->
+<section class="card c8" data-type="body">
+  <div class="handle">@aussie.umma</div>
+  <div class="ci">
+    <div class="td-kr" style="font-size:56px;margin-bottom:40px">전기세 못 낼 땐 <span class="ta">EAPA</span></div>
+    <div class="box-row">
+      <div class="box-t">STEP 1</div>
+      <div class="box-b">에너지 공급사에 먼저 연락</div>
+    </div>
+    <div class="box-row">
+      <div class="box-t">STEP 2</div>
+      <div class="box-b">EAPA 평가 예약 잡기</div>
+    </div>
+    <div class="box-row">
+      <div class="box-t">POINT</div>
+      <div class="box-b">예약만 해도 법적으로 전기 끊김 방지</div>
+    </div>
+  </div>
+</section>
+
+<!-- Card 9: sheet -->
+<section class="card c9" data-type="sheet">
+  <div class="handle">@aussie.umma</div>
+  <div class="ci">
+    <div class="badge badge-a">저장용 체크리스트</div>
+    <div class="td-kr" style="margin-top:28px">신청 전 준비물</div>
+    <div class="box">
+      <div class="box-t">1. FTB 정산 서신</div>
+      <div class="box-b">Services Australia에서 온 FTB finalise 확인 서신</div>
+    </div>
+    <div class="box">
+      <div class="box-t">2. CRN</div>
+      <div class="box-b">Services Australia 고객 번호</div>
+    </div>
+    <div class="box">
+      <div class="box-t">3. 전기 계좌 정보</div>
+      <div class="box-b">고지서에 있는 계좌 번호와 공급사 이름</div>
+    </div>
+    <div class="box">
+      <div class="box-t">4. 마감 · 방법</div>
+      <div class="box-b">2027년 6월 15일까지, 리테일 고객은 공급사에 전화</div>
+    </div>
+  </div>
+</section>
+
+<!-- Card 10: cta -->
+<section class="card c10" data-type="cta">
+  <div class="handle">@aussie.umma</div>
+  <div class="glow" style="width:500px;height:500px;top:-150px;left:-150px"></div>
+  <div class="ci">
+    <div class="td-kr" style="font-size:56px;margin-bottom:44px">다음 전기세 고지서,<br />달라지게 하세요</div>
+    <div class="big-cta">저장하기 →</div>
+  </div>
+</section>
+
+</body>
+</html>
