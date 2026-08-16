@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>호주 킨디 등록</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:#050505; --card-bg:#080808; --elevated:#0e0e0e;
+      --ink:#fff; --ink2:#ccc; --ink3:#888; --ink4:#333;
+      --accent:#C6F135; --accent-dim:rgba(198,241,53,0.15);
+      --blue:#3B82F6; --red:#ff4d4d;
+      --border:rgba(255,255,255,0.07);
+      --font-kr:"Noto Sans KR",sans-serif;
+      --font-en:"Space Grotesk",sans-serif;
+    }
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    body{background:#000;font-family:var(--font-kr);color:var(--ink);display:flex;flex-direction:column;align-items:center;gap:10px;padding:60px 20px 100px;-webkit-font-smoothing:antialiased}
+    .card{width:1080px;height:1350px;background:var(--card-bg);position:relative;overflow:hidden;display:flex;flex-direction:column}
+    .card::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:50;opacity:0.04;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:180px}
+    .ci{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:90px;position:relative;z-index:2}
+    .td-kr{font-family:var(--font-kr);font-weight:900;line-height:1.2;letter-spacing:-3px;word-break:keep-all}
+    .tb{font-size:30px;font-weight:400;color:var(--ink2);line-height:1.65;word-break:keep-all}
+    .tb strong{font-weight:700;color:var(--ink)}
+    .ta{color:var(--accent)}.tm{color:var(--ink3)}
+    .en{font-family:var(--font-en)}
+    .badge{display:inline-flex;align-items:center;padding:12px 28px;border-radius:100px;font-size:17px;font-weight:800;width:fit-content;text-transform:uppercase;letter-spacing:2px}
+    .badge-a{background:var(--accent);color:#000}
+    .badge-o{border:1px solid var(--ink4);color:var(--ink3)}
+    .handle{position:absolute;top:165px;right:90px;font-size:18px;font-weight:700;color:var(--ink);text-transform:uppercase;letter-spacing:3px;z-index:10;display:inline-flex;align-items:center;gap:10px}
+    .handle::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent)}
+    .glow{position:absolute;border-radius:50%;background:var(--accent);filter:blur(160px);opacity:0.07;pointer-events:none;z-index:0}
+    /* c1 cover */
+    .c1 .cover-sub{max-width:85%;font-size:34px;font-weight:500;margin-top:44px;color:var(--ink2)}
+    /* c3 hero number */
+    .c3 .hero-num{font-family:var(--font-en);font-size:170px;font-weight:700;color:var(--accent);line-height:1;letter-spacing:-8px}
+    .c3 .hero-num .unit{font-family:var(--font-kr);font-size:56px;font-weight:900;letter-spacing:-3px;margin-left:12px}
+    /* c7 statement */
+    .c7{background:var(--accent)}
+    .c7 .td-kr{color:#000}
+    .c7 .handle{color:#000}
+    .c7 .handle::before{background:#000;box-shadow:none}
+    .c7 .badge{border:2px solid #000;color:#000}
+    /* box rows */
+    .box-row{width:100%;border:1px solid var(--border);border-radius:22px;background:var(--elevated);padding:28px 36px;margin-top:22px;text-align:left}
+    .box-row:first-of-type{margin-top:0}
+    .box-row .box-t{font-size:19px;font-weight:800;color:var(--accent);letter-spacing:1px;margin-bottom:10px}
+    .box-row .box-b{font-size:26px;line-height:1.55;color:var(--ink2);word-break:keep-all}
+    /* c9 sheet */
+    .c9 .ci{padding:90px 84px;justify-content:center;align-items:flex-start;text-align:left}
+    .c9 .box{width:100%;border:1px solid var(--border);border-radius:20px;background:var(--elevated);padding:26px 32px;margin-top:24px}
+    .c9 .box:first-of-type{margin-top:34px}
+    .c9 .box-t{font-size:21px;font-weight:800;color:var(--accent);letter-spacing:1px;margin-bottom:10px}
+    .c9 .box-b{font-size:23px;line-height:1.6;color:var(--ink2);word-break:keep-all}
+    .c9 .td-kr{font-size:56px}
+    /* c10 cta */
+    .c10 .big-cta{font-size:64px;font-weight:900;color:var(--accent);letter-spacing:-1px}
+    .ci .tb{max-width:780px}
+  </style>
+</head>
+<body>
+
+<!-- Card 1: cover -->
+<section class="card c1" data-type="cover">
+  <div class="handle">@aussie.umma</div>
+  <div class="glow" style="width:600px;height:600px;top:-200px;right:-200px"></div>
+  <div class="ci">
+    <div class="badge badge-a" style="margin-bottom:44px">2027년 입학</div>
+    <div class="td-kr" style="font-size:92px">호주 킨디<br />등록</div>
+    <div class="cover-sub">유치원인 줄 알았죠? 초등학교 첫 학년이에요</div>
+  </div>
+</section>
+
+<!-- Card 2: hook -->
+<section class="card c2" data-type="hook">
+  <div class="handle">@aussie.umma</div>
+  <div class="ci">
+    <div class="badge badge-o" style="margin-bottom:48px">가장 많이 헷갈리는 것</div>
+    <div class="td-kr" style="font-size:76px">킨디는 <span class="ta">유치원이</span><br /><span class="ta">아니에요</span></div>
+  </div>
+</section>
+
+<!-- Card 3: body (hero number) -->
+<section class="card c3" data-type="body">
+  <div class="handle">@aussie.umma</div>
+  <div class="glow" style="width:500px;height:500px;bottom:-150px;left:-150px"></div>
+  <div class="ci">
+    <div class="badge badge-o" style="margin-bottom:44px">입학 나이 기준</div>
+    <div class="hero-num en">7.31<span class="unit">까지 만 5세</span></div>
+    <div class="tb" style="margin-top:44px">입학하는 해 7월 31일 기준.<br />만 6세 생일 전에는 반드시 입학</div>
+  </div>
+</section>
+
+<!-- Card 4: body -->
+<section class="card c4" data-type="body">
+  <div class="handle">@aussie.umma</div>
+  <div class="ci">
+    <div class="td-kr" style="font-size:64px;margin-bottom:40px">2027년 입학 신청은<br /><span class="ta">지금</span>이에요</div>
+    <div class="tb">NSW 공립학교들이 지금 2027년 킨디 입학을 받고 있어요. 내년 일이라고 미루면 늦어요.</div>
+  </div>
+</section>
+
+<!-- Card 5: body -->
+<section class="card c5" data-type="body">
+  <div class="handle">@aussie.umma</div>
+  <div class="ci">
+    <div class="td-kr" style="font-size:56px;margin-bottom:40px">1단계 · 캐치먼트 확인</div>
+    <div class="box-row">
+      <div class="box-t">SCHOOL FINDER</div>
+      <div class="box-b">우리 주소가 어느 학교 intake area인지 1분이면 확인돼요</div>
+    </div>
+  </div>
+</section>
+
+<!-- Card 6: body -->
+<section class="card c6" data-type="body">
+  <div class="handle">@aussie.umma</div>
+  <div class="ci">
+    <div class="td-kr" style="font-size:56px;margin-bottom:40px">2단계 · 신청</div>
+    <div class="box-row">
+      <div class="box-t">ONLINE</div>
+      <div class="box-b">학교 온라인 enrolment 시스템으로 접수</div>
+    </div>
+    <div class="box-row">
+      <div class="box-t">PAPER</div>
+      <div class="box-b">PDF 신청서를 학교 프런트오피스에 제출</div>
+    </div>
+    <div class="tb tm" style="margin-top:36px">한국어 번역 신청서도 제공돼요</div>
+  </div>
+</section>
+
+<!-- Card 7: statement -->
+<section class="card c7" data-type="statement">
+  <div class="handle">@aussie.umma</div>
+  <div class="ci">
+    <div class="badge" style="margin-bottom:44px">의외의 사실</div>
+    <div class="td-kr" style="font-size:72px">가까운 학교가<br />내 학교가<br />아닐 수 있어요</div>
+  </div>
+</section>
+
+<!-- Card 8: body -->
+<section class="card c8" data-type="body">
+  <div class="handle">@aussie.umma</div>
+  <div class="ci">
+    <div class="td-kr" style="font-size:56px;margin-bottom:40px">준비물 3종</div>
+    <div class="box-row">
+      <div class="box-t">1</div>
+      <div class="box-b">출생증명서</div>
+    </div>
+    <div class="box-row">
+      <div class="box-t">2</div>
+      <div class="box-b">주소 증명 · council rates, 임대계약서, 전기세 고지서</div>
+    </div>
+    <div class="box-row">
+      <div class="box-t">3</div>
+      <div class="box-b">AIR 예방접종 기록</div>
+    </div>
+  </div>
+</section>
+
+<!-- Card 9: sheet -->
+<section class="card c9" data-type="sheet">
+  <div class="handle">@aussie.umma</div>
+  <div class="ci">
+    <div class="badge badge-a">저장용 체크리스트</div>
+    <div class="td-kr" style="margin-top:28px">킨디 등록 체크리스트</div>
+    <div class="box">
+      <div class="box-t">1. 캐치먼트 확인</div>
+      <div class="box-b">School Finder에 주소 입력, 지정 학교 확인</div>
+    </div>
+    <div class="box">
+      <div class="box-t">2. 서류 3종</div>
+      <div class="box-b">출생증명서 · 주소 증명 · AIR 예방접종 기록</div>
+    </div>
+    <div class="box">
+      <div class="box-t">3. 신청</div>
+      <div class="box-b">온라인 또는 서면. 한국어 번역 신청서 있음</div>
+    </div>
+    <div class="box">
+      <div class="box-t">4. 교장 인터뷰</div>
+      <div class="box-b">알레르기·건강 정보 공유. 액션플랜 있으면 챙기기</div>
+    </div>
+  </div>
+</section>
+
+<!-- Card 10: cta -->
+<section class="card c10" data-type="cta">
+  <div class="handle">@aussie.umma</div>
+  <div class="glow" style="width:500px;height:500px;top:-150px;left:-150px"></div>
+  <div class="ci">
+    <div class="td-kr" style="font-size:56px;margin-bottom:44px">우리 아이 킨디,<br />오늘부터 준비하세요</div>
+    <div class="big-cta">저장하기 →</div>
+  </div>
+</section>
+
+</body>
+</html>
