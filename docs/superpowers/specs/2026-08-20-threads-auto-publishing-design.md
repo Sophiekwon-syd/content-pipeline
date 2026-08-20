@@ -38,20 +38,19 @@ The JSON contract is:
 {
   "version": 1,
   "slug": "topic-slug",
+  "format": "question",
   "posts": [
     { "text": "Root post" },
-    { "text": "First reply" },
-    { "text": "Final reply with the blog URL" }
+    { "text": "Optional supporting reply" }
   ],
   "sources": ["https://primary-source.example"]
 }
 ```
 
-Validation requires a matching slug, 5-7 non-empty posts, text within the
-current Threads API limit, no duplicate posts, and at least one primary source
-for factual topics. The final reply contains the published blog URL when one is
-available. If no public blog URL is available, it ends with a conversational
-question and omits the link.
+Validation requires a matching slug, an allowed format, 1-3 non-empty posts,
+text within the current Threads API limit, no duplicate posts, and at least one
+primary source for factual topics. A blog link is optional and appears only in
+the last reply when it genuinely adds value.
 
 ## Editorial Structure
 
@@ -59,16 +58,41 @@ The generator will use the fact-checked `brief.md` and final `blog/post.md` as
 its only factual inputs. It must not introduce new figures, eligibility rules,
 dates, or claims.
 
-The default sequence is:
+Threads content rotates among four formats so the account does not read like a
+single repeated marketing template:
 
-1. A concise, conversational hook that states the practical problem or a
-   useful conclusion without clickbait.
-2. Three to five replies, each containing one idea.
-3. A common mistake or important qualification where the topic needs one.
-4. A final reply that asks a natural question and includes the blog link.
+1. **Question (`question`)** — sounds like a Korean mum in Australia asking
+   other parents about a real decision or uncertainty. The root contains the
+   full question and normally stands alone so audience replies form the
+   thread. One factual context reply is allowed when needed.
+2. **Information (`information`)** — opens with the useful conclusion, then
+   adds one or two short replies for context, a caveat, or an official source.
+   It does not turn the blog into a numbered summary.
+3. **Experience (`experience`)** — tells a genuine first-person moment,
+   surprise, mistake, or lesson. This format is allowed only when the user has
+   supplied the underlying experience or it is explicitly recorded as an
+   approved brand fact. The generator must never invent a child age, visa
+   history, family event, purchase, or personal outcome.
+4. **Observation (`observation`)** — replaces experience when no verified
+   personal story exists. It describes something commonly noticed in
+   Australian parenting life without pretending the account owner experienced
+   it personally.
 
-Posts use natural Korean 해요체. Numbering is optional and only used when it
-improves navigation. Instagram captions are not reused verbatim.
+The generator checks recently published Threads formats and selects the least
+recently used suitable format. Suitability wins over strict rotation: a legal
+or benefit correction should remain informational, while an open-ended
+childcare or swimming topic may be a question.
+
+The writing should resemble a natural Threads post: direct opening such as
+`스친들아`, short spoken sentences, intentional line breaks, and one concrete
+thought per post. It avoids blog titles, headings, summaries, numbered
+`1/5` sequences, mandatory calls to action, repeated hashtags, and a question
+artificially added to every post. Instagram captions are not reused verbatim.
+
+Most topics publish one root post. Supporting self-replies are limited to one
+or two and used only when the additional context would make the root too long
+or confusing. Conversation is expected to grow through reader replies, not a
+mandatory chain written by the account itself.
 
 ## Generation Integration
 
@@ -91,8 +115,8 @@ does not block Naver, Blogger, or Instagram.
 2. Skip slugs already recorded in `outputs/<date>/threads-log.json`.
 3. Validate `threads/thread.json` before making an API request.
 4. Create and publish the root text post.
-5. Create and publish each subsequent post as a reply to the immediately
-   preceding published post, producing one linear thread.
+5. When supporting posts exist, create and publish each as a reply to the
+   immediately preceding post.
 6. Record the root post ID, all reply IDs, timestamp, slug, and status only
    after the complete chain succeeds.
 
@@ -168,7 +192,8 @@ test topic.
 
 ## Success Criteria
 
-- Every shipped blog topic can produce a valid 5-7 post Korean text thread.
+- Every shipped blog topic can produce a valid natural Korean Threads artifact
+  using a suitable rotating format.
 - A successful Instagram publication triggers Threads publication.
 - The public Threads result is one root post followed by replies in order.
 - Re-running a completed or partially completed job creates no duplicate root.
