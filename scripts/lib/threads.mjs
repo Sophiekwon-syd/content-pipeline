@@ -86,3 +86,86 @@ export async function writeThreadsLog(logPath, entries) {
   await fs.writeFile(tempPath, `${JSON.stringify(entries, null, 2)}\n`, { mode: 0o600 });
   await fs.rename(tempPath, logPath);
 }
+
+function redact(value, secret) {
+  return String(value).split(secret).join('[REDACTED]');
+}
+
+export function createThreadsClient({
+  accessToken,
+  userId,
+  fetch: fetchImpl = globalThis.fetch,
+  apiBase = 'https://graph.threads.net/v1.0',
+}) {
+  if (!accessToken) throw new Error('THREAD_ACCESS_TOKEN is required');
+  if (!userId) throw new Error('THREAD_USER_ID is required');
+  if (typeof fetchImpl !== 'function') throw new Error('fetch implementation is required');
+
+  const request = async (pathname, params) => {
+    const url = new URL(`${apiBase}/${encodeURIComponent(userId)}/${pathname}`);
+    for (const [key, value] of Object.entries(params)) {
+      if (value != null && value !== '') url.searchParams.set(key, String(value));
+    }
+    const response = await fetchImpl(url, {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${accessToken}` },
+    });
+    let body;
+    try {
+      body = await response.json();
+    } catch {
+      body = {};
+    }
+    if (!response.ok || !body.id) {
+      const detail = body?.error?.message || body?.error || `HTTP ${response.status}`;
+      throw new Error(`Threads API request failed: ${redact(detail, accessToken)}`);
+    }
+    return body.id;
+  };
+
+  return {
+    createTextContainer({ text, topicTag, replyToId }) {
+      return request('threads', {
+        media_type: 'TEXT',
+        text,
+        topic_tag: topicTag,
+        reply_to_id: replyToId,
+      });
+    },
+    publishContainer(creationId) {
+      return request('threads_publish', { creation_id: creationId });
+    },
+  };
+}
+
+export async function publishThreadArtifact(artifact, {
+  client,
+  progress = {},
+  onProgress = async () => {},
+} = {}) {
+  if (!client) throw new Error('Threads client is required');
+  const state = {
+    status: progress.status || 'in_progress',
+    rootId: progress.rootId,
+    postIds: [...(progress.postIds || [])],
+    nextIndex: progress.nextIndex || 0,
+  };
+
+  for (let index = state.nextIndex; index < artifact.posts.length; index += 1) {
+    const isRoot = index === 0;
+    const containerId = await client.createTextContainer({
+      text: artifact.posts[index].text,
+      topicTag: isRoot ? artifact.topic_tag : undefined,
+      replyToId: isRoot ? undefined : state.rootId,
+    });
+    const postId = await client.publishContainer(containerId);
+    if (isRoot) state.rootId = postId;
+    state.postIds.push(postId);
+    state.nextIndex = index + 1;
+    await onProgress({ ...state, postIds: [...state.postIds] });
+  }
+
+  state.status = 'published';
+  await onProgress({ ...state, postIds: [...state.postIds] });
+  return state;
+}
