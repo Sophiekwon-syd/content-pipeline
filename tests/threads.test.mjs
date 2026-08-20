@@ -83,3 +83,19 @@ test('atomically persists publication progress', async () => {
   assert.deepEqual(await readThreadsLog(logPath), entries);
   await assert.rejects(fs.access(`${logPath}.tmp`));
 });
+
+test('approved editorial examples satisfy the production validator', async () => {
+  for (const format of ['question', 'information', 'experience', 'observation']) {
+    const fixturePath = new URL(`./fixtures/threads/${format}.json`, import.meta.url);
+    const artifact = JSON.parse(await fs.readFile(fixturePath, 'utf8'));
+    const allText = artifact.posts.map(({ text }) => text).join('\n');
+    const validated = validateThreadArtifact(artifact, {
+      brief: '5세 미만 아이는 팔이 닿는 거리에서 지켜봐야 해요.',
+      post: '2026년 7월 23일 Castle Hill에 직접 다녀왔어요.',
+    });
+    assert.equal(validated.format, format);
+    assert.doesNotMatch(allText, /ㅎㅎ|\b\d+\/\d+\b|#호주/);
+    assert.ok(artifact.posts.length >= 1 && artifact.posts.length <= 3);
+    if (format === 'experience') assert.equal(artifact.experience_verified, true);
+  }
+});
