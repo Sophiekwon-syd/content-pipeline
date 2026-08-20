@@ -9,6 +9,7 @@ logs/
 .playwright-mcp/
 node_modules/
 .catprofile/
+.worktrees/
 
 # session cleanup: large browser profile + regenerable screenshots + temp scripts
 _shot.mjs
