@@ -67,7 +67,12 @@ single repeated marketing template:
    thread. One factual context reply is allowed when needed.
 2. **Information (`information`)** — opens with the useful conclusion, then
    adds one or two short replies for context, a caveat, or an official source.
-   It does not turn the blog into a numbered summary.
+   It does not turn the blog into a numbered summary. It introduces why the
+   fact matters in everyday life, then explains it as something recently
+   learned: natural forms such as `~한대`, `~라고 해`, and
+   `~인 줄 알았는데` are preferred over report-like phrases such as
+   `공식 자료에 따르면` or `안내하고 있습니다`. Institution names and source
+   links belong in the final supporting reply when needed, not in the opening.
 3. **Experience (`experience`)** — tells a genuine first-person moment,
    surprise, mistake, or lesson. This format is allowed only when the user has
    supplied the underlying experience or it is explicitly recorded as an
@@ -87,7 +92,8 @@ The writing should resemble a natural Threads post: direct opening such as
 `스친들아`, short spoken sentences, intentional line breaks, and one concrete
 thought per post. It avoids blog titles, headings, summaries, numbered
 `1/5` sequences, mandatory calls to action, repeated hashtags, and a question
-artificially added to every post. Instagram captions are not reused verbatim.
+artificially added to every post. It also avoids `ㅎㅎ`, which does not match
+the desired contemporary voice. Instagram captions are not reused verbatim.
 
 Most topics publish one root post. Supporting self-replies are limited to one
 or two and used only when the additional context would make the root too long
