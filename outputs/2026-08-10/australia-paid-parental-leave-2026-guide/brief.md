@@ -17,7 +17,7 @@
 Paid Parental Leave(PPL)는 호주 정부가 Centrelink를 통해 지급하는 출산·입양 후 유급 휴직 급여예요. 2011년 18주로 시작해 단계적으로 확대됐고, 2026년 7월 1일부터 최종 26주(130 payable days)가 됐어요 (출처: Services Australia, 2026). 한국으로 치면 출산전후휴가 + 육아휴직 급여가 합쳐진 형태인데, 한국 출산전후휴가가 90일인데 비해 호주는 182일로 약 2배 길어요. 2026년 7월 이후 출산 예정이거나 최근에 출산한 워킹맘이라면 지금 바로 자격 여부를 확인해야 하는 이유예요. OECD 평균 유급 출산·육아휴직이 약 50.7주인 점을 고려하면 호주는 여전히 평균의 절반 수준이지만 (출처: OECD Family Database PF2.1, 2023), 6주가 추가된 것만 해도 가계에 큰 변화예요.
 
 #### 누가 받을 수 있어요? (자격 요건 4가지)
-PPL 자격은 네 가지 조건을 모두 만족해야 해요. 첫째, work test: 출산 또는 입양 전 13개월 중 최소 10개월 동안 330시간 이상 근무 (주당 약 7.5시간, 파트타임도 가능). 둘째, income test: 개인 adjusted taxable income이 연간 $180,007 이하, 부부 합산 $373,094 이하 (2026-27 기준, 출처: Services Australia). 셋째, residency: 호주 시민권자 또는 영주권자 (일부 임시 비자도 가능하나 NARWP 4년 대기 필요). 넷째, primary carer: 출산 후 아기의 주 돌봄자여야 해요. 프리랜서, 캐주얼, 계약직 모두 work test만 충족하면 가능하고, 자영업자도 330시간 기준을 충족하면 신청할 수 있어요. 한국 엄마들이 가장 많이 오해하는 부분이 "파트타임은 안 되는 거 아니야?"인데, 주 7.5시간 이상이면 충분히 자격이 돼요.
+PPL 자격은 네 가지 조건을 모두 만족해야 해요. 첫째, work test: 출산 또는 입양 전 13개월 중 최소 10개월 동안 330시간 이상 근무 (주당 약 7.5시간, 파트타임도 가능). 둘째, income test: 개인 adjusted taxable income이 연간 $180,007 이하, 부부 합산 $373,094 이하 (2026-27 기준, 출처: Services Australia). 셋째, residency: 호주에 거주하면서 시민권, 영주비자, Special Category Visa 또는 일부 파트너·임시보호 비자를 보유해야 해요. 482·494 같은 일반 취업 임시비자는 정부 PPL의 거주 요건에 포함되지 않아요. 자격을 갖춘 신규 거주자에게는 일반적으로 출산·입양일 전 2년의 대기기간이 적용될 수 있어요. 넷째, primary carer: 출산 후 아기의 주 돌봄자여야 해요. 프리랜서, 캐주얼, 계약직 모두 work test만 충족하면 가능하고, 자영업자도 330시간 기준을 충족하면 신청할 수 있어요. 한국 엄마들이 가장 많이 오해하는 부분이 "파트타임은 안 되는 거 아니야?"인데, 주 7.5시간 이상이면 충분히 자격이 돼요.
 
 #### 얼마를 받아요? (수령액과 퇴직연금 적립)
 2026-27년 기준 PPL 급여는 주당 $1,004.70(세전)이에요. 26주 전액을 받으면 총 $26,122(세전)가 돼요. 세후로는 주당 약 $820~$850 정도가 통장에 들어오고, 26주 전체로는 약 $21,500~$22,000 수준이에요. 2026년 7월부터 새로 추가된 혜택이 있어요: ATO가 PPL 급여의 12%를 퇴직연금(Superannuation)으로 직접 적립해줘요 (출처: ATO, Paid Parental Leave Superannuation Contribution, 2026). 26주 기준 약 $3,135가 슈퍼 계좌에 자동 입금되는 거예요. 육아휴직 중에는 회사에서 슈퍼를 안 넣어주는 경우가 많은데, 정부가 이 공백을 메워주는 거죠. 이 제도는 2025년 7월 1일 도입되어 2026년에 처음 full-year 효과를 보는 거라, 작년까지만 해도 "육아휴직 중 슈퍼 못 받았다"는 엄마들이 놓친 부분이에요.
@@ -33,7 +33,12 @@ PPL 자격은 네 가지 조건을 모두 만족해야 해요. 첫째, work test
 
 ### FAQ questions (3x — H3 = actual search queries)
 - **Q: 호주 육아휴직 비자 상태에 따라 받을 수 없나요?**
-  시민권자·영주권자는 바로 받을 수 있어요. 임시 비자(482, 494 등)는 NARWP(Newly Arrived Resident's Waiting Period) 4년 대기가 필요해요. 단, 뉴질랜드 시민권자(SCV 444 비자)나 인도적 비자는 예외가 있으니 Centrelink(131 202)에 직접 확인해보세요.
+  호주에 거주하면서 시민권, 영주비자, Special Category Visa 또는 일부 파트너·임시보호 비자를 보유해야 해요. 482·494 같은 일반 취업 임시비자는 정부 PPL의 거주 요건에 포함되지 않으며, 오래 보유한다고 자격이 생기는 구조도 아니에요. 다만 고용 조건을 충족하면 회사 자체 유급 육아휴직이나 Fair Work상 무급 육아휴직을 이용할 수 있어요. 자격을 갖춘 신규 거주자에게는 일반적으로 출산·입양일 전 2년의 대기기간이 적용될 수 있고 일부 예외도 있어요.
+
+  공식 확인 출처:
+  - Services Australia, Residence rules for Parental Leave Pay: https://www.servicesaustralia.gov.au/residence-rules-for-parental-leave-pay?context=64479
+  - Fair Work Ombudsman, Applying for parental leave: https://www.fairwork.gov.au/leave/parental-leave/before-parental-leave/applying-for-parental-leave
+  - Fair Work Ombudsman, Payment during parental leave: https://www.fairwork.gov.au/leave/parental-leave/during-parental-leave/payment-during-parental-leave
 - **Q: 호주 출산휴가 급여 회사에서 주는 거랑 같이 받을 수 있나요?**
   네, 회사 육아휴직(employer-funded parental leave)과 정부 PPL은 완전히 별개예요. 둘 다 받을 수 있어요. 회사 제도는 고용계약서(employment contract)에 따라 6~18주, 급여의 50~100%를 지원해요. PPL은 최저임금 기준이라 회사 복지가 좋을수록 실제 수령액이 커져요.
 - **Q: 호주 육아휴직 아빠도 쓸 수 있나요?**
