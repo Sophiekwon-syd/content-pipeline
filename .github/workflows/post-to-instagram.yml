@@ -10,6 +10,23 @@ on:
         description: 'Single topic slug to post (optional). Leave empty to post all.'
         required: false
         default: ''
+  workflow_call:
+    inputs:
+      date:
+        required: true
+        type: string
+      slug:
+        required: true
+        type: string
+    secrets:
+      IG_ACCESS_TOKEN:
+        required: true
+      IG_USER_ID:
+        required: true
+      THREAD_ACCESS_TOKEN:
+        required: true
+      THREAD_USER_ID:
+        required: true
 
 permissions:
   contents: write
@@ -52,3 +69,12 @@ jobs:
           git add -f "${files[@]}"   # outputs/ is gitignored — force-add the log
           git diff --cached --quiet || git commit -m "instagram: posted from content-pipeline"
           git push origin main
+
+  threads:
+    needs: post
+    if: ${{ (inputs.date || github.event.inputs.date) != '' && (inputs.slug || github.event.inputs.slug) != '' }}
+    uses: ./.github/workflows/post-to-threads.yml
+    with:
+      date: ${{ inputs.date || github.event.inputs.date }}
+      slug: ${{ inputs.slug || github.event.inputs.slug }}
+    secrets: inherit
