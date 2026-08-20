@@ -39,6 +39,7 @@ The JSON contract is:
   "version": 1,
   "slug": "topic-slug",
   "format": "question",
+  "topic_tag": "호주육아",
   "posts": [
     { "text": "Root post" },
     { "text": "Optional supporting reply" }
@@ -49,8 +50,10 @@ The JSON contract is:
 
 Validation requires a matching slug, an allowed format, 1-3 non-empty posts,
 text within the current Threads API limit, no duplicate posts, and at least one
-primary source for factual topics. A blog link is optional and appears only in
-the last reply when it genuinely adds value.
+primary source for factual topics. `topic_tag` defaults to the single approved
+Threads topic `호주육아`; it is metadata for the API rather than hashtag text
+repeated in every post. A blog link is optional and appears only in the last
+reply when it genuinely adds value.
 
 ## Editorial Structure
 
@@ -121,6 +124,8 @@ does not block Naver, Blogger, or Instagram.
 2. Skip slugs already recorded in `outputs/<date>/threads-log.json`.
 3. Validate `threads/thread.json` before making an API request.
 4. Create and publish the root text post.
+   Attach the artifact's single `topic_tag` using the official API field when
+   the current Threads API supports topic tagging.
 5. When supporting posts exist, create and publish each as a reply to the
    immediately preceding post.
 6. Record the root post ID, all reply IDs, timestamp, slug, and status only
