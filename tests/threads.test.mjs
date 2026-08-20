@@ -205,3 +205,20 @@ test('CLI dry-run validates an artifact without credentials or writing a log', a
   assert.match(result.stdout, /DRY RUN.*messy-play.*1 post/s);
   await assert.rejects(fs.access(path.join(root, 'outputs', '2026-07-24', 'threads-log.json')));
 });
+
+test('checks Threads identity without putting the token in the URL', async () => {
+  let request;
+  const fetch = async (url, options) => {
+    request = { url: String(url), options };
+    return new Response(JSON.stringify({ id: 'user-1', username: 'aussieumma' }), { status: 200 });
+  };
+  const client = createThreadsClient({ accessToken: 'secret-token', userId: 'user-1', fetch });
+
+  const profile = await client.getProfile();
+
+  assert.deepEqual(profile, { id: 'user-1', username: 'aussieumma' });
+  assert.equal(new URL(request.url).pathname, '/v1.0/me');
+  assert.equal(new URL(request.url).searchParams.get('fields'), 'id,username');
+  assert.doesNotMatch(request.url, /secret-token/);
+  assert.equal(request.options.headers.Authorization, 'Bearer secret-token');
+});

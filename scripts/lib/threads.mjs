@@ -123,7 +123,27 @@ export function createThreadsClient({
     return body.id;
   };
 
+  const getProfile = async () => {
+    const url = new URL(`${apiBase}/me`);
+    url.searchParams.set('fields', 'id,username');
+    const response = await fetchImpl(url, {
+      headers: { Authorization: `Bearer ${accessToken}` },
+    });
+    let body;
+    try {
+      body = await response.json();
+    } catch {
+      body = {};
+    }
+    if (!response.ok || !body.id) {
+      const detail = body?.error?.message || body?.error || `HTTP ${response.status}`;
+      throw new Error(`Threads API request failed: ${redact(detail, accessToken)}`);
+    }
+    return { id: body.id, username: body.username };
+  };
+
   return {
+    getProfile,
     createTextContainer({ text, topicTag, replyToId }) {
       return request('threads', {
         media_type: 'TEXT',

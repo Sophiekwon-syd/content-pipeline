@@ -1,0 +1,65 @@
+name: Post to Threads
+on:
+  workflow_dispatch:
+    inputs:
+      date:
+        description: 'Date directory (YYYY-MM-DD)'
+        required: true
+        type: string
+      slug:
+        description: 'Single topic slug to post'
+        required: true
+        type: string
+  workflow_call:
+    inputs:
+      date:
+        required: true
+        type: string
+      slug:
+        required: true
+        type: string
+    secrets:
+      THREAD_ACCESS_TOKEN:
+        required: true
+      THREAD_USER_ID:
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Verify Threads authentication
+        env:
+          THREAD_ACCESS_TOKEN: ${{ secrets.THREAD_ACCESS_TOKEN }}
+          THREAD_USER_ID: ${{ secrets.THREAD_USER_ID }}
+        run: node scripts/check-threads-auth.mjs
+      - name: Publish Threads artifact
+        env:
+          THREAD_ACCESS_TOKEN: ${{ secrets.THREAD_ACCESS_TOKEN }}
+          THREAD_USER_ID: ${{ secrets.THREAD_USER_ID }}
+          POST_DATE: ${{ inputs.date || github.event.inputs.date }}
+          POST_SLUG: ${{ inputs.slug || github.event.inputs.slug }}
+        run: node scripts/post-to-threads.mjs --date "$POST_DATE" --slug "$POST_SLUG"
+      - name: Commit threads-log.json
+        env:
+          POST_DATE: ${{ inputs.date || github.event.inputs.date }}
+        run: |
+          log="outputs/$POST_DATE/threads-log.json"
+          if [ ! -f "$log" ]; then
+            echo "No Threads log to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git pull --rebase origin main
+          git add -f "$log"
+          git diff --cached --quiet || git commit -m "threads: record published post"
+          git push origin HEAD:main
