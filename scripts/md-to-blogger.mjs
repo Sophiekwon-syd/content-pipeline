@@ -43,6 +43,7 @@ const H2_STYLE = 'font-size:1.5em;font-weight:700;line-height:1.4;margin:52px 0 
   + 'padding-bottom:12px;border-bottom:2px solid #e5e5e2;letter-spacing:-0.01em;';
 const H3_STYLE = 'font-size:1.15em;font-weight:700;line-height:1.5;margin:34px 0 12px;';
 const P_STYLE = 'line-height:1.85;margin:0 0 14px;';
+const SOURCE_STYLE = 'font-size:.78em;color:#777;line-height:1.5;margin:4px 0 18px;';
 const BQ_STYLE = 'border-left:4px solid #2b2b2b;margin:32px 0;padding:20px 24px;'
   + 'background:#f6f6f4;border-radius:0 8px 8px 0;'
   + 'text-align:left !important;font-style:normal !important;line-height:1.85;';
@@ -66,13 +67,12 @@ for (let i = 0; i < lines.length; i++) {
     closeList();
     skip = SKIP.test(h2[1].trim());
     if (skip) continue;
-    // hero goes right before the first content section
-    const hero = findImg('hero');
-    if (!heroPlaced && hero) { out.push(img(hero, title)); heroPlaced = true; }
+    if (h2Count >= 2) {
+      const previousSection = findImg(`section-${h2Count - 1}`);
+      if (previousSection) out.push(img(previousSection, h2[1]));
+    }
     h2Count++;
     out.push(`<h2 style="${H2_STYLE}">${inline(h2[1].replace(/\s+—\s+/g, ', '))}</h2>`);
-    const sec = findImg(`section-${h2Count}`);
-    if (sec) out.push(img(sec, h2[1]));
     continue;
   }
   if (skip) {
@@ -106,6 +106,10 @@ for (let i = 0; i < lines.length; i++) {
       continue;
     }
     out.push(`<blockquote style="${BQ_STYLE}">${parts.filter(Boolean).map(inline).map((x) => `<div style="margin:0 0 6px">${x}</div>`).join('')}</blockquote>`);
+    if (!heroPlaced && parts.some((part) => part.includes('결론부터 말하면'))) {
+      const hero = findImg('hero');
+      if (hero) { out.push(img(hero, title)); heroPlaced = true; }
+    }
     continue;
   }
 
@@ -129,7 +133,11 @@ for (let i = 0; i < lines.length; i++) {
     continue;
   }
 
-  if (line.trim()) { closeList(); out.push(`<p style="${P_STYLE}">${inline(line.trim())}</p>`); }
+  if (line.trim()) {
+    closeList();
+    const style = line.trim().startsWith('(출처:') ? SOURCE_STYLE : P_STYLE;
+    out.push(`<p style="${style}">${inline(line.trim())}</p>`);
+  }
 }
 closeList();
 

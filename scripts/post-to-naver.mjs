@@ -394,7 +394,7 @@ async function styleGlobal(page) {
 
 // reference format: each section heading becomes a numbered ❝ quote block
 // ("1. 제목", size 19, bold) followed by a 구분선 divider
-async function buildHeadingBlocks(page, headings) {
+async function buildHeadingBlocks(page, headings, numberOffset = 0) {
   let built = 0;
   for (let i = 0; i < headings.length; i++) {
     const h = headings[i];
@@ -405,7 +405,7 @@ async function buildHeadingBlocks(page, headings) {
     await page.keyboard.press('Delete');
     await sleep(300);
     await insertQuotation(page, 'default');
-    await page.keyboard.type(`${i + 1}. ${h}`);
+    await page.keyboard.type(`${i + 1 + numberOffset}. ${h}`);
     await sleep(400);
     const key = h.slice(0, 16);
     if (!(await quotationHas(page, key))) {
@@ -446,6 +446,23 @@ async function styleFaq(page, faqQuestions) {
     await sleep(200);
   }
   console.log(`  FAQ questions bolded: ${faqQuestions.length}`);
+}
+
+// Source lines are supporting notes, not primary reading flow. Keep them
+// compact and visually quiet in the published post.
+async function styleSourceLines(page) {
+  const paragraphs = page.locator('.se-component.se-text .se-text-paragraph');
+  const n = await paragraphs.count();
+  let styled = 0;
+  for (let i = 0; i < n; i++) {
+    const p = paragraphs.nth(i);
+    const text = (await p.innerText()).replace(/\u00a0/g, ' ').trim();
+    if (!/^\(출처:/.test(text)) continue;
+    await selectPara(page, i);
+    try { await pickOption(page, 'button[class*="font-size"]', '11'); styled++; }
+    catch { console.warn('  (source font size not applied)'); }
+  }
+  console.log(`  source notes styled: ${styled}`);
 }
 
 // swap each [[QUOTE-n]] marker for a real 세로선 인용구 box and TYPE its lines in.
@@ -713,7 +730,11 @@ async function insertImages(page, imagePaths, headings = []) {
   const heroes = imagePaths.filter((p) => !/section-\d+\./.test(path.basename(p)));
   const sections = imagePaths.filter((p) => /section-\d+\./.test(path.basename(p)));
   if (heroes.length) {
-    if (await caretAtTextStart(page, null)) await uploadAtCaret(page, heroes);
+    // Keep the conclusion box and opening scenario together before the hero.
+    // Inserting at the first non-quote paragraph used to place the image
+    // between the section heading and the conclusion quote.
+    if (await clickAfterQuotation(page, '결론부터 말하면')) await uploadAtCaret(page, heroes);
+    else if (await caretAtTextStart(page, null)) await uploadAtCaret(page, heroes);
     else console.warn('  (couldn\'t position hero image)');
   }
   if (process.env.NAVER_SECTION_IMAGES === '1') {
@@ -832,10 +853,12 @@ async function postOne(ctx, blogId, slug, { title, body, headings = [], faqQuest
   // design format (reference: navermate-selected posts): global typography →
   // numbered ❝ heading blocks + dividers → callout boxes → FAQ bold → images
   await styleGlobal(page);
-  await buildHeadingBlocks(page, headings);
+  const headingOffset = faqQuestions.includes('1. 핵심 요약') ? 1 : 0;
+  await buildHeadingBlocks(page, headings, headingOffset);
   await insertQuotes(page, quoteBlocks);
   await verifyQuotes(page, quoteBlocks);
   await styleFaq(page, faqQuestions);
+  await styleSourceLines(page);
   await insertTables(page, tables);
   await insertImages(page, images, headings);
   await enableAiUsage(page);

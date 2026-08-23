@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "slug": "australia-kids-urgent-care-clinic-guide",
+  "format": "information",
+  "topic_tag": "호주육아",
+  "posts": [
+    {
+      "text": "아이 열은 오르는데 GP 예약은 며칠 뒤라면, 응급실과 집 사이에 Medicare Urgent Care Clinic이 있어요.\n\nMedicare 카드가 있다면 예약이나 GP 의뢰서 없이 방문할 수 있고, 공식 안내상 벌크빌링으로 진료를 받을 수 있어요."
+    },
+    {
+      "text": "다만 숨쉬기 어렵거나 의식이 흐려짐, 경련, 심한 출혈이면 UCC보다 000 또는 응급실이 먼저예요.\n\n특히 3개월 미만 아기의 38도 이상 발열은 즉시 응급실 기준이에요."
+    },
+    {
+      "text": "healthdirect에서 우편번호로 가까운 UCC와 운영시간을 확인할 수 있어요. 클리닉마다 접수 마감과 진료 가능한 범위가 다를 수 있으니 출발 전에 확인해보세요."
+    }
+  ],
+  "sources": [
+    "https://www.health.gov.au/news/new-phase-of-medicare-urgent-care-clinics-campaign-launches-to-help-more-australians-access-urgent-care-in-their-community?language=en",
+    "https://www.healthdirect.gov.au/urgent-care-clinics",
+    "https://www.healthdirect.gov.au/fever-and-high-temperature-in-children"
+  ]
+}

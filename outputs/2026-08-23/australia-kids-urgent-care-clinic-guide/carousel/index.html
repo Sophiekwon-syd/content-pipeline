@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>호주 아이 아플 때 Medicare Urgent Care Clinic</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #080808;
+      --panel: #111111;
+      --ink: #ffffff;
+      --muted: #c7c7c7;
+      --dim: #777777;
+      --accent: #C6F135;
+      --blue: #3B82F6;
+      --line: rgba(255,255,255,.1);
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #242424; }
+    body { display: flex; flex-direction: column; align-items: center; gap: 20px; padding: 20px; font-family: "Noto Sans KR", sans-serif; }
+    .card {
+      width: 1080px; height: 1350px; position: relative; overflow: hidden;
+      display: flex; flex-direction: column; color: var(--ink); background: var(--bg);
+      background-image: radial-gradient(circle at 72% 25%, #151515 0, var(--bg) 48%);
+      -webkit-font-smoothing: antialiased;
+    }
+    .card::before { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .045; z-index: 20; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+    .handle { position: absolute; top: 68px; right: 90px; z-index: 5; color: var(--ink); font: 700 18px "Space Grotesk", sans-serif; letter-spacing: 3px; text-transform: uppercase; }
+    .handle::before { content: ""; display: inline-block; width: 8px; height: 8px; margin: 0 10px 2px 0; border-radius: 50%; background: var(--accent); box-shadow: 0 0 12px var(--accent); }
+    .content { position: relative; z-index: 2; flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 90px; }
+    .eyebrow { margin-bottom: 34px; color: var(--accent); font: 700 16px "Space Grotesk", sans-serif; letter-spacing: 5px; text-transform: uppercase; }
+    h1, h2, p { margin: 0; word-break: keep-all; }
+    h1 { font-size: 96px; line-height: 1.1; letter-spacing: -5px; font-weight: 900; }
+    h2 { font-size: 64px; line-height: 1.25; letter-spacing: -3px; font-weight: 900; }
+    .lead { margin-top: 42px; color: var(--muted); font-size: 34px; line-height: 1.55; }
+    .accent { color: var(--accent); }
+    .rule { width: 64px; height: 5px; margin: 38px 0; border: 0; background: var(--accent); }
+    .center { align-items: center; text-align: center; }
+    .cover-mark { position: absolute; left: 50%; top: 50%; z-index: 1; transform: translate(-50%,-50%); color: var(--accent); opacity: .065; font: 700 780px/1 "Space Grotesk", sans-serif; letter-spacing: -60px; }
+    .small { color: var(--dim); font-size: 23px; line-height: 1.6; }
+    .source { margin-top: 34px; color: var(--dim); font-size: 18px; line-height: 1.5; }
+    .number { color: var(--accent); font: 900 220px/1 "Space Grotesk", sans-serif; letter-spacing: -12px; }
+    .number-label { margin-top: 22px; font-size: 42px; font-weight: 800; line-height: 1.35; }
+    .number-detail { max-width: 800px; margin-top: 28px; color: var(--muted); font-size: 27px; line-height: 1.6; }
+    .box { margin-top: 42px; padding: 38px 42px; border: 1px solid var(--line); border-radius: 24px; background: var(--panel); }
+    .box strong { color: var(--accent); }
+    .rows { margin-top: 38px; }
+    .row { display: grid; grid-template-columns: 210px 1fr; gap: 26px; align-items: start; padding: 30px 0; border-bottom: 1px solid var(--line); }
+    .row:last-child { border-bottom: 0; }
+    .row-label { color: var(--accent); font: 700 18px "Space Grotesk", sans-serif; letter-spacing: 3px; text-transform: uppercase; }
+    .row-text { font-size: 30px; line-height: 1.5; font-weight: 700; }
+    .list { margin-top: 36px; padding: 0; list-style: none; }
+    .list li { display: flex; gap: 20px; padding: 22px 0; border-bottom: 1px solid var(--line); color: var(--muted); font-size: 29px; line-height: 1.45; }
+    .list li::before { content: ""; flex: 0 0 12px; width: 12px; height: 12px; margin-top: 14px; border-radius: 50%; background: var(--accent); }
+    .statement { background: #101010; }
+    .statement .content { align-items: center; text-align: center; }
+    .statement h2 { max-width: 850px; font-size: 72px; }
+    .statement .lead { max-width: 790px; }
+    .warning { margin-top: 42px; padding: 34px 42px; border-left: 6px solid var(--blue); background: rgba(59,130,246,.12); color: var(--ink); font-size: 30px; line-height: 1.55; }
+    .sheet { background: #f4f5ef; color: #171717; background-image: none; }
+    .sheet .handle { color: #171717; }
+    .sheet .handle::before { background: var(--blue); box-shadow: none; }
+    .sheet .content { padding-top: 150px; }
+    .sheet .eyebrow { color: #4d6500; }
+    .sheet h2 { color: #171717; font-size: 70px; }
+    .sheet .row { border-color: rgba(0,0,0,.16); }
+    .sheet .row-label { color: #4d6500; }
+    .sheet .row-text { color: #171717; }
+    .sheet .source { color: #646464; }
+    .cta { background: var(--accent); color: #111; }
+    .cta .handle { color: #111; }
+    .cta .handle::before { background: #111; box-shadow: none; }
+    .cta h2 { font-size: 112px; letter-spacing: -5px; }
+    .cta .lead { color: #252c12; }
+    @media (max-width: 1100px) {
+      body { align-items: flex-start; overflow-x: auto; }
+    }
+  </style>
+</head>
+<body>
+  <section class="card c1" data-type="cover">
+    <span class="handle">@aussie.umma</span><span class="cover-mark">UCC</span>
+    <div class="content center">
+      <p class="eyebrow">AUSTRALIAN PARENTING GUIDE</p>
+      <h1>아이 아픈데<br><span class="accent">GP 예약은</span><br>며칠 뒤?</h1>
+      <p class="lead">응급실까지는 아닌데<br>오늘 진료가 필요할 때 확인할 곳</p>
+    </div>
+  </section>
+
+  <section class="card c2" data-type="hook">
+    <span class="handle">@aussie.umma</span>
+    <div class="content center">
+      <p class="eyebrow">WHEN GP CAN'T WAIT</p>
+      <h2>응급실까지는 아닌데<br><span class="accent">오늘 봐야 한다면?</span></h2>
+      <hr class="rule">
+      <p class="lead">Medicare Urgent Care Clinic을<br>먼저 확인해보세요.</p>
+    </div>
+  </section>
+
+  <section class="card c3" data-type="body">
+    <span class="handle">@aussie.umma</span>
+    <div class="content">
+      <p class="eyebrow">01 / HOW IT WORKS</p>
+      <h2>예약 없이<br><span class="accent">방문할 수 있어요</span></h2>
+      <div class="box">
+        <p class="lead" style="margin:0">Medicare 카드가 있다면 GP 의뢰서 없이 방문하고, 벌크빌링 진료를 받을 수 있어요.</p>
+      </div>
+      <p class="source">운영시간, 접수 마감, 진료 범위는 방문 전 클리닉별로 확인해보세요.</p>
+    </div>
+  </section>
+
+  <section class="card c4" data-type="body">
+    <span class="handle">@aussie.umma</span>
+    <div class="content">
+      <p class="eyebrow">02 / COMMON CASES</p>
+      <h2>이런 증상은<br><span class="accent">대상이 될 수 있어요</span></h2>
+      <ul class="list">
+        <li>작은 상처와 가벼운 화상</li>
+        <li>발진, 벌레 물림, 가벼운 감염</li>
+        <li>귀·눈 문제, 위장염, 감기 증상</li>
+        <li>염좌와 작은 골절</li>
+      </ul>
+      <p class="source">아이의 나이와 상태에 따라 달라질 수 있어 도착 후 분류를 받아야 해요.</p>
+    </div>
+  </section>
+
+  <section class="card c5" data-type="body">
+    <span class="handle">@aussie.umma</span>
+    <div class="content center">
+      <p class="eyebrow">03 / FIND A CLINIC</p>
+      <h2><span class="accent">healthdirect</span><br>Service Finder</h2>
+      <p class="number" style="margin-top:34px;font-size:118px;letter-spacing:-6px">134+</p>
+      <p class="number-detail" style="margin-top:8px;font-size:25px">2026년 4월 기준 전국 134개 이상<br>누적 방문 270만 건 이상</p>
+      <p class="lead">우편번호를 입력하면<br>가까운 클리닉과 운영시간을 확인할 수 있어요.</p>
+      <div class="box" style="width:100%; text-align:left">
+        <p class="small">검색 순서</p>
+        <div class="rows">
+          <div class="row"><span class="row-label">STEP 01</span><span class="row-text">Service Finder 열기</span></div>
+          <div class="row"><span class="row-label">STEP 02</span><span class="row-text">우편번호 입력하기</span></div>
+          <div class="row"><span class="row-label">STEP 03</span><span class="row-text">Medicare UCC 운영시간 확인하기</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card c6" data-type="body">
+    <span class="handle">@aussie.umma</span>
+    <div class="content">
+      <p class="eyebrow">04 / BEFORE YOU GO</p>
+      <h2>가기 전에<br><span class="accent">이것만 챙겨요</span></h2>
+      <ul class="list">
+        <li>Medicare 카드 또는 번호</li>
+        <li>아이의 복용약과 알레르기 정보</li>
+        <li>증상이 시작된 시간과 체온 기록</li>
+        <li>예방접종·기존 진료 기록 사진</li>
+      </ul>
+      <p class="source">설명이 막힐 때는 통번역 서비스 TIS National 131 450도 확인할 수 있어요.</p>
+    </div>
+  </section>
+
+  <section class="card c7 statement" data-type="statement">
+    <span class="handle">@aussie.umma</span>
+    <div class="content">
+      <p class="eyebrow">REMEMBER THIS</p>
+      <h2>UCC는<br><span class="accent">응급실의 대체제</span>가 아니에요</h2>
+      <p class="lead">응급실까지는 아니지만<br>GP를 기다리기 어려운 급한 진료를 위한 창구예요.</p>
+    </div>
+  </section>
+
+  <section class="card c8" data-type="body">
+    <span class="handle">@aussie.umma</span>
+    <div class="content">
+      <p class="eyebrow">WHEN IT IS AN EMERGENCY</p>
+      <h2>이럴 때는 UCC가 아니라<br><span class="accent">000 또는 응급실</span>이에요</h2>
+      <div class="warning">숨쉬기 어려움, 의식 저하, 경련, 조절되지 않는 심한 출혈, 심한 화상, 중독</div>
+      <div class="box">
+        <p class="lead" style="margin:0"><strong>3개월 미만 아기 + 38도 이상 발열</strong>도 즉시 응급실 기준이에요.</p>
+      </div>
+      <p class="source">아이 상태가 걱정되면 healthdirect 1800 022 222에 전화해 간호사 안내를 받아보세요.</p>
+    </div>
+  </section>
+
+  <section class="card c9 sheet" data-type="sheet">
+    <span class="handle">@aussie.umma</span>
+    <div class="content">
+      <p class="eyebrow">SAVE THIS GUIDE</p>
+      <h2>어디로 갈지<br><span style="color:#4d6500">3칸으로 나눠요</span></h2>
+      <div class="rows">
+        <div class="row"><span class="row-label">UCC</span><span class="row-text">급하지만 생명에 위험하지 않은 증상</span></div>
+        <div class="row"><span class="row-label">GP</span><span class="row-text">예방접종, 검진, 만성질환 같은 정기 진료</span></div>
+        <div class="row"><span class="row-label">000 / ED</span><span class="row-text">호흡곤란, 의식 저하, 경련, 심한 출혈 등 생명 위험</span></div>
+      </div>
+      <p class="source">3개월 미만 아기의 38도 이상 발열은 즉시 응급실 기준이에요.</p>
+    </div>
+  </section>
+
+  <section class="card c10 cta" data-type="cta">
+    <span class="handle">@aussie.umma</span>
+    <div class="content center">
+      <p class="eyebrow">FOR THE NEXT SICK DAY</p>
+      <h2>저장하기 <span style="font-family:Arial,sans-serif">→</span></h2>
+      <p class="lead">아이 아픈 날 어디로 갈지<br>미리 한 번 정리해두세요.</p>
+    </div>
+  </section>
+</body>
+</html>
