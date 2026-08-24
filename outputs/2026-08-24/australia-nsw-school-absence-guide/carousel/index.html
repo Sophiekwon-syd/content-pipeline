@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>호주 NSW 학교 결석 연락 방법</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #080808;
+      --panel: #111111;
+      --ink: #ffffff;
+      --muted: #c7c7c7;
+      --dim: #777777;
+      --accent: #C6F135;
+      --blue: #3B82F6;
+      --line: rgba(255,255,255,.1);
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #242424; }
+    body { display: flex; flex-direction: column; align-items: center; gap: 20px; padding: 20px; font-family: "Noto Sans KR", sans-serif; }
+    .card {
+      width: 1080px; height: 1350px; position: relative; overflow: hidden;
+      display: flex; flex-direction: column; color: var(--ink); background: var(--bg);
+      background-image: radial-gradient(circle at 72% 25%, #151515 0, var(--bg) 48%);
+      -webkit-font-smoothing: antialiased;
+    }
+    .card::before { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .045; z-index: 20; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+    .handle { position: absolute; top: 68px; right: 90px; z-index: 5; color: var(--ink); font: 700 18px "Space Grotesk", sans-serif; letter-spacing: 3px; text-transform: uppercase; }
+    .handle::before { content: ""; display: inline-block; width: 8px; height: 8px; margin: 0 10px 2px 0; border-radius: 50%; background: var(--accent); box-shadow: 0 0 12px var(--accent); }
+    .content { position: relative; z-index: 2; flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 90px; }
+    .eyebrow { margin-bottom: 34px; color: var(--accent); font: 700 16px "Space Grotesk", sans-serif; letter-spacing: 5px; text-transform: uppercase; }
+    h1, h2, p { margin: 0; word-break: keep-all; }
+    h1 { font-size: 96px; line-height: 1.1; letter-spacing: -5px; font-weight: 900; }
+    h2 { font-size: 64px; line-height: 1.25; letter-spacing: -3px; font-weight: 900; }
+    .lead { margin-top: 42px; color: var(--muted); font-size: 34px; line-height: 1.55; }
+    .accent { color: var(--accent); }
+    .rule { width: 64px; height: 5px; margin: 38px 0; border: 0; background: var(--accent); }
+    .center { align-items: center; text-align: center; }
+    .cover-mark { position: absolute; left: 50%; top: 50%; z-index: 1; transform: translate(-50%,-50%); color: var(--accent); opacity: .065; font: 700 780px/1 "Space Grotesk", sans-serif; letter-spacing: -60px; }
+    .small { color: var(--dim); font-size: 23px; line-height: 1.6; }
+    .source { margin-top: 34px; color: var(--dim); font-size: 18px; line-height: 1.5; }
+    .number { color: var(--accent); font: 900 220px/1 "Space Grotesk", sans-serif; letter-spacing: -12px; }
+    .number-label { margin-top: 22px; font-size: 42px; font-weight: 800; line-height: 1.35; }
+    .number-detail { max-width: 800px; margin-top: 28px; color: var(--muted); font-size: 27px; line-height: 1.6; }
+    .box { margin-top: 42px; padding: 38px 42px; border: 1px solid var(--line); border-radius: 24px; background: var(--panel); }
+    .box strong { color: var(--accent); }
+    .rows { margin-top: 38px; }
+    .row { display: grid; grid-template-columns: 210px 1fr; gap: 26px; align-items: start; padding: 30px 0; border-bottom: 1px solid var(--line); }
+    .row:last-child { border-bottom: 0; }
+    .row-label { color: var(--accent); font: 700 18px "Space Grotesk", sans-serif; letter-spacing: 3px; text-transform: uppercase; }
+    .row-text { font-size: 30px; line-height: 1.5; font-weight: 700; }
+    .list { margin-top: 36px; padding: 0; list-style: none; }
+    .list li { display: flex; gap: 20px; padding: 22px 0; border-bottom: 1px solid var(--line); color: var(--muted); font-size: 29px; line-height: 1.45; }
+    .list li::before { content: ""; flex: 0 0 12px; width: 12px; height: 12px; margin-top: 14px; border-radius: 50%; background: var(--accent); }
+    .statement { background: #101010; }
+    .statement .content { align-items: center; text-align: center; }
+    .statement h2 { max-width: 850px; font-size: 72px; }
+    .statement .lead { max-width: 790px; }
+    .warning { margin-top: 42px; padding: 34px 42px; border-left: 6px solid var(--blue); background: rgba(59,130,246,.12); color: var(--ink); font-size: 30px; line-height: 1.55; }
+    .sheet { background: #f4f5ef; color: #171717; background-image: none; }
+    .sheet .handle { color: #171717; }
+    .sheet .handle::before { background: var(--blue); box-shadow: none; }
+    .sheet .content { padding-top: 150px; }
+    .sheet .eyebrow { color: #4d6500; }
+    .sheet h2 { color: #171717; font-size: 70px; }
+    .sheet .row { border-color: rgba(0,0,0,.16); }
+    .sheet .row-label { color: #4d6500; }
+    .sheet .row-text { color: #171717; }
+    .sheet .source { color: #646464; }
+    .cta { background: var(--accent); color: #111; }
+    .cta .handle { color: #111; }
+    .cta .handle::before { background: #111; box-shadow: none; }
+    .cta h2 { font-size: 112px; letter-spacing: -5px; }
+    .cta .lead { color: #252c12; }
+    @media (max-width: 1100px) {
+      body { align-items: flex-start; overflow-x: auto; }
+    }
+  </style>
+</head>
+<body>
+  <section class="card c1" data-type="cover">
+    <span class="handle">@aussie.umma</span><span class="cover-mark">UCC</span>
+    <div class="content center">
+      <p class="eyebrow">AUSTRALIAN PARENTING GUIDE</p>
+      <h1>호주 학교<br><span class="accent">결석 연락</span><br>이렇게 해요</h1>
+      <p class="lead">아이가 아픈 아침<br>학교에 무엇을 언제 알려야 할까?</p>
+    </div>
+  </section>
+
+  <section class="card c2" data-type="hook">
+    <span class="handle">@aussie.umma</span>
+    <div class="content center">
+      <p class="eyebrow">WHEN YOUR CHILD IS SICK</p>
+      <h2>medical certificate보다<br><span class="accent">먼저 확인할 것</span></h2>
+      <hr class="rule">
+      <p class="lead">NSW 학교 결석 알림 기한은<br><span class="accent">첫날부터 7일</span>이에요.</p>
+    </div>
+  </section>
+
+  <section class="card c3" data-type="body">
+    <span class="handle">@aussie.umma</span>
+    <div class="content">
+      <p class="eyebrow">01 / THE DEADLINE</p>
+      <h2>결석 사유는<br><span class="accent">7일 안에 알려요</span></h2>
+      <div class="box">
+        <p class="lead" style="margin:0">결석 첫날부터 7일 안에 말이나 글로 학교에 사유를 설명하면 돼요.</p>
+      </div>
+      <p class="source">학교 앱, 이메일, 전화 중 지정 채널을 먼저 확인하세요.</p>
+    </div>
+  </section>
+
+  <section class="card c4" data-type="body">
+    <span class="handle">@aussie.umma</span>
+    <div class="content">
+      <p class="eyebrow">02 / THE CHANNEL</p>
+      <h2>학교마다<br><span class="accent">알리는 방법이 달라요</span></h2>
+      <ul class="list">
+        <li>학교 앱의 `report absence` 메뉴</li>
+        <li>학교 대표번호 또는 office 이메일</li>
+        <li>parent handbook와 학교 웹사이트</li>
+      </ul>
+      <p class="source">학교가 지정한 채널을 먼저 확인하세요.</p>
+    </div>
+  </section>
+
+  <section class="card c5" data-type="body">
+    <span class="handle">@aussie.umma</span>
+    <div class="content center">
+      <p class="eyebrow">03 / MEDICAL CERTIFICATE</p>
+      <h2>하루 결석마다<br><span class="accent">필수는 아니에요</span></h2>
+      <p class="number" style="margin-top:34px;font-size:118px;letter-spacing:-6px">7일</p>
+      <p class="number-detail" style="margin-top:8px;font-size:25px">결석 첫날부터 사유를<br>말이나 글로 설명하는 기한</p>
+      <p class="lead">하루 결석마다 medical certificate가<br>자동으로 필요한 건 아니에요.</p>
+      <div class="box" style="width:100%; text-align:left">
+        <p class="small">검색 순서</p>
+        <div class="rows">
+          <div class="row"><span class="row-label">WHEN</span><span class="row-text">반복·장기 결석일 때</span></div>
+          <div class="row"><span class="row-label">WHO</span><span class="row-text">교장이나 학교 담당자</span></div>
+          <div class="row"><span class="row-label">WHAT</span><span class="row-text">medical certificate 등 추가 자료</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card c6" data-type="body">
+    <span class="handle">@aussie.umma</span>
+    <div class="content">
+      <p class="eyebrow">04 / MESSAGE TEMPLATE</p>
+      <h2>결석 알림은<br><span class="accent">짧게 써도 돼요</span></h2>
+      <ul class="list">
+        <li>아이 이름과 학년</li>
+        <li>결석 날짜</li>
+        <li>간단한 결석 사유</li>
+        <li>다음 업데이트 시점</li>
+      </ul>
+      <p class="source">“My child is unwell and will be absent today.”</p>
+    </div>
+  </section>
+
+  <section class="card c7 statement" data-type="statement">
+    <span class="handle">@aussie.umma</span>
+    <div class="content">
+      <p class="eyebrow">REMEMBER THIS</p>
+      <h2>아픈 날은 쉬고<br><span class="accent">학교와 소통해요</span></h2>
+      <p class="lead">아이를 억지로 등교시키기보다<br>결석 사유와 다음 연락 시점을<br>정확히 알려주세요.</p>
+    </div>
+  </section>
+
+  <section class="card c8" data-type="body">
+    <span class="handle">@aussie.umma</span>
+    <div class="content">
+      <p class="eyebrow">WHEN ABSENCE REPEATS</p>
+      <h2>학교 가기 싫다는 말이<br><span class="accent">반복된다면 상담해요</span></h2>
+      <div class="warning">담임 · year coordinator · deputy principal · wellbeing staff</div>
+      <div class="box">
+        <p class="lead" style="margin:0"><strong>반복 결석이나 학교 불안</strong>은 단순 결석으로만 보지 않아요.</p>
+      </div>
+      <p class="source">학교와 지원 방법을 먼저 함께 상의해보세요.</p>
+    </div>
+  </section>
+
+  <section class="card c9 sheet" data-type="sheet">
+    <span class="handle">@aussie.umma</span>
+    <div class="content">
+      <p class="eyebrow">SAVE THIS GUIDE</p>
+      <h2>결석 아침<br><span style="color:#4d6500">5단계 체크</span></h2>
+      <div class="rows">
+        <div class="row"><span class="row-label">1</span><span class="row-text">오늘 학교에 갈 수 있는지 확인</span></div>
+        <div class="row"><span class="row-label">2</span><span class="row-text">학교 채널 확인</span></div>
+        <div class="row"><span class="row-label">3</span><span class="row-text">아이 이름, 날짜, 사유 전달</span></div>
+        <div class="row"><span class="row-label">4–5</span><span class="row-text">7일 기한 확인, 장기 결석 자료 문의</span></div>
+      </div>
+      <p class="source">2025 NSW 공립 초등학생 90% 이상 출석 비율 68.1%</p>
+    </div>
+  </section>
+
+  <section class="card c10 cta" data-type="cta">
+    <span class="handle">@aussie.umma</span>
+    <div class="content center">
+      <p class="eyebrow">FOR THE NEXT ABSENCE</p>
+      <h2>저장하기 <span style="font-family:Arial,sans-serif">→</span></h2>
+      <p class="lead">학교 앱과 7일 기한을<br>미리 확인해두세요.</p>
+    </div>
+  </section>
+</body>
+</html>

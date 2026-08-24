@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "slug": "australia-nsw-school-absence-guide",
+  "format": "information",
+  "topic_tag": "호주육아",
+  "posts": [
+    {
+      "text": "아이가 아파서 학교를 빠지는 아침, medical certificate부터 찾게 되잖아요.\n\n그런데 NSW 공립학교 기준으로 하루 결석마다 진단서가 자동으로 필요한 건 아니래요.\n\n학교가 정한 앱·이메일·전화로 먼저 결석을 알리고, 결석 첫날부터 7일 안에 사유를 설명하면 돼요."
+    },
+    {
+      "text": "결석 알림에는 아이 이름, 학년, 날짜, 간단한 사유 정도면 충분한 경우가 많아요.\n\n며칠 이어지거나 반복되는 결석이면 학교가 medical certificate나 다른 자료를 요청할 수 있으니, office나 wellbeing 담당자에게 학교 절차를 확인해보세요."
+    },
+    {
+      "text": "학교마다 매일 알림을 보내는지, 한 번에 기간을 적는지는 다를 수 있어요.\n\n우리 학교의 report absence 안내를 미리 저장해두면 아픈 아침에 덜 당황해요."
+    }
+  ],
+  "sources": [
+    "https://education.nsw.gov.au/schooling/school-community/attendance-matters-resources-for-schools/compulsory-school-attendance.html",
+    "https://education.nsw.gov.au/schooling/parents-and-carers/going-to-school/school-attendance-information-for-parents",
+    "https://education.nsw.gov.au/policy-library/policies/pd-2005-0259-02"
+  ]
+}
