@@ -116,7 +116,7 @@ export function parsePost(md) {
     if (h2) {
       curQuote = null; // a heading ends any open quote block (prevents merging)
       const heading = h2[1].trim();
-      skipSection = /^(메타 정보|썸네일 이미지 프롬프트|이미지 프롬프트|셀프 리뷰|네이버 발행 체크리스트)/.test(heading);
+      skipSection = /^(메타 정보|썸네일 이미지 프롬프트|이미지 프롬프트|셀프 리뷰|네이버 발행 체크리스트|태그)$/.test(heading);
       if (!skipSection) { kept.push('\n' + heading + '\n'); headings.push(inline(heading).replace(/\s+—\s+/g, ', ')); }
       continue;
     }
