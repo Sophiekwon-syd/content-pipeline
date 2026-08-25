@@ -102,7 +102,7 @@ export function createThreadsClient({
   if (typeof fetchImpl !== 'function') throw new Error('fetch implementation is required');
 
   const request = async (pathname, params) => {
-    const url = new URL(`${apiBase}/${encodeURIComponent(userId)}/${pathname}`);
+    const url = new URL(`${apiBase}/me/${pathname}`);
     for (const [key, value] of Object.entries(params)) {
       if (value != null && value !== '') url.searchParams.set(key, String(value));
     }

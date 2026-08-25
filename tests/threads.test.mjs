@@ -130,12 +130,12 @@ test('publishes a root post with one topic tag', async () => {
   assert.equal(progress.status, 'published');
   assert.deepEqual(progress.postIds, ['thread-1']);
   const createUrl = new URL(requests[0].url);
-  assert.equal(createUrl.pathname, '/v1.0/user-1/threads');
+  assert.equal(createUrl.pathname, '/v1.0/me/threads');
   assert.equal(createUrl.searchParams.get('media_type'), 'TEXT');
   assert.equal(createUrl.searchParams.get('topic_tag'), '호주육아');
   assert.equal(requests[0].options.headers.Authorization, 'Bearer secret-token');
   const publishUrl = new URL(requests[1].url);
-  assert.equal(publishUrl.pathname, '/v1.0/user-1/threads_publish');
+  assert.equal(publishUrl.pathname, '/v1.0/me/threads_publish');
   assert.equal(publishUrl.searchParams.get('creation_id'), 'container-1');
 });
 
