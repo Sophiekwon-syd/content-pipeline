@@ -7,7 +7,7 @@ Threads publishing uses Meta's Threads API and the `aussieumma` Threads profile.
 Add these repository secrets under **Settings → Secrets and variables → Actions**:
 
 - `THREAD_ACCESS_TOKEN`: a Threads user access token
-- `THREAD_USER_ID`: the Threads profile ID returned by the Threads API
+- `THREADS_USER_ID`: the Threads profile ID returned by the Threads API
 
 The Meta app needs these permissions:
 
@@ -49,11 +49,12 @@ Run the **Post to Threads** GitHub workflow with a date and slug. The workflow:
 The Instagram workflow also calls the Threads workflow after a successful
 Instagram job when both date and slug were supplied.
 
-For local testing, export the two environment variables and run:
+For local testing, map `THREADS_USER_ID` to the CLI's `THREAD_USER_ID`
+environment variable and run:
 
 ```bash
-node scripts/check-threads-auth.mjs
-node scripts/post-to-threads.mjs --date <YYYY-MM-DD> --slug <topic-slug>
+THREAD_USER_ID="$THREADS_USER_ID" node scripts/check-threads-auth.mjs
+THREAD_USER_ID="$THREADS_USER_ID" node scripts/post-to-threads.mjs --date <YYYY-MM-DD> --slug <topic-slug>
 ```
 
 Never print or commit the access token. API errors redact the token before they

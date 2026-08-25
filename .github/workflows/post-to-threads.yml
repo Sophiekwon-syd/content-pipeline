@@ -21,7 +21,7 @@ on:
     secrets:
       THREAD_ACCESS_TOKEN:
         required: true
-      THREAD_USER_ID:
+      THREADS_USER_ID:
         required: true
 
 permissions:
@@ -39,12 +39,12 @@ jobs:
       - name: Verify Threads authentication
         env:
           THREAD_ACCESS_TOKEN: ${{ secrets.THREAD_ACCESS_TOKEN }}
-          THREAD_USER_ID: ${{ secrets.THREAD_USER_ID }}
+          THREAD_USER_ID: ${{ secrets.THREADS_USER_ID }}
         run: node scripts/check-threads-auth.mjs
       - name: Publish Threads artifact
         env:
           THREAD_ACCESS_TOKEN: ${{ secrets.THREAD_ACCESS_TOKEN }}
-          THREAD_USER_ID: ${{ secrets.THREAD_USER_ID }}
+          THREAD_USER_ID: ${{ secrets.THREADS_USER_ID }}
           POST_DATE: ${{ inputs.date || github.event.inputs.date }}
           POST_SLUG: ${{ inputs.slug || github.event.inputs.slug }}
         run: node scripts/post-to-threads.mjs --date "$POST_DATE" --slug "$POST_SLUG"

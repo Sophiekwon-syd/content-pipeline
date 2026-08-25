@@ -25,7 +25,7 @@ on:
         required: true
       THREAD_ACCESS_TOKEN:
         required: true
-      THREAD_USER_ID:
+      THREADS_USER_ID:
         required: true
 
 permissions:
