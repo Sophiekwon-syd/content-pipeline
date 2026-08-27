@@ -55,10 +55,19 @@ let skip = false;
 let h2Count = 0;
 let heroPlaced = false;
 let listOpen = false;
+let inHtmlComment = false;
 const closeList = () => { if (listOpen) { out.push('</ul>'); listOpen = false; } };
 
 for (let i = 0; i < lines.length; i++) {
   const line = lines[i];
+  if (inHtmlComment) {
+    if (line.includes('-->')) inHtmlComment = false;
+    continue;
+  }
+  if (line.includes('<!--')) {
+    if (!line.includes('-->')) inHtmlComment = true;
+    continue;
+  }
   const h1 = line.match(/^#\s+(.+)/);
   if (h1 && !title) { title = h1[1].replace(/\s+—\s+/g, ', ').trim(); continue; }
 
