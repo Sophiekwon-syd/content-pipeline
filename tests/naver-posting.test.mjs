@@ -20,7 +20,7 @@ test('tag metadata never becomes a numbered Naver heading quote', async () => {
     '',
     '# 테스트 글',
     '',
-    '## 1. 본문 제목',
+    '## 1위. Sydney Grammar School',
     '',
     '본문이에요.',
     '',
@@ -40,8 +40,8 @@ test('tag metadata never becomes a numbered Naver heading quote', async () => {
 
     assert.equal(result.status, 0, result.stderr);
     assert.match(result.stdout, /STYLE: 1 headings/);
-    assert.match(result.stdout, /^본문 제목$/m);
-    assert.doesNotMatch(result.stdout, /^1\. 본문 제목$/m);
+    assert.match(result.stdout, /^1위\. Sydney Grammar School$/m);
+    assert.doesNotMatch(result.stdout, /^1\. 1위\. Sydney Grammar School$/m);
     assert.doesNotMatch(result.stdout, /내부 제목|내부 검색어|내부 키워드|내부 프롬프트|<!--|-->/);
     assert.doesNotMatch(result.stdout, /^태그$/m);
     assert.equal((result.stdout.match(/#호주육아 #호주맘/g) || []).length, 1);

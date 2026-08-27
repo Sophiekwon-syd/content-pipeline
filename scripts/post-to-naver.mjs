@@ -414,7 +414,13 @@ async function buildHeadingBlocks(page, headings, numberOffset = 0) {
     await page.keyboard.press('Delete');
     await sleep(300);
     await insertQuotation(page, 'default');
-    await page.keyboard.type(`${i + 1 + numberOffset}. ${h}`);
+    // Ranked headings already carry the editorial rank (for example,
+    // "1위. Sydney Grammar School"). Do not prepend the navermate section
+    // number again or the live post becomes "1. 1위. ...".
+    const displayHeading = /^\d+위[.)]\s/.test(h)
+      ? h
+      : `${i + 1 + numberOffset}. ${h}`;
+    await page.keyboard.type(displayHeading);
     await sleep(400);
     const key = h.slice(0, 16);
     if (!(await quotationHas(page, key))) {
