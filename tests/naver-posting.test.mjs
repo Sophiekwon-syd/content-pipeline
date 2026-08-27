@@ -11,9 +11,16 @@ test('tag metadata never becomes a numbered Naver heading quote', async () => {
   const postDir = path.join(dateDir, slug, 'blog');
   await fs.mkdir(postDir, { recursive: true });
   await fs.writeFile(path.join(postDir, 'post.md'), [
+    '<!--',
+    'title: 내부 제목',
+    'naver_search_query: 내부 검색어',
+    'target_keywords: 내부 키워드',
+    'thumbnail_prompt: 내부 프롬프트',
+    '-->',
+    '',
     '# 테스트 글',
     '',
-    '## 본문 제목',
+    '## 1. 본문 제목',
     '',
     '본문이에요.',
     '',
@@ -33,6 +40,9 @@ test('tag metadata never becomes a numbered Naver heading quote', async () => {
 
     assert.equal(result.status, 0, result.stderr);
     assert.match(result.stdout, /STYLE: 1 headings/);
+    assert.match(result.stdout, /^본문 제목$/m);
+    assert.doesNotMatch(result.stdout, /^1\. 본문 제목$/m);
+    assert.doesNotMatch(result.stdout, /내부 제목|내부 검색어|내부 키워드|내부 프롬프트|<!--|-->/);
     assert.doesNotMatch(result.stdout, /^태그$/m);
     assert.equal((result.stdout.match(/#호주육아 #호주맘/g) || []).length, 1);
   } finally {
