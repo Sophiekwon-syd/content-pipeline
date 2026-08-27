@@ -107,15 +107,24 @@ export function parsePost(md) {
   const faqQuestions = [];   // h3 lines (styled bold)
   const quoteBlocks = [];    // EVERY line of each blockquote (wrapped as one 인용구)
   let curQuote = null;
+  let inHtmlComment = false;
 
   for (const line of lines) {
+    if (inHtmlComment) {
+      if (line.includes('-->')) inHtmlComment = false;
+      continue;
+    }
+    if (line.includes('<!--')) {
+      if (!line.includes('-->')) inHtmlComment = true;
+      continue;
+    }
     const h1 = line.match(/^#\s+(.*)/);
     if (h1 && !title) { title = h1[1].trim(); continue; }
 
     const h2 = line.match(/^##\s+(.*)/);
     if (h2) {
       curQuote = null; // a heading ends any open quote block (prevents merging)
-      const heading = h2[1].trim();
+      const heading = h2[1].trim().replace(/^\d+[.)]\s*/, '');
       skipSection = /^(메타 정보|썸네일 이미지 프롬프트|이미지 프롬프트|셀프 리뷰|네이버 발행 체크리스트|태그)$/.test(heading);
       if (!skipSection) { kept.push('\n' + heading + '\n'); headings.push(inline(heading).replace(/\s+—\s+/g, ', ')); }
       continue;
