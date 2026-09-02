@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "slug": "australia-childcare-illness-exclusion-guide",
+  "format": "information",
+  "topic_tag": "호주육아",
+  "posts": [
+    {
+      "text": "아이가 아침에 한 번 토했는데 데이케어 보내도 될까?\n\nNSW Health 기준으로 위장염은 마지막 묽은 변이나 구토 같은 증상이 끝난 뒤 최소 48시간 쉬어야 해.\n\n수두와 수족구는 물집이 모두 마를 때까지, 결막염은 눈 분비물이 멈출 때까지 등원을 쉬는 기준이 있어.\n\n열이 없다고 바로 보내기보다 아이가 평소처럼 움직이는지, 센터 자체 정책은 어떤지 같이 확인하는 게 좋아.\n\n숨쉬기 힘들거나 깨우기 어려울 정도면 등원 기준이 아니라 000이 먼저야."
+    }
+  ],
+  "sources": [
+    "https://www.health.nsw.gov.au/Infectious/factsheets/Pages/school-exclusion-periods.aspx",
+    "https://www.healthdirect.gov.au/"
+  ]
+}
