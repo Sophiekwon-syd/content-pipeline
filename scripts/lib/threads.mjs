@@ -117,8 +117,15 @@ export function createThreadsClient({
       body = {};
     }
     if (!response.ok || !body.id) {
-      const detail = body?.error?.message || body?.error || `HTTP ${response.status}`;
-      throw new Error(`Threads API request failed: ${redact(detail, accessToken)}`);
+      const apiError = body?.error;
+      const detail = apiError?.message || apiError || `HTTP ${response.status}`;
+      const metadata = [
+        apiError?.code != null ? `code=${apiError.code}` : null,
+        apiError?.type ? `type=${apiError.type}` : null,
+        apiError?.fbtrace_id ? `fbtrace_id=${apiError.fbtrace_id}` : null,
+      ].filter(Boolean).join(', ');
+      const suffix = metadata ? ` (${metadata})` : '';
+      throw new Error(`Threads API request failed: ${redact(detail, accessToken)}${suffix}`);
     }
     return body.id;
   };

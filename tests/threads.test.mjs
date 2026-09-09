@@ -182,6 +182,29 @@ test('redacts an access token from Threads API errors', async () => {
   );
 });
 
+test('preserves structured API error metadata without exposing the token', async () => {
+  const fetch = async () => new Response(JSON.stringify({
+    error: {
+      message: 'The requested resource does not exist: secret-token',
+      code: 100,
+      type: 'OAuthException',
+      fbtrace_id: 'trace-123',
+    },
+  }), { status: 400 });
+  const client = createThreadsClient({ accessToken: 'secret-token', userId: 'user-1', fetch });
+
+  await assert.rejects(
+    client.createTextContainer({ text: '글', topicTag: '호주육아' }),
+    (error) => {
+      assert.doesNotMatch(error.message, /secret-token/);
+      assert.match(error.message, /code=100/);
+      assert.match(error.message, /type=OAuthException/);
+      assert.match(error.message, /fbtrace_id=trace-123/);
+      return true;
+    },
+  );
+});
+
 test('CLI dry-run validates an artifact without credentials or writing a log', async () => {
   const root = await fs.mkdtemp(path.join(os.tmpdir(), 'threads-cli-'));
   const topicDir = path.join(root, 'outputs', '2026-07-24', 'messy-play');
