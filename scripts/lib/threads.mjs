@@ -101,6 +101,18 @@ export function createThreadsClient({
   if (!userId) throw new Error('THREAD_USER_ID is required');
   if (typeof fetchImpl !== 'function') throw new Error('fetch implementation is required');
 
+  const formatApiError = (body, status) => {
+    const error = body?.error;
+    const detail = error?.message || error || `HTTP ${status}`;
+    const metadata = [
+      error?.code != null ? `code=${error.code}` : null,
+      error?.error_subcode != null ? `subcode=${error.error_subcode}` : null,
+      error?.type ? `type=${error.type}` : null,
+      error?.fbtrace_id ? `fbtrace_id=${error.fbtrace_id}` : null,
+    ].filter(Boolean).join(', ');
+    return redact(`${detail}${metadata ? ` (${metadata})` : ''}`, accessToken);
+  };
+
   const request = async (pathname, params) => {
     const url = new URL(`${apiBase}/me/${pathname}`);
     for (const [key, value] of Object.entries(params)) {
@@ -117,17 +129,31 @@ export function createThreadsClient({
       body = {};
     }
     if (!response.ok || !body.id) {
-      const apiError = body?.error;
-      const detail = apiError?.message || apiError || `HTTP ${response.status}`;
-      const metadata = [
-        apiError?.code != null ? `code=${apiError.code}` : null,
-        apiError?.type ? `type=${apiError.type}` : null,
-        apiError?.fbtrace_id ? `fbtrace_id=${apiError.fbtrace_id}` : null,
-      ].filter(Boolean).join(', ');
-      const suffix = metadata ? ` (${metadata})` : '';
-      throw new Error(`Threads API request failed: ${redact(detail, accessToken)}${suffix}`);
+      throw new Error(`Threads API POST /me/${pathname} failed: ${formatApiError(body, response.status)}`);
     }
     return body.id;
+  };
+
+  const getContainerStatus = async (containerId) => {
+    const url = new URL(`${apiBase}/${encodeURIComponent(containerId)}`);
+    url.searchParams.set('fields', 'id,status,error_message');
+    const response = await fetchImpl(url, {
+      method: 'GET',
+      headers: { Authorization: `Bearer ${accessToken}` },
+    });
+    let body;
+    try {
+      body = await response.json();
+    } catch {
+      body = {};
+    }
+    if (!response.ok || !body.id || !body.status) {
+      throw new Error(`Threads API GET /{container_id}?fields=id,status,error_message failed: ${formatApiError(body, response.status)}`);
+    }
+    return {
+      ...body,
+      error_message: body.error_message == null ? body.error_message : redact(body.error_message, accessToken),
+    };
   };
 
   const getProfile = async () => {
@@ -143,14 +169,14 @@ export function createThreadsClient({
       body = {};
     }
     if (!response.ok || !body.id) {
-      const detail = body?.error?.message || body?.error || `HTTP ${response.status}`;
-      throw new Error(`Threads API request failed: ${redact(detail, accessToken)}`);
+      throw new Error(`Threads API GET /me failed: ${formatApiError(body, response.status)}`);
     }
     return { id: body.id, username: body.username };
   };
 
   return {
     getProfile,
+    getContainerStatus,
     createTextContainer({ text, topicTag, replyToId }) {
       return request('threads', {
         media_type: 'TEXT',
@@ -165,10 +191,35 @@ export function createThreadsClient({
   };
 }
 
+export async function waitUntilReady(client, containerId, {
+  sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms)),
+  maxAttempts = 12,
+  intervalMs = 5000,
+} = {}) {
+  let lastStatus = 'UNKNOWN';
+  for (let attempt = 1; attempt <= maxAttempts; attempt += 1) {
+    const status = await client.getContainerStatus(containerId);
+    lastStatus = status.status;
+    if (status.status === 'FINISHED') return status;
+    if (status.status === 'ERROR' || status.status === 'EXPIRED') {
+      const detail = status.error_message ? `: ${status.error_message}` : '';
+      throw new Error(`Threads publish readiness failed for container ${containerId}: status=${status.status}${detail}`);
+    }
+    if (status.status === 'PUBLISHED') {
+      throw new Error(`Threads publish readiness failed for container ${containerId}: status=PUBLISHED; refusing duplicate publish`);
+    }
+    if (attempt < maxAttempts) await sleep(intervalMs);
+  }
+  throw new Error(`Threads publish readiness timed out for container ${containerId}: status=${lastStatus}, checks=${maxAttempts}`);
+}
+
 export async function publishThreadArtifact(artifact, {
   client,
   progress = {},
   onProgress = async () => {},
+  sleep,
+  maxAttempts,
+  intervalMs,
 } = {}) {
   if (!client) throw new Error('Threads client is required');
   const state = {
@@ -185,6 +236,7 @@ export async function publishThreadArtifact(artifact, {
       topicTag: isRoot ? artifact.topic_tag : undefined,
       replyToId: isRoot ? undefined : state.rootId,
     });
+    await waitUntilReady(client, containerId, { sleep, maxAttempts, intervalMs });
     const postId = await client.publishContainer(containerId);
     if (isRoot) state.rootId = postId;
     state.postIds.push(postId);
