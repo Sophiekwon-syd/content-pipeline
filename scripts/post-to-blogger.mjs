@@ -54,7 +54,7 @@ const jitter = (a, b) => a + Math.random() * (b - a);
 async function launch() {
   const { chromium } = await import('playwright');
   return chromium.launchPersistentContext(PROFILE_DIR, {
-    headless: false,
+    headless: !LOGIN,
     viewport: { width: 1280, height: 950 },
     args: ['--disable-blink-features=AutomationControlled'],
   });
