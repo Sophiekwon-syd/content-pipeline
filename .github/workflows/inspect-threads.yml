@@ -1,0 +1,33 @@
+name: Inspect Threads (read-only)
+
+on:
+  workflow_dispatch:
+    inputs:
+      date:
+        description: 'Date directory (YYYY-MM-DD)'
+        required: true
+        type: string
+      slug:
+        description: 'Single topic slug to inspect'
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Inspect recent Threads posts
+        env:
+          THREAD_ACCESS_TOKEN: ${{ secrets.THREAD_ACCESS_TOKEN }}
+          THREAD_USER_ID: ${{ secrets.THREADS_USER_ID }}
+          POST_DATE: ${{ inputs.date || github.event.inputs.date }}
+          POST_SLUG: ${{ inputs.slug || github.event.inputs.slug }}
+        run: node scripts/inspect-threads.mjs --date "$POST_DATE" --slug "$POST_SLUG"
