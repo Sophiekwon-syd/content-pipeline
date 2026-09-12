@@ -39,7 +39,7 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 async function launch() {
   const { chromium } = await import('playwright');
   return chromium.launchPersistentContext(PROFILE_DIR, {
-    headless: false,
+    headless: !LOGIN,
     viewport: { width: 1280, height: 900 },
     args: ['--disable-blink-features=AutomationControlled'],
     acceptDownloads: true,
