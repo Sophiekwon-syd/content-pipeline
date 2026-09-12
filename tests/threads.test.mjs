@@ -12,6 +12,7 @@ import {
   writeThreadsLog,
   createThreadsClient,
   publishThreadArtifact,
+  waitUntilReady,
 } from '../scripts/lib/threads.mjs';
 
 test('accepts a natural question artifact and defaults its topic', () => {
@@ -105,7 +106,7 @@ test('approved editorial examples satisfy the production validator', async () =>
 
 test('publishes a root post with one topic tag', async () => {
   const requests = [];
-  const responses = [{ id: 'container-1' }, { id: 'thread-1' }];
+  const responses = [{ id: 'container-1' }, { id: 'container-1', status: 'FINISHED' }, { id: 'thread-1' }];
   const fetch = async (url, options) => {
     requests.push({ url: String(url), options });
     return new Response(JSON.stringify(responses.shift()), {
@@ -134,14 +135,19 @@ test('publishes a root post with one topic tag', async () => {
   assert.equal(createUrl.searchParams.get('media_type'), 'TEXT');
   assert.equal(createUrl.searchParams.get('topic_tag'), '호주육아');
   assert.equal(requests[0].options.headers.Authorization, 'Bearer secret-token');
-  const publishUrl = new URL(requests[1].url);
+  const statusUrl = new URL(requests[1].url);
+  assert.equal(requests[1].options.method, 'GET');
+  assert.equal(statusUrl.pathname, '/v1.0/container-1');
+  assert.equal(statusUrl.searchParams.get('fields'), 'id,status,error_message');
+  assert.doesNotMatch(requests[1].url, /secret-token/);
+  const publishUrl = new URL(requests[2].url);
   assert.equal(publishUrl.pathname, '/v1.0/me/threads_publish');
   assert.equal(publishUrl.searchParams.get('creation_id'), 'container-1');
 });
 
 test('resumes at the next reply without publishing a duplicate root', async () => {
   const requests = [];
-  const responses = [{ id: 'container-2' }, { id: 'thread-2' }];
+  const responses = [{ id: 'container-2' }, { id: 'container-2', status: 'FINISHED' }, { id: 'thread-2' }];
   const fetch = async (url, options) => {
     requests.push({ url: String(url), options });
     return new Response(JSON.stringify(responses.shift()), { status: 200 });
@@ -159,7 +165,7 @@ test('resumes at the next reply without publishing a duplicate root', async () =
     progress: { status: 'in_progress', rootId: 'thread-1', postIds: ['thread-1'], nextIndex: 1 },
   });
 
-  assert.equal(requests.length, 2);
+  assert.equal(requests.length, 3);
   const createUrl = new URL(requests[0].url);
   assert.equal(createUrl.searchParams.get('reply_to_id'), 'thread-1');
   assert.equal(createUrl.searchParams.has('topic_tag'), false);
@@ -244,4 +250,98 @@ test('checks Threads identity without putting the token in the URL', async () =>
   assert.equal(new URL(request.url).searchParams.get('fields'), 'id,username');
   assert.doesNotMatch(request.url, /secret-token/);
   assert.equal(request.options.headers.Authorization, 'Bearer secret-token');
+});
+
+test('polls IN_PROGRESS until FINISHED before publishing', async () => {
+  const events = [];
+  const statuses = [
+    { id: 'container-1', status: 'IN_PROGRESS' },
+    { id: 'container-1', status: 'FINISHED' },
+  ];
+  const artifact = validateThreadArtifact({
+    version: 1,
+    slug: 'ready-check',
+    format: 'question',
+    posts: [{ text: '승인된 글' }],
+    sources: [],
+  });
+  const client = {
+    async createTextContainer() {
+      events.push('create');
+      return 'container-1';
+    },
+    async getContainerStatus() {
+      events.push('status');
+      return statuses.shift();
+    },
+    async publishContainer() {
+      events.push('publish');
+      return 'thread-1';
+    },
+  };
+
+  const progress = await publishThreadArtifact(artifact, {
+    client,
+    sleep: async () => events.push('sleep'),
+  });
+
+  assert.equal(progress.status, 'published');
+  assert.deepEqual(events, ['create', 'status', 'sleep', 'status', 'publish']);
+});
+
+test('fails closed for ERROR, EXPIRED, PUBLISHED, and timeout statuses', async () => {
+  for (const terminal of ['ERROR', 'EXPIRED', 'PUBLISHED']) {
+    await assert.rejects(
+      waitUntilReady({ getContainerStatus: async () => ({ id: 'container-1', status: terminal }) }, 'container-1', { sleep: async () => {} }),
+      new RegExp(`status=${terminal}`),
+    );
+  }
+
+  let calls = 0;
+  await assert.rejects(
+    waitUntilReady({
+      getContainerStatus: async () => { calls += 1; return { id: 'container-1', status: 'IN_PROGRESS' }; },
+    }, 'container-1', { sleep: async () => {}, maxAttempts: 3 }),
+    /timed out.*checks=3/,
+  );
+  assert.equal(calls, 3);
+});
+
+test('redacts status error messages and never publishes after a real-client ERROR', async () => {
+  const requests = [];
+  let publishCalls = 0;
+  const responses = [
+    { id: 'container-1' },
+    { id: 'container-1', status: 'ERROR', error_message: 'failed with secret-token' },
+  ];
+  const fetch = async (url, options) => {
+    requests.push({ url: String(url), options });
+    return new Response(JSON.stringify(responses.shift()), { status: 200 });
+  };
+  const client = createThreadsClient({ accessToken: 'secret-token', userId: 'user-1', fetch });
+  const artifact = validateThreadArtifact({
+    version: 1,
+    slug: 'status-error',
+    format: 'question',
+    posts: [{ text: '승인된 글' }],
+    sources: [],
+  });
+  const originalPublish = client.publishContainer;
+  client.publishContainer = async (...args) => {
+    publishCalls += 1;
+    return originalPublish(...args);
+  };
+
+  await assert.rejects(
+    publishThreadArtifact(artifact, { client }),
+    (error) => {
+      assert.doesNotMatch(error.message, /secret-token/);
+      assert.match(error.message, /status=ERROR/);
+      return true;
+    },
+  );
+  assert.equal(publishCalls, 0);
+  assert.equal(requests.length, 2);
+  assert.equal(requests[1].options.method, 'GET');
+  assert.doesNotMatch(requests[1].url, /secret-token/);
 });
