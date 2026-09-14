@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "slug": "australia-medicare-safety-net-family-guide-2026",
+  "format": "question",
+  "topic_tag": "호주육아",
+  "posts": [
+    {
+      "text": "같은 Medicare 카드에 가족이 다 들어 있으면 Safety Net 비용도 자동으로 합산되는 줄 알았는데, 가족 등록은 따로 해야 한다고 하네요. 아이 진료가 이어지는 집은 myGov에서 Safety Net family와 올해 balance를 먼저 확인하시나요?"
+    },
+    {
+      "text": "가족·커플은 같은 Medicare 카드에 있어도 Safety Net family 등록이 별도래요. 2026년 EMSN 기준액은 일반 가정 $2,699.10, concession·FTB Part A 대상 가정 $861.20이고, 이후에도 서비스별 cap이 적용될 수 있어요.\n\nhttps://www.servicesaustralia.gov.au/how-to-register-for-medicare-safety-nets\nhttps://www.servicesaustralia.gov.au/what-are-medicare-safety-nets-thresholds"
+    }
+  ],
+  "sources": [
+    "https://www.servicesaustralia.gov.au/how-to-register-for-medicare-safety-nets",
+    "https://www.servicesaustralia.gov.au/what-are-medicare-safety-nets-thresholds"
+  ]
+}
