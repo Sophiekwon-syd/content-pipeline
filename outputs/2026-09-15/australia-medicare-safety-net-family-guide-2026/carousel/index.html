@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=1080, initial-scale=1">
+  <title>2026 Medicare Safety Net 가족 체크</title>
+  <style>
+    :root {
+      --bg: #080808;
+      --ink: #f7f7f2;
+      --muted: #b5b5ad;
+      --lime: #c6f135;
+      --blue: #3b82f6;
+      --panel: #151515;
+      --line: rgba(255,255,255,.14);
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #050505; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+      color: var(--ink);
+    }
+    .card {
+      width: 1080px;
+      height: 1350px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      background: var(--bg);
+      color: var(--ink);
+    }
+    .card::before {
+      content: "";
+      position: absolute;
+      width: 700px;
+      height: 700px;
+      right: -250px;
+      top: -180px;
+      border-radius: 50%;
+      background: var(--lime);
+      filter: blur(190px);
+      opacity: .06;
+    }
+    .handle {
+      position: absolute;
+      top: 68px;
+      right: 90px;
+      z-index: 10;
+      color: var(--ink);
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-shadow: 0 2px 12px rgba(0,0,0,.9);
+    }
+    .handle::before {
+      content: "";
+      display: inline-block;
+      width: 9px;
+      height: 9px;
+      margin-right: 12px;
+      border-radius: 50%;
+      background: var(--lime);
+      box-shadow: 0 0 0 4px rgba(198,241,53,.12);
+      vertical-align: 3px;
+    }
+    .content {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      padding: 170px 90px 90px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .eyebrow {
+      margin-bottom: 35px;
+      color: var(--lime);
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: 3px;
+    }
+    h1, h2, p { margin: 0; word-break: keep-all; }
+    h1 {
+      max-width: 900px;
+      font-size: 106px;
+      line-height: 1.05;
+      letter-spacing: -6px;
+    }
+    h2 {
+      font-size: 78px;
+      line-height: 1.12;
+      letter-spacing: -4px;
+    }
+    .accent { color: var(--lime); }
+    .blue { color: var(--blue); }
+    .lead {
+      margin-top: 42px;
+      color: var(--muted);
+      font-size: 32px;
+      line-height: 1.55;
+      font-weight: 600;
+    }
+    .source {
+      margin-top: 40px;
+      color: #85857d;
+      font-size: 18px;
+      line-height: 1.5;
+    }
+    .cover, .hook, .cta {
+      background: linear-gradient(145deg, #101408, #080808 70%);
+      text-align: center;
+    }
+    .cover .content, .hook .content, .cta .content { align-items: center; }
+    .cover .badge {
+      margin-top: 55px;
+      padding: 18px 34px;
+      border: 1px solid var(--lime);
+      border-radius: 999px;
+      color: var(--lime);
+      font-size: 23px;
+      font-weight: 800;
+    }
+    .stat {
+      margin: 35px 0;
+      color: var(--lime);
+      font-size: 132px;
+      font-weight: 950;
+      letter-spacing: -8px;
+      line-height: 1;
+    }
+    .boxes {
+      display: grid;
+      gap: 20px;
+      margin-top: 45px;
+    }
+    .box {
+      padding: 28px 32px;
+      border-left: 6px solid var(--lime);
+      background: var(--panel);
+      font-size: 34px;
+      font-weight: 800;
+      line-height: 1.4;
+    }
+    .box small {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 23px;
+      font-weight: 600;
+    }
+    .statement { background: linear-gradient(140deg, #162006, #080808 72%); }
+    .statement h2 { font-size: 88px; }
+    .steps { margin-top: 42px; }
+    .step {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 18px;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .step b { color: var(--lime); font-size: 36px; }
+    .step p { font-size: 29px; line-height: 1.4; font-weight: 800; }
+    .cta h2 { font-size: 105px; }
+    .button {
+      margin-top: 58px;
+      padding: 25px 65px;
+      border-radius: 999px;
+      background: var(--lime);
+      color: #090909;
+      font-size: 31px;
+      font-weight: 900;
+    }
+  </style>
+</head>
+<body>
+  <section class="card cover" data-card-type="cover">
+    <span class="handle">@aussie.umma</span>
+    <div class="content">
+      <div class="eyebrow">MEDICARE SAFETY NET 2026</div>
+      <h1>아이 병원비<br><span class="accent">가족 체크</span></h1>
+      <p class="lead">같은 Medicare 카드여도<br>Safety Net 가족 등록은 따로 확인해요</p>
+      <div class="badge">저장용 기준액 정리</div>
+    </div>
+  </section>
+
+  <section class="card hook" data-card-type="hook">
+    <span class="handle">@aussie.umma</span>
+    <div class="content">
+      <div class="eyebrow">FAMILY REGISTRATION</div>
+      <h2>같은 카드면<br><span class="accent">자동 합산될까요?</span></h2>
+      <div class="stat">아니요</div>
+      <p class="lead">가족·커플은 Medicare Safety Net family 등록이 별도로 필요해요.</p>
+    </div>
+  </section>
+
+  <section class="card" data-card-type="body-family">
+    <span class="handle">@aussie.umma</span>
+    <div class="content">
+      <div class="eyebrow">FAMILY OR COUPLE</div>
+      <h2>가족으로 등록하면<br><span class="accent">비용을 합산해요</span></h2>
+      <p class="lead">같은 Medicare 카드에 있어도 별도 등록이 필요해요. 가족 상황이 바뀌면 Services Australia에도 알려야 해요.</p>
+      <div class="boxes">
+        <div class="box">등록 방법 <small>MS016 양식 또는 Medicare 132 011</small></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" data-card-type="body-omsn">
+    <span class="handle">@aussie.umma</span>
+    <div class="content">
+      <div class="eyebrow">ORIGINAL MEDICARE SAFETY NET</div>
+      <h2>2026 OMSN<br><span class="accent">기준액</span></h2>
+      <div class="stat">$594.40</div>
+      <p class="lead">Medicare 대상자의 외래 서비스 gap 비용을 기준으로 계산해요.</p>
+      <p class="source">출처: Services Australia, 2026 Medicare Safety Net thresholds</p>
+    </div>
+  </section>
+
+  <section class="card" data-card-type="body-emsn">
+    <span class="handle">@aussie.umma</span>
+    <div class="content">
+      <div class="eyebrow">EXTENDED MEDICARE SAFETY NET</div>
+      <h2>EMSN은<br><span class="accent">가정 유형별로 달라요</span></h2>
+      <div class="boxes">
+        <div class="box">일반 가정 · $2,699.10</div>
+        <div class="box">concession·FTB Part A · $861.20</div>
+      </div>
+      <p class="source">2026년 기준액 · Services Australia</p>
+    </div>
+  </section>
+
+  <section class="card" data-card-type="body-cap">
+    <span class="handle">@aussie.umma</span>
+    <div class="content">
+      <div class="eyebrow">CHECK BEFORE YOU CLAIM</div>
+      <h2>기준액 뒤에도<br><span class="accent">서비스별 cap이 있어요</span></h2>
+      <p class="lead">EMSN은 out-of-pocket의 최대 80%가 추가 지급될 수 있지만, item별 cap이 더 낮으면 cap까지만 지급돼요.</p>
+      <div class="boxes">
+        <div class="box">병원비 전체 무료 아님<small>eligible out-of-hospital Medicare 서비스 중심</small></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card statement" data-card-type="statement">
+    <span class="handle">@aussie.umma</span>
+    <div class="content">
+      <div class="eyebrow">THE KEY DIFFERENCE</div>
+      <h2>Safety Net은<br><span class="accent">무료 병원 카드가 아니에요</span></h2>
+      <p class="lead">외래 Medicare 비용의 gap·out-of-pocket을 기준으로 이후 혜택을 높이는 제도예요.</p>
+    </div>
+  </section>
+
+  <section class="card" data-card-type="body-check">
+    <span class="handle">@aussie.umma</span>
+    <div class="content">
+      <div class="eyebrow">MYGOV CHECK</div>
+      <h2>진료 전<br><span class="accent">이 순서로 확인해요</span></h2>
+      <div class="boxes">
+        <div class="box">01 · 가족 등록 여부</div>
+        <div class="box">02 · 올해 Safety Net balance</div>
+        <div class="box">03 · verified payment인지</div>
+        <div class="box">04 · item과 EMSN cap</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" data-card-type="sheet">
+    <span class="handle">@aussie.umma</span>
+    <div class="content">
+      <div class="eyebrow">SAVE THIS CHECKLIST</div>
+      <h2>가족 진료비<br><span class="accent">4칸 체크</span></h2>
+      <div class="steps">
+        <div class="step"><b>01</b><p>가족 Safety Net 등록이 되어 있나요?</p></div>
+        <div class="step"><b>02</b><p>myGov에서 올해 balance를 봤나요?</p></div>
+        <div class="step"><b>03</b><p>비용을 먼저 낸 verified payment인가요?</p></div>
+        <div class="step"><b>04</b><p>진료 전 item과 EMSN cap을 물었나요?</p></div>
+      </div>
+      <p class="source">가족 변경·등록 문의: Medicare 132 011</p>
+    </div>
+  </section>
+
+  <section class="card cta" data-card-type="cta">
+    <span class="handle">@aussie.umma</span>
+    <div class="content">
+      <div class="eyebrow">MEDICARE SAFETY NET 2026</div>
+      <h2>다음 진료 전에<br><span class="accent">확인해요</span></h2>
+      <p class="lead">가족 등록·balance·payment·cap을 한 번에 체크해요.</p>
+      <div class="button">저장하기 →</div>
+    </div>
+  </section>
+</body>
+</html>
