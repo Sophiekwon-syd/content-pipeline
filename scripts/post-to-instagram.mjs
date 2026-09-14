@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import { createCarouselContainer } from './lib/instagram.mjs';
 
 const API = 'https://graph.facebook.com/v21.0';
 const POLL_INTERVAL_MS = 5_000;
@@ -77,30 +78,6 @@ for (const slug of slugs) {
     return `https://raw.githubusercontent.com/${REPO}/${REF}/${rel}`;
   });
 
-  // Step 1: Create item containers (matching aussie-umma's working pattern)
-  const itemIds = [];
-  for (let i = 0; i < urls.length; i++) {
-    const body = new URLSearchParams({
-      image_url: urls[i],
-      is_carousel_item: 'true',
-      access_token: IG_TOKEN,
-    });
-    const res = await fetch(`${API}/${IG_USER_ID}/media`, { method: 'POST', body });
-    const data = await res.json();
-    if (data.id) {
-      itemIds.push(data.id);
-      console.log(`  item ${String(i + 1).padStart(2, '0')}: container=${data.id}`);
-    } else {
-      console.error(`  image upload failed: ${JSON.stringify(data)}`);
-    }
-  }
-
-  if (itemIds.length === 0) {
-    console.error(`[fail] ${slug} — no image containers created`);
-    failed++;
-    continue;
-  }
-
   // Step 2: Build the caption.
   // A carousel/caption.txt (verbatim) wins — used by non-blog carousels like the
   // deals post, which have no post.md/brief.md and need their own caption + tags.
@@ -139,17 +116,21 @@ for (const slug of slugs) {
     || [title, summary, '저장해두고 필요할 때 꺼내보세요. @aussie.umma', tags]
       .filter(Boolean).join('\n\n');
 
-  // Step 3: Create carousel container
-  const carouselBody = new URLSearchParams({
-    media_type: 'CAROUSEL',
-    children: itemIds.join(','),
-    caption,
-    access_token: IG_TOKEN,
-  });
-  const carouselRes = await fetch(`${API}/${IG_USER_ID}/media`, { method: 'POST', body: carouselBody });
-  const carousel = await carouselRes.json();
-  if (!carousel.id) {
-    console.error(`[fail] ${slug} — carousel container failed: ${JSON.stringify(carousel)}`);
+  // Step 3: Create all item containers, then the carousel container.
+  let itemIds;
+  let carousel;
+  try {
+    const created = await createCarouselContainer({
+      urls,
+      caption,
+      userId: IG_USER_ID,
+      accessToken: IG_TOKEN,
+    }, { fetchImpl: fetch });
+    itemIds = created.itemIds;
+    carousel = { id: created.carouselId };
+    itemIds.forEach((id, i) => console.log(`  item ${String(i + 1).padStart(2, '0')}: container=${id}`));
+  } catch (error) {
+    console.error(`[fail] ${slug} — ${error.message}`);
     failed++;
     continue;
   }
