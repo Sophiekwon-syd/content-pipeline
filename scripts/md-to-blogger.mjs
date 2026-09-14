@@ -76,12 +76,10 @@ for (let i = 0; i < lines.length; i++) {
     closeList();
     skip = SKIP.test(h2[1].trim());
     if (skip) continue;
-    if (h2Count >= 2) {
-      const previousSection = findImg(`section-${h2Count - 1}`);
-      if (previousSection) out.push(img(previousSection, h2[1]));
-    }
     h2Count++;
     out.push(`<h2 style="${H2_STYLE}">${inline(h2[1].replace(/\s+—\s+/g, ', '))}</h2>`);
+    const sectionImage = findImg(`section-${h2Count}`);
+    if (sectionImage) out.push(img(sectionImage, h2[1]));
     continue;
   }
   if (skip) {
