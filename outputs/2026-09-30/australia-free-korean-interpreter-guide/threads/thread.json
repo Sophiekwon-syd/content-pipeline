@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "slug": "australia-free-korean-interpreter-guide",
+  "format": "observation",
+  "topic_tag": "호주육아",
+  "posts": [
+    {
+      "text": "학교나 병원에서 영어가 막히면 가족에게 대신 설명해달라고 해야 한다고 생각하기 쉬운데, 기관마다 한국어 통역을 요청하는 공식 경로가 따로 있어요.\n\nNSW 공립학교는 학교에 통역 예약을 요청하고, NSW 공공병원은 접수처나 의료진에게 말하면 돼요."
+    },
+    {
+      "text": "Centrelink 수당과 서비스는 131 202로 상담할 수 있어요. 131 450은 TIS National 연결 번호지만 모든 통화가 자동 무료인 건 아니어서, 민간 GP는 예약 전에 FIS 통역 가능 여부를 확인하는 게 안전해요."
+    },
+    {
+      "text": "어디에 연락하든 기관 이름, 원하는 언어, 통화 목적을 먼저 메모해두면 좋아요.\n\nhttps://education.nsw.gov.au/teaching-and-learning/multicultural-education/interpreting-and-translations\nhttps://www.health.nsw.gov.au/multicultural/Pages/Health-Care-Interpreting-and-Translating-Services.aspx\nhttps://www.servicesaustralia.gov.au/what-multicultural-service-officers-do"
+    }
+  ],
+  "sources": [
+    "https://immi.homeaffairs.gov.au/settling-in-australia/settle-in-australia/language-services/tis-national",
+    "https://immi.homeaffairs.gov.au/settling-in-australia/settle-in-australia/language-services/free-interpreting-service",
+    "https://education.nsw.gov.au/teaching-and-learning/multicultural-education/interpreting-and-translations",
+    "https://www.servicesaustralia.gov.au/what-multicultural-service-officers-do",
+    "https://www.health.nsw.gov.au/multicultural/Pages/Health-Care-Interpreting-and-Translating-Services.aspx"
+  ]
+}
