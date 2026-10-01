@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NSW 학교 방학 날짜표</title>
+  <style>
+    :root {
+      --black: #080808;
+      --panel: #111111;
+      --panel-2: #171717;
+      --white: #f7f7f2;
+      --muted: #b8b8b0;
+      --dim: #777770;
+      --lime: #c6f135;
+      --blue: #3b82f6;
+      --red: #ff6b6b;
+      --line: rgba(255, 255, 255, .12);
+      --kr: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+      --en: "Space Grotesk", -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #030303; }
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+      padding: 48px 0 80px;
+      color: var(--white);
+      font-family: var(--kr);
+      -webkit-font-smoothing: antialiased;
+    }
+    .card {
+      width: 1080px;
+      height: 1350px;
+      flex: 0 0 1350px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      background: var(--black);
+      color: var(--white);
+    }
+    .card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(135deg, rgba(198,241,53,.045), transparent 34%, rgba(59,130,246,.035));
+      z-index: 0;
+    }
+    .handle {
+      position: absolute;
+      top: 72px;
+      right: 90px;
+      z-index: 4;
+      color: var(--white);
+      font-family: var(--en), var(--kr);
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+    .handle::before {
+      content: "";
+      display: inline-block;
+      width: 9px;
+      height: 9px;
+      margin: 0 12px 2px 0;
+      border-radius: 50%;
+      background: var(--lime);
+      box-shadow: 0 0 16px rgba(198,241,53,.7);
+    }
+    .content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      height: 100%;
+      padding: 210px 90px 90px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .eyebrow {
+      margin-bottom: 34px;
+      color: var(--lime);
+      font-family: var(--en), var(--kr);
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+    }
+    h1, h2, p { margin: 0; }
+    h1, h2 { word-break: keep-all; }
+    h1 {
+      max-width: 900px;
+      font-size: 112px;
+      line-height: 1.08;
+      letter-spacing: -6px;
+      font-weight: 900;
+    }
+    h2 {
+      max-width: 900px;
+      font-size: 72px;
+      line-height: 1.16;
+      letter-spacing: -3px;
+      font-weight: 900;
+    }
+    .lead {
+      max-width: 850px;
+      margin-top: 48px;
+      color: var(--muted);
+      font-size: 34px;
+      line-height: 1.58;
+      word-break: keep-all;
+    }
+    .lead strong, .accent { color: var(--lime); }
+    .rule {
+      width: 72px;
+      height: 6px;
+      margin: 38px 0;
+      border-radius: 4px;
+      background: var(--lime);
+    }
+    .ghost {
+      position: absolute;
+      right: 28px;
+      bottom: -48px;
+      color: var(--lime);
+      opacity: .075;
+      font-family: var(--en);
+      font-size: 560px;
+      font-weight: 800;
+      line-height: .8;
+      letter-spacing: -48px;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .date-row {
+      display: flex;
+      align-items: baseline;
+      gap: 20px;
+      margin-top: 58px;
+      padding-top: 32px;
+      border-top: 1px solid var(--line);
+      font-family: var(--en), var(--kr);
+    }
+    .date-row .big { color: var(--lime); font-size: 54px; font-weight: 900; }
+    .date-row .small { color: var(--muted); font-size: 25px; font-weight: 600; }
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 54px;
+    }
+    .box {
+      padding: 38px 40px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: var(--panel);
+    }
+    .box.blue { border-top: 6px solid var(--blue); }
+    .box.lime { border-top: 6px solid var(--lime); }
+    .box .label {
+      color: var(--dim);
+      font-family: var(--en), var(--kr);
+      font-size: 17px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+    .box h3 {
+      margin: 20px 0 18px;
+      font-size: 43px;
+      line-height: 1.18;
+      letter-spacing: -2px;
+      word-break: keep-all;
+    }
+    .box p {
+      color: var(--muted);
+      font-size: 25px;
+      line-height: 1.55;
+      word-break: keep-all;
+    }
+    .timeline {
+      margin-top: 52px;
+      border-left: 3px solid var(--line);
+    }
+    .event {
+      position: relative;
+      padding: 0 0 38px 42px;
+    }
+    .event:last-child { padding-bottom: 0; }
+    .event::before {
+      content: "";
+      position: absolute;
+      left: -10px;
+      top: 7px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--lime);
+      box-shadow: 0 0 18px rgba(198,241,53,.55);
+    }
+    .event .date {
+      color: var(--lime);
+      font-family: var(--en), var(--kr);
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+    .event h3 {
+      margin: 9px 0 10px;
+      font-size: 34px;
+      line-height: 1.2;
+      word-break: keep-all;
+    }
+    .event p {
+      color: var(--muted);
+      font-size: 24px;
+      line-height: 1.5;
+      word-break: keep-all;
+    }
+    .statement {
+      background: #000;
+      border: 1px solid rgba(198,241,53,.35);
+    }
+    .statement .content { justify-content: center; align-items: center; text-align: center; }
+    .statement h2 { max-width: 850px; font-size: 86px; }
+    .statement .lead { max-width: 760px; font-size: 31px; }
+    .sheet .content { padding-top: 190px; padding-bottom: 76px; }
+    .sheet h2 { font-size: 62px; }
+    .sheet-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px 20px;
+      margin-top: 38px;
+    }
+    .sheet-item {
+      min-height: 130px;
+      padding: 24px 26px;
+      border-radius: 18px;
+      background: var(--panel-2);
+      border: 1px solid var(--line);
+    }
+    .sheet-item .date { color: var(--lime); font-family: var(--en); font-size: 30px; font-weight: 900; }
+    .sheet-item .text { margin-top: 7px; color: var(--white); font-size: 22px; line-height: 1.35; word-break: keep-all; }
+    .sheet-note {
+      margin-top: 24px;
+      color: var(--muted);
+      font-size: 21px;
+      line-height: 1.45;
+      word-break: keep-all;
+    }
+    .cta .content { align-items: center; text-align: center; }
+    .cta h2 { font-size: 104px; }
+    .cta .lead { max-width: 700px; font-size: 31px; }
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 330px;
+      margin-top: 58px;
+      padding: 27px 54px;
+      border-radius: 100px;
+      background: var(--lime);
+      color: #080808;
+      font-size: 32px;
+      font-weight: 900;
+    }
+    @media (max-width: 1080px) {
+      body { transform-origin: top center; }
+    }
+  </style>
+</head>
+<body>
+  <section class="card cover">
+    <span class="handle">@aussie.umma</span>
+    <div class="ghost">26</div>
+    <div class="content">
+      <div class="eyebrow">NSW public schools / 2026—2027</div>
+      <h1>NSW 학교<br><span class="accent">방학 날짜표</span></h1>
+      <div class="rule"></div>
+      <p class="lead">2026 봄방학부터<br>2027 첫 등교까지 한눈에</p>
+    </div>
+  </section>
+
+  <section class="card hook">
+    <span class="handle">@aussie.umma</span>
+    <div class="content">
+      <div class="eyebrow">가장 헷갈리는 하루</div>
+      <h2>10월 12일에<br><span class="accent">가방을 메면 안 돼요</span></h2>
+      <p class="lead">2026 Term 4 학생 첫 등교일은<br><strong>10월 13일 화요일</strong>이에요.</p>
+      <div class="date-row"><span class="big">10.13</span><span class="small">학생 Term 4 첫 등교</span></div>
+    </div>
+  </section>
+
+  <section class="card body-card">
+    <span class="handle">@aussie.umma</span>
+    <div class="content">
+      <div class="eyebrow">2026 봄방학</div>
+      <h2>방학은<br><span class="accent">9월 28일</span>에 시작해요</h2>
+      <p class="lead">NSW 공립학교 기준 봄방학은<br><strong>9월 28일 월요일부터 10월 9일 금요일까지</strong>예요.</p>
+      <div class="date-row"><span class="big">09.28 — 10.09</span><span class="small">학생 방학</span></div>
+    </div>
+  </section>
+
+  <section class="card body-card">
+    <span class="handle">@aussie.umma</span>
+    <div class="content">
+      <div class="eyebrow">school development day</div>
+      <h2>10월 12일은<br><span class="accent">학생 수업일이 아니에요</span></h2>
+      <div class="box lime">
+        <p>교직원 연수와 학교 계획을 위한 날이라 학생은 등교하지 않아요. 달력에는 방학과 따로 표시해두면 좋아요.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="card body-card">
+    <span class="handle">@aussie.umma</span>
+    <div class="content">
+      <div class="eyebrow">2026 term 4 timeline</div>
+      <h2>연말 일정은<br><span class="accent">두 날짜를 함께</span> 보세요</h2>
+      <div class="timeline">
+        <div class="event"><div class="date">12월 17일 목요일</div><h3>학생 마지막 등교일</h3><p>2026년 Term 4 학생 등교가 끝나요.</p></div>
+        <div class="event"><div class="date">12월 18일 금요일</div><h3>여름방학 시작</h3><p>학생 기준 여름방학은 다음 날부터예요.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card body-card">
+    <span class="handle">@aussie.umma</span>
+    <div class="content">
+      <div class="eyebrow">2027 first day</div>
+      <h2>첫 등교일은<br><span class="accent">Division마다 달라요</span></h2>
+      <div class="split">
+        <div class="box lime"><div class="label">Eastern Division</div><h3>2월 3일<br>수요일</h3><p>2027년 학생 첫 등교일</p></div>
+        <div class="box blue"><div class="label">Western Division</div><h3>2월 10일<br>수요일</h3><p>2027년 학생 첫 등교일</p></div>
+      </div>
+      <p class="lead" style="font-size:24px;margin-top:34px">두 일정은 <strong>7일 차이</strong>가 나요.</p>
+    </div>
+  </section>
+
+  <section class="card statement">
+    <span class="handle">@aussie.umma</span>
+    <div class="content">
+      <div class="eyebrow">기억해둘 점</div>
+      <h2>아이는 쉬어도<br><span class="accent">school zone은 작동해요</span></h2>
+      <p class="lead">development day에는 학생이 등교하지 않지만 학교 구역의 speed zone은 운영돼요.</p>
+    </div>
+  </section>
+
+  <section class="card body-card">
+    <span class="handle">@aussie.umma</span>
+    <div class="content">
+      <div class="eyebrow">마지막 확인</div>
+      <h2>표준 날짜와<br><span class="accent">다를 수 있어요</span></h2>
+      <div class="box blue">
+        <p>국경 인근 일부 학교는 날짜가 다를 수 있어요. Western Division 학교인지, 학교별 공지가 있는지 마지막으로 확인해보세요.</p>
+      </div>
+      <p class="lead" style="font-size:24px;margin-top:36px">이 자료는 NSW 공립학교 기준이에요. Catholic·independent 학교는 자체 학사일정을 확인해요.</p>
+    </div>
+  </section>
+
+  <section class="card sheet">
+    <span class="handle">@aussie.umma</span>
+    <div class="content">
+      <div class="eyebrow">save sheet / 한 장 정리</div>
+      <h2>2026 봄방학부터<br><span class="accent">2027 첫 등교까지</span></h2>
+      <div class="sheet-grid">
+        <div class="sheet-item"><div class="date">09.28—10.09</div><div class="text">2026 봄방학</div></div>
+        <div class="sheet-item"><div class="date">10.12</div><div class="text">school development day<br>학생 등교 없음</div></div>
+        <div class="sheet-item"><div class="date">10.13</div><div class="text">Term 4 학생 첫 등교</div></div>
+        <div class="sheet-item"><div class="date">12.17</div><div class="text">2026 학생 마지막 등교</div></div>
+        <div class="sheet-item"><div class="date">12.18</div><div class="text">여름방학 시작</div></div>
+        <div class="sheet-item"><div class="date">2027 / 02.03</div><div class="text">Eastern Division 첫 등교</div></div>
+        <div class="sheet-item"><div class="date">2027 / 02.10</div><div class="text">Western Division 첫 등교</div></div>
+      </div>
+      <p class="sheet-note">NSW 공립학교 기준 · 학교별 공지와 Division을 마지막으로 확인해요.</p>
+    </div>
+  </section>
+
+  <section class="card cta">
+    <span class="handle">@aussie.umma</span>
+    <div class="content">
+      <div class="eyebrow">calendar check</div>
+      <h2>방학 일정,<br><span class="accent">이제 한눈에</span></h2>
+      <p class="lead">아이 학교의 Division과 학교 공지를 확인하고, 우리 집 달력에 날짜를 옮겨 적어보세요.</p>
+      <div class="cta-button">저장하기 →</div>
+    </div>
+  </section>
+</body>
+</html>
