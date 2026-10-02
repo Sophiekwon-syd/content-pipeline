@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "slug": "australia-child-poisoning-131126-guide",
+  "format": "question",
+  "topic_tag": "호주육아",
+  "posts": [
+    {
+      "text": "아이가 약이나 세제를 먹은 것 같은데 멀쩡해 보여도 기다려도 될까요?\n\n호주에서는 증상이 없어도 먼저 13 11 26에 전화하고, 쓰러짐·의식 없음·숨을 쉬지 않음·호흡곤란·경련이면 000에 구급차를 요청해야 한대요.\n\n삼킨 경우 토하게 하거나 음식·음료를 주기 전에 PIC 안내를 받는 게 기준이라네요."
+    },
+    {
+      "text": "정리하면, 의심되는 중독·노출이나 증상 없음은 13 11 26, 생명이 위급한 심한 증상은 000이에요.\n\n제품 용기나 라벨 사진, 노출 경로와 시간을 아는 만큼 준비하면 돼요. 피부는 흐르는 물로 씻고, 눈은 15분 동안 흐르는 물로 씻은 뒤 PIC에 전화해요. 노출 경로마다 대응이 달라서 집에서 치료를 정하지 말고 PIC 안내를 따라요.\n\nhttps://www.poisonsinfo.nsw.gov.au/first-aid\nhttps://www.healthdirect.gov.au/amp/article/poisoning\nhttps://www.healthdirect.gov.au/swallowed-substances\nhttps://www.schn.health.nsw.gov.au/kids-health-hub/safety-and-injury-prevention/home/poisons"
+    }
+  ],
+  "sources": [
+    "https://www.poisonsinfo.nsw.gov.au/first-aid",
+    "https://www.healthdirect.gov.au/amp/article/poisoning",
+    "https://www.healthdirect.gov.au/swallowed-substances",
+    "https://www.schn.health.nsw.gov.au/kids-health-hub/safety-and-injury-prevention/home/poisons"
+  ]
+}
