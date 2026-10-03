@@ -1,0 +1,673 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>호주 NSW 서머타임 2026 시작, 아이 수면 루틴과 한국 시차 체크리스트</title>
+    <style>
+      :root {
+        --bg: #080808;
+        --panel: #101010;
+        --panel-2: #151515;
+        --ink: #ffffff;
+        --muted: #b9b9b9;
+        --subtle: #777777;
+        --accent: #c6f135;
+        --blue: #3b82f6;
+        --line: rgba(255, 255, 255, 0.12);
+        --font: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        background: #030303;
+      }
+
+      body {
+        color: var(--ink);
+        font-family: var(--font);
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .deck {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 28px;
+        padding: 28px 0;
+      }
+
+      .card {
+        position: relative;
+        width: 1080px;
+        height: 1350px;
+        flex: 0 0 1350px;
+        overflow: hidden;
+        background: var(--bg);
+        color: var(--ink);
+        isolation: isolate;
+      }
+
+      .card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -2;
+        background:
+          radial-gradient(circle at 85% 12%, rgba(198, 241, 53, 0.1), transparent 27%),
+          radial-gradient(circle at 12% 88%, rgba(59, 130, 246, 0.08), transparent 30%),
+          linear-gradient(145deg, #0b0b0b 0%, #080808 72%);
+      }
+
+      .card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        pointer-events: none;
+        opacity: 0.04;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      }
+
+      .handle {
+        position: absolute;
+        top: 68px;
+        right: 90px;
+        z-index: 4;
+        color: var(--ink);
+        font-size: 20px;
+        font-weight: 800;
+        letter-spacing: 2.5px;
+      }
+
+      .content {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-height: 100%;
+        padding: 150px 90px 100px;
+      }
+
+      .eyebrow {
+        margin-bottom: 34px;
+        color: var(--accent);
+        font-size: 20px;
+        font-weight: 900;
+        letter-spacing: 5px;
+        line-height: 1.2;
+        text-transform: uppercase;
+      }
+
+      .display {
+        margin: 0;
+        max-width: 920px;
+        font-size: 86px;
+        font-weight: 900;
+        letter-spacing: -4px;
+        line-height: 1.08;
+        word-break: keep-all;
+      }
+
+      .display .accent,
+      .accent {
+        color: var(--accent);
+      }
+
+      .lead {
+        max-width: 850px;
+        margin: 38px 0 0;
+        color: var(--muted);
+        font-size: 34px;
+        font-weight: 500;
+        letter-spacing: -1.2px;
+        line-height: 1.55;
+        word-break: keep-all;
+      }
+
+      .rule {
+        width: 72px;
+        height: 6px;
+        margin: 44px 0;
+        border-radius: 5px;
+        background: var(--accent);
+      }
+
+      .tag {
+        display: inline-flex;
+        width: fit-content;
+        align-items: center;
+        padding: 13px 22px;
+        border: 1px solid rgba(198, 241, 53, 0.28);
+        border-radius: 999px;
+        background: rgba(198, 241, 53, 0.09);
+        color: var(--accent);
+        font-size: 21px;
+        font-weight: 800;
+        letter-spacing: 0.5px;
+      }
+
+      .hero-number {
+        margin: 30px 0 12px;
+        color: var(--accent);
+        font-size: 250px;
+        font-weight: 900;
+        letter-spacing: -16px;
+        line-height: 0.9;
+      }
+
+      .hero-label {
+        color: var(--ink);
+        font-size: 44px;
+        font-weight: 900;
+        letter-spacing: -1.5px;
+      }
+
+      .note {
+        color: var(--subtle);
+        font-size: 23px;
+        line-height: 1.55;
+        word-break: keep-all;
+      }
+
+      .panel {
+        margin-top: 48px;
+        padding: 38px 42px;
+        border: 1px solid var(--line);
+        border-radius: 28px;
+        background: rgba(16, 16, 16, 0.92);
+      }
+
+      .panel-title {
+        margin-bottom: 22px;
+        color: var(--subtle);
+        font-size: 17px;
+        font-weight: 900;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+      }
+
+      .panel-copy {
+        color: var(--ink);
+        font-size: 30px;
+        font-weight: 650;
+        letter-spacing: -0.8px;
+        line-height: 1.55;
+        word-break: keep-all;
+      }
+
+      .timeline {
+        display: grid;
+        grid-template-columns: 1fr 90px 1fr;
+        align-items: center;
+        gap: 22px;
+        margin-top: 54px;
+      }
+
+      .time-block {
+        min-height: 190px;
+        padding: 28px 30px;
+        border-radius: 24px;
+        background: var(--panel-2);
+        border: 1px solid var(--line);
+      }
+
+      .time-date {
+        color: var(--subtle);
+        font-size: 20px;
+        font-weight: 800;
+        letter-spacing: 1px;
+      }
+
+      .time-value {
+        margin-top: 20px;
+        color: var(--accent);
+        font-size: 54px;
+        font-weight: 900;
+        letter-spacing: -2px;
+        line-height: 1;
+      }
+
+      .time-zone {
+        margin-top: 14px;
+        color: var(--muted);
+        font-size: 22px;
+        font-weight: 700;
+      }
+
+      .arrow {
+        color: var(--accent);
+        font-size: 62px;
+        font-weight: 900;
+        text-align: center;
+      }
+
+      .check-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 22px;
+        margin-top: 42px;
+      }
+
+      .check-card {
+        min-height: 170px;
+        padding: 30px 32px;
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        background: var(--panel);
+      }
+
+      .check-card.blue {
+        border-top: 5px solid var(--blue);
+      }
+
+      .check-card.lime {
+        border-top: 5px solid var(--accent);
+      }
+
+      .check-label {
+        margin-bottom: 18px;
+        color: var(--accent);
+        font-size: 18px;
+        font-weight: 900;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+      }
+
+      .check-card.blue .check-label {
+        color: #82adff;
+      }
+
+      .check-copy {
+        color: var(--ink);
+        font-size: 29px;
+        font-weight: 750;
+        letter-spacing: -0.8px;
+        line-height: 1.45;
+        word-break: keep-all;
+      }
+
+      .region-row {
+        display: grid;
+        grid-template-columns: 190px 1fr;
+        gap: 24px;
+        align-items: start;
+        padding: 24px 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .region-row:last-child {
+        border-bottom: 0;
+        padding-bottom: 0;
+      }
+
+      .region-label {
+        color: var(--subtle);
+        font-size: 20px;
+        font-weight: 900;
+        letter-spacing: 1px;
+      }
+
+      .region-copy {
+        color: var(--ink);
+        font-size: 29px;
+        font-weight: 750;
+        letter-spacing: -0.6px;
+        line-height: 1.4;
+        word-break: keep-all;
+      }
+
+      .routine-line {
+        display: flex;
+        align-items: center;
+        gap: 22px;
+        margin-top: 44px;
+        color: var(--ink);
+        font-size: 34px;
+        font-weight: 800;
+        letter-spacing: -1px;
+        line-height: 1.5;
+        word-break: keep-all;
+      }
+
+      .routine-line span {
+        color: var(--accent);
+      }
+
+      .morning-box {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+        margin-top: 50px;
+      }
+
+      .morning-item {
+        padding: 38px 40px;
+        border-radius: 28px;
+        background: var(--panel-2);
+        border: 1px solid var(--line);
+      }
+
+      .morning-item strong {
+        display: block;
+        margin-bottom: 16px;
+        color: var(--accent);
+        font-size: 38px;
+        font-weight: 900;
+        letter-spacing: -1.5px;
+      }
+
+      .morning-item p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 27px;
+        font-weight: 600;
+        line-height: 1.5;
+        word-break: keep-all;
+      }
+
+      .statement {
+        max-width: 880px;
+        margin: 38px 0 0;
+        color: var(--ink);
+        font-size: 63px;
+        font-weight: 900;
+        letter-spacing: -3px;
+        line-height: 1.25;
+        word-break: keep-all;
+      }
+
+      .statement em {
+        color: var(--accent);
+        font-style: normal;
+      }
+
+      .sheet .content {
+        padding-top: 142px;
+        padding-bottom: 74px;
+      }
+
+      .sheet-title {
+        margin: 0;
+        color: var(--ink);
+        font-size: 58px;
+        font-weight: 900;
+        letter-spacing: -2.5px;
+        line-height: 1.2;
+      }
+
+      .sheet-sub {
+        margin: 18px 0 34px;
+        color: var(--accent);
+        font-size: 25px;
+        font-weight: 800;
+        letter-spacing: -0.5px;
+      }
+
+      .sheet-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+      }
+
+      .sheet-box {
+        min-height: 205px;
+        padding: 24px 26px;
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        background: rgba(16, 16, 16, 0.94);
+      }
+
+      .sheet-box.wide {
+        grid-column: 1 / -1;
+        min-height: 154px;
+      }
+
+      .sheet-label {
+        margin-bottom: 12px;
+        color: var(--accent);
+        font-size: 16px;
+        font-weight: 900;
+        letter-spacing: 2.5px;
+        text-transform: uppercase;
+      }
+
+      .sheet-copy {
+        color: var(--ink);
+        font-size: 27px;
+        font-weight: 750;
+        letter-spacing: -0.8px;
+        line-height: 1.45;
+        word-break: keep-all;
+      }
+
+      .sheet-copy strong {
+        color: var(--accent);
+        font-weight: 900;
+      }
+
+      .cta .content {
+        align-items: center;
+        text-align: center;
+      }
+
+      .cta-title {
+        margin: 0;
+        color: var(--accent);
+        font-size: 112px;
+        font-weight: 900;
+        letter-spacing: -5px;
+        line-height: 1.05;
+      }
+
+      .cta-copy {
+        max-width: 700px;
+        margin: 38px 0 0;
+        color: var(--muted);
+        font-size: 32px;
+        font-weight: 600;
+        letter-spacing: -1px;
+        line-height: 1.55;
+        word-break: keep-all;
+      }
+
+      @media (max-width: 1100px) {
+        .deck {
+          align-items: flex-start;
+          overflow-x: auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="deck" aria-label="NSW 서머타임 아이 루틴과 한국 시차 체크리스트">
+      <section class="card cover">
+        <span class="handle">@aussie.umma</span>
+        <div class="content">
+          <div class="eyebrow">NSW · 2026.10.04</div>
+          <h1 class="display">NSW 서머타임<br /><span class="accent">오늘 시작</span></h1>
+          <div class="rule"></div>
+          <p class="lead">아이 저녁 루틴과 한국 가족 통화 시간, 오늘 함께 다시 체크해요.</p>
+          <div class="tag">아이 루틴 + 한국 시차</div>
+        </div>
+      </section>
+
+      <section class="card hook">
+        <span class="handle">@aussie.umma</span>
+        <div class="content">
+          <div class="eyebrow">오늘 새벽</div>
+          <h2 class="display">2시가 사라지고<br /><span class="accent">3시가 됐어요</span></h2>
+          <p class="lead">아이 취침·등원 시간과 한국 가족에게 전화할 시간도 함께 달라져요.</p>
+          <div class="panel">
+            <div class="panel-title">오늘의 포인트</div>
+            <div class="panel-copy">시계부터 확인하고, 익숙한 순서를 이어가면 돼요.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card body-card">
+        <span class="handle">@aussie.umma</span>
+        <div class="content">
+          <div class="eyebrow">CLOCK SHIFT</div>
+          <h2 class="display">새벽 2시<br /><span class="accent">→ 3시</span></h2>
+          <p class="lead">2026년 10월 4일 오전 2시 AEST가 오전 3시 AEDT로 이동해요.</p>
+          <div class="timeline">
+            <div class="time-block">
+              <div class="time-date">2026.10.04</div>
+              <div class="time-value">02:00</div>
+              <div class="time-zone">AEST</div>
+            </div>
+            <div class="arrow">→</div>
+            <div class="time-block">
+              <div class="time-date">같은 날</div>
+              <div class="time-value">03:00</div>
+              <div class="time-zone">AEDT</div>
+            </div>
+          </div>
+          <p class="note" style="margin-top: 34px">2027년 4월 4일에는 오전 3시 AEDT가 오전 2시 AEST로 돌아가요. NSW Government 공식 안내 기준이에요.</p>
+        </div>
+      </section>
+
+      <section class="card body-card">
+        <span class="handle">@aussie.umma</span>
+        <div class="content">
+          <div class="eyebrow">HOME CLOCK CHECK</div>
+          <h2 class="display">자동으로 맞는 시계<br /><span class="accent">그대로인 시계</span></h2>
+          <div class="check-grid">
+            <div class="check-card lime">
+              <div class="check-label">자동 변경 확인</div>
+              <div class="check-copy">휴대폰<br />대부분의 최신 기기</div>
+            </div>
+            <div class="check-card blue">
+              <div class="check-label">수동 확인</div>
+              <div class="check-copy">벽시계<br />전자레인지 · 차량 시계</div>
+            </div>
+          </div>
+          <p class="lead" style="margin-top: 44px">자동으로 바뀐 시계와 그대로인 시계가 섞이지 않게 집 안을 한 바퀴 확인해요.</p>
+          <div class="panel" style="margin-top: 36px">
+            <div class="region-row">
+              <div class="region-label">지키는 지역</div>
+              <div class="region-copy">NSW · Victoria · South Australia · Tasmania · ACT</div>
+            </div>
+            <div class="region-row">
+              <div class="region-label">지키지 않는 지역</div>
+              <div class="region-copy">Queensland · Western Australia · Northern Territory</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card body-card">
+        <span class="handle">@aussie.umma</span>
+        <div class="content">
+          <div class="eyebrow">BEDTIME RHYTHM</div>
+          <h2 class="display">오늘 밤은<br /><span class="accent">시각보다 순서 먼저</span></h2>
+          <p class="lead">시간이 조금 달라도 익숙한 단계를 차분하게 이어가면 다음 행동을 예상하기 쉬워요.</p>
+          <div class="routine-line"><span>01</span> 씻기 <span>→</span> 잠옷 <span>→</span> 양치</div>
+          <div class="routine-line"><span>02</span> 책 <span>→</span> 불 끄기</div>
+          <div class="panel">
+            <div class="panel-title">오늘의 기준</div>
+            <div class="panel-copy">완벽한 시각보다 차분하고 예측 가능한 루틴을 먼저 봐요.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card body-card">
+        <span class="handle">@aussie.umma</span>
+        <div class="content">
+          <div class="eyebrow">MORNING LIGHT</div>
+          <h2 class="display">아침에는<br /><span class="accent">커튼부터 열어요</span></h2>
+          <div class="morning-box">
+            <div class="morning-item">
+              <strong>자연광</strong>
+              <p>아침에 빛을 받을 기회를 만들어요.</p>
+            </div>
+            <div class="morning-item">
+              <strong>일정한 루틴</strong>
+              <p>기상과 하루 순서를 이어가요.</p>
+            </div>
+          </div>
+          <p class="lead" style="margin-top: 46px">NSW Government와 Raising Children Network도 아침 빛과 일정한 루틴을 권해요.</p>
+        </div>
+      </section>
+
+      <section class="card statement-card">
+        <span class="handle">@aussie.umma</span>
+        <div class="content">
+          <div class="eyebrow">15-MINUTE OPTION</div>
+          <div class="hero-number">15</div>
+          <div class="hero-label">분 단위로 조정해볼 수 있어요</div>
+          <p class="statement">한 번에 완벽하게 맞추지 않아도 <em>괜찮아요.</em></p>
+          <p class="lead">아이마다 반응이 달라요. 정해진 며칠을 목표로 하기보다 아이의 표정과 피로도를 살펴봐요.</p>
+          <p class="note" style="margin-top: 28px">NSW Government가 안내한 취침 시간 조정 폭을 선택지로 참고해요.</p>
+        </div>
+      </section>
+
+      <section class="card body-card">
+        <span class="handle">@aussie.umma</span>
+        <div class="content">
+          <div class="eyebrow">SYDNEY ↔ KOREA</div>
+          <h2 class="display"><span class="accent">2시간</span><br />차이로 다시 계산해요</h2>
+          <p class="lead">서머타임 뒤 Sydney는 UTC+11, 한국은 UTC+9예요. 11에서 9를 뺀 산술 계산이에요.</p>
+          <div class="panel" style="margin-top: 58px">
+            <div class="panel-title">시간 대조</div>
+            <div class="panel-copy" style="font-size: 48px"><span class="accent">Sydney 08:00</span><br />= Korea 06:00</div>
+          </div>
+          <p class="lead" style="margin-top: 44px">한국 가족과 통화 약속은 날짜와 도시를 함께 적어두면 안전해요.</p>
+        </div>
+      </section>
+
+      <section class="card sheet">
+        <span class="handle">@aussie.umma</span>
+        <div class="content">
+          <div class="eyebrow">SAVE SHEET</div>
+          <h2 class="sheet-title">서머타임 아침·저녁<br />한 장 체크</h2>
+          <p class="sheet-sub">2026.10.04 NSW 기준</p>
+          <div class="sheet-grid">
+            <div class="sheet-box">
+              <div class="sheet-label">CLOCK</div>
+              <div class="sheet-copy"><strong>02:00 → 03:00</strong><br />2026년 10월 4일</div>
+            </div>
+            <div class="sheet-box">
+              <div class="sheet-label">DEVICE</div>
+              <div class="sheet-copy">휴대폰 자동 변경 확인<br />벽시계·전자레인지·차량 시계 수동 확인</div>
+            </div>
+            <div class="sheet-box">
+              <div class="sheet-label">ROUTINE</div>
+              <div class="sheet-copy">취침 시간은 <strong>15분 단위</strong><br />씻기 → 잠옷 → 양치 → 책 → 불 끄기</div>
+            </div>
+            <div class="sheet-box">
+              <div class="sheet-label">MORNING</div>
+              <div class="sheet-copy">커튼 열기<br />아침 자연광 + 익숙한 순서</div>
+            </div>
+            <div class="sheet-box wide">
+              <div class="sheet-label">REGIONS</div>
+              <div class="sheet-copy"><strong>지킴:</strong> NSW · VIC · SA · TAS · ACT<br /><strong>안 지킴:</strong> QLD · WA · NT</div>
+            </div>
+            <div class="sheet-box wide">
+              <div class="sheet-label">KOREA CHECK</div>
+              <div class="sheet-copy"><strong>Sydney 08:00 = Korea 06:00</strong><br />2027년 4월 4일에는 03:00 → 02:00</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card cta">
+        <span class="handle">@aussie.umma</span>
+        <div class="content">
+          <h2 class="cta-title">저장하기 →</h2>
+          <p class="cta-copy">오늘 밤 집 안 시계와 아이 루틴을 한 번에 체크해보세요.</p>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
