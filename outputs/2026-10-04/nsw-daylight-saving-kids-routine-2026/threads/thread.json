@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "slug": "nsw-daylight-saving-kids-routine-2026",
+  "format": "observation",
+  "topic_tag": "호주육아",
+  "posts": [
+    {
+      "text": "서머타임 날엔 시계가 한 시간 바뀌어도 아이 루틴까지 한 번에 바꾸려고 하지 않는 게 덜 복잡해요.\n\n2026-10-04 NSW는 오전 2시→3시로 바뀌었어요.\n\n아이마다 반응이 다르니 익숙한 저녁 순서를 두고, 15분 단위 조정은 선택지로 보면 돼요."
+    },
+    {
+      "text": "아침엔 커튼을 열고 자연광을 받을 기회를 만들고, 목욕·잠옷·양치·책처럼 익숙한 순서를 이어가면 돼요.\n\n15분 조정도 모든 아이에게 같은 속도로 적용하는 적응표가 아니에요. 아이의 표정과 피로도를 보며 선택하면 돼요."
+    },
+    {
+      "text": "한국 가족과 통화할 땐 UTC 오프셋을 먼저 빼면 돼요.\n\n서머타임 뒤 Sydney UTC+11 - Korea UTC+9 = 2시간이라, Sydney 오전 8시는 한국 오전 6시예요. 근거:\nhttps://www.nsw.gov.au/about-nsw/daylight-saving\nhttps://www.timeanddate.com/time/zone/australia/sydney\nhttps://www.timeanddate.com/time/zone/south-korea/seoul"
+    }
+  ],
+  "sources": [
+    "https://www.nsw.gov.au/about-nsw/daylight-saving",
+    "https://raisingchildren.net.au/toddlers/sleep/better-sleep-settling/sleep-better-tips",
+    "https://raisingchildren.net.au/grown-ups/family-life/routines-rituals-relationships/family-routines",
+    "https://www.timeanddate.com/time/zone/australia/sydney",
+    "https://www.timeanddate.com/time/zone/south-korea/seoul"
+  ]
+}
