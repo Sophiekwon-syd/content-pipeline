@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "slug": "australia-daycare-public-holiday-fees-ccs-guide",
+  "format": "information",
+  "topic_tag": "호주육아",
+  "posts": [
+    {
+      "text": "공휴일에 데이케어가 닫았는데 invoice에 금액이 보이면, 무료가 아니라고 바로 결론 내리기보다 세 가지를 같이 봐야 해요.\n\n아이가 원래 다니는 날이었는지, 센터가 fee를 청구했는지, CCS absence로 기록됐는지요. 조건에 맞으면 공휴일도 아이별 회계연도 42일 allowable absence에 포함될 수 있대요.\n\n3 Day Guarantee의 2주 72시간도 gap fee 면제나 센터 자리 보장과는 다른 이야기고요."
+    },
+    {
+      "text": "myGov에서는 My Family > Child Care > Absences로 들어가서 invoice 날짜와 맞춰보면 돼요. 센터의 enrolment agreement와 공휴일 policy도 같이 확인하는 게 안전해요.\n\nhttps://www.fairwork.gov.au/employment-conditions/public-holidays/2026-public-holidays\nhttps://www.servicesaustralia.gov.au/child-care-subsidy-if-your-child-absent-from-child-care?context=41186\nhttps://www.education.gov.au/early-childhood/providers/howto/manage-payments-fees\nhttps://www.education.gov.au/early-childhood/providers/child-care-subsidy/3-day-guarantee"
+    }
+  ],
+  "sources": [
+    "https://www.fairwork.gov.au/employment-conditions/public-holidays/2026-public-holidays",
+    "https://www.servicesaustralia.gov.au/child-care-subsidy-if-your-child-absent-from-child-care?context=41186",
+    "https://www.education.gov.au/early-childhood/providers/howto/manage-payments-fees",
+    "https://www.education.gov.au/early-childhood/providers/child-care-subsidy/3-day-guarantee"
+  ]
+}
