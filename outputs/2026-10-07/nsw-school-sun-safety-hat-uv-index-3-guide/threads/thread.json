@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "slug": "nsw-school-sun-safety-hat-uv-index-3-guide",
+  "format": "information",
+  "topic_tag": "호주육아",
+  "posts": [
+    {
+      "type": "root",
+      "text": "호주 학교 모자는 예쁜 준비물보다 UV 지수와 학교 공지를 먼저 봐야 해요.\n\nUV 지수 3 이상이면 자외선 차단을 시작하고, NSW 학교 안내는 SPF50 또는 50+ 선크림과 broad brim·bucket·legionnaire 모자를 권장해요.\n\n대부분 no-hat, play-in-the-shade 전략을 쓰지만 실제 모양과 절차는 학교마다 달라서 uniform list가 최종 기준이에요."
+    },
+    {
+      "type": "reply",
+      "text": "아이용 broad brim은 6cm 이상, bucket brim은 5cm 이상인지 확인해요. 선크림은 2시간마다, 수영·수건·땀 뒤에는 더 자주 덧바르고 성분 알레르기는 학교에 알려야 해요."
+    },
+    {
+      "type": "reply",
+      "text": "Term 4 안내문 옆에 UV 3+, SPF50+, 모자 스타일, 물병, 선크림 알레르기 다섯 가지를 적어두면 준비가 덜 복잡해져요.\n\nhttps://education.nsw.gov.au/schooling/parents-and-carers/health-and-physical-care/sun-safety\nhttps://www.schn.health.nsw.gov.au/kids-health-hub/safety-and-injury-prevention/hot-weather-and-sun/sun-safety\nhttps://education.nsw.gov.au/policy-library/policies/pd-2004-0034-08"
+    }
+  ],
+  "sources": [
+    "https://education.nsw.gov.au/schooling/parents-and-carers/health-and-physical-care/sun-safety",
+    "https://www.schn.health.nsw.gov.au/kids-health-hub/safety-and-injury-prevention/hot-weather-and-sun/sun-safety",
+    "https://www.cancercouncil.com.au/cancer-prevention/sun-protection/preventing-skin-cancer/sun-smart-hats/",
+    "https://education.nsw.gov.au/policy-library/policies/pd-2004-0034-08"
+  ]
+}
