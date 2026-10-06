@@ -23,7 +23,7 @@ Sydney Children’s Hospitals Network는 UV 지수가 3 이상이면 선크림�
 NSW 공립학교 안내는 broad-brimmed, bucket, legionnaire 스타일을 권장한다. Sydney Children’s Hospitals Network는 어린이용 broad brim을 6cm 이상, bucket brim을 5cm 이상으로 안내한다. Legionnaire 모자는 목을 덮는 플랩이 앞 챙과 만나 옆 얼굴까지 가려야 한다. Cancer Council NSW는 야구모자와 sun visor가 볼·귀·목 뒤를 충분히 가리지 못한다고 안내한다. 대부분의 학교가 no-hat, play-in-the-shade 전략을 사용하지만 학교마다 실제 uniform list와 야외활동 규칙이 다를 수 있어, 자녀 학교 공지가 최종 기준이다.
 
 #### 선크림 알레르기와 더운 날 물병까지 학교에 알리기
-학교 가기 전 선크림은 노출 20분 전에 바르고, 2시간마다 또는 수영·수건으로 닦기·땀을 흘린 뒤 다시 발라야 한다. 학교에 선크림을 보내는 경우도 있지만, 아이가 성분·향료·색소에 알레르기가 있다면 NSW Education은 학교에 알리라고 안내한다. 더운 날에는 물병을 보내고 교실에서도 물을 마실 수 있는지 확인한다. 학교 안내문에 sunscreen policy, water bottle, shade, hat 항목이 따로 적혀 있는지 살펴보면 누락이 줄어든다.
+햇빛에 노출되기 20분 전에 선크림을 바르고, 2시간마다 또는 수영·수건으로 닦기·땀을 흘린 뒤 다시 발라야 한다. 학교에 선크림을 보내는 경우도 있지만, 아이가 성분·향료·색소에 알레르기가 있다면 NSW Education은 학교에 알리라고 안내한다. 더운 날에는 물병을 보내고 교실에서도 물을 마실 수 있는지 확인한다. 학교 안내문에 sunscreen policy, water bottle, shade, hat 항목이 따로 적혀 있는지 살펴보면 누락이 줄어든다.
 
 ### FAQ questions (3x — H3 = actual search queries)
 - **Q: 호주 학교 모자 규정은 어떻게 확인하나요?**
