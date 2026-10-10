@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "slug": "australia-school-lunchbox-food-safety-guide",
+  "format": "information",
+  "topic_tag": "호주육아",
+  "posts": [
+    {
+      "text": "런치박스에 아이스팩을 넣을지 매일 고민되는데, 고기나 밥, 요거트가 들어가면 차갑게 챙기는 게 기본이래요.\n\n2시간·4시간 규칙은 아이스팩을 대신하는 방법이 아니라, 차갑게 유지되지 못한 뒤 남은 음식을 판단하는 기준이고요."
+    },
+    {
+      "text": "안전한 차가운 온도는 5°C 이하, 5°C에서 60°C 사이는 위험 온도대예요. 준비·보관·이동을 합쳐 2시간 미만이면 사용 또는 냉장, 2~4시간이면 바로 사용, 4시간 초과면 버려요.\n\nhttps://www.foodstandards.gov.au/business/food-safety/2-hour-4-hour-rule\nhttps://www.foodstandards.gov.au/business/charities/temperature-control"
+    }
+  ],
+  "sources": [
+    "https://www.foodauthority.nsw.gov.au/media/8860",
+    "https://www.foodauthority.nsw.gov.au/news/departmental-media-releases/study-shows-lunches-can-never-be-too-cool-school",
+    "https://www.foodstandards.gov.au/business/food-safety/2-hour-4-hour-rule",
+    "https://www.foodstandards.gov.au/business/charities/temperature-control",
+    "https://raisingchildren.net.au/preschoolers/nutrition-fitness/breakfast-lunches/healthy-lunches"
+  ]
+}
