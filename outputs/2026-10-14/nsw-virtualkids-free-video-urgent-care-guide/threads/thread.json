@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "slug": "nsw-virtualkids-free-video-urgent-care-guide",
+  "format": "question",
+  "topic_tag": "호주육아",
+  "posts": [
+    {
+      "text": "아이가 아픈데 응급실로 가야 할지 망설여질 때, NSW에선 어디에 먼저 전화하면 될까요? Healthdirect에서 간호사 분류를 받을 수 있고, virtualKIDS는 상황에 따라 의뢰될 때 이용하는 영상진료 경로래요."
+    },
+    {
+      "text": "전화했다고 모두 virtualKIDS로 연결되는 건 아니고, 영상 가능한 기기도 필요하대요. 생명이 위급한 상황이면 분류를 기다리지 않고 000이나 응급실이 먼저예요."
+    }
+  ],
+  "sources": [
+    "https://www.health.nsw.gov.au/Hospitals/Pages/urgent-care-virtual-kids.aspx"
+  ]
+}
