@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "slug": "sydney-toy-library-borrowing-guide",
+  "format": "observation",
+  "topic_tag": "호주육아",
+  "posts": [
+    {
+      "text": "장난감을 고를 때 집에 둘 자리도 함께 생각하게 되죠.\n\n도서관에서 장난감을 빌리는 방법도 있어요.\n\nNorth Ryde는 카드당 최대 3개를 3주 동안 빌릴 수 있어요. 장난감은 예약할 수 없어서 현장에서 골라야 해요.\n\n아이에게 맞는지 살펴보고, 반납하러 갈 동선까지 생각해두면 좋겠어요."
+    },
+    {
+      "text": "City of Sydney는 정회원 기준 최대 10개를 3주 동안 빌릴 수 있어요. 방문·임시 회원은 장난감 한도가 3개예요.\n\nGlebe, Surry Hills, Waterloo에서 빌리고, 빌린 지점 직원에게 돌려줘요.\n\n회원 유형별 한도와 반납 안내는 여기서 확인해요.\nhttps://www.cityofsydney.nsw.gov.au/library-information-services/borrow-items-from-library"
+    }
+  ],
+  "sources": [
+    "https://www.ryde.nsw.gov.au/Library/Something-for-Everyone/Children/Toy-Library",
+    "https://www.cityofsydney.nsw.gov.au/library-collections/toys-collection",
+    "https://www.cityofsydney.nsw.gov.au/library-information-services/borrow-items-from-library"
+  ]
+}
