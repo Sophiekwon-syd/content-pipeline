@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "slug": "nsw-child-hearing-test-booking-guide",
+  "format": "observation",
+  "topic_tag": "호주육아",
+  "posts": [
+    {
+      "text": "아이 청력검사 예약은 검사 이름보다 경로가 더 헷갈릴 수 있어요.\n어떤 곳은 바로 전화하고, 어떤 곳은 의료진 의뢰서가 필요하대요.\n아이 나이와 사는 지역, 의뢰서, 비용을 나눠서 확인하면 정리가 돼요."
+    },
+    {
+      "text": "NSW 지역 보건 서비스나 병원은 지역별 아동 대상 조건을 확인해야 해요. 갑작스러운 청력 손실은 정기 예약을 기다리지 말고 응급실에서 평가받아요.\nhttps://www.health.nsw.gov.au/kidsfamilies/MCFhealth/Pages/referral-screening.aspx\nhttps://www.healthdirect.gov.au/amp/article/hearing-loss"
+    }
+  ],
+  "sources": [
+    "https://www.health.nsw.gov.au/kidsfamilies/MCFhealth/Pages/referral-screening.aspx",
+    "https://www.nslhd.health.nsw.gov.au/CYFH/services/Pages/Hearing.aspx",
+    "https://www.schn.health.nsw.gov.au/audiology-and-hearing-services-sydney-childrens-hospital-randwick",
+    "https://www.healthdirect.gov.au/amp/article/hearing-loss"
+  ]
+}
