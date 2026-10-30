@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "slug": "australia-unwanted-medicines-pharmacy-return-guide",
+  "format": "observation",
+  "topic_tag": "호주육아",
+  "posts": [
+    {
+      "text": "남은 약을 약국에 반납하는 건 안전한 폐기 방법이고, 구매 금액 환불과는 다른 절차야. NSW에서는 약사가 이미 다른 환자에게 조제된 약을 다시 조제할 수 없고, 미사용 약 환불 여부는 약사가 결정한대."
+    },
+    {
+      "text": "참여 약국은 구입한 곳과 달라도 돼. 물약이나 크림도 반납 범주에 들어가지만, 주사바늘과 사용한 sharps는 약 수거함에 넣지 않아. NSW는 승인된 sharps 용기와 별도 수거 장소를 확인해야 해. https://www.health.gov.au/our-work/national-return-and-disposal-of-unwanted-medicines-program-natrum?language=en"
+    }
+  ],
+  "sources": [
+    "https://www.health.nsw.gov.au/pharmaceutical/patients/Pages/lost-stolen-return-medicines.aspx",
+    "https://www.health.gov.au/our-work/national-return-and-disposal-of-unwanted-medicines-program-natrum?language=en",
+    "https://www.epa.nsw.gov.au/Your-environment/Waste/industrial-waste/clinical-and-related-waste/sharps-waste"
+  ]
+}
