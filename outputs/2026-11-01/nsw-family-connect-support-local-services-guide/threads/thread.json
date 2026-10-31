@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "slug": "nsw-family-connect-support-local-services-guide",
+  "format": "observation",
+  "topic_tag": "호주육아",
+  "posts": [
+    {
+      "text": "어디에 도움을 구해야 할지 모를 때도 NSW의 Family Connect and Support에 지금 상황부터 이야기할 수 있어요. 가족에게 필요한 지원을 살펴보고 지역 서비스 정보나 연결을 함께 논의하는 첫 접점이에요."
+    },
+    {
+      "text": "suburb나 postcode로 지역 제공기관을 찾고, 어떤 지원을 논의할 수 있는지 문의하면 돼요. FCS 이용 자체는 무료로 안내되지만, 외부 기관으로 연결되면 비용과 조건을 따로 확인해요. https://www.nsw.gov.au/community-services/community-family-support/find-a-provider"
+    }
+  ],
+  "sources": [
+    "https://www.nsw.gov.au/community-services/community-family-support/find-a-provider",
+    "https://www.nsw.gov.au/community-services/community-family-support/how-to-find-support"
+  ]
+}
