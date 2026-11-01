@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "slug": "nsw-public-school-medication-request-guide",
+  "format": "information",
+  "topic_tag": "호주육아",
+  "posts": [
+    {
+      "text": "학교에 약을 보낼 땐 약만 챙기면 되는 줄 알기 쉬운데, NSW 공립학교는 투약 요청서를 검토하고 서면으로 확인하는 절차가 있어요. 처방약 포장과 학생 라벨, 학교에 전달하는 방법도 함께 맞춰요."
+    },
+    {
+      "text": "처방약은 약국 포장과 학생 이름이 있는 라벨을 확인하고, 집에서 나눈 dosette 용기는 보내지 않아요. 일반의약품도 원래 포장과 학교의 확인 절차를 살펴봐요. https://education.nsw.gov.au/schooling/parents-and-carers/health-and-physical-care/administration-of-medication"
+    }
+  ],
+  "sources": [
+    "https://education.nsw.gov.au/policy-library/policies/pd-2004-0034-06",
+    "https://education.nsw.gov.au/schooling/parents-and-carers/health-and-physical-care/administration-of-medication"
+  ]
+}
