@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "slug": "australia-child-my-health-record-parent-access-guide",
+  "format": "information",
+  "topic_tag": "호주육아",
+  "posts": [
+    {
+      "text": "아이 My Health Record는 만 14세가 되면 아이가 직접 관리해요. 기존 부모·보호자 대표 접근은 계속되지 않고, 아이가 원하면 부모를 nominated representative로 지정할 수 있어요. 이 기준은 My Health Record 접근에 관한 내용이에요."
+    },
+    {
+      "text": "대표자로 지정되어도 권한이 모두 같지는 않아요. 아이가 선택한 접근 수준에 따라 문서를 볼 수 있는 범위와 정보를 추가할 수 있는지가 달라져요. 아이의 뜻과 선호에 따라야 해요. https://www.digitalhealth.gov.au/initiatives-and-programs/my-health-record/manage-your-record/privacy-and-access/nominated-representatives"
+    }
+  ],
+  "sources": [
+    "https://www.oaic.gov.au/privacy/your-privacy-rights/health-information/my-health-record/about-my-health-record",
+    "https://www.digitalhealth.gov.au/initiatives-and-programs/my-health-record/manage-your-record/privacy-and-access/nominated-representatives"
+  ]
+}
