@@ -1,0 +1,78 @@
+# NSW 학교 학부모 봉사, WWCC가 필요한 활동과 신청 방법
+
+NSW 공립학교에서 학부모 봉사를 하려면 먼저 맡을 활동을 학교에 알려 WWCC가 필요한지 확인해요. 부모·보호자가 자기 아이와 함께하는 활동은 일부 면제될 수 있지만, 모든 학교 봉사가 자동으로 면제되는 건 아니에요. WWCC가 필요한 역할이라면 신청번호를 받는 것만으로는 부족하고, 번호 발급과 학교 확인 절차를 마친 뒤 시작해야 해요.
+
+봉사용 신청은 무료예요. 신청 뒤에는 APP에서 신원 확인을 하고, 통과하면 WWCC 번호가 발급돼요. 그 다음 학교가 요구하는 확인과 당일 출입 절차까지 챙기면 준비 흐름이 분명해져요.
+
+## 우리 아이 학교인데도 WWCC가 필요한가요?
+
+같은 학교에 다니는 자녀를 둔 부모라도 모든 봉사에서 면제되는 건 아니에요. 아이가 실제로 참여하는 학급이나 읽기 모임 같은 활동은 WWCC가 면제될 수 있어요. 다만 아이가 그 활동에 참여해야 하고, 다른 역할까지 면제되는 건 아니에요. 면제 활동이라도 학교의 디지털 선언과 방문자 등록은 해야 해요.
+
+특히 캔틴 봉사, 스포츠데이 지원, 소풍 감독은 자녀가 함께 참여하더라도 WWCC가 필요한 대표 사례예요. 전체 목록은 아니니 실제로 하게 될 업무를 구체적으로 설명하고 학교의 안내를 받아야 해요. 필요한 역할은 유효한 번호를 발급받고 교육부와 학교의 검증을 마친 뒤 시작해요. [일반적인 OCG 안내](https://ocg.nsw.gov.au/working-with-children-check/who-needs-check)에는 APP 번호로 일을 시작할 수 있다는 설명도 있지만, NSW 공립학교가 WWCC를 요구하는 활동은 교육부의 사전 검증 절차가 기준이에요.
+
+봉사 신청 전에 학교에 이렇게 물어보면 좋아요.
+
+> **학교에 물어볼 문장**  
+> “Could you confirm whether this volunteer role requires a WWCC and which screening steps I need to complete before starting?”
+
+(출처: [NSW 교육부, 학부모·보호자의 학교 출입 안내](https://education.nsw.gov.au/about-us/careers-at-education/employment-opportunities/employee-screening/online-screening-trial), [학교 비직원 출입 절차](https://education.nsw.gov.au/about-us/careers-at-education/employment-opportunities/employee-screening/accessing-nsw-department-schools-as-a-non-employee))
+
+## 봉사용 WWCC는 어디서 신청하나요?
+
+학교에서 WWCC가 필요하다고 확인해주면 Service NSW 온라인 신청 절차를 시작해요. 신청서에서 봉사 목적을 선택하면 신청 비용은 무료예요. 유급으로 아이들과 일하는 역할은 자원봉사와 다른 목적이므로 유급 업무에 맞는 확인을 받아야 해요.
+
+온라인 신청을 마치면 APP 번호가 이메일로 와요. 그 번호와 신분증 원본을 가지고 Service NSW 센터에 방문해 신원을 확인해요. 필요한 네 가지 서류는 아무 조합이나 되는 게 아니라, 신원 시작 서류 1개, 주 사용 서류 1개, 보조 사용 서류 2개 범주를 충족해야 해요. 이름이 다르거나 사진 신분증이 없는 경우 등 조건이 더 있으니 공식 서류 목록을 신청 전에 확인해요.
+
+신청 후 28일 안에 Service NSW에서 신원 확인을 마쳐야 해요. 이 기간은 본인 확인 기한이지 심사 완료 예상일이 아니에요. 신원 확인 뒤 경찰 기록과 직장 내 관련 기록 심사가 진행되고, 통과하면 WWCC 번호가 이메일로 와요. 번호를 학교에 제공하고 검증을 받아요. 실물 카드나 증명서가 우편으로 오는 절차는 아니에요.
+
+(출처: [Service NSW, WWCC 신청](https://www.service.nsw.gov.au/transaction/apply-for-a-working-with-children-check), [NSW 아동 보호국, 신청 방법](https://ocg.nsw.gov.au/working-with-children-check/apply-wwcc/how-apply-wwcc), [신청자 안내](https://ocg.nsw.gov.au/working-with-children-check/applicant))
+
+## 신청번호를 받으면 바로 시작할 수 있나요?
+
+바로 시작하지 말고 학교의 확인 완료를 기다려요. 학교에서 WWCC가 필요한 활동이라고 안내했다면, 심사를 통과해 번호가 발급된 뒤 학교가 해당 번호를 확인해야 해요. 온라인 신청을 했다는 사실이나 접수번호만으로 필요한 확인이 끝난 것은 아니에요.
+
+면제 활동이라면 WWCC 번호가 필요하지 않을 수 있지만, 학교 절차까지 생략된다는 뜻은 아니에요. 봉사 전 학교가 보낸 디지털 선언서를 작성하고, 안내받은 결과 이메일을 확인해요. WWCC가 필요한 활동이라면 신청 APP 번호로 시작하지 말고, 유효한 WWCC 번호가 발급되고 교육부 검증이 끝났는지 확인해요. 학교가 역할에 맞는 준비물을 알려주면 그 안내를 기준으로 시작 날짜를 잡아요.
+
+(출처: [NSW 교육부, 비직원의 학교 접근 및 확인 절차](https://education.nsw.gov.au/about-us/careers-at-education/employment-opportunities/employee-screening/accessing-nsw-department-schools-as-a-non-employee), [Online screening trial](https://education.nsw.gov.au/about-us/careers-at-education/employment-opportunities/employee-screening/online-screening-trial))
+
+## 봉사 당일에는 무엇을 챙기나요?
+
+학교에서 보낸 디지털 선언서를 작성하고 심사 결과 이메일을 확인해요. 당일에는 정부 발급 사진 신분증을 보여주고 Service NSW 앱의 School Visitor Check-In으로 체크인해요. 봉사를 마치면 체크아웃도 해요. 평소 등하교 때 학교에 드나드는 것과 봉사자로 출입하는 절차는 다르니, 도착 장소와 방문자 등록 방식을 첫 방문 전에 확인하면 당일에 덜 헤매요.
+
+학교마다 세부 안내가 다를 수 있어요. WWCC 검증이 끝났더라도 방문자 등록 절차를 건너뛰지 말고, 담당자가 안내한 동선과 체크인 방식을 따라요. 준비물과 도착 장소를 미리 메모해두면 아이를 데려다주는 일정과 봉사 시간을 함께 맞추기 편해요.
+
+(출처: [NSW 교육부, 비직원의 학교 출입 안내](https://education.nsw.gov.au/about-us/careers-at-education/employment-opportunities/employee-screening/accessing-nsw-department-schools-as-a-non-employee))
+
+## 한 번 받으면 계속 쓸 수 있나요?
+
+승인된 WWCC는 5년 동안 유효하지만, 그 기간 내내 아무 조건 없이 사용할 수 있다는 뜻은 아니에요. 상태가 지속적으로 모니터링되고 만료 전에 갱신이 필요해요. 학교 봉사를 계속할 계획이라면 번호의 상태와 갱신 시점을 확인해두세요.
+
+다른 역할로 바뀌거나 유급 업무를 맡게 되면 기존 봉사용 확인이 그 역할에도 맞는지 학교와 확인해야 해요. WWCC 번호를 갖고 있다는 사실만으로 모든 직무와 모든 학교의 절차가 자동으로 충족되지는 않아요. 처음에는 활동을 구체적으로 설명하고, 역할이 바뀔 때 다시 확인하는 습관이 도움이 돼요.
+
+(출처: [Service NSW, WWCC 신청과 유효기간](https://www.service.nsw.gov.au/transaction/apply-for-a-working-with-children-check), [NSW 아동 보호국, 신청자 안내](https://ocg.nsw.gov.au/working-with-children-check/applicant))
+
+## 이미지 프롬프트
+
+hero: Anonymous generic Australian primary-school classroom, two adult carers organizing unmarked books and a pencil cup, shoulders and backs only, no children, no school identity, logos, name tags, documents, private data, or readable text. Warm natural photo-like light, 16:9 landscape, subjects upper/centre, lower crop-safe. Avoid fake UI, pseudo-labels, unsafe details, and distorted anatomy.
+
+section-2: Home table with adult hands beside a closed unmarked folder, laptop facing away, and a pen. No ID, passport, application, card, government logo, website, approval symbol, readable or pseudo text. Natural warm light, 16:9 landscape, lower crop-safe. Avoid fake UI, pseudo-labels, unsafe details, and distorted anatomy.
+
+section-4: Generic school office entrance with completely blank undecorated walls and empty counter, one adult carer seen from behind carrying a small bag, no students or other people. No posters, paper notices, boards, signage, labels, school name, logo, visitor list, ID, QR code, check-in screen, readable or pseudo text. Warm natural photo-like light, 16:9 landscape, lower crop-safe. Avoid fake UI, pseudo-labels, unsafe details, and distorted anatomy.
+
+## 셀프 리뷰
+
+- [x] NSW 공립학교 기준이며 전국 규정으로 일반화하지 않았어요.
+- [x] 부모·보호자 면제와 활동 예외, APP 신원 확인, WWCC 승인, 학교 검증을 구분했어요.
+- [x] 28일은 신원 확인 기한으로만 설명했고 심사 기간을 약속하지 않았어요.
+- [x] 신청 비용 무료, 5년 유효, 지속 모니터링과 갱신을 함께 안내했어요.
+- [x] 캔틴·스포츠데이·소풍은 대표 사례로만 제시했어요.
+- [x] 실제 경험, 학교명, 보장 결과를 만들지 않았어요.
+- [x] 사실 주장에 공식 출처 링크를 붙였어요.
+
+## 네이버 발행 체크리스트
+
+- [ ] 역할별 WWCC 필요 여부를 학교에 확인
+- [ ] 필요한 경우 번호 발급과 학교 검증 완료
+- [ ] 선언서 또는 결과 이메일 준비 여부 확인
+- [ ] 사진 신분증과 체크인·체크아웃 절차 확인
+- [ ] 본문 링크와 이미지 표시 확인
