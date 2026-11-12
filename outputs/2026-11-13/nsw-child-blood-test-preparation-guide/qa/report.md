@@ -42,4 +42,4 @@ The carousel has exactly ten PNGs, all 1080×1350. Each final card was inspected
 
 ## Publication gate status
 
-All Phase A artifact checks passed. No Naver, Blogger, Instagram, or Threads publication was attempted. No GitHub Actions workflow was dispatched, and no platform publication logs were created. Remote raw image-byte verification is pending the requested push.
+All Phase A artifact checks passed. After the push, each of the three public raw GitHub image URLs returned the exact SHA-256 recorded for its local reviewed image. No Naver, Blogger, Instagram, or Threads publication was attempted. No GitHub Actions workflow was dispatched, and no platform publication logs were created.
