@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "slug": "nsw-child-blood-test-preparation-guide",
+  "format": "information",
+  "topic_tag": "호주육아",
+  "posts": [
+    {
+      "text": "아이 혈액검사 의뢰서를 받았으면, 가려는 채혈실에 소아 채혈과 예약 여부부터 확인해두면 좋겠어.\n일반 검사는 예약 없이 가는 곳도 있지만, 소아 채혈은 예약이 필요하거나 가능한 장소가 따로 있을 수 있대.\n금식 여부와 준비 방법은 검사 지시를 준 의사에게 확인하고."
+    },
+    {
+      "text": "아이에게 설명할 때는 왜 하는지, 언제 어디로 가는지, 무엇을 하는지, 누가 함께 있는지 짧게 이야기해보자.\n아이가 가져갈 책이나 놀이를 고르게 해도 좋대.\nNSW Health Pathology와 Sydney Children’s Hospitals Network 안내야.\nhttps://pathology.health.nsw.gov.au/tests/patient-faqs/\nhttps://www.schn.health.nsw.gov.au/factsheets/blood-tests-and-venepuncture"
+    }
+  ],
+  "sources": [
+    "https://pathology.health.nsw.gov.au/tests/patient-faqs/",
+    "https://www.schn.health.nsw.gov.au/factsheets/blood-tests-and-venepuncture"
+  ]
+}
