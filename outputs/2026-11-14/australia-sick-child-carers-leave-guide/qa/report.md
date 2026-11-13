@@ -1,32 +1,40 @@
-# Pre-publication QA — 2026-11-14
+# Post-publication artifact correction audit — 2026-11-14
 
 Topic: 호주 아이 아플 때 돌봄휴가, 유급·무급 carer's leave와 증빙 확인법  
 Slug: `australia-sick-child-carers-leave-guide`
 
-## Editorial and factual review
+## Corrections
 
-- Topic-memory review found no duplicate; the entry appears exactly once in the existing root memory and is also saved in `topic-memory-entry.json`.
-- Official Fair Work Ombudsman source URLs A–E in `brief.md` were opened on 2026-11-14. Claims retain national-system scope, NSW public-sector/local-government exception, shared paid balance, unpaid-leave conditions, prompt notice, and possible short-absence evidence requests.
-- Naver search demand is not verified; the query is marked as an editorial target.
-- Blog has 2,047 public characters / 1,508 non-whitespace characters under the local count; no banned formal endings, `ㅠㅠ`, emojis, placeholders, or em-dashes in headings. Five required H2s are in order.
-- Tests: `node --test` — 26 passed, 0 failed.
-- Threads production dry-run: passed, 3 posts.
-- Naver dry-run: passed, 5 headings, 3 source image assets. Parsed first body block is the exact adjacent hero disclosure. The Naver script is configured to switch AI-use marks on for every inserted image; live editor confirmation is pending publication.
-- Blogger dry-run: passed. Final HTML contains exactly 3 raw image references and exactly 3 matching adjacent disclosure paragraphs; no prompt/checklist leakage.
+- Replaced the mistranslated `즉시 가족` wording with `법에서 정한 immediate family(가족 범주)` and retained the Fair Work Ombudsman source and national-system scope.
+- Replaced the imprecise `상·협약` wording with `어워드(award)나 기업협약(enterprise agreement)`.
+- Regenerated `blog/blogger.html` from the corrected Markdown, then restored exactly three AI-image disclosures, each immediately following its corresponding image.
+- Replaced every literal `/` citation separator in the carousel with a visible line break. Card 9 keeps `적용 제도·병가·돌봄휴가` and `휴가 통지·증빙` on distinct source lines.
+- Re-rendered all ten carousel PNGs from the corrected HTML.
+
+## Editorial and mechanical verification
+
+- Rendered public blog text: 2,882 characters / 2,230 non-whitespace characters under the local Markdown-to-plain-text count.
+- Tone scan found no banned formal endings, `ㅠㅠ`, emojis, placeholders, or the superseded `즉시 가족` and `상·협약` wording in public output.
+- `node --test`: 26 passed, 0 failed.
+- Threads production dry-run: passed; validated 3 posts.
+- Naver dry-run: passed; 5 headings and 3 parsed image assets. The first body block remains the exact hero disclosure.
+- Blogger dry-run command completed without mutation and skipped the slug because the existing publication log records it as already posted. Direct HTML verification passed: exactly 3 unique raw image references, exactly 3 disclosures, and all 3 disclosures immediately follow their images.
+- Carousel source verification found 10 card sections, zero literal citation separators, and three distinct source lines on card 9.
+- Publication logs were not edited.
 
 ## Image review
 
-- Gemini generation used `node scripts/gen-images.mjs --date 2026-11-14` with `.gemini-profile`; three final image files exist. Final hero was regenerated after rejecting candidates with pseudo-text and a logo-like clothing mark. Final hero, section-2, and section-5 were visually inspected; no pseudo-text, logo, UI, border, bottom strip, watermark, or framing/anatomy defect observed.
-- Final blog images: three PNGs, each 1024×457. (Hero is an explanatory illustration, not documentary photography.)
-- Carousel: exactly 10 ordered PNGs; all 1080×1350. Each final PNG was opened and checked individually at full size and at 360×450 (20 inspections). Exact prescribed visible copy, citation, scope line, handle, source position, and card-1 disclosure passed. All text remained legible; measured CSS body sizes are at least 52px, source/scope/disclosure at least 36px, and titles 76–88px. Handle and content stayed within the 72px safe inset; no clipping or overflow observed.
-- Temporary 360×450 inspection copies were kept under `/private/tmp/2026-11-14-carousel-360/`, outside the repository.
+- Blog images remain unchanged: three PNGs at 1024×457.
+- Carousel: exactly 10 ordered PNGs at 1080×1350.
+- Every regenerated carousel PNG was inspected individually at full 1080×1350 and at temporary 360×450 size, for 20 inspections total. Copy, line breaks, handle, scope, source placement, contrast, safe bounds, and card-1 disclosure passed with no clipping or overflow.
+- Temporary 360×450 inspection copies are outside the repository at `/private/tmp/aussie-umma-2026-11-14-audit-360/`.
 
 ## Frozen asset hashes
 
-See `qa/sha256.txt` for SHA-256 of the brief, blog, Blogger HTML, three blog images, caption, carousel source, all ten final cards, and Threads JSON. Any later content/image edit requires refreshing relevant checks and hashes.
+`qa/sha256.txt` contains refreshed SHA-256 values for the brief, corrected blog and Blogger HTML, unchanged blog images and caption, corrected carousel source, all ten regenerated cards, and Threads JSON.
 
-## Publication status at QA freeze
+## Live publication state
 
-- No publication attempt has occurred yet.
-- After commit/push, verify the three remote raw GitHub image bytes match the local approved files before publishing Blogger.
-- Naver direct publication is authorized once after this gate; do not retry direct publishing. Instagram workflow is authorized once with date and slug; inspect its dependent Threads job.
+- This correction audit did not publish, retry, or dispatch any platform action.
+- The already-live Blogger and Instagram posts still contain the earlier artifacts and were intentionally left unchanged.
+- Existing Blogger and Instagram publication logs remain unchanged. The earlier failed Naver and Threads outcomes remain unchanged, with no Naver or Threads publication log created.
