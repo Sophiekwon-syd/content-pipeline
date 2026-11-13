@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "slug": "australia-sick-child-carers-leave-guide",
+  "format": "information",
+  "topic_tag": "호주육아",
+  "posts": [
+    {
+      "text": "아이 아픈 날 쓰는 유급 돌봄휴가가 내 병가와 같은 잔액에서 나온대.\n호주 국가 고용관계 제도 적용 근로자 기준이야. 풀타임은 연 10일, 파트타임은 통상 근로시간에 비례해 쌓이고 남은 잔액은 이월돼."
+    },
+    {
+      "text": "캐주얼도 아픈 아이를 돌봐야 할 때 사유가 생길 때마다 무급 돌봄휴가 2일을 쓸 수 있대.\n풀타임·파트타임은 쓸 수 있는 유급 병가·돌봄휴가가 남아 있지 않아야 해."
+    },
+    {
+      "text": "회사에는 가능한 한 빨리 알리고 예상 기간도 전해요. 짧게 쉬어도 증빙을 요청받을 수 있어요.\nFair Work에서 고용형태에 맞는 조건을 확인해요.\nhttps://www.fairwork.gov.au/leave/sick-and-carers-leave"
+    }
+  ],
+  "sources": [
+    "https://www.fairwork.gov.au/leave/sick-and-carers-leave",
+    "https://www.fairwork.gov.au/leave/sick-and-carers-leave/paid-sick-and-carers-leave",
+    "https://www.fairwork.gov.au/leave/sick-and-carers-leave/unpaid-carers-leave",
+    "https://www.fairwork.gov.au/leave/sick-and-carers-leave/paid-sick-and-carers-leave/notice-and-medical-certificates",
+    "https://www.fairwork.gov.au/about-us/legislation/the-fair-work-system/default"
+  ]
+}
