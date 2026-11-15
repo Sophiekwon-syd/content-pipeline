@@ -8,4 +8,5 @@
 - Blogger conversion: rerun after image generation; generated HTML references all three raw GitHub image paths and includes the source links and AI-image disclosure.
 - Threads: `threads/thread.json` passed the production dry-run validator (two posts).
 - Test run: `node --test` — 26 passed, 0 failed.
-- Naver and Blogger posting scripts: dry-run parsing was performed before publication. External publishing results are recorded in date-level logs.
+- Naver and Blogger posting scripts: dry-run parsing was performed before publication. Blogger published successfully; its public post and all three hot-linked images returned HTTP 200. Instagram published successfully (media ID `17892379425686784`); its workflow log is committed. Naver's one direct attempt stopped before posting because the session's blog ID could not be detected, so no Naver log was written. The dependent Threads job received the date and slug but failed its authentication check because the access token expired; artifact publication and a Threads log were skipped. No direct Naver or Instagram/Threads workflow retry was made.
+- Workflow: [run 43773323595](https://github.com/Sophiekwon-syd/content-pipeline/actions/runs/43773323595). The Instagram job uploaded 10 children and published the carousel; the Threads job failed before the artifact posting step.
