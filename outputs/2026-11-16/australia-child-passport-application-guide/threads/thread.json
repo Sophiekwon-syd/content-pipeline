@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "slug": "australia-child-passport-application-guide",
+  "format": "observation",
+  "topic_tag": "호주육아",
+  "posts": [
+    {
+      "text": "아이 여권 준비는 신청서 작성만 보고 일정을 잡기 어려워요.\n서류와 동의 서명 준비 시간도 따로 생각해야 해요. 일반 처리 안내는 접수 후 최소 6주 여유를 두는 기준이고, 수령일 보장은 아니에요."
+    },
+    {
+      "text": "필요한 동의를 모두 받지 못한 신청은 더 오래 걸릴 수 있어요. 신청 상황에 맞는 안내를 먼저 확인해요.\nhttps://www.passports.gov.au/help/processing-times\nhttps://www.passports.gov.au/consent"
+    }
+  ],
+  "sources": [
+    "https://www.passports.gov.au/help/processing-times",
+    "https://www.passports.gov.au/consent"
+  ]
+}
