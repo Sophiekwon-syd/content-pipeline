@@ -25,4 +25,9 @@ Topic: 호주 아이 사진 온라인 공유, 가족에게 보내기 전 확인�
 
 ## Publication status
 
-Publication status is recorded in the date-level channel logs when the respective single publication attempt completes. Naver direct publish, Blogger publish, and the Instagram/Threads workflow are scheduled after these source artifacts are pushed.
+- Blogger publish succeeded once. Public post: https://aussieumma.blogspot.com/2026/11/blog-post_16.html (Blogger post ID `4132990967779374609`). The public Atom feed confirmed the title, all three image references, and the AI-image disclosure.
+- Fresh HTTP checks returned 200 for the Blogger post, each of its three raw GitHub image URLs, and the Instagram profile `https://www.instagram.com/aussie.umma/`.
+- Instagram workflow `43968329040` succeeded for its Instagram job. It created all 10 image containers and published media ID `18434678149149428`; the Instagram job committed `instagram-log.json` as commit `97072607cc11b5c19d85ebd2ef715b97f860361f`.
+- The dependent Threads job received date `2026-11-17`, slug `australia-child-photo-sharing-privacy-guide`, and checked out content commit `ad526e52a1c8946c0b23699c833111ea958a30de`, which contains the matching `threads/thread.json`. It failed at `Verify Threads authentication` with OAuth code 190 (token expired 2026-10-19); `Publish Threads artifact` and the log step were skipped. The local production dry-run did validate the artifact, but the workflow did not reach its publishing/validation step.
+- The one direct Naver publish attempt failed before posting: the profile could not detect a blog ID. No Naver publication log was created and the direct command was not repeated.
+- Expected date-level logs: Blogger and Instagram present; Naver and Threads absent because their single attempts failed. The workflow run is https://github.com/Sophiekwon-syd/content-pipeline/actions/runs/43968329040.
