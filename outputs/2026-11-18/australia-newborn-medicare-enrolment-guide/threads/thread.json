@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "slug": "australia-newborn-medicare-enrolment-guide",
+  "format": "information",
+  "topic_tag": "호주육아",
+  "posts": [
+    {
+      "text": "신생아 Medicare 등록은 병원이나 조산사가 준 Parent Pack부터 확인해요.\nNewborn Child Declaration에 의사나 조산사 서명이 있는지 살펴봐요."
+    },
+    {
+      "text": "가족수당 신청 여부에 따라 등록 경로가 달라질 수 있어요.\n등록 뒤에는 아이 이름이 든 새 카드와 Safety Net 가족 구성도 확인해요.\nhttps://www.servicesaustralia.gov.au/enrolling-your-baby-medicare?context=60092"
+    }
+  ],
+  "sources": [
+    "https://www.servicesaustralia.gov.au/enrolling-your-baby-medicare?context=60092",
+    "https://www.servicesaustralia.gov.au/how-to-manage-your-medicare-safety-net?context=22001"
+  ]
+}
