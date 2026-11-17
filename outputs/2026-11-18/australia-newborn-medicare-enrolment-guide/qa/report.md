@@ -29,4 +29,8 @@ Slug: `australia-newborn-medicare-enrolment-guide`
 
 ## Publication status
 
-This report is prepared before the authorized channel publication attempts. Publication outcomes and any logs are recorded at the date level after each attempt.
+- Blogger published successfully. Public URL: https://aussieumma.blogspot.com/2026/11/medicare-mygov.html. Feed post ID: `5922907163086217002`. The feed shows the AI disclosure and three image references.
+- Instagram workflow `44188310250` completed the Instagram job successfully. Published media ID: `17944448022380575`. Ten child containers were created, in order: `18122261711089110`, `18122261729089110`, `18122261747089110`, `18122261765089110`, `18122261783089110`, `18122261813089110`, `18122261888089110`, `18122261945089110`, `18122261969089110`, `18122261996089110`.
+- The dependent Threads job checked out commit `7bf175d922a494bcd456f44198e76a5bfa4c1be3`, which contains this slug's `threads/thread.json`, and received the requested date and slug. Threads authentication failed with OAuth error 190 because the token expired on 2026-10-19. Artifact publication and Threads log steps were skipped. No Threads post or log exists.
+- The single authorized direct Naver attempt stopped before publication with `Could not detect blog ID — are you logged in?`. It was not repeated. No Naver log exists.
+- Date-level logs present: Blogger and Instagram. Naver and Threads logs are absent because their publish steps did not complete.
