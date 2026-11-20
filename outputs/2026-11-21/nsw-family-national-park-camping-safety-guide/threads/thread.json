@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "slug": "nsw-family-national-park-camping-safety-guide",
+  "format": "information",
+  "topic_tag": "호주육아",
+  "posts": [
+    {
+      "text": "아이와 NSW 국립공원 캠핑을 갈 때는 예약 정보와 텐트만 보지 말고 식수와 공원 알림도 함께 확인해요. 대부분의 캠프장에는 식수가 없을 수 있어요."
+    },
+    {
+      "text": "모닥불은 지정 화로에서만 가능하고, 화기 금지나 Total Fire Ban이 있으면 규칙이 달라져요. 출발 전날과 출발 당일에 공원 알림을 다시 확인해요.\nhttps://www.nationalparks.nsw.gov.au/safety/camping-safety"
+    }
+  ],
+  "sources": [
+    "https://www.nationalparks.nsw.gov.au/safety/camping-safety",
+    "https://www.rfs.nsw.gov.au/fire-information/fdr-and-tobans/total-fire-ban-rules"
+  ]
+}
