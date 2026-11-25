@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "slug": "australia-family-pbs-safety-net-records-guide",
+  "format": "information",
+  "topic_tag": "호주육아",
+  "posts": [
+    {
+      "text": "호주 PBS Safety Net, 가족 약값은 약국마다 기록을 챙겨야 한대.\n\n여러 약국을 이용했다면 각 약국에 올해 PBS 지출 내역을 요청하고, 가족 합산 자격은 약사와 확인해요. 자동으로 다 모인다고 생각하지 않는 게 좋겠어요."
+    },
+    {
+      "text": "2026년 기준액은 일반 A$1,748.20, concession A$277.20. 기준액에 도달하면 Safety Net 카드를 신청하고, 발급된 카드는 적격 PBS 약을 받을 때 제시해요. 일부 브랜드 추가 부담금은 남을 수 있어요.\n\nPB240은 질문 1~6번을 먼저 입력하고 출력·서명해요. 준비할 때는 연결된 3쪽 PDF 전체를 출력해 약사에게 가져가요."
+    },
+    {
+      "text": "출처: Services Australia\nhttps://www.servicesaustralia.gov.au/pbs-safety-net-thresholds?context=22016\nhttps://www.servicesaustralia.gov.au/keep-track-your-pbs-medicines?context=22016\nhttps://www.servicesaustralia.gov.au/sites/default/files/pb240-2008en-f.pdf"
+    }
+  ],
+  "sources": [
+    "https://www.servicesaustralia.gov.au/pbs-safety-net-thresholds?context=22016",
+    "https://www.servicesaustralia.gov.au/keep-track-your-pbs-medicines?context=22016",
+    "https://www.servicesaustralia.gov.au/sites/default/files/pb240-2008en-f.pdf"
+  ]
+}
